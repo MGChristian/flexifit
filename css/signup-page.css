@@ -1,0 +1,422 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap");
+
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Oxanium", sans-serif;
+}
+
+body {
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: #fff;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Left Section */
+.left-section {
+  height: 100vh;
+  width: 45%;
+  background: url("../loginimages/bg.jpg") no-repeat center / 100% 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.branding {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 160px;
+  gap: 10px;
+}
+
+.branding h1 {
+  color: #fdd835;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+.motto {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.motto h2 {
+  font-size: 2.8rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.motto p {
+  font-size: 16px;
+  color: #fdd835;
+  font-weight: 300;
+}
+
+/* Right Section */
+.right-section {
+  height: 100%;
+  flex: 1;
+  background: #fff;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px;
+  position: relative;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  gap: 5px;
+}
+
+.nav a {
+  color: #fdd835;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.nav a:hover {
+  color: #ffcc00;
+}
+
+.nav span {
+  color: #fdd835;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 450px;
+  margin-top: 50px;
+}
+
+.form-container h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+}
+
+.form-container input,
+.form-container select,
+.form-container button {
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 1px solid #d3d3d3;
+  border-radius: 1px;
+  font-size: 14px;
+  transition: ease 0.5s;
+}
+
+.form-container input::placeholder {
+  color: #999;
+}
+
+.form-container option::placeholder {
+  color: #999;
+}
+
+.form-container input:hover {
+  border: 1px solid #a0a0a0;
+}
+
+.form-container input:focus {
+  outline: none;
+  border: 1.5px solid #ffcc00;
+  background: rgba(255, 250, 250, 0.2);
+}
+
+.phone {
+  display: flex;
+  align-items: center;
+}
+
+.phone span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d3d3d3;
+  padding: 10px;
+  border-radius: 1px 0 0 1px;
+  margin-top: -15px;
+  height: 44px;
+  font-weight: bold;
+}
+
+.phone input {
+  flex: 1;
+  border-left: none;
+  border-radius: 0 1px 1px 0;
+}
+
+.phone input:hover {
+  border-left: none;
+}
+
+.phone input:focus {
+  border-left: none;
+}
+
+.form-container button {
+  background-color: #ffcc00;
+  color: #ffffff;
+  font-size: medium;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.form-container button:hover {
+  background-color: #e6bb00;
+}
+
+.form-container select {
+  width: 250px;
+}
+
+.form-container select:hover {
+  border: 1px solid #a0a0a0;
+}
+
+.form-container select:focus {
+  outline: none;
+  border: 1.5px solid #ffcc00;
+  background: rgba(255, 250, 250, 0.2);
+}
+
+.form-container .divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #a0a0a0;
+  position: relative;
+}
+
+.form-container .divider:before,
+.form-container .divider:after {
+  content: "";
+  width: 32%;
+  height: 1px;
+  background-color: #a0a0a0;
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+}
+
+.form-container .divider:before {
+  left: 0;
+}
+
+.form-container .divider:after {
+  right: 0;
+}
+
+.progress-indicator {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.progress-indicator span {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: #d3d3d3;
+}
+
+.progress-indicator .active {
+  background-color: #f4ce00;
+}
+
+.email-notification {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4ce00;
+  padding: 10px;
+  border-radius: 1px;
+  text-align: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.email-notification .email-icon {
+  width: 50px;
+  height: 50px;
+  background: url("../loginimages/email.svg") center/contain no-repeat;
+  margin: 5px;
+}
+
+.email-notification p {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.otp-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  font-size: 14px;
+  color: #292929;
+}
+
+.otp-message .title {
+  font-weight: 500;
+  margin-bottom: 9px;
+}
+
+.otp-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.otp-inputs input {
+  height: 100px;
+  border: 1px solid #d3d3d3;
+  text-align: center;
+  font-size: 2.5rem;
+  border-radius: 1px;
+  width: 100%;
+}
+
+.resend-text {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.resend-text a {
+  color: #f4ce00;
+  text-decoration: none;
+}
+
+.resend-text a:hover {
+  text-decoration: underline;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 450px;
+  margin-top: 50px;
+}
+
+.content h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  align-self: center;
+}
+
+.content img {
+  width: 250px;
+  height: 250px;
+  margin-bottom: 20px;
+  align-self: center;
+}
+
+.content p {
+  font-size: 14px;
+  color: #292929;
+  margin-bottom: 43px;
+  align-self: center;
+}
+
+.content button {
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 1px solid #d3d3d3;
+  border-radius: 1px;
+  font-size: 14px;
+  transition: ease 0.5s;
+  background-color: #ffcc00;
+  color: #ffffff;
+  font-size: medium;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.progress-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.step {
+  width: 20px;
+  height: 20px;
+  background-color: #f5f5f5;
+  transition: background-color 0.3s;
+  margin-right: 20px;
+}
+
+.line {
+  width: 155px;
+  height: 1px;
+  background-color: #d3d3d3;
+  margin-right: 20px;
+}
+
+.step.active {
+  background-color: #f4ce00;
+}
+
+.step:not(.active) {
+  background-color: #d3d3d3;
+}

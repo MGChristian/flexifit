@@ -1,0 +1,511 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Navigation Bar */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Keeps "Join Now" button on the right */
+  align-items: center;
+  padding: 10px 20px !important;
+  background-color: #ffffff;
+  color: white;
+}
+
+.navigation-left{
+display:flex;
+align-items: center;
+gap:1rem;
+}
+
+.logo{
+display:flex;
+align-items: center;
+}
+
+.logo img {
+  height: 40px; /* Adjust size as needed */
+  margin-right: 5px; /* Reduced margin for tighter spacing */
+}
+
+.nav-container {
+  display: flex;
+  align-items: flex-start; /* Align logo and links vertically */
+  gap: 20px; /* Minimal space between logo and links */
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 17px; /* Reduced gap between links */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  position: relative; /* Allows fine-tuning of position */
+  top: -2px; /* Slight upward adjustment */
+}
+
+.nav-links li {
+  margin: 0; /* Align links evenly without extra spacing */
+}
+
+.nav-links a {
+  color: black;
+  text-decoration: none;
+  font-size: 0.875rem; /* Smaller font size */
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ffd700; /* Highlight color on hover */
+}
+
+
+.join-now {
+  background-color: #ffd700; /* Yellow background */
+  color: #333; /* Dark text */
+  padding: 10px 20px;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.join-now:hover {
+  background-color: #e6c200; /* Darker yellow on hover */
+}
+
+.user-icon{
+  display:flex;
+  align-items: center;
+}
+
+/* Header Section */
+.header {
+  position: relative;
+  width: 100%;
+  height: 400px; /* Increased height */
+  background: url('bg.jpg') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.header-content {
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.header-content h1 {
+  font-size: 5rem; /* Increased font size */
+  margin: 0;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.header-content p {
+  font-size: 1rem; /* Increased font size */
+  margin-top: 0.5rem;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  color: yellow;
+}
+
+/* Yellow Background Section */
+.yellow-bg {
+  background-color: #ffd700;
+  padding: 3rem 1rem;
+  color: #000;
+  text-align: center;
+}
+
+.yellow-bg h2 {
+  font-size: 2rem; /* Adjust the font size for the heading */
+  margin-bottom: 1rem;
+}
+
+.yellow-bg p {
+  font-size: 0.8rem; /* Adjust the font size for the paragraph */
+  max-width: 800px; /* Set a max width for the paragraph */
+  margin: 0 auto; /* Center the paragraph */
+  line-height: 1.5;
+}
+
+
+/* Container for the photos */
+.photo-container {
+display: flex;
+gap: 20px;
+justify-content: center;
+flex-wrap: wrap;
+padding: 20px;
+}
+
+/* Styles for each photo-item */
+.photo-item {
+position: relative;
+width: 300px;
+height: 400px; /* Set a fixed height */
+overflow: hidden;
+background-color: #000;
+color: #fff;
+cursor: pointer;
+transition: transform 0.3s ease; /* Transition for scaling on hover */
+}
+
+/* Photo hover effect (scaling) */
+.photo-item:hover {
+transform: scale(1.05); /* Slight scale increase on hover */
+}
+
+/* Photo image */
+.photo-item img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: opacity 0.3s ease; /* Transition effect for image */
+}
+/* Content inside the photo-item */
+.photo-content {
+position: absolute;
+bottom: 10px;
+left: 10px;
+right: 10px;
+padding: 15px;
+opacity: 1; /* Make content visible by default */
+display: flex; /* Use flexbox for alignment */
+flex-direction: column; /* Stack the content vertically */
+}
+
+/* Title inside content */
+.photo-content h3 {
+font-size: 1.5em;
+color: #ffffff; /* White text for the title */
+}
+
+/* Description text */
+.photo-content p {
+font-size: 0.8em;
+color: #ffffff; /* White text for the description */
+margin: 10px 0;
+line-height: 1.4; /* Slight line spacing for readability */
+}
+
+/* Link button */
+.photo-content a {
+display: inline-block; /* Ensure the link behaves like a block element */
+color: #ffffff; /* White color for the text */
+text-decoration: none;
+font-weight: bold;
+padding: 10px 20px; /* Add padding for the box effect */
+background-color: rgba(0, 0, 0, 0); /* Transparent background */
+border: 2px solid #ffffff; /* White border around the box */
+border-radius: 5px; /* Rounded corners */
+justify-content: center; /* Center the content vertically */
+align-items: center;
+transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
+text-align: center; /* Center text inside the box */
+margin-top: 10px; /* Space above the link */
+}
+
+.photo-content a:hover {
+color: #ff5722; /* Change text color on hover */
+border-color: #ff5722; /* Change border color on hover */
+background-color: rgba(0, 0, 0, 0.2); /* Add slight background color on hover for effect */
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between; /* Space between text and image */
+  align-items: flex-start; /* Align content to the top */
+  background: linear-gradient(to bottom, #292929 60%, #ffff 20%); /* Divides the background */
+  padding: 40px 20px;
+  height: 70vh; /* Full viewport height */
+  gap: 20px; /* Adds spacing between text and image */
+}
+
+.hero-content {
+  max-width: 50%; /* Adjust text section width */
+  align-self: flex-start; /* Ensures content stays in the upper section */
+  margin-left: 3%;
+}
+
+.hero-content h1 {
+  font-size: 4em;
+  margin-bottom: 20px;
+  color: #ffff; /* White text for black background */
+}
+
+.hero-content p {
+  font-size: 1em;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  color: #ffff; /* White text for readability */
+}
+
+.hero-content .btn {
+  display: inline-block;
+  background-color: #ffcc00;
+  color: white; /* Black text for contrast on yellow button */
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.hero-content .btn:hover {
+  background-color: #ffb700;
+}
+
+/* Hero Image Section */
+.hero-image {
+  position: relative;
+  width: 30%; /* Adjust image size */
+  display: flex;
+  justify-content: flex-end; /* Align image to the right */
+  align-self: flex-start; /* Ensure image stays aligned with the top */
+  margin-top: 40px; /* Moves the image down */
+  margin-right:45px; /* Moves the image to the right */
+}
+
+.hero-image img {
+  max-width: 100%;
+  border: 5px solid #ffcc00; /* Yellow border around the image */
+  border-radius: 0; /* Remove any rounding */
+}
+
+
+/* Classes Section */
+.classes {
+background-color: #ffcc00;
+text-align: center;
+padding: 10px 1px;
+min-height: 500px;
+position: relative;
+top: -48px;
+z-index: 1;
+}
+
+.classes h2 {
+font-size: 2em;
+margin-bottom: 20px;
+color: #ffff;
+}
+
+.classes-grid {
+display: grid;
+grid-template-columns: repeat(8, 1fr); /* 8 columns */
+gap: 5px;
+padding: 0;
+width: 98%;
+}
+
+/* First row: Two large images */
+.class-card:nth-child(1) {
+grid-column: span 3;
+height: 350px;
+margin-right: 5px;
+position: relative;
+}
+
+.class-card:nth-child(2) {
+grid-column: span 5;
+height: 350px;
+margin-left: 0;
+margin-right: 5px;
+position: relative;
+left: 5px;
+}
+
+/* Second row: Three smaller images with different widths */
+.class-card:nth-child(3) {
+grid-column: span 2;
+height: 350px;
+position: relative;
+}
+
+.class-card:nth-child(4) {
+grid-column: span 4;
+height: 350px;
+margin-left: 2px;
+position: relative;
+}
+
+.class-card:nth-child(5) {
+grid-column: span 2;
+height: 350px;
+margin-left: 2px;
+position: relative;
+}
+
+/* Image styles */
+.class-card img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+/* Card title styles (Text on the right side of the image) */
+.class-card h3 {
+position: absolute;
+bottom: 9px; /* Move the text to the bottom */
+right: 7px; /* Position it on the right side */
+color: white;
+font-size: 1.5em;
+padding: 5px;
+width: auto; /* Allow the text to adjust its width as needed */
+text-align: center;
+}
+
+/* Button styles */
+.class-card .btn {
+position: absolute;
+bottom: 12px; /* Position button 20px from the bottom of the container */
+left: 63%; /* Horizontally center the button */
+transform: translateX(-50%); /* Exact centering */
+background-color: #ffd700;
+color: #ffff;
+padding: 10px 20px;
+text-decoration: none;
+font-weight: bold;
+font-size: .8em;
+white-space: nowrap; /* Prevent text from wrapping */
+z-index: 2; /* Ensure the button is above the image */
+}
+
+
+.class-card .btn:hover {
+background-color: #222;
+}
+
+
+
+
+/* Section Styling */
+.section {
+  padding: 2rem 1rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.card {
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+
+/* Footer Styles */
+.footer {
+background-color: #333;
+color: white;
+padding: 40px 20px;
+text-align: center;
+}
+
+.footer-container {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+gap: 20px;
+flex-wrap: wrap;
+margin-left: 200px;
+min-height: 200px;
+}
+
+.footer-logo-contact {
+flex: 1;
+min-width: 250px;
+margin-bottom: 20px;
+text-align: left;
+border-right: 3px solid #fff; /* Adds a vertical line between logo/contact and social */
+padding-right: 20px; /* Optional: Adds space between the text and the line */
+
+}
+
+.footer-logo {
+width: 100px; /* Adjust to your desired size */
+height: 20%; /* Ensures the aspect ratio is maintained */
+display: block; /* Ensures proper alignment */
+margin: 0 auto; /* Centers the image if needed */
+}
+
+
+.footer-social {
+flex: 1;
+min-width: 250px;
+margin-bottom: 20px;
+font-size: 1.2em;
+margin-right: 250px;
+}
+
+.footer-social-title {
+font-size: 2em;
+font-weight: bold;
+margin-bottom: 20px;
+}
+
+.footer-social-links {
+display: flex;
+justify-content: center;
+gap: 25px;
+}
+
+.footer-social-icon {
+font-size: 2.5em;
+color: #ffcc00;
+transition: color 0.3s;
+}
+
+.footer-social-icon:hover {
+color: #ff6600;
+}
+
+.footer-copyright {
+font-size: 1em;
+background-color: yellow;
+color: white;
+margin-top: 0px; /* No margin, moves the section up */
+padding-top: 0px; /* No internal padding */
+text-align: center;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+.footer-container {
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-logo-contact,
+.footer-social {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.footer-social-links {
+  justify-content: center;
+}
+}

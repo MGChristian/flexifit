@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlexiFit</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/userdesign.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/userpage.css" />
+    <link rel="stylesheet" href="css/tabledesign.css" />
+    <link rel="stylesheet" href="css/modals.css" />
+
+    <link
+      href="https://cdn.datatables.net/v/dt/jszip-3.10.1/dt-2.2.1/af-2.7.0/b-3.2.0/b-colvis-3.2.0/b-html5-3.2.0/b-print-3.2.0/cr-2.0.4/date-1.5.5/fc-5.0.4/fh-4.0.1/kt-2.12.1/r-3.0.3/rg-1.5.1/rr-1.5.0/sc-2.4.3/sb-1.8.1/sp-2.3.3/sl-3.0.0/sr-1.4.1/datatables.min.css"
+      rel="stylesheet"
+    />
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/v/dt/jszip-3.10.1/dt-2.2.1/af-2.7.0/b-3.2.0/b-colvis-3.2.0/b-html5-3.2.0/b-print-3.2.0/cr-2.0.4/date-1.5.5/fc-5.0.4/fh-4.0.1/kt-2.12.1/r-3.0.3/rg-1.5.1/rr-1.5.0/sc-2.4.3/sb-1.8.1/sp-2.3.3/sl-3.0.0/sr-1.4.1/datatables.min.js"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  </head>
+  <body>
+    <!-- MODALS -->
+    <div class="modal-container hidden" id="request-refund">
+      <div class="modal">
+        <h1>Refund Request</h1>
+        <p>
+          You are about to cancel your booking of the class “Yoga Class”. Please
+          note, your refund request will be processed first which means
+          canceling this booking will not automatically issue you a refund.
+        </p>
+        <p>
+          You can also provide a reason for your refund request, which can help
+          us a lot when it comes to addressing the concerns that you and others
+          might have. Thank you!
+        </p>
+        <label for="refund-reason">Refund Reason: </label>
+        <select>
+          <option>Emergency</option>
+          <option>Changed my mind</option>
+          <option>No Longer Interested</option>
+          <option>Others</option>
+        </select>
+        <textarea>Hello</textarea>
+        <div class="modal-actions">
+          <button
+            type="button"
+            class="filterOpen"
+            style="background-color: var(--green)"
+            data-target="request-refund"
+          >
+            SUBMIT
+          </button>
+          <button
+            type="button"
+            class="filterOpen"
+            style="background-color: var(--dark-red)"
+            data-target="request-refund"
+          >
+            GO BACK
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- END OF MODALS -->
+    <!-- Navigation Header -->
+    <nav class="navbar">
+      <div class="navigation-left">
+        <div class="logo">
+          <img src="images/flexifitlogo.jpg" alt="FlexiFit Logo" />
+        </div>
+        <ul class="nav-links">
+          <li><a href="Home.html">HOME</a></li>
+          <li><a href="ExploreClasses.html">EXPLORE CLASSES</a></li>
+          <li><a href="Instructors.html">INSTRUCTORS</a></li>
+          <li><a href="Schedules.html">SCHEDULES</a></li>
+          <li><a href="howitworks.html">HOW IT WORKS</a></li>
+          <li><a href="Aboutus.html">ABOUT US</a></li>
+        </ul>
+      </div>
+      <div class="user-profile">
+        <box-icon
+          type="solid"
+          class="filterOpen"
+          name="user-circle"
+          size="md"
+          data-target="user-dropdown"
+        ></box-icon>
+        <div class="filters shadow hidden" id="user-dropdown">
+          <p>Name, Surname M.I</p>
+          <hr />
+          <div class="dropdown-item">
+            <div class="option">
+              <box-icon name="user-circle" type="solid"></box-icon>
+              <a href="myProfile.html"><p>My Profile</p></a>
+            </div>
+            <box-icon name="chevron-right"></box-icon>
+          </div>
+          <div class="dropdown-item">
+            <div class="option">
+              <box-icon name="book-alt" type="solid"></box-icon>
+              <a href="myBookings.html"><p>My Bookings</p></a>
+            </div>
+            <box-icon name="chevron-right"></box-icon>
+          </div>
+          <div class="dropdown-item">
+            <div class="option">
+              <box-icon name="folder-open" type="solid"></box-icon>
+              <a href="myRecords.html"><p>My Records</p></a>
+            </div>
+            <box-icon name="chevron-right"></box-icon>
+          </div>
+          <div class="dropdown-item">
+            <div class="option">
+              <box-icon name="log-out" type="solid"></box-icon>
+              <a href="../Home.html"><p>Log Out</p></a>
+            </div>
+            <box-icon name="chevron-right"></box-icon>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- MAIN CONTAINER -->
+    <header class="header">
+      <div class="header-content">
+        <h1>MY BOOKINGS</h1>
+      </div>
+    </header>
+    <main class="main-container">
+      <table id="myTable" class="display" style="width: 100%">
+        <thead>
+          <tr class="table-header">
+            <th class="no-sort">#</th>
+            <th>Class Name</th>
+            <th>Instructor</th>
+            <th>Date</th>
+            <th>Session</th>
+            <th>Time</th>
+            <th style="text-align: center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Yoga Class</td>
+            <td>Instructor Name</td>
+            <td>MM/DD/YYYY</td>
+            <td>Morning</td>
+            <td>7:30</td>
+            <td>
+              <button
+                class="refund-button filterOpen"
+                data-target="request-refund"
+                type="button"
+              >
+                REFUND
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Yoga Class</td>
+            <td>Instructor Name</td>
+            <td>MM/DD/YYYY</td>
+            <td>Morning</td>
+            <td>7:30</td>
+            <td>
+              <button
+                class="refund-button filterOpen"
+                data-target="request-refund"
+                type="button"
+              >
+                REFUND
+              </button>
+            </td>
+          </tr>
+
+          <tr>
+            <td>1</td>
+            <td>Yoga Class</td>
+            <td>Instructor Name</td>
+            <td>MM/DD/YYYY</td>
+            <td>Morning</td>
+            <td>7:30</td>
+            <td>
+              <button class="refund-button" id="pending" type="button">
+                PENDING
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+    <!-- END OF MAIN -->
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- Logo and Contact -->
+        <div class="footer-logo-contact">
+          <img src="images/logof.png" alt="FlexiFit Logo" class="footer-logo" />
+          <h3 class="footer-tagline">FLEXIFIT</h3>
+          <h3 class="footer-tagline">DARE TO BE GREAT</h3>
+          <p class="footer-contact">
+            flexfit.booking@gmail.com<br />
+            +63917-626-2231<br />
+            +63917-626-2232
+          </p>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="footer-social">
+          <h3 class="footer-social-title">FOLLOW US</h3>
+          <div class="footer-social-links">
+            <a href="#" class="footer-social-icon">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#" class="footer-social-icon">
+              <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="#" class="footer-social-icon">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="footer-social-icon">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <footer>
+      <!-- Copyright -->
+      <div class="footer-copyright">
+        Copyright &copy; 2024 FlexiFit. All rights reserved.
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const filters = document.querySelectorAll(".filterOpen");
+
+        filters.forEach((filter) => {
+          filter.addEventListener("click", () => {
+            const dataTarget = filter.getAttribute("data-target");
+            const modalTarget = document.querySelector(`#${dataTarget}`);
+            modalTarget.classList.toggle("hidden");
+          });
+        });
+
+        new DataTable("#myTable", {
+          columnDefs: [
+            {
+              orderable: false,
+              width: "120px",
+              targets: [-1],
+            },
+          ],
+          layout: {
+            topStart: {
+              buttons: [
+                {
+                  extend: "pdfHtml5",
+                  exportOptions: {
+                    columns: function (idx, data, node) {
+                      return idx < $("#myTable thead th").length - 1;
+                    },
+                  },
+                },
+              ],
+            },
+          },
+        });
+
+        const PDF = document.querySelector(".buttons-pdf");
+        const generatePDF = document.querySelector("#generate-pdf");
+
+        generatePDF.addEventListener("click", () => {
+          PDF.click();
+        });
+      });
+    </script>
+  </body>
+</html>

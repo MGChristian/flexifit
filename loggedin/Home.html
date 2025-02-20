@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlexiFit</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/Home.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  </head>
+  <body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+      <div class="navigation-left">
+        <div class="logo">
+          <img src="images/flexifitlogo.jpg" alt="FlexiFit Logo" />
+        </div>
+        <ul class="nav-links">
+          <li><a href="Home.html">HOME</a></li>
+          <li><a href="ExploreClasses.html">EXPLORE CLASSES</a></li>
+          <li><a href="Instructors.html">INSTRUCTORS</a></li>
+          <li><a href="Schedules.html">SCHEDULES</a></li>
+          <li><a href="howitworks.html">HOW IT WORKS</a></li>
+          <li><a href="Aboutus.html">ABOUT US</a></li>
+        </ul>
+      </div>
+      <div class="user-profile">
+        <box-icon
+          type="solid"
+          class="filterOpen"
+          name="user-circle"
+          size="md"
+          data-target="user-dropdown"
+        ></box-icon>
+        <div class="filters shadow hidden" id="user-dropdown">
+          <p>Name, Surname M.I</p>
+          <hr />
+          <div class="dropdown-item">
+            <div class="option">
+              <box-icon name="user-circle" type="solid"></box-icon>
+              <a href="myProfile.html"><p>My Profile</p></a>
+            </div>
+            <box-icon name="chevron-right"></box-icon>
+          </div>
+          <div class="dropdown-item">
+            <div class="option">
+              <box-icon name="book-alt" type="solid"></box-icon>
+              <a href="myBookings.html"><p>My Bookings</p></a>
+            </div>
+            <box-icon name="chevron-right"></box-icon>
+          </div>
+          <div class="dropdown-item">
+            <div class="option">
+              <box-icon name="folder-open" type="solid"></box-icon>
+              <a href="myRecords.html"><p>My Records</p></a>
+            </div>
+            <box-icon name="chevron-right"></box-icon>
+          </div>
+          <div class="dropdown-item">
+            <div class="option">
+              <box-icon name="log-out" type="solid"></box-icon>
+              <a href="../Home.html"><p>Log Out</p></a>
+            </div>
+            <box-icon name="chevron-right"></box-icon>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <header class="header">
+      <div class="header-content">
+        <h1>DARE TO BE GREAT</h1>
+        <p>Our goal is to help you achieve the body of your dreams.</p>
+      </div>
+    </header>
+
+    <section class="yellow-bg">
+      <h2>FIND THE BEST FITNESS CLASS FOR YOU</h2>
+      <p>
+        We offer a variety of classes to suit your needs, you can choose from
+        our highly talented and passionate instructors. If you’re looking to
+        start your fitness journey, you’ve come to the right place!
+      </p>
+    </section>
+
+    <div class="photo-container">
+      <div class="photo-item">
+        <img src="images/yoga.jpg" alt="How it Works" />
+        <div class="photo-content">
+          <h3>HOW IT WORKS</h3>
+          <p>
+            Lorem ipsum dolor sit ameet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          <a href="#">Learn More</a>
+        </div>
+      </div>
+      <div class="photo-item">
+        <img src="images/instructors.jpg" alt="Instructors" />
+        <div class="photo-content">
+          <h3>INSTRUCTORS</h3>
+          <p>
+            Instructors are ready to guide you all the time so you can better
+            understand each session that we have prepared for you.
+          </p>
+          <a href="images/instructors.html">Learn More</a>
+        </div>
+      </div>
+      <div class="photo-item">
+        <img src="images/schedules.png" alt="Schedules" />
+        <div class="photo-content">
+          <h3>SCHEDULES</h3>
+          <p>
+            Here are the schedules so you know when you can do each of the
+            exercise we have prepared for you.
+          </p>
+          <a href="schedules.html">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1>WHY WORK WITH US?</h1>
+        <p>
+          Why don’t you join us? It’s easy because you can choose everything you
+          want that will be good for your body here with us. So, what are you
+          waiting for? Join us.
+        </p>
+        <a href="#" class="btn">DISCOVER</a>
+      </div>
+      <div class="hero-image">
+        <img src="images/workwithus.jpg" alt="Why Work With Us" />
+      </div>
+    </section>
+
+    <!-- Classes Section -->
+    <section class="classes">
+      <h2>VARIETY OF CLASSES TO CHOOSE FROM</h2>
+      <div class="classes-grid">
+        <!-- First Row: Two large images/ -->
+        <div class="class-card">
+          <img src="images/yoga1.jpg" alt="Yoga" />
+          <h3>YOGA</h3>
+        </div>
+        <div class="class-card">
+          <img src="images/strength.jpg" alt="Strength" />
+          <h3>STRENGTH</h3>
+        </div>
+        <!-- Second Row: Three smaller images/ -->
+        <div class="class-card">
+          <img src="images/cardio.png" alt="Cardio" />
+          <h3>CARDIO</h3>
+        </div>
+        <div class="class-card">
+          <img src="images/boxing.jpg" alt="Boxing" />
+          <h3>BOXING</h3>
+        </div>
+        <div class="class-card">
+          <img src="images/back.jpg" alt="Back" />
+          <!-- Button inside the image -->
+          <a href="ExploreClasses.html" class="btn">DISCOVER ALL CLASSES</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- Logo and Contact -->
+        <div class="footer-logo-contact">
+          <img src="images/logof.png" alt="FlexiFit Logo" class="footer-logo" />
+          <h3 class="footer-tagline">FLEXIFIT</h3>
+          <h3 class="footer-tagline">DARE TO BE GREAT</h3>
+          <p class="footer-contact">
+            flexfit.booking@gmail.com<br />
+            +63917-626-2231<br />
+            +63917-626-2232
+          </p>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="footer-social">
+          <h3 class="footer-social-title">FOLLOW US</h3>
+          <div class="footer-social-links">
+            <a href="#" class="footer-social-icon">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#" class="footer-social-icon">
+              <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="#" class="footer-social-icon">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="footer-social-icon">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <footer>
+      <!-- Copyright -->
+      <div class="footer-copyright">
+        Copyright &copy; 2024 FlexiFit. All rights reserved.
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const filters = document.querySelectorAll(".filterOpen");
+
+        filters.forEach((filter) => {
+          filter.addEventListener("click", () => {
+            const dataTarget = filter.getAttribute("data-target");
+            const modalTarget = document.querySelector(`#${dataTarget}`);
+            modalTarget.classList.toggle("hidden");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

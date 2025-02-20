@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/admin-mc.css">
+    <link rel="stylesheet" href="css/table.css">
+    
+</head>
+<body>
+    <div class="grid-container">
+    <header class="header">
+        <div class="logo" style="display:flex; gap:5px;">
+            <button type="button">PHO</button>
+            <h2>FLEXIFIT</h2>
+        </div>
+        <button type="button" id="logout">LOG OUT</button>
+        </header>
+            <aside id="sidebar">
+                <div class="sidebar-title">
+                    <div class="sidebar-role">INSTRUCTOR PANEL</div>
+                </div>
+                <ul class="sidebar-list">
+                    <li class="booking-a sidebar-list-item">
+                        <div><box-icon name='calendar-alt' type='solid'></box-icon> BOOKINGS</div>
+                        <div><box-icon name='chevron-down'></box-icon></div>
+                    </li>
+                    <ul class="booking-m mini-sidebar-list hidden">
+                        <a href="newbooking.php">
+                            <li class="mini-sidebar-list-item">NEW BOOKINGS</li>
+                        </a>
+                        <a href="recordsbook.php">
+                            <li class="mini-sidebar-list-item">BOOKING RECORDS</li>
+                        </a>
+                    
+                        </a>
+                    </ul>
+                    
+                    </li>
+                    <ul class="refund-m mini-sidebar-list hidden">
+                        <a href="newrefunds.php">
+                            <li class="mini-sidebar-list-item">NEW REFUNDS</li>
+                        </a>
+                        <a href="recordsrefund.php">
+                            <li class="mini-sidebar-list-item">UPCOMING REFUNDS</li>
+                        </a>
+                    </ul>
+                  
+                       
+                        </li>
+                    </a>
+                 
+                    </a>
+                    <a href="ratings.php">
+                        <li class="sidebar-list-item">
+                            <div><box-icon name='star' type='solid'></box-icon> RATINGS & REVIEWS</div>
+                        </li>
+                    </a>
+                </ul>
+            </aside>
+        </header>
+            <!-- main -->
+        <main class="main-container">
+            <div class="upclients">
+                UPCOMING BOOKING <span>||</span> Clients
+              </div>
+            
+              <div class="uppclients">
+              
+                  <a href="#"> HOME > <a href="#">UPCOMING BOOKINGS ></a> <a href="#">CLIENTS</a>
+                
+              </div>
+            
+              
+                <div class="search-bar">
+                  <input type="text" placeholder="Search...">
+                  <button><i class="fa fa-search"></i> Search</button>
+                  
+                </div>
+
+                <div class="class-schedules">
+                    <h2>CLIENT For Yoga</h2>
+                  </div>
+                  <hr class="hr hr-blurry" />
+
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Client Name</th>
+                        <th>Date Booked</th>
+                        <th><a href="#" class="download-pdf">Download PDF</a></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>Surname, Name</td>
+                        <td>M/D/Y</td>
+                        <td><button class="view-profile-button">VIEW PROFILE</button></td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>Surname, Name</td>
+                        <td>M/D/Y</td>
+                        <td><button class="view-profile-button">VIEW PROFILE</button></td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>Surname, Name</td>
+                        <td>M/D/Y</td>
+                        <td><button class="view-profile-button">VIEW PROFILE</button></td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>Surname, Name</td>
+                        <td>M/D/Y</td>
+                        <td><button class="view-profile-button">VIEW PROFILE</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+                
+
+            </main>
+                            
+        </div>
+        <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+        <script src="js/index.js"> </script>
+        <script src="js/scripts.js"> </script>
+        </body>
+        </html>

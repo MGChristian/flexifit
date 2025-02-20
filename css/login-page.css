@@ -1,0 +1,360 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap");
+
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Oxanium", sans-serif;
+}
+
+body {
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: #fff;
+  background: url(../loginimages/login-bg.png) no-repeat center / 100% 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Left Section */
+.left-section {
+  height: 100vh;
+  width: 50%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.branding {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 160px;
+  gap: 10px;
+}
+
+.branding h1 {
+  color: #fdd835;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+.motto {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.motto h2 {
+  font-size: 2.8rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.motto p {
+  font-size: 16px;
+  color: #fdd835;
+  font-weight: 300;
+}
+
+/* Right Section */
+.right-section {
+  height: 100%;
+  flex: 1;
+  background: rgba(0, 0, 0, 0.8);
+  border-left: 2px solid rgba(255, 255, 255, 0.25);
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  box-shadow: rgba(255, 255, 255, 0.25) 0px 50px 100px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 50px 100px -18px inset;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px;
+  position: relative;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  gap: 5px;
+}
+
+.nav a {
+  color: #fdd835;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.nav a:hover {
+  color: #ffcc00;
+}
+
+.nav span {
+  color: #fdd835;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 450px;
+  margin-top: 50px;
+}
+
+.form-container h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-container .login-email-title {
+  align-self: center;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.form-container input,
+.form-container button {
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 1px solid #d3d3d3;
+  border-radius: 1px;
+  font-size: 14px;
+  transition: ease 0.5s;
+  color: #000000;
+}
+
+.form-container input::placeholder {
+  color: #000000;
+}
+
+.form-container option::placeholder {
+  color: #000000;
+}
+
+.form-container input:hover {
+  border: 1px solid #000000;
+}
+
+.form-container input:focus {
+  outline: none;
+  border: 1.5px solid #ffcc00;
+  background: rgb(50, 50, 50);
+}
+
+.form-container button {
+  background-color: #ffcc00;
+  color: #ffffff;
+  font-size: medium;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.form-container button:hover {
+  background-color: #d8b000;
+}
+
+.form-container a {
+  color: #fff;
+  width: fit-content;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.form-container .reset-link {
+  color: #ffcc00;
+}
+
+.form-container a:hover {
+  color: #ffcc00;
+  text-decoration: underline;
+}
+
+.form-container p {
+  font-size: 0.9rem;
+  display: block;
+}
+
+.form-container p {
+  display: absolute;
+}
+
+.progress-indicator {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.progress-indicator span {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: #d3d3d3;
+}
+
+.progress-indicator .active {
+  background-color: #f4ce00;
+}
+
+.email-notification {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 1px;
+  text-align: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.email-notification .email-icon {
+  width: 50px;
+  height: 50px;
+  background: url("../loginimages/login-email.svg") center/contain no-repeat;
+  color: #fdd835;
+  margin: 5px;
+}
+
+.email-notification p {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.otp-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.otp-message .title {
+  font-weight: 500;
+  margin-bottom: 9px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 450px;
+  margin-top: 50px;
+}
+
+.content h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.content img {
+  width: 250px;
+  height: 250px;
+  margin-bottom: 20px;
+}
+
+.content p {
+  font-size: 14px;
+  color: #292929;
+  margin-bottom: 43px;
+}
+
+.content button {
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 1px solid #d3d3d3;
+  border-radius: 1px;
+  font-size: 14px;
+  transition: ease 0.5s;
+  background-color: #ffcc00;
+  color: #ffffff;
+  font-size: medium;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.form-container .login-check-title {
+  align-self: center;
+}
+
+.check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 1px;
+  text-align: center;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.check .check-icon {
+  width: 100px;
+  height: 100px;
+  background: url("../loginimages/check.svg") center/contain no-repeat;
+  color: #fdd835;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.message .title {
+  font-weight: 500;
+  margin-bottom: 5px;
+}

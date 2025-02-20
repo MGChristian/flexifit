@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+
+.my-image {
+    width: 1350px;
+    height: 100px;
+        }
+     main {
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .filter {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 10px;
+        }
+
+        .search-box {
+            padding: 5px 10px;
+            font-size: 0.9rem;
+        }
+
+        .filter-button {
+            background-color: #f0c30f;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .booking-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .booking-table th,
+        .booking-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .booking-table th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .status {
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .status.finished {
+            color: white;
+            background-color: green;
+        }
+
+        .status.refunded {
+            color: white;
+            background-color: red;
+        }
+
+        .status.rating {
+            color: white;
+            background-color: orange;
+        }
+		.btn-custom {
+	        margin-right: 20px;
+	    }
+		 .class-history {
+		    margin-right: 850px;
+		 }
+</style>
+<body>
+ <img src="3.jpg" class="my-image">
+ 
+  <h1>My Booking Records</h1>
+        <section class="booking-section">
+		
+            <div class="filter">
+			<h3 class="class-history" >Classes History</h3>
+			 <button type="button" class="btn btn-custom" > <img src="4.jpg" height="30"></button>
+                <button class="filter-button">🔍</button>
+				<input type="search" placeholder="Search" class="search-box">
+				
+            </div>
+            <table class="booking-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Class Name</th>
+                        <th>Instructor</th>
+                        <th>Date</th>
+                        <th>Time of Day</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Name</td>
+                        <td>Name</td>
+                        <td>MM/DD/YY</td>
+                        <td>Morning</td>
+                        <td>H:M</td>
+                        <td class="status finished">FINISHED</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Name</td>
+                        <td>Name</td>
+                        <td>MM/DD/YY</td>
+                        <td>Evening</td>
+                        <td>H:M</td>
+                        <td class="status refunded">REFUNDED</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Jelli Jante</td>
+                        <td>Jelli Jante</td>
+                        <td>MM/DD/YY</td>
+                        <td>Evening</td>
+                        <td>H:M</td>
+                        <td class="status rating">GIVE RATING</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Jai Lawan</td>
+                        <td>Jai Lawan</td>
+                        <td>MM/DD/YY</td>
+                        <td>Evening</td>
+                        <td>H:M</td>
+                        <td class="status finished">FINISHED</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>

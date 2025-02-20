@@ -1,0 +1,111 @@
+:root {
+  --dark-background: rgba(0, 0, 0, 0.3);
+}
+
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--dark-background);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+.modal {
+  border-radius: 5px;
+  background-color: white;
+  width: 800px;
+  height: fit-content;
+  -webkit-box-shadow: var(--shadow-style);
+  -moz-box-shadow: var(--shadow-style);
+  box-shadow: var(--shadow-style);
+  overflow-y: auto;
+  max-height: 80%;
+  max-width: 90%;
+}
+
+.modal form {
+  max-width: 100%;
+}
+
+.modal-title {
+  display: flex;
+  justify-content: space-between;
+  background-color: darkgray;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+
+.modal-contents {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0px 1rem 2rem 1rem;
+}
+
+.title-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.title-buttons button {
+  padding: 0px 1rem 0px 1rem;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputs input,
+.inputs select {
+  padding: 0.5rem 0 0.5rem 0;
+  height: 100%;
+}
+
+label {
+  display: block;
+}
+
+.multi-inputs {
+  display: flex;
+  gap: 1rem;
+}
+
+.can-wrap {
+  flex-wrap: wrap;
+}
+
+.half {
+  width: 50%;
+  display: flex;
+}
+
+.mini {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.client {
+  width: 100%;
+}
+
+.client-add {
+  height: 2.3rem;
+  width: 2.5rem;
+  text-align: center;
+}
+
+.modal-contents textarea {
+  resize: vertical;
+}
+
+.file-input {
+}

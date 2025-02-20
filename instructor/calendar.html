@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="css/colors.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/ratings.css" />
+    <link
+      rel="stylesheet"
+      href="icons/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var calendarEl = document.getElementById("calendar");
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: "dayGridMonth",
+          headerToolbar: {
+            start: "prev,today,next", // will normally be on the left. if RTL, will be on the right
+            center: "title",
+            end: "dayGridMonth,timeGridWeek,timeGridDay", // will normally be on the right. if RTL, will be on the left
+          },
+        });
+        calendar.render();
+      });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  </head>
+
+  <body>
+    <div class="grid-container">
+      <header class="header">
+        <div class="logo" style="display: flex; gap: 5px">
+          <a href="index.php">
+            <h2>FLEXIFIT</h2>
+          </a>
+        </div>
+        <a href="../login-page.html"
+          ><button type="button" id="logout">LOG OUT</button></a
+        >
+      </header>
+
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <div class="sidebar-role">INSTRUCTOR PANEL</div>
+        </div>
+        <ul class="sidebar-list">
+          <a href="index.html">
+            <li class="sidebar-list-item">
+              <div>
+                <div class="sl-title">
+                  <i class="fa fa-tachometer" aria-hidden="true"></i> DASHBOARD
+                </div>
+              </div>
+            </li>
+          </a>
+          <li class="booking-a sidebar-list-item">
+            <div>
+              <div class="sl-title">
+                <i class="fa fa-calendar" aria-hidden="true"></i> BOOKINGS
+              </div>
+            </div>
+            <div><box-icon name="chevron-down"></box-icon></div>
+          </li>
+          <ul class="booking-m mini-sidebar-list hidden">
+            <a href="upcoming-bookings.html">
+              <li class="mini-sidebar-list-item">NEW BOOKINGS</li>
+            </a>
+            <a href="booking-records.html">
+              <li class="mini-sidebar-list-item">BOOKING RECORDS</li>
+            </a>
+            <a href="calendar.html">
+              <li class="mini-sidebar-list-item">CALENDAR</li>
+            </a>
+          </ul>
+          <a href="rating-and-review.html">
+            <li class="sidebar-list-item">
+              <div>
+                <div class="sl-title">
+                  <i class="fa fa-star" aria-hidden="true"></i> RATINGS &
+                  REVIEWS
+                </div>
+              </div>
+            </li>
+          </a>
+        </ul>
+      </aside>
+
+      <!-- main -->
+      <main class="main-container">
+        <div class="page-title">
+          <h1>CALENDAR</h1>
+          <div class="quick-link">
+            <p><a href="index.php"> HOME </a> > CALENDAR</p>
+          </div>
+        </div>
+        <div class="main-content">
+          <div class="table-desc">
+            <h3>CALENDAR</h3>
+            <hr />
+            <br />
+            <div class="calendar-content">
+              <div id="calendar"></div>
+            </div>
+          </div>
+          <hr />
+          <div class="ratings-table"></div>
+        </div>
+      </main>
+    </div>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

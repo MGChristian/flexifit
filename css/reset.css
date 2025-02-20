@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap");
+
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Oxanium", sans-serif !important;
+  font-optical-sizing: auto;
+  line-height: 1.6;
+}
