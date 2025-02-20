@@ -149,6 +149,10 @@ body {
   transition: ease 0.5s;
 }
 
+.date-empty {
+  color: #999;
+}
+
 .form-container input::placeholder {
   color: #999;
 }

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FlexiFit</title>
+    <title>FlexFit</title>
     <link rel="stylesheet" href="css/signup-page.css" />
     <link rel="icon" href="loginimages/logo.png" />
   </head>
@@ -30,48 +30,34 @@
       </div>
       <div class="form-container">
         <div class="progress-bar">
+          <div class="step"></div>
+          <div class="line"></div>
+          <div class="step"></div>
+          <div class="line"></div>
           <div class="step active"></div>
-          <div class="line"></div>
-          <div class="step"></div>
-          <div class="line"></div>
-          <div class="step"></div>
         </div>
         <h2>SIGN UP</h2>
         <form>
-          <input
-            type="text"
-            placeholder="First name"
-            autocomplete="off"
-            required
-          />
-          <input
-            type="text"
-            placeholder="Last name"
-            autocomplete="off"
-            required
-          />
-          <input
-            type="text"
-            placeholder="Date of birth"
-            autocomplete="off"
-            required
-          />
-          <input type="email" placeholder="Email" autocomplete="off" required />
-          <div class="phone">
-            <span>+63</span>
-            <input type="number" placeholder="Contact Number" required />
+          <div class="email-notification">
+            <div class="email-icon"></div>
           </div>
-          <select required>
-            <option value="" disabled selected style="color: #ccc">
-              Gender
-            </option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
+          <div class="otp-message">
+            <p class="title">Please check your email</p>
+            <p>You're almost done setting up your account.</p>
+            <p>An OTP code has been sent to email@gmail.com.</p>
+          </div>
+          <div class="otp-inputs">
+            <input type="text" maxlength="1" />
+            <input type="text" maxlength="1" />
+            <input type="text" maxlength="1" />
+            <input type="text" maxlength="1" />
+          </div>
+          <p class="resend-text">
+            Didn't get the code? <a href="#">Click to resend</a>
+          </p>
           <button
-            type="submit"
-            onclick="window.location.href='signup-page-account.html'"
+            type="button"
+            onclick="window.location.href='signup-page-finish.php'"
           >
             CONTINUE
           </button>
