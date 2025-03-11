@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap");
+
+:root {
+  --black: #292929;
+  --yellow: #fcc707;
+  --dark-yellow: #ad861d;
+  --darker-yellow: #9a7511;
+  --red: #dc343d;
+  --dark-red: #910f29;
+  --green: #0f910f;
+  --light-grey: #f3f3f3;
+  --dark-grey: #aeb0af;
+  --light: 200;
+  --normal: 400;
+  --bold: 700;
+}
+
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Oxanium", sans-serif !important;
+  font-optical-sizing: auto;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.main-container {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 75rem;
+  color: var(--black);
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.shadow {
+  box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.15);
+}
+
+.hidden {
+  display: none !important;
+}

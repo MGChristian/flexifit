@@ -1,0 +1,242 @@
+/* Navigation Bar */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Keeps "Join Now" button on the right */
+  align-items: center;
+  padding: 10px 20px !important;
+  background-color: #ffffff;
+  color: white;
+}
+
+.navigation-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 40px; /* Adjust size as needed */
+  margin-right: 5px; /* Reduced margin for tighter spacing */
+}
+
+.nav-container {
+  display: flex;
+  align-items: flex-start; /* Align logo and links vertically */
+  gap: 20px; /* Minimal space between logo and links */
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 17px; /* Reduced gap between links */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  position: relative; /* Allows fine-tuning of position */
+  top: -2px; /* Slight upward adjustment */
+}
+
+.nav-links li {
+  margin: 0; /* Align links evenly without extra spacing */
+}
+
+.nav-links a {
+  color: black;
+  text-decoration: none;
+  font-size: 0.875rem; /* Smaller font size */
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ffd700; /* Highlight color on hover */
+}
+
+.join-now {
+  background-color: #ffd700; /* Yellow background */
+  color: #333; /* Dark text */
+  padding: 10px 20px;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.join-now:hover {
+  background-color: #e6c200; /* Darker yellow on hover */
+}
+
+.user-icon {
+  display: flex;
+  align-items: center;
+}
+
+/* Header Section */
+.header {
+  position: relative;
+  width: 100%;
+  height: 400px; /* Adjusted height */
+  background: url("../assets/insbg.JPG") no-repeat center center/cover;
+  display: flex;
+  justify-content: flex-start; /* Align content to the start horizontally */
+  align-items: center; /* Align content to the center vertically */
+  color: white;
+  text-align: left; /* Align text to the left */
+  padding: 20px;
+}
+
+.header-content {
+  width: 100%; /* Take full width of the header */
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  align-items: flex-start; /* Align children to the left */
+  position: relative;
+}
+
+.header-content h1 {
+  font-size: 2.5rem; /* Adjust font size as needed */
+  margin: 0;
+  position: absolute;
+  bottom: 110px; /* Distance from top */
+  left: 20px; /* Distance from left */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.header-content p {
+  font-size: 1.5rem; /* Adjust font size as needed */
+  margin: 0 auto; /* Center horizontally */
+  text-align: center; /* Center text alignment */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  color: #ffffff; /* Corrected to valid white color */
+  position: absolute;
+  top: 50%; /* Vertically center */
+  left: 50%; /* Horizontally center */
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  word-spacing: 2px;
+}
+
+/* Trainer Section */
+.trainer-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  gap: 30px;
+  padding: 50px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Trainer Card */
+.trainer-card {
+  display: flex;
+  flex-direction: column; /* Stack text and bottom row */
+  justify-content: space-between;
+  gap: 20px; /* Spacing between text and bottom section */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative; /* Needed for absolute positioning of the button */
+  padding-bottom: 70px; /* Add space to avoid overlapping content */
+  overflow: hidden; /* Ensures content stays within the card */
+  height: 550px;
+}
+
+/* Dark and Light Card Backgrounds */
+.dark-card {
+  background-color: #000;
+  color: #fff;
+}
+
+.light-card {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+}
+
+/* Trainer Text */
+.trainer-text p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  text-align: left; /* Align text in the center */
+}
+
+/* Trainer Bottom Section */
+.trainer-bottom {
+  display: flex; /* Ensure layout is flex */
+  align-items: center; /* Align content vertically */
+  gap: 20px; /* Space between image and info */
+  justify-content: flex-start; /* Align both items to the left */
+  width: 100%; /* Ensure full width to prevent overflow */
+}
+
+/* Trainer Image */
+.trainer-image img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid #ffd700;
+  object-fit: cover;
+  display: block; /* Ensure it's treated as a block element */
+}
+
+/* Trainer Info */
+.trainer-info {
+  display: flex;
+  flex-direction: column; /* Keep text vertically aligned */
+  justify-content: center; /* Vertically center the text */
+  color: #ffd700;
+  flex-grow: 1; /* Ensure it takes available space */
+}
+
+.trainer-info h2 {
+  font-size: 1.2rem;
+  margin: 0;
+  text-align: right;
+}
+
+.trainer-info .title {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #999;
+}
+
+.view-btn {
+  background-color: #ffd700;
+  color: white;
+  border: none;
+  padding: 5px 15px; /* Reduced padding for smaller button */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 150px; /* Adjust width to auto for smaller button size */
+  font-size: 0.8rem; /* Smaller font size */
+  margin-left: auto; /* Align button to the right */
+}
+
+.view-btn:hover {
+  background-color: #e6c200;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-logo-contact,
+  .footer-social {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .footer-social-links {
+    justify-content: center;
+  }
+}

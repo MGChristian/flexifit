@@ -12,6 +12,10 @@ class ComposerStaticInitf23edb42c89f02ec3cbd882b0a8ee5fc
             'chillerlan\\Settings\\' => 20,
             'chillerlan\\QRCode\\' => 18,
         ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
         'E' => 
         array (
             'Endroid\\QrCode\\' => 15,
@@ -34,6 +38,10 @@ class ComposerStaticInitf23edb42c89f02ec3cbd882b0a8ee5fc
         'chillerlan\\QRCode\\' => 
         array (
             0 => __DIR__ . '/..' . '/chillerlan/php-qrcode/src',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'Endroid\\QrCode\\' => 
         array (

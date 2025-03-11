@@ -1,3 +1,11 @@
+<?php
+
+require_once "../userpage/includes/config_session.inc.php";
+
+check_if_correct_role();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,18 +16,18 @@
     <link rel="stylesheet" href="css/colors.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/admin-mc.css">
-    <?php include "includes/css.php" ?>
+    <?php include "./components/css.php" ?>
 </head>
 
 <body>
     <div class="grid-container">
         <!-- header -->
-        <?php include "includes/header.php" ?>
+        <?php include "./components/header.php" ?>
         </header>
         <!-- header -->
 
         <!-- side -->
-        <?php include "includes/sidebar.php" ?>
+        <?php include "./components/sidebar.php" ?>
         <!-- side -->
 
         <!-- main -->
@@ -174,3 +182,29 @@
 </body>
 
 </html>
+
+<?php
+
+function check_if_correct_role()
+{
+    if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
+        $user_role = $_SESSION['role'];
+        switch ($user_role) {
+            case "user":
+                header("location: ../userpage/");
+                exit();
+                break;
+            case "instructor":
+                header("location:  ../instructors/");
+                exit();
+                break;
+            case "admin":
+                break;
+        }
+    } else {
+        header("location: ../userpage/");
+        exit();
+    }
+}
+
+?>

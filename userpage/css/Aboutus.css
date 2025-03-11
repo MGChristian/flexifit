@@ -1,0 +1,276 @@
+/* Navigation Bar */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Keeps "Join Now" button on the right */
+  align-items: center;
+  padding: 10px 20px !important;
+  background-color: #ffffff;
+  color: white;
+}
+
+.navigation-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 40px; /* Adjust size as needed */
+  margin-right: 5px; /* Reduced margin for tighter spacing */
+}
+
+.nav-container {
+  display: flex;
+  align-items: flex-start; /* Align logo and links vertically */
+  gap: 20px; /* Minimal space between logo and links */
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 17px; /* Reduced gap between links */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  position: relative; /* Allows fine-tuning of position */
+  top: -2px; /* Slight upward adjustment */
+}
+
+.nav-links li {
+  margin: 0; /* Align links evenly without extra spacing */
+}
+
+.nav-links a {
+  color: black;
+  text-decoration: none;
+  font-size: 0.875rem; /* Smaller font size */
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ffd700; /* Highlight color on hover */
+}
+
+.join-now {
+  background-color: #ffd700; /* Yellow background */
+  color: #333; /* Dark text */
+  padding: 10px 20px;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.join-now:hover {
+  background-color: #e6c200; /* Darker yellow on hover */
+}
+
+.user-icon {
+  display: flex;
+  align-items: center;
+}
+
+/* Header Section */
+.header {
+  position: relative;
+  width: 100%;
+  height: 400px; /* Adjusted height */
+  background: url("../assets/explore.jpg") no-repeat center center/cover;
+  display: flex;
+  justify-content: flex-start; /* Align content to the start horizontally */
+  align-items: center; /* Align content to the center vertically */
+  color: white;
+  text-align: left; /* Align text to the left */
+  padding: 20px;
+}
+
+.header-content {
+  width: 100%; /* Take full width of the header */
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  align-items: flex-start; /* Align children to the left */
+  position: relative;
+}
+
+.header-content h1 {
+  font-size: 2.5rem; /* Adjust font size as needed */
+  margin: 0;
+  position: absolute;
+  bottom: 110px; /* Distance from top */
+  left: 20px; /* Distance from left */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.header-content p {
+  font-size: 1.5rem; /* Adjust font size as needed */
+  margin: 0 auto; /* Center horizontally */
+  text-align: center; /* Center text alignment */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  color: #ffff;
+  position: absolute;
+  top: 50%; /* Vertically center */
+  left: 50%; /* Horizontally center */
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  word-spacing: 2px;
+}
+
+/* gray Background Section */
+.gray-bg {
+  background-color: #292929;
+  padding: 9px;
+  text-align: justify-all;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  padding-left: 30px;
+  font-size: 0.9rem;
+}
+
+/* General Styles */
+.hero-section {
+  display: flex;
+  align-items: center; /* Vertically center the content */
+  justify-content: center; /* Horizontally center the content */
+  padding: 20px;
+  width: 90%;
+  max-width: 1200px; /* Limit the width of the section */
+  margin: 0 auto; /* Center the section on the page */
+  box-sizing: border-box;
+  gap: 20px; /* Add consistent spacing between elements */
+}
+
+/* Mission Section: Image on the left, Text on the right */
+.hero-section.mission {
+  flex-direction: row; /* Default direction */
+}
+
+.hero-section.mission .hero-image {
+  flex: 1;
+  max-width: 45%; /* Adjust image width for balance */
+}
+
+.hero-section.mission .hero-text {
+  flex: 1;
+  max-width: 45%; /* Adjust text width for balance */
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Vision Section: Image on the right, Text on the left */
+.hero-section.vision {
+  flex-direction: row; /* Reverse direction */
+}
+
+.hero-section.vision .hero-image {
+  flex: 1;
+  max-width: 45%; /* Adjust image width for balance */
+}
+
+.hero-section.vision .hero-text {
+  flex: 1;
+  max-width: 45%; /* Adjust text width for balance */
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Image Styling */
+.hero-image img {
+  width: 80%; /* Ensure it fills the container */
+  height: 70%; /* Maintain aspect ratio */
+  display: block; /* Prevent inline spacing */
+  border-radius: 10px; /* Optional: Adds rounded corners to the image */
+}
+
+/* Hover Effect */
+.hero-section:hover .hero-text {
+  transform: scale(1.02); /* Slightly enlarge text block */
+}
+
+/* Utility: Ensure consistent spacing */
+.hero-section > * {
+  margin: 0;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.image {
+  margin-bottom: 20px;
+}
+
+.image img {
+  width: 100%;
+  height: 70%;
+  display: block;
+  border-radius: 10px; /* Optional: Adds rounded corners to the image */
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.text-content {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.8;
+  text-align: left;
+  transition: all 0.3s ease; /* Smooth transition effect */
+}
+
+.text-content ul {
+  padding-left: 20px;
+  list-style: disc;
+  margin-bottom: 20px;
+}
+
+.text-content p {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.8;
+}
+
+/* Hover effect for the text-content section */
+.text-content:hover {
+  transform: scale(1.02); /* Slightly enlarge the text content */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-logo-contact,
+  .footer-social {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .footer-social-links {
+    justify-content: center;
+  }
+}

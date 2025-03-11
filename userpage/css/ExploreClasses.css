@@ -1,0 +1,279 @@
+/* Navigation Bar */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Keeps "Join Now" button on the right */
+  align-items: center;
+  padding: 10px 20px !important;
+  background-color: #ffffff;
+  color: white;
+}
+
+.navigation-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 40px; /* Adjust size as needed */
+  margin-right: 5px; /* Reduced margin for tighter spacing */
+}
+
+.nav-container {
+  display: flex;
+  align-items: flex-start; /* Align logo and links vertically */
+  gap: 20px; /* Minimal space between logo and links */
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 17px; /* Reduced gap between links */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  position: relative; /* Allows fine-tuning of position */
+  top: -2px; /* Slight upward adjustment */
+}
+
+.nav-links li {
+  margin: 0; /* Align links evenly without extra spacing */
+}
+
+.nav-links a {
+  color: black;
+  text-decoration: none;
+  font-size: 0.875rem; /* Smaller font size */
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ffd700; /* Highlight color on hover */
+}
+
+.join-now {
+  background-color: #ffd700; /* Yellow background */
+  color: #333; /* Dark text */
+  padding: 10px 20px;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.join-now:hover {
+  background-color: #e6c200; /* Darker yellow on hover */
+}
+
+.user-icon {
+  display: flex;
+  align-items: center;
+}
+
+/* Header Section */
+.header {
+  position: relative;
+  width: 100%;
+  height: 400px; /* Adjusted height */
+  background: url("../assets/explore.jpg") no-repeat center center/cover;
+  display: flex;
+  justify-content: flex-start; /* Align content to the start horizontally */
+  align-items: center; /* Align content to the center vertically */
+  color: white;
+  text-align: left; /* Align text to the left */
+  padding: 20px;
+}
+
+.header-content {
+  width: 100%; /* Take full width of the header */
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  align-items: flex-start; /* Align children to the left */
+  position: relative;
+}
+
+.header-content h1 {
+  font-size: 2.5rem; /* Adjust font size as needed */
+  margin: 0;
+  position: absolute;
+  bottom: 110px; /* Distance from top */
+  left: 20px; /* Distance from left */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.header-content p {
+  font-size: 1.5rem; /* Adjust font size as needed */
+  margin: 0 auto; /* Center horizontally */
+  text-align: center; /* Center text alignment */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  color: #ffff;
+  position: absolute;
+  top: 50%; /* Vertically center */
+  left: 50%; /* Horizontally center */
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  word-spacing: 2px;
+}
+
+/* Search Bar Styles */
+.search-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;
+  position: relative; /* Allow precise positioning */
+  margin-top: 20px; /* Add space below the header */
+  gap: 5px; /* Space between input and button */
+}
+
+.search-bar {
+  padding: 5px 10px;
+  font-size: 0.875rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 300px; /* Wider input field */
+  transition: all 0.3s ease;
+}
+
+.search-bar:focus {
+  outline: none;
+  border-color: #ffd700; /* Highlight border on focus */
+  box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+.search-btn {
+  background-color: #ffd700; /* Yellow background */
+  color: #333; /* Dark text */
+  border: none;
+  padding: 5px 10px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+  background-color: #e6c200; /* Darker yellow on hover */
+}
+
+.search-btn i {
+  font-size: 1rem; /* Icon size */
+}
+
+.main-container h1 {
+  text-align: center;
+}
+
+/* WORKOUTS */
+
+.classes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2rem; /* Horizontal gap between columns */
+  row-gap: 2rem; /* Vertical gap between rows */
+  padding: 20px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.class-item {
+  max-width: fit-content;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.class-item div {
+  padding: 0.5rem;
+}
+
+.class-item img {
+  min-width: 200px;
+  min-height: 200px;
+  background-color: gray;
+}
+
+.class-item:hover {
+  transform: translateY(-5px);
+}
+
+.explore-button {
+  margin: auto;
+}
+
+.explore-button button {
+  padding: 0.5rem 1rem;
+  background-color: var(--yellow);
+  color: var(--black);
+  font-weight: var(--bold);
+  border: none;
+}
+
+/* EXERCISES */
+
+.exercise-item {
+  position: relative;
+  max-width: fit-content;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.exercise-item div {
+  padding: 0.5rem;
+}
+
+.exercise-item img {
+  display: block;
+  min-width: 200px;
+  min-height: 200px;
+  background-color: gray;
+  filter: brightness(0.5);
+}
+.exercise-item p {
+  position: absolute;
+  top: 50%;
+  color: white;
+  font-weight: var(--bold);
+  text-align: center;
+  width: 100%;
+  font-size: 2rem;
+  transform: translateY(-50%);
+}
+
+.exercise-item:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 1200px) {
+  .classes-grid {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-logo-contact,
+  .footer-social {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .footer-social-links {
+    justify-content: center;
+  }
+}
