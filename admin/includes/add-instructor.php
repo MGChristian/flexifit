@@ -44,8 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             header("Location: ../instructors.php");
             exit();
         } else {
-
-            create_instructor($conn, $username, $email, $first_name, $last_name, $birthdate, $phone, $gender, $profile_url);
+            $temp = "2025Flexifit";
+            $temporaryPassword = password_hash($temp, PASSWORD_BCRYPT);
+            create_instructor($conn, $username, $email, $temporaryPassword, $first_name, $last_name, $birthdate, $phone, $gender, $profile_url);
+            $_SESSION['username'] = $username;
+            $_SESSION['temp-pass'] = $temp;
             header("Location: ../instructors.php?status=success");
             exit();
         }
@@ -103,6 +106,7 @@ function create_username($first_name, $last_name)
     $temporaryUsername = "FLEX-" . $first_name . $last_name;
     return $temporaryUsername;
 }
+
 
 // Check whether the user exists
 function user_exists($conn, $username)
@@ -163,11 +167,10 @@ function handle_profile_pic($folder, $profile)
     }
 }
 
-function create_instructor($conn, $username, $email, $first_name, $last_name, $birthdate, $phone, $gender, $profile_url)
+function create_instructor($conn, $username, $email, $temporaryPassword, $first_name, $last_name, $birthdate, $phone, $gender, $profile_url)
 {
     $conn->begin_transaction();
     try {
-        $temporaryPassword = password_hash("2025Flexifit", PASSWORD_BCRYPT);
         $role = 'instructor';
         $stmt = $conn->prepare("INSERT INTO `user` (`username`, `email`, `password`, `firstName`, `lastName`, `DOB`, `contactNo`, `gender`, `profilePicUrl`, `role`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("ssssssisss", $username, $email, $temporaryPassword, $first_name, $last_name, $birthdate, $phone, $gender, $profile_url, $role);

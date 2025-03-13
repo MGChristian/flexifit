@@ -88,7 +88,7 @@
                 </div>
                 <div class="analytics-content">
                     <div class="analytics-left shadow">
-                        <p class="analytics-title">POPULAR CLASSES</p>
+                        <p class="analytics-title">POPULAR INSTRUCTORS</p>
                         <div class="popular-class-table">
                             <canvas id="myChart"></canvas>
                         </div>
@@ -97,7 +97,7 @@
                     <div class="analytics-right">
                         <div class="revenue shadow">
                             <div class="title-with-filter">
-                                <p class="analytics-title">BOOKING STATISTICS <button type="button" class="filterOpen" data-target="filter-revenue"><i class="fa fa-filter" aria-hidden="true"></i></button></p>
+                                <p class="analytics-title">USERS ANALYTICS(?) <button type="button" class="filterOpen" data-target="filter-revenue"><i class="fa fa-filter" aria-hidden="true"></i></button></p>
                                 <div class="filters shadow hidden" id="filter-revenue">
                                     <form>
                                         <div class="filter">
@@ -153,20 +153,6 @@
         </main>
         <!-- side -->
     </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const filters = document.querySelectorAll(".filterOpen");
-
-            filters.forEach((filter) => {
-                filter.addEventListener("click", () => {
-                    const dataTarget = filter.getAttribute("data-target");
-                    const modalTarget = document.querySelector(`#${dataTarget}`);
-                    modalTarget.classList.toggle("hidden");
-                });
-
-            });
-        });
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="js/index.js"> </script>
@@ -174,3 +160,7 @@
 </body>
 
 </html>
+
+<?php
+
+?>

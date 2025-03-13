@@ -30,11 +30,11 @@ if (!isset($userData) && $isLoggedIn) {
             <p style="word-wrap: break-word; overflow-wrap: break-word; max-width: 100%; "><?= htmlspecialchars($userData['firstName']) . " " . htmlspecialchars($userData['lastName']) ?></p>
             <hr />
             <!-- Dashboard page -->
-            <a href="myProfile.php">
+            <a href="../userpage/">
                 <div class="dropdown-item">
                     <div class="option">
                         <box-icon name="dashboard" type="solid"></box-icon>
-                        <p>Dashboard</p>
+                        <p>Homepage </p>
                     </div>
                     <box-icon name="chevron-right"></box-icon>
                 </div>

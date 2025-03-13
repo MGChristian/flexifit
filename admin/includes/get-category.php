@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     $instructorsList = [];
     require_once "../../userpage/includes/config_session.inc.php";
     require_once "../../userpage/includes/config.php";
-    $stmt = $conn->prepare("SELECT `ID`, `firstName`, `lastName`, `dateCreated`, `DOB`, `gender`, `email`, `contactNo` FROM `user` WHERE `role` = 'instructor'");
+    $stmt = $conn->prepare("SELECT `ID`, `category_name`, `category_description`, `dateCreated` FROM `category`");
     $buttonsView = "<button type='button' class='data-table-button view' data-target='view-instructor'> <i class='fa fa-eye' aria-hidden='true'></i> </button>";
     $buttonsEdit = "<button type='button' class='data-table-button edit' data-target='edit-instructor'> <i class='fa fa-pencil-square-o' aria-hidden='true'></i> </button>";
     $buttonsArchive = "<button type='button' class='data-table-button archive' data-target='archive-instructor'> <i class='fa fa-archive' aria-hidden='true'></i> </button>";
@@ -14,19 +14,16 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     }
     if ($result->num_rows > 0) {
         while ($rows = $result->fetch_assoc()) {
-            $instructorsList[] = array(
+            $categoryList[] = array(
                 "id" => $rows['ID'],
-                "instructorName" => $rows['firstName'] . " " . $rows['lastName'],
-                "dateJoined" => $rows['dateCreated'],
-                "birthdate" => $rows['DOB'],
-                "gender" => $rows['gender'],
-                "email" => $rows['email'],
-                "contact" => $rows['contactNo'],
-                "buttons" => "<div class='action-button-container'>" . $buttonsView . $buttonsEdit . $buttonsArchive . "</button>",
+                "categoryName" => $rows['category_name'],
+                "categoryDescription" => $rows['category_description'],
+                "dateCreated" => $rows['dateCreated'],
+                "buttons" => "<div class='action-button-container'>" . $buttonsView . $buttonsEdit . $buttonsArchive . "</div>",
             );
         }
     }
-    echo json_encode(["data" => $instructorsList]);
+    echo json_encode(["data" => $categoryList]);
 }
 
 function check_authorization() {}

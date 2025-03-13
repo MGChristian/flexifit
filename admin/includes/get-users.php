@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                 "gender" => $rows['gender'],
                 "email" => $rows['email'],
                 "contact" => $rows['contactNo'],
-                "buttons" => $buttonsView . $buttonsEdit . $buttonsArchive,
+                "buttons" => "<div class='action-button-container'>" . $buttonsView . $buttonsEdit . $buttonsArchive . "</div>",
             );
         }
     }

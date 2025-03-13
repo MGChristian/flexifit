@@ -46,7 +46,7 @@ $url = basename($_SERVER['PHP_SELF']);
                 <p style="  word-wrap: break-word; overflow-wrap: break-word; max-width: 100%; "><?= htmlspecialchars($userData['firstName']) . " " . htmlspecialchars($userData['lastName']) ?></p>
                 <hr />
                 <!-- Dashboard page -->
-                <a href="myProfile.php">
+                <a href=<?= check_dashboard(); ?>>
                     <div class="dropdown-item">
                         <div class="option">
                             <box-icon name="dashboard" type="solid"></box-icon>
@@ -150,3 +150,17 @@ $url = basename($_SERVER['PHP_SELF']);
         </button>
     <?php endif; ?>
 </nav>
+
+
+<?php
+function check_dashboard()
+{
+    if ($_SESSION['role'] && $_SESSION['role'] == 'admin') {
+        return '../admin/';
+    } elseif ($_SESSION['role'] && $_SESSION['role'] == 'admin') {
+        return '../instructor/';
+    } else {
+        return './dashboard.php';
+    }
+}
+?>
