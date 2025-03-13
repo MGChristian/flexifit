@@ -2,6 +2,7 @@
   --dark-background: rgba(0, 0, 0, 0.3);
 }
 
+/* MAIN MODAL CONTAINER AND BACKGROUND */
 .modal-wrapper {
   position: fixed;
   top: 0;
@@ -15,6 +16,7 @@
   padding-top: 2rem;
 }
 
+/* MAIN MODAL */
 .modal {
   border-radius: 5px;
   background-color: white;
@@ -28,10 +30,12 @@
   max-width: 90%;
 }
 
+/* MODAL FORM */
 .modal form {
   max-width: 100%;
 }
 
+/* THE TITLE OF THE MODAL */
 .modal-title {
   display: flex;
   justify-content: space-between;
@@ -43,6 +47,7 @@
   z-index: 99;
 }
 
+/* MAIN CONTENT OF MODAL */
 .modal-contents {
   display: flex;
   flex-direction: column;
@@ -50,6 +55,7 @@
   padding: 0px 1rem 2rem 1rem;
 }
 
+/* BUTTONS AT THE SIDE OF THE MODAL (OPEN, CLOSE, ADD, ETC.) */
 .title-buttons {
   display: flex;
   gap: 1rem;
@@ -59,53 +65,33 @@
   padding: 0px 1rem 0px 1rem;
 }
 
-.inputs {
-  display: flex;
-  flex-direction: column;
-}
+/* INPUT DESIGN */
 
-.inputs input,
-.inputs select {
-  padding: 0.5rem 0 0.5rem 0;
-  height: 100%;
-}
-
-label {
-  display: block;
-}
-
-.multi-inputs {
+.half {
   display: flex;
   gap: 1rem;
 }
 
-.can-wrap {
-  flex-wrap: wrap;
-}
-
-.half {
+.input-half {
   width: 50%;
   display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
 }
 
-.mini {
-  flex-grow: 1;
-  flex-basis: 0;
-}
-
-.client {
+.input-full {
   width: 100%;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
 }
 
-.client-add {
-  height: 2.3rem;
-  width: 2.5rem;
-  text-align: center;
+/* MAKE FULL INPUT GO TO THE RIGHT */
+.input-full-right {
+  align-self: flex-end;
 }
 
-.modal-contents textarea {
-  resize: vertical;
-}
-
-.file-input {
+.modal input,
+select {
+  padding: 0.5rem 1rem;
 }

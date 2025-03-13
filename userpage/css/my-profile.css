@@ -58,6 +58,8 @@
   min-width: 500px;
 }
 
+/* INPUT DESIGN */
+
 .user-details {
   display: flex;
   flex-direction: column;

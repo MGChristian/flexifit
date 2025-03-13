@@ -1,3 +1,25 @@
+.header {
+  position: sticky;
+  top: 0;
+  padding: 10px 20px !important;
+  grid-area: header;
+  background-color: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 99;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 40px; /* Adjust size as needed */
+  margin-right: 5px; /* Reduced margin for tighter spacing */
+}
+
 /* LOGGED IN NAV BAR STYLES */
 
 .user-profile {

@@ -1,20 +1,33 @@
-const dropdown = document.querySelector(".booking-a");
-const dropdown2 = document.querySelector(".refund-a");
-const openDropdown = document.querySelector(".booking-m");
-const openDropdown2 = document.querySelector(".refund-m");
+document.addEventListener("DOMContentLoaded", () => {
+  // SIDEBAR DROPDOWN
+  const dropdown = document.querySelector(".content-a");
+  const openDropdown = document.querySelector(".content-m");
 
-dropdown.addEventListener("click", function(){
+  dropdown.addEventListener("click", function () {
     openDropdown.classList.toggle("hidden");
-});
+  });
 
-dropdown2.addEventListener("click", function(){
-    openDropdown2.classList.toggle("hidden");
-});
+  // DROPDOWN FOR THE NUMBER OF CLIENTS BOOKED (MIGHT BE REMOVED)
+  const dropdowns = document.querySelector(".client-dropdown");
+  const cards = document.querySelector(".client-cards");
 
-const dropdowns = document.querySelector(".client-dropdown");
-const cards = document.querySelector(".client-cards");
+  if (dropdowns && cards) {
+    dropdowns.addEventListener("click", function () {
+      console.log("clicked");
+      cards.classList.toggle("show");
+    });
+  }
 
-dropdowns.addEventListener("click", function() {
-    console.log("clicked");
-    cards.classList.toggle("hidden");
+  // MODAL OPENER
+  const filters = document.querySelectorAll(".filterOpen");
+  console.log(filters);
+  if (filters) {
+    filters.forEach((filter) => {
+      filter.addEventListener("click", () => {
+        const dataTarget = filter.getAttribute("data-target");
+        const modalTarget = document.querySelector(`#${dataTarget}`);
+        modalTarget.classList.toggle("hidden");
+      });
+    });
+  }
 });

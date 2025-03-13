@@ -20,20 +20,14 @@ if (!isset($userData) && $isLoggedIn) {
 
 <header class="header">
     <div class="logo" style="display:flex; gap:5px;">
-        <a href="index.php" id='home-page'>
-            <img src="images/logo.png">
-            <h2>FLEXIFIT</h2>
-        </a>
+        <div class="logo">
+            <img src="assets/flexifitlogo.png" alt="FlexiFit Logo" />
+        </div>
     </div>
     <div class="user-profile">
-        <box-icon
-            type="solid"
-            class="filterOpen"
-            name="user-circle"
-            size="md"
-            data-target="user-dropdown"></box-icon>
+        <i class="fa fa-user-circle filterOpen fa-lg" aria-hidden="true" data-target="user-dropdown"></i>
         <div class="filters shadow hidden" id="user-dropdown">
-            <p style="  word-wrap: break-word; overflow-wrap: break-word; max-width: 100%; "><?= htmlspecialchars($userData['firstName']) . " " . htmlspecialchars($userData['lastName']) ?></p>
+            <p style="word-wrap: break-word; overflow-wrap: break-word; max-width: 100%; "><?= htmlspecialchars($userData['firstName']) . " " . htmlspecialchars($userData['lastName']) ?></p>
             <hr />
             <!-- Dashboard page -->
             <a href="myProfile.php">

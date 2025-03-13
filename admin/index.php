@@ -1,10 +1,4 @@
-<?php
-
-require_once "../userpage/includes/config_session.inc.php";
-
-check_if_correct_role();
-
-?>
+<?php require_once "./components/main.php" ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,8 +7,6 @@ check_if_correct_role();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="css/colors.css">
-    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/admin-mc.css">
     <?php include "./components/css.php" ?>
 </head>
@@ -22,7 +14,7 @@ check_if_correct_role();
 <body>
     <div class="grid-container">
         <!-- header -->
-        <?php include "./components/header.php" ?>
+        <?php include "./components/navbar.php" ?>
         </header>
         <!-- header -->
 
@@ -182,29 +174,3 @@ check_if_correct_role();
 </body>
 
 </html>
-
-<?php
-
-function check_if_correct_role()
-{
-    if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
-        $user_role = $_SESSION['role'];
-        switch ($user_role) {
-            case "user":
-                header("location: ../userpage/");
-                exit();
-                break;
-            case "instructor":
-                header("location:  ../instructors/");
-                exit();
-                break;
-            case "admin":
-                break;
-        }
-    } else {
-        header("location: ../userpage/");
-        exit();
-    }
-}
-
-?>

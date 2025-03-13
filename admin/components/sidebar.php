@@ -3,57 +3,61 @@
         <div class="sidebar-role">ADMIN PANEL</div>
     </div>
     <ul class="sidebar-list">
+        <!-- NAVBAR TITLE -->
         <a href="index.php">
             <li class="sidebar-list-item">
                 <div class="sl-title"><i class="fa fa-tachometer" aria-hidden="true"></i> DASHBOARD</div>
             </li>
         </a>
-        <li class="booking-a sidebar-list-item">
-            <div class="sl-title"><i class="fa fa-calendar" aria-hidden="true"></i> BOOKINGS</div>
-            <div><box-icon name='chevron-down'></box-icon></div>
+
+        <!-- CONTENT -->
+        <li class="content-a sidebar-list-item">
+            <div class="sl-title"><i class="fa fa-columns" aria-hidden="true"></i></i> CONTENT</div>
+            <div><i class="fa fa-angle-down" aria-hidden="true"></i></div>
         </li>
-        <ul class="booking-m mini-sidebar-list hidden">
-            <a href="newbooking.php">
-                <li class="mini-sidebar-list-item">NEW BOOKINGS</li>
+
+        <!-- CONTENT DROPDOWN -->
+        <ul class="content-m mini-sidebar-list hidden">
+            <a href="workouts.php">
+                <li class="mini-sidebar-list-item">WORKOUTS</li>
             </a>
-            <a href="recordsbook.php">
-                <li class="mini-sidebar-list-item">BOOKING RECORDS</li>
-            </a>
-            <a href="calendar.php">
-                <li class="mini-sidebar-list-item">CALENDAR</li>
+            <a href="exercises.php">
+                <li class="mini-sidebar-list-item">EXERCISES</li>
             </a>
         </ul>
-        <li class="refund-a sidebar-list-item">
-            <div class="sl-title"><i class="fa fa-credit-card-alt" aria-hidden="true"></i>
-                REFUNDS</div>
-            <div><box-icon name='chevron-down'></box-icon></div>
-        </li>
-        <ul class="refund-m mini-sidebar-list hidden">
-            <a href="newrefunds.php">
-                <li class="mini-sidebar-list-item">NEW REFUNDS</li>
-            </a>
-            <a href="recordsrefund.php">
-                <li class="mini-sidebar-list-item">REFUND RECORDS</li>
-            </a>
-        </ul>
-        <a href="users.php">
-            <li class="sidebar-list-item">
-                <div class="sl-title"><i class="fa fa-user" aria-hidden="true"></i> USERS</div>
-            </li>
-        </a>
+
+        <!-- INSTRUCTORS -->
         <a href="instructors.php">
             <li class="sidebar-list-item">
                 <div class="sl-title"><i class="fa fa-users" aria-hidden="true"></i> INSTRUCTORS</div>
             </li>
         </a>
-        <a href="classes.php">
+
+        <!-- USERS -->
+        <a href="users.php">
             <li class="sidebar-list-item">
-                <div class="sl-title"><i class="fa fa-building" aria-hidden="true"></i> CLASSES</div>
+                <div class="sl-title"><i class="fa fa-user" aria-hidden="true"></i> USERS</div>
             </li>
         </a>
+
+        <!-- TAGS & CATEGORIES -->
+        <a href="categories.php">
+            <li class="sidebar-list-item">
+                <div class="sl-title"><i class="fa fa-tags" aria-hidden="true"></i> TAGS & CATEGORIES</div>
+            </li>
+        </a>
+
+        <!-- RATINGS -->
         <a href="ratings.php">
             <li class="sidebar-list-item">
                 <div class="sl-title"><i class="fa fa-star" aria-hidden="true"></i> RATINGS & REVIEWS</div>
+            </li>
+        </a>
+
+        <!-- REPORTS -->
+        <a href="reports.php">
+            <li class="sidebar-list-item">
+                <div class="sl-title"><i class="fa fa-area-chart" aria-hidden="true"></i> REPORTS</div>
             </li>
         </a>
     </ul>

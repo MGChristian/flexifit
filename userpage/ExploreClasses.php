@@ -54,7 +54,7 @@ $isLoggedIn = isset($_SESSION['id']);
     </section>
     <div class="explore-button"><a href="AllWorkouts.php"><button type="button">VIEW ALL WORKOUTS</button></a></div>
     <br>
-    <h1>EXERCISES BY MUSCLE AREA</h1>
+    <h1>WORKOUTS BY MUSCLE AREA</h1>
     <section class="classes-grid">
       <?php for ($i = 1; $i <= 15; $i++) : ?>
         <div class="exercise-item">

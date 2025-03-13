@@ -52,13 +52,6 @@ td:last-child {
   text-align: center !important;
 }
 
-.main-title-button {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
-}
-
 .title-with-filter {
   position: relative;
 }
