@@ -26,17 +26,16 @@ $isLoggedIn = isset($_SESSION['id']);
   <!-- MAIN CONTAINER -->
   <header class="header">
     <div class="header-content">
-      <h1>MY PROFILE</h1>
+      <div class="profile-header">
+        <div class="image-container"></div>
+        <div class="profile-details">
+          <h4>Surname, Firstname, M.I</h4>
+          <p>email@gmail.com</p>
+        </div>
+      </div>
     </div>
   </header>
   <main class="main-container">
-    <div class="profile-header">
-      <div class="image-container"></div>
-      <div class="profile-details">
-        <h4>Surname, Firstname, M.I</h4>
-        <p>email@gmail.com</p>
-      </div>
-    </div>
     <br>
     <div class="user-profile-content">
       <div class="user-profile-left">

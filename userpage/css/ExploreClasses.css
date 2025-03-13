@@ -214,6 +214,7 @@
   color: var(--black);
   font-weight: var(--bold);
   border: none;
+  cursor: pointer;
 }
 
 /* EXERCISES */

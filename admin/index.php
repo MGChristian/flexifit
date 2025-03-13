@@ -36,7 +36,7 @@ check_if_correct_role();
                 <h1>DASHBOARD</h1>
             </div>
             <div class="bookings-statistics">
-                <p class="section-title">BOOKINGS</p>
+                <p class="section-title">STATISTICS</p>
                 <hr>
 
                 <!-- cards -->
@@ -45,21 +45,21 @@ check_if_correct_role();
                         <div class="left-card"><box-icon name='calendar-alt' type='solid' size="lg"></box-icon></div>
                         <div class="right-card">
                             <h2>32</h2>
-                            <p>UPCOMING BOOKINGS</p>
+                            <p>TOTAL USERS</p>
                         </div>
                     </div>
                     <div class="refunds statistics-item shadow">
                         <div class="left-card"><box-icon type='solid' name='dollar-circle' size="lg"></box-icon></div>
                         <div class="right-card">
                             <h2>32</h2>
-                            <p>REFUND REQUESTS</p>
+                            <p>TOTAL INSTRUCTORS</p>
                         </div>
                     </div>
                     <div class="total statistics-item shadow">
                         <div class="left-card"><box-icon name='calendar-alt' type='solid' size="lg"></box-icon></div>
                         <div class="right-card">
                             <h2>32</h2>
-                            <p>TOTAL BOOKINGS</p>
+                            <p>RATINGS & REVIEWS</p>
                         </div>
                     </div>
                 </div>
@@ -146,14 +146,14 @@ check_if_correct_role();
                         <div class="left-card"><box-icon name='calendar-alt' type='solid' size="lg"></box-icon></div>
                         <div class="right-card">
                             <h2>32</h2>
-                            <p>TOTAL USERS</p>
+                            <p>TOTAL EXERCISES</p>
                         </div>
                     </div>
                     <div class="total-reviews statistics-item shadow">
                         <div class="left-card"><box-icon name='calendar-alt' type='solid' size="lg"></box-icon></div>
                         <div class="right-card">
                             <h2>32</h2>
-                            <p>RATINGS AND REVIEWS</p>
+                            <p>TOTAL WORKOUTS</p>
                         </div>
                     </div>
                 </div>

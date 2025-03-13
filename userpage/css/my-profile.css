@@ -13,6 +13,8 @@
 
 .header-content {
   width: 100%; /* Take full width of the header */
+  max-width: 1200px;
+  margin: auto;
 }
 
 .header-content h1 {
@@ -26,6 +28,10 @@
   align-items: center;
   gap: 1rem;
   padding: 1rem;
+}
+
+.profile-description {
+  max-width: 600px;
 }
 
 .image-container {

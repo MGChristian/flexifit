@@ -1,0 +1,50 @@
+/* LOGGED IN NAV BAR STYLES */
+
+.user-profile {
+  position: relative;
+}
+
+.user-profile box-icon {
+  display: block;
+}
+
+.filterOpen {
+  cursor: pointer;
+}
+
+.filters {
+  z-index: 99;
+  color: black;
+  position: absolute;
+  background-color: white;
+  padding: 1rem;
+  right: 0;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dropdown-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dropdown-item:hover {
+  cursor: pointer;
+  background-color: rgb(243, 243, 243);
+}
+
+.option {
+  display: flex;
+}
+
+.nav-links li.active {
+  background-color: var(--yellow);
+  border-radius: 5px;
+}
+
+.nav-links li.active:hover {
+  background-color: var(--dark-yellow);
+  border-radius: 5px;
+}
