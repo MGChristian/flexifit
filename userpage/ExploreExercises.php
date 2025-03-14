@@ -2,6 +2,7 @@
 
 
 require_once "./includes/config_session.inc.php";
+require_once "./includes/explore-exercises.php";
 
 $isLoggedIn = isset($_SESSION['id']);
 
@@ -40,17 +41,16 @@ $isLoggedIn = isset($_SESSION['id']);
     <div class="main-container">
         <h1>EXERCISES</h1>
         <section class="classes-grid">
-            <?php for ($i = 1; $i <= 10; $i++) : ?>
+            <?php foreach (get_exercises($conn) as $rows): ?>
                 <a href="#">
                     <div class="class-item">
-                        <img src="https://picsum.photos/200/200">
+                        <img src="../admin/<?= htmlspecialchars($rows['exercisePicUrl']) ?>">
                         <div>
-                            <p><b>Workout Name</b></p>
-                            <p>30 Minutes, Beginner</p>
+                            <p><b><?= htmlspecialchars($rows['exerciseName']) ?></b></p>
                         </div>
                     </div>
                 </a>
-            <?php endfor; ?>
+            <?php endforeach; ?>
         </section>
         <div class="explore-button"><a href="AllExercises.php"><button type="button">VIEW ALL EXERCISES</button></a></div>
         <br>

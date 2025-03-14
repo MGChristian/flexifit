@@ -51,8 +51,7 @@ if (isset($_SESSION['error_login'])) {
                         <div class="main-title-button">
                             <h3>CURRENT INSTRUCTORS LIST</h3>
                             <div class="main-title-button-container">
-                                <a href='./archived-instructors.php'><button type="button" class="add-button">ARCHIVED INSTRUCTORS</button></a>
-                                <button type="button" class="filterOpen add-button" data-target="add-intructor">+ADD INSTRUCTOR</button>
+                                <a href='./instructors.php'><button type="button" class="add-button">ACTIVE INSTRUCTORS</button></a>
                             </div>
                         </div>
                     </div>
@@ -82,7 +81,7 @@ if (isset($_SESSION['error_login'])) {
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             new DataTable("#myTable", {
-                ajax: './includes/get-instructors.php',
+                ajax: './includes/get-archived-instructor.php',
                 columns: [{
                         data: "id"
                     },

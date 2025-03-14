@@ -26,7 +26,7 @@ if (isset($_SESSION['error_login'])) {
 </head>
 
 <body>
-    <?php include "./modals/instructors-modals.php" ?>
+    <?php include "./modals/exercises-modal.php" ?>
     <div class="grid-container">
         <!-- header -->
         <?php include "./components/navbar.php" ?>
@@ -40,19 +40,18 @@ if (isset($_SESSION['error_login'])) {
         <!-- main -->
         <main class="main-container">
             <div class="page-title">
-                <h1>INSTRUCTORS</h1>
+                <h1>EXERCISES</h1>
                 <div class="quick-link">
-                    <p><a href="index.php"> HOME </a> > INSTRUCTORS</p>
+                    <p><a href="index.php"> HOME </a> > EXERCISES</p>
                 </div>
             </div>
             <div class="main-content">
                 <div class="table-desc">
                     <div class="table-desc">
                         <div class="main-title-button">
-                            <h3>CURRENT INSTRUCTORS LIST</h3>
+                            <h3>CURRENT EXERCISES LIST</h3>
                             <div class="main-title-button-container">
-                                <a href='./archived-instructors.php'><button type="button" class="add-button">ARCHIVED INSTRUCTORS</button></a>
-                                <button type="button" class="filterOpen add-button" data-target="add-intructor">+ADD INSTRUCTOR</button>
+                                <button type="button" class="filterOpen add-button" data-target="add-exercise">+ADD EXERCISES</button>
                             </div>
                         </div>
                     </div>
@@ -63,12 +62,9 @@ if (isset($_SESSION['error_login'])) {
                         <thead>
                             <tr class="table-header">
                                 <th>#</th>
-                                <th>Instructor Name</th>
-                                <th>Date Joined</th>
-                                <th>Birthday</th>
-                                <th>Gender</th>
-                                <th>Email</th>
-                                <th>Contact</th>
+                                <th>Exercise Name</th>
+                                <th>Added By</th>
+                                <th>Date Created</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -82,27 +78,18 @@ if (isset($_SESSION['error_login'])) {
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             new DataTable("#myTable", {
-                ajax: './includes/get-instructors.php',
+                ajax: './includes/get-exercises.php',
                 columns: [{
                         data: "id"
                     },
                     {
-                        data: "instructorName"
+                        data: "exerciseName"
                     },
                     {
-                        data: "dateJoined"
+                        data: "description"
                     },
                     {
-                        data: "birthdate"
-                    },
-                    {
-                        data: "gender"
-                    },
-                    {
-                        data: "email"
-                    },
-                    {
-                        data: "contact"
+                        data: "dateCreated"
                     },
                     {
                         data: "buttons",

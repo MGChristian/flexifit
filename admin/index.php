@@ -1,4 +1,9 @@
-<?php require_once "./components/main.php" ?>
+<?php
+
+require_once "./components/main.php";
+require_once "./includes/get-index-data.php";
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,14 +41,14 @@
                     <div class="upcoming statistics-item shadow">
                         <div class="left-card"><box-icon name='calendar-alt' type='solid' size="lg"></box-icon></div>
                         <div class="right-card">
-                            <h2>32</h2>
+                            <h2><?= htmlspecialchars(get_total_users($conn)) ?></h2>
                             <p>TOTAL USERS</p>
                         </div>
                     </div>
                     <div class="refunds statistics-item shadow">
                         <div class="left-card"><box-icon type='solid' name='dollar-circle' size="lg"></box-icon></div>
                         <div class="right-card">
-                            <h2>32</h2>
+                            <h2><?= htmlspecialchars(get_total_instructors($conn)) ?></h2>
                             <p>TOTAL INSTRUCTORS</p>
                         </div>
                     </div>
@@ -160,7 +165,3 @@
 </body>
 
 </html>
-
-<?php
-
-?>

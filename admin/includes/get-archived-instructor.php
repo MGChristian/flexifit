@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     $instructorsList = [];
     require_once "../../userpage/includes/config_session.inc.php";
     require_once "../../userpage/includes/config.php";
-    $stmt = $conn->prepare("SELECT `ID`, `firstName`, `lastName`, `dateCreated`, `DOB`, `gender`, `email`, `contactNo` FROM `user` WHERE `role` = 'instructor' && `status` = 'active'");
+    $stmt = $conn->prepare("SELECT `ID`, `firstName`, `lastName`, `dateCreated`, `DOB`, `gender`, `email`, `contactNo` FROM `user` WHERE `role` = 'instructor' && `status` = 'archived'");
     $buttonsView = "<button type='button' class='data-table-button view' data-target='view-instructor'> <i class='fa fa-eye' aria-hidden='true'></i> </button>";
     $buttonsEdit = "<button type='button' class='data-table-button edit' data-target='edit-instructor'> <i class='fa fa-pencil-square-o' aria-hidden='true'></i> </button>";
     $buttonsArchive;
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                 "gender" => $rows['gender'],
                 "email" => $rows['email'],
                 "contact" => $rows['contactNo'],
-                "buttons" => "<div class='action-button-container'>" . $buttonsView . $buttonsEdit . "<a href='./includes/archive-instructor.php?ID={$id}'><button type='button' class='data-table-button archive' data-target='archive-instructor'> <i class='fa fa-archive' aria-hidden='true'></i> </button></a>" . "</div>",
+                "buttons" => "<div class='action-button-container'>" . $buttonsView . $buttonsEdit . "<a href='./includes/unarchive-instructor.php?ID={$id}'><button type='button' class='data-table-button archive' data-target='archive-instructor'> <i class='fa fa-archive' aria-hidden='true'></i> </button></a>" . "</div>",
             );
         }
     }
