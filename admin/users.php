@@ -104,8 +104,13 @@ if (isset($_SESSION['error_login'])) {
                         data: "contact"
                     },
                     {
-                        data: "buttons",
-                        "orderable": false
+                        data: null,
+                        render: function(data, type, row) {
+                            return `<a href="./includes/archive-user.php?id=${row.id}"<button type='button' class='data-table-button archive'
+                                        data-target='archive-instructor'> 
+                                        <i class='fa fa-archive' aria-hidden='true'></i> 
+                                    </button></a>`;
+                        }
                     }
                 ],
             });
