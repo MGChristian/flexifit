@@ -33,7 +33,7 @@ check_if_logged_in();
   </div>
   <div class="right-section">
     <div class="nav">
-      <a href="#">ABOUT</a>
+      <a href="./">HOME</a>
       <span>|</span>
       <a href="signup-page-info.php">SIGN UP</a>
     </div>
@@ -56,7 +56,7 @@ check_if_logged_in();
           onclick="window.location.href='loggedin/Home.html'">
           LOG IN
         </button>
-        <a href="login-page-forgot.html">Forgot Password?</a>
+        <a href="login-page-forgot.php">Forgot Password?</a>
       </form>
     </div>
   </div>

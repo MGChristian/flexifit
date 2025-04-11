@@ -39,4 +39,35 @@ function send_otp_mail($user_email, $user_name, $OTP_CODE)
     }
 }
 
-function forgot_password($user_email) {}
+function forgot_password($user_email)
+{
+    $mail = new PHPMailer(true);
+    try {
+        //Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host = 'smtp.gmail.com';                             //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = 'loginpagelaboratory@gmail.com';        //SMTP username
+        $mail->Password   = 'ccslunhrovrhhbpw';                     //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+        //Recipients
+        $mail->setFrom('loginpagelaboratory@gmail.com', 'FLEXIFIT');
+        $mail->addAddress($user_email, $user_name);     //Add a recipient
+
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = 'OTP CODE';
+        $mail->Body    = 'YOUR OTP CODE IS: ' . $OTP_CODE;
+        $mail->AltBody = 'YOUR OTP CODE IS: ' . $OTP_CODE;
+
+        $mail->send();
+        echo 'Message has been sent';
+        return true;
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        return false;
+    }
+}
