@@ -20,12 +20,16 @@ hr {
   padding: 25px;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
   transition: transform 0.3s ease;
 }
 
 .statistics-item:hover {
   transform: translateY(-5px);
+}
+
+.left-card {
+  font-size: 32px;
 }
 
 .right-card {

@@ -39,21 +39,21 @@ require_once "./includes/get-index-data.php";
                 <!-- cards -->
                 <div class="cards">
                     <div class="upcoming statistics-item shadow">
-                        <div class="left-card"><box-icon name='calendar-alt' type='solid' size="lg"></box-icon></div>
+                        <div class="left-card"><i class="fa fa-user" aria-hidden="true"></i></div>
                         <div class="right-card">
                             <h2><?= htmlspecialchars(get_total_users($conn)) ?></h2>
                             <p>TOTAL USERS</p>
                         </div>
                     </div>
                     <div class="refunds statistics-item shadow">
-                        <div class="left-card"><box-icon type='solid' name='dollar-circle' size="lg"></box-icon></div>
+                        <div class="left-card"><i class="fa fa-users" aria-hidden="true"></i></div>
                         <div class="right-card">
                             <h2><?= htmlspecialchars(get_total_instructors($conn)) ?></h2>
                             <p>TOTAL INSTRUCTORS</p>
                         </div>
                     </div>
                     <div class="total statistics-item shadow">
-                        <div class="left-card"><box-icon name='calendar-alt' type='solid' size="lg"></box-icon></div>
+                        <div class="left-card"><i class="fa fa-star" aria-hidden="true"></i></div>
                         <div class="right-card">
                             <h2>32</h2>
                             <p>RATINGS & REVIEWS</p>
