@@ -1,3 +1,9 @@
+<?php
+require_once "./includes/config_session.inc.php";
+check_if_logged_in();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,11 +38,10 @@
     </div>
     <div class="form-container">
       <h2>FORGOT PASSWORD</h2>
-      <form method="POST" action="./includes/login-reset.inc.php
-      ">
-        <input type="email" placeholder="Email" autocomplete="off" required />
-        <button
-          type="submit">
+      <form action="./includes/login-reset.inc.php" method="POST">
+        <?php check_login_errors(); ?>
+        <input name="email" type="email" placeholder="Email" required />
+        <button type="submit">
           RESET PASSWORD
         </button>
         <p>
@@ -48,3 +53,38 @@
 </body>
 
 </html>
+
+<?php
+function check_login_errors()
+{
+  if (isset($_SESSION['error_login'])) {
+    $errors = $_SESSION['error_login'];
+    foreach ($errors as $error) {
+      echo "<p class='form-error'>" . $error . "</p>";
+    }
+    unset($_SESSION['error_login']);
+  }
+}
+
+function check_if_logged_in()
+{
+  if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
+    $user_role = $_SESSION['role'];
+    switch ($user_role) {
+      case "user":
+        header("location: ./");
+        exit();
+        break;
+      case "instructor":
+        header("location:  ../instructors/");
+        exit();
+        break;
+      case "admin":
+        header("location: ../admin/");
+        exit();
+        break;
+    }
+  }
+}
+
+?>

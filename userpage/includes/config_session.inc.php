@@ -11,6 +11,7 @@ session_set_cookie_params([
     'httponly' => true
 ]);
 
+date_default_timezone_set("Asia/Manila");
 session_start();
 
 if (!isset($_SESION['last_regenaration'])) {
