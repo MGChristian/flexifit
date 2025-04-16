@@ -1,7 +1,5 @@
 <?php
 
-
-require_once "./includes/config_session.inc.php";
 require_once "./includes/explore-exercises.php";
 
 $isLoggedIn = isset($_SESSION['id']);
@@ -41,8 +39,9 @@ $isLoggedIn = isset($_SESSION['id']);
     <div class="main-container">
         <h1>EXERCISES</h1>
         <section class="classes-grid">
+            <!-- Display all exercises -->
             <?php foreach (get_exercises($conn) as $rows): ?>
-                <a href="#">
+                <a href="./exercise.php?id=<?= htmlspecialchars($rows['ID']) ?>">
                     <div class="class-item">
                         <img src="../admin/<?= htmlspecialchars($rows['exercisePicUrl']) ?>">
                         <div>

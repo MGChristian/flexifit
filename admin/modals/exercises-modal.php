@@ -17,7 +17,7 @@
             <div class="modal-contents">
                 <div class="input-full">
                     <label>EXERCISE PICTURE</label>
-                    <input name="profilePic" type="file" />
+                    <input name="exercisePic" type="file" />
                 </div>
                 <div class="input-full">
                     <label>Exercise Name</label>

@@ -1,11 +1,13 @@
 <?php
 
+require_once("./includes/config.php");
+
 if (!isset($isLoggedIn)) {
     $isLoggedIn = isset($_SESSION['id']);
 }
 
 if (!isset($userData) && $isLoggedIn) {
-    require_once("./includes/config.php");
+    require_once "./includes/config_session.inc.php";
     $user_id = $_SESSION['id'];
     $stmt = $conn->prepare("SELECT * FROM `user` WHERE `ID` = ?");
     $stmt->bind_param("i", $user_id);

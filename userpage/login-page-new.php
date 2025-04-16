@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FlexFit</title>
   <link rel="stylesheet" href="css/login-page.css" />
-  <link rel="icon" href="loginimages/logo.png" />
+  <link rel="icon" href="./assets/logo.png" />
 </head>
 
 <body>
   <div class="left-section">
     <div class="branding">
-      <a href=""><img src="loginimages/logo.png" alt="" /></a>
+      <a href=""><img src="./assets/logo.png" alt="" /></a>
       <h1>FLEXIFIT</h1>
     </div>
     <div class="motto">

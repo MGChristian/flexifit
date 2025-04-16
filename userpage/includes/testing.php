@@ -1,11 +1,20 @@
 <?php
 require_once "./config.php";
 
-$username = "ChrisCross";
-
-$stmt = $conn->prepare("SELECT * FROM `user` WHERE `username` = ?");
-$stmt->bind_param("s", $username);
+$stmt = $conn->prepare("SELECT * FROM `exercise`");
 $stmt->execute();
 $result = $stmt->get_result();
-$user = $result->fetch_assoc();
-print_r($user['password']);
+$stmt->close();
+if ($result->num_rows > 0) {
+    $muscles = [];
+    // print_r($result->fetch_assoc());
+    // echo "<br>";
+    while ($rows = $result->fetch_assoc()) {
+        $muscles[] = $rows;
+    }
+    echo "<pre>";
+    print_r($muscles);
+    echo "</pre>";
+} else {
+    return [];
+}

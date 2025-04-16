@@ -13,7 +13,7 @@ body {
   font-weight: 400;
   font-style: normal;
   color: #fff;
-  background: url(../loginimages/login-bg.png) no-repeat center / 100% 100%;
+  background: url("../assets/login-bg.png") no-repeat center / 100% 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -251,7 +251,7 @@ body {
 .email-notification .email-icon {
   width: 50px;
   height: 50px;
-  background: url("../loginimages/login-email.svg") center/contain no-repeat;
+  background: url("../assets/login-email.svg") center/contain no-repeat;
   color: #fdd835;
   margin: 5px;
 }
@@ -339,7 +339,7 @@ body {
 .check .check-icon {
   width: 100px;
   height: 100px;
-  background: url("../loginimages/check.svg") center/contain no-repeat;
+  background: url("../assets/check.svg") center/contain no-repeat;
   color: #fdd835;
 }
 

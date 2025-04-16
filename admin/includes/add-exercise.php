@@ -3,7 +3,7 @@
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $exercise_name = $_POST['exerciseName'];
     $exercise_description = $_POST['exerciseDescription'];
-    $profile = $_FILES['profilePic'];
+    $profile = $_FILES['exercisePic'];
     $folder = "../images/exercises/";
 
     try {

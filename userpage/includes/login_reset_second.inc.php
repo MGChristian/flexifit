@@ -25,11 +25,16 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $errors["token_not_exists"] = "Invalid or expired token. Please request a new reset link.";
         }
 
+        if (password_already_used($conn, $token, $password)) {
+            $errors["password_already_used"] = "Your new password cannot be the same as your old password.";
+        }
+
         if ($errors) {
             $_SESSION['error_login'] = $errors;
             header("Location: ../login-page-reset.php?token=" . htmlspecialchars($token));
             exit();
         } else {
+
             $hashedPassword = hashedPwd($password);
             update_password($conn, $token, $hashedPassword);
             header("location: ../login-page-changed.php");
@@ -82,19 +87,38 @@ function token_not_exists($conn, $token)
     }
 }
 
+function hashedPwd($password)
+{
+    //add options for hashing strength(?)
+    return password_hash($password, PASSWORD_BCRYPT);
+}
+
+//Check if password is already used to prevent user for using the same password as before
+function password_already_used($conn, $token, $password)
+{
+    $stmt = $conn->prepare("SELECT `password` FROM user WHERE `reset_token` = ?");
+    $stmt->bind_param("s", $token);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
+    $row = $result->fetch_assoc();
+    $oldPassword = $row['password'] ? $row['password'] : '';
+    if (password_verify($password, $oldPassword)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function update_password($conn, $token, $password)
 {
     try {
         $stmt = $conn->prepare("UPDATE user SET `password` = ?, reset_token = NULL, reset_expiry = NULL WHERE reset_token = ?");
         $stmt->bind_param("ss", $password, $token);
+
+        //return true if password is successfuly updated
         return $stmt->execute() ?: true;
     } catch (\Throwable $th) {
         return false;
     }
-}
-
-
-function hashedPwd($password)
-{
-    return password_hash($password, PASSWORD_BCRYPT);
 }

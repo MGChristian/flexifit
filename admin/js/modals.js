@@ -10,8 +10,10 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   modals.forEach(function (modal, index) {
+    modal.addEventListener("click", (e) => {
+      console.log(e.target);
+    });
     const closeModal = modal.querySelectorAll(".closeModal");
-
     closeModal.forEach(function (close) {
       openClose(close, modal);
     });
