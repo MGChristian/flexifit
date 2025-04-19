@@ -12,6 +12,7 @@
   --light: 200;
   --normal: 400;
   --bold: 700;
+  --light-shadow: 3px 3px 6px 1px rgba(0, 0, 0, 0.05);
   --shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.15);
   --primary: #007bff; /* Default view for table */
   --success: #28a745; /* Default edit for table */
@@ -54,11 +55,22 @@ a {
   text-decoration: none;
 }
 
-/* CLASS FOR MAKING ELEMENTS HIDDEN */
+/* CLASSEES FOR DIFFERENT CONDITIONS */
 
 .hidden {
   display: none !important;
 }
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* END OF CLASSES FOR DIFFERENT CONDITIONS */
 
 /* MAX WIDTH OF 1200px FOR THE MAIN CONTENT CONTAINER */
 
@@ -69,7 +81,7 @@ a {
   display: flex;
   flex-direction: column;
   grid-area: main;
-  width: 75rem;
+  width: 80rem;
   color: var(--black);
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -85,4 +97,66 @@ button {
 
 .shadow {
   box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.15);
+}
+
+/* INPUT DESIGN */
+
+.half {
+  display: flex;
+  gap: 1rem;
+}
+
+.input-half {
+  width: 50%;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+
+.input-full {
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+
+form input,
+select {
+  padding: 0.5rem 1rem;
+}
+
+.input-multiple-item-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.checkbox-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.checkbox-item {
+  background-color: var(--light-grey);
+  border-radius: 5px;
+  padding: 0.2rem 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.checkbox-item:hover {
+  filter: brightness(0.9);
+}
+
+.checkbox-item.selected {
+  background-color: var(--dark-grey);
+}
+
+textarea {
+  padding: 0.5rem 1rem;
+  resize: vertical;
+  width: 500px;
 }

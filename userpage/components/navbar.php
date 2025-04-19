@@ -30,10 +30,10 @@ $url = basename($_SERVER['PHP_SELF']);
         <ul class="nav-links">
             <li <?php echo ($url && $url === 'home.php') ? 'class="active"' : ''; ?>><a href="./">HOME</a></li>
             <li <?php echo ($url && $url === 'ExploreClasses.php') ? 'class="active"' : ''; ?>><a href="ExploreClasses.php">EXPLORE WORKOUTS</a></li>
-            <li <?php echo ($url && $url === 'ExploreExercises.php' || $url === 'AllExercises.php') ? 'class="active"' : ''; ?>><a href="ExploreExercises.php">EXERCISES</a></li>
+            <li <?php echo ($url && $url === 'explore-exercises.php' || $url === 'all-exercises.php') ? 'class="active"' : ''; ?>><a href="explore-exercises.php">EXERCISES</a></li>
             <li <?php echo ($url && $url === 'Instructors.php') ? 'class="active"' : ''; ?>><a href="Instructors.php">INSTRUCTORS</a></li>
             <li <?php echo ($url && $url === 'howitworks.php') ? 'class="active"' : ''; ?>><a href="howitworks.php">HOW IT WORKS</a></li>
-            <li <?php echo ($url && $url === 'Aboutus.php') ? 'class="active"' : ''; ?>><a href="Aboutus.php">ABOUT US</a></li>
+            <li <?php echo ($url && $url === 'about-us.php') ? 'class="active"' : ''; ?>><a href="about-us.php">ABOUT US</a></li>
         </ul>
     </div>
     <?php if ($isLoggedIn): ?>

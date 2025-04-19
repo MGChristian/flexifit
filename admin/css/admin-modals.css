@@ -65,33 +65,7 @@
   padding: 0px 1rem 0px 1rem;
 }
 
-/* INPUT DESIGN */
-
-.half {
-  display: flex;
-  gap: 1rem;
-}
-
-.input-half {
-  width: 50%;
-  display: flex;
-  gap: 0.5rem;
-  flex-direction: column;
-}
-
-.input-full {
-  width: 100%;
-  display: flex;
-  gap: 0.5rem;
-  flex-direction: column;
-}
-
 /* MAKE FULL INPUT GO TO THE RIGHT */
 .input-full-right {
   align-self: flex-end;
-}
-
-.modal input,
-select {
-  padding: 0.5rem 1rem;
 }

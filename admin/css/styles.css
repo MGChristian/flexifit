@@ -7,6 +7,7 @@ box-icon {
 /* ADMIN DASHBOARD GRID LAYOUT */
 
 .grid-container {
+  background-color: var(--light-grey);
   overflow-y: auto;
   display: grid;
   grid-template-columns: 260px 1fr 1fr 1fr;

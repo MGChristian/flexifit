@@ -1,9 +1,9 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    $exercise_name = $_POST['exerciseName'];
-    $exercise_description = $_POST['exerciseDescription'];
-    $profile = $_FILES['exercisePic'];
+    $exercise_name = isset($_POST['exerciseName']) ? $_POST['exerciseName'] : '';
+    $exercise_description = isset($_POST['exerciseDescription']) ? $_POST['exerciseDescription'] : '';
+    $profile = $_FILES['exercisePic'] ?? null;
     $folder = "../images/exercises/";
 
     try {

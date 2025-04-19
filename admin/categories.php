@@ -40,18 +40,18 @@ if (isset($_SESSION['error_login'])) {
         <!-- main -->
         <main class="main-container">
             <div class="page-title">
-                <h1>TAGS & CATEGORIES</h1>
+                <h1>CATEGORIES</h1>
                 <div class="quick-link">
-                    <p><a href="index.php"> HOME </a> > TAGS & CATEGORIES</p>
+                    <p><a href="index.php"> HOME </a> > CATEGORIES</p>
                 </div>
             </div>
             <div class="main-content">
                 <div class="table-desc">
                     <div class="table-desc">
                         <div class="main-title-button">
-                            <h3>CURRENT TAGS & CATEGORIES LIST</h3>
+                            <h3>CURRENT CATEGORIES LIST</h3>
                             <div class="main-title-button-container">
-                                <button type="button" class="filterOpen add-button" data-target="add-category">+ADD TAGS & CATEGORIES</button>
+                                <button type="button" class="filterOpen add-button" data-target="add-category">+ADD CATEGORY</button>
                             </div>
                         </div>
                     </div>

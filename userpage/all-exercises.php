@@ -17,7 +17,7 @@ $exerciseLetters = range("A", "Z");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explore Classes</title>
     <?php require_once "./components/global_css.php" ?>
-    <link rel="stylesheet" href="css/AllExercises.css">
+    <link rel="stylesheet" href="css/all-exercises.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 

@@ -1,5 +1,6 @@
 <?php
 
+require_once "./includes/config_session.inc.php";
 require_once "./includes/explore-exercises.php";
 
 $isLoggedIn = isset($_SESSION['id']);
@@ -51,7 +52,7 @@ $isLoggedIn = isset($_SESSION['id']);
                 </a>
             <?php endforeach; ?>
         </section>
-        <div class="explore-button"><a href="AllExercises.php"><button type="button">VIEW ALL EXERCISES</button></a></div>
+        <div class="explore-button"><a href="all-exercises.php"><button type="button">VIEW ALL EXERCISES</button></a></div>
         <br>
         <h1>WORKOUTS BY MUSCLE AREA</h1>
         <section class="classes-grid">

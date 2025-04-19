@@ -1,20 +1,30 @@
 <?php
 require_once "./config.php";
 
-$stmt = $conn->prepare("SELECT * FROM `exercise`");
+$exerciseId = 1;
+$stmt = $conn->prepare("SELECT `equipment`.`ID` FROM `equipment` INNER JOIN `exercise_equipment`  ON `equipment`.`ID` = `exercise_equipment`.`equipmentID`  WHERE exerciseID = ?");
+$stmt->bind_param("i", $exerciseId);
+$stmt->execute();
+$result = $stmt->get_result();
+$equipments = [];
+while ($row = $result->fetch_assoc()) {
+    $equipments[] = $row;
+}
+$stmt->close();
+return $equipments;
+
+
+
+$stmt = $conn->prepare("SELECT * FROM `equipment`");
 $stmt->execute();
 $result = $stmt->get_result();
 $stmt->close();
 if ($result->num_rows > 0) {
-    $muscles = [];
-    // print_r($result->fetch_assoc());
-    // echo "<br>";
+    $equipmentsa = [];
     while ($rows = $result->fetch_assoc()) {
-        $muscles[] = $rows;
+        $equipmentsa[] = $rows;
     }
-    echo "<pre>";
-    print_r($muscles);
-    echo "</pre>";
+    return $equipmentsa;
 } else {
     return [];
 }

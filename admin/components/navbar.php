@@ -5,7 +5,6 @@ if (!isset($isLoggedIn)) {
 }
 
 if (!isset($userData) && $isLoggedIn) {
-    require_once("../userpage/includes/config.php");
     $user_id = $_SESSION['id'];
     $stmt = $conn->prepare("SELECT * FROM `user` WHERE `ID` = ?");
     $stmt->bind_param("i", $user_id);

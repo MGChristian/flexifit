@@ -108,6 +108,10 @@ if (isset($_SESSION['error_login'])) {
                         "orderable": false
                     }
                 ],
+                columnDefs: [{
+                    width: "150px",
+                    targets: (-1),
+                }],
             });
 
             const PDF = document.querySelector(".buttons-pdf");

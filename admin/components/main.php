@@ -3,7 +3,7 @@
 require_once "../userpage/includes/config_session.inc.php";
 
 check_if_correct_role();
-
+require_once("../userpage/includes/config.php");
 
 function check_if_correct_role()
 {

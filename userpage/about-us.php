@@ -14,7 +14,7 @@ $isLoggedIn = isset($_SESSION['id']);
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Us</title>
   <?php require_once "./components/global_css.php" ?>
-  <link rel="stylesheet" href="css/Aboutus.css" />
+  <link rel="stylesheet" href="css/about-us.css" />
   <link
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     rel="stylesheet" />

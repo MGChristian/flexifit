@@ -14,7 +14,7 @@ class Exercise
         $this->exerciseId = $exerciseId;
     }
 
-    public function check_id()
+    public function is_id_valid()
     {
         $stmt = $this->conn->prepare("SELECT * FROM `exercise` WHERE ID = ?");
         $stmt->bind_param("i", $this->exerciseId);
@@ -44,7 +44,24 @@ class Exercise
 
     public function get_equipments()
     {
-        $stmt = $this->conn->prepare("SELECT `equipment`.`equipment_name`, `equipment`.`ID` FROM `equipment` INNER JOIN `exercise_equipment`  ON `equipment`.`ID` = `exercise_equipment`.`equipmentID`  WHERE exerciseID = ?");
+        $stmt = $this->conn->prepare("SELECT * FROM `equipment`");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+        if ($result->num_rows > 0) {
+            $equipments = [];
+            while ($rows = $result->fetch_assoc()) {
+                $equipments[] = $rows;
+            }
+            return $equipments;
+        } else {
+            return [];
+        }
+    }
+
+    public function get_exercise_equipments()
+    {
+        $stmt = $this->conn->prepare("SELECT `equipment`.`ID` FROM `equipment` INNER JOIN `exercise_equipment`  ON `equipment`.`ID` = `exercise_equipment`.`equipmentID`  WHERE exerciseID = ?");
         $stmt->bind_param("i", $this->exerciseId);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -56,7 +73,7 @@ class Exercise
         return $equipments;
     }
 
-    public function get_muscles()
+    public function get_exercise_muscles()
     {
         $stmt = $this->conn->prepare("SELECT `muscle`.`muscle_name`, `muscle`.`ID` FROM `muscle` INNER JOIN `exercise_muscle`  ON `muscle`.`ID` = `exercise_muscle`.`muscleID`  WHERE exerciseID = ?");
         $stmt->bind_param("i", $this->exerciseId);
@@ -72,6 +89,23 @@ class Exercise
     }
 
     public function get_categories()
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM `category`");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+        if ($result->num_rows > 0) {
+            $categories = [];
+            while ($rows = $result->fetch_assoc()) {
+                $categories[] = $rows;
+            }
+            return $categories;
+        } else {
+            return [];
+        }
+    }
+
+    public function get_exercise_categories()
     {
         $stmt = $this->conn->prepare("SELECT `category`.`category_name`, `category`.`ID` FROM `category` INNER JOIN `exercise_category`  ON `category`.`ID` = `exercise_category`.`categoryID`  WHERE exerciseID = ?");
         $stmt->bind_param("i", $this->exerciseId);

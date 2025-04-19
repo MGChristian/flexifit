@@ -52,7 +52,7 @@ $isLoggedIn = isset($_SESSION['id']);
         </a>
       <?php endfor; ?>
     </section>
-    <div class="explore-button"><a href="AllWorkouts.php"><button type="button">VIEW ALL WORKOUTS</button></a></div>
+    <div class="explore-button"><a href="all-workouts.php"><button type="button">VIEW ALL WORKOUTS</button></a></div>
     <br>
     <h1>WORKOUTS BY MUSCLE AREA</h1>
     <section class="classes-grid">

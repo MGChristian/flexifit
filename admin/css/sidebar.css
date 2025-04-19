@@ -28,17 +28,13 @@ ul a {
   justify-content: space-between;
 }
 
-.sl-title {
+.sidebar-list-title {
   display: flex;
   gap: 1rem;
 }
 
-.booking-a:hover,
-.refund-a:hover {
-  cursor: pointer;
-}
-
 .sidebar-list-item:hover {
+  cursor: pointer;
   padding: 20px;
   background-color: var(--dark-yellow);
 }
