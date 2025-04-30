@@ -22,7 +22,7 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
 
 <body>
     <!-- Navigation Header -->
-    <?= require_once "./components/navbar.php"; ?>
+    <?php require_once "./components/navbar.php"; ?>
 
     <!-- Get all exercise details -->
     <?php
