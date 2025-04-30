@@ -3,9 +3,9 @@
 // Check whether user has the authority to access this page.
 require_once "./components/main.php";
 
-if (isset($_SESSION['error_login'])) {
-    print_r($_SESSION['error_login']);
-    unset($_SESSION['error_login']);
+if (isset($_SESSION['error_adding_exercise_details'])) {
+    print_r($_SESSION['error_adding_exercise_details']);
+    unset($_SESSION['error_adding_exercise_details']);
 }
 
 //Check if ID is set and its not empty, if it is, go back to exercise page.

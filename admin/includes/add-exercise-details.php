@@ -8,6 +8,15 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $exerciseDescription = $_POST['exerciseDescription'];
     $status = $_POST['status'];
 
+    // echo $exerciseId;
+    // echo "<br>";
+    // echo $exerciseDescription;
+    // echo "<br>";
+    // echo $exerciseName;
+    // echo "<br>";
+    // echo $status;
+    // exit();
+
     // Clickables
     $equipmentList = isset($_POST['equipments']) ? $_POST['equipments'] : [];
     $categories = isset($_POST['categories']) ? $_POST['categories'] : [];
@@ -40,9 +49,13 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         // }
 
         // , $equipmentList, $categories, $muscleGroup, $exerciseSteps
-        if (is_input_empty($exerciseId, $exerciseName, $exerciseDescription, $status)) {
+        if (is_input_empty($exerciseId, $exerciseName, $exerciseDescription)) {
             $errors["empty_input"] = "Inputs cannot be empty!";
         }
+
+        update_exercise_name($conn, $exerciseName, $exerciseId);
+        update_exercise_description($conn, $exerciseDescription, $exerciseId);
+        update_exercise_status($conn, $status, $exerciseId);
 
         //Check if new steps were added, if so, add it to the database
         if (!empty($addExerciseSteps)) {
@@ -85,18 +98,41 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 }
 
 //Validate and check inputs
-function is_input_empty($exerciseId, $exerciseName, $exerciseDescription, $status)
+function is_input_empty($exerciseId, $exerciseName, $exerciseDescription)
 {
     if (
         empty($exerciseId) ||
         empty($exerciseName) ||
-        empty($exerciseDescription) ||
-        empty($status)
+        empty($exerciseDescription)
     ) {
         return true;
     } else {
         return false;
     }
+}
+
+function update_exercise_name($conn, $exerciseName, $exerciseId)
+{
+    $stmt = $conn->prepare("UPDATE `exercise` SET `exerciseName` = ? WHERE ID = ?");
+    $stmt->bind_param("si", $exerciseName, $exerciseId);
+    $stmt->execute();
+    $stmt->close();
+}
+
+function update_exercise_description($conn, $exerciseDescription, $exerciseId)
+{
+    $stmt = $conn->prepare("UPDATE `exercise` SET `description` = ? WHERE ID = ?");
+    $stmt->bind_param("si", $exerciseDescription, $exerciseId);
+    $stmt->execute();
+    $stmt->close();
+}
+
+function update_exercise_status($conn, $status, $exerciseId)
+{
+    $stmt = $conn->prepare("UPDATE `exercise` SET `status` = ? WHERE ID = ?");
+    $stmt->bind_param("si", $status, $exerciseId);
+    $stmt->execute();
+    $stmt->close();
 }
 
 function add_muscle_group($conn, $muscleGroup, $exerciseId)
