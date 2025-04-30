@@ -44,7 +44,7 @@ $isLoggedIn = isset($_SESSION['id']);
             <?php foreach (get_exercises($conn) as $rows): ?>
                 <a href="./exercise.php?id=<?= htmlspecialchars($rows['ID']) ?>">
                     <div class="class-item">
-                        <img src="../admin/<?= htmlspecialchars($rows['exercisePicUrl']) ?>">
+                        <img src="../admin/images/exercises/<?= htmlspecialchars($rows['exercisePicUrl']) ?>">
                         <div>
                             <p><b><?= htmlspecialchars($rows['exerciseName']) ?></b></p>
                         </div>
