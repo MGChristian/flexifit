@@ -4,7 +4,7 @@
     </div>
     <ul class="sidebar-list">
         <!-- NAVBAR TITLE -->
-        <a href="index.php">
+        <a href="./">
             <li class="sidebar-list-item">
                 <div class="sidebar-list-title"><i class="fa fa-tachometer" aria-hidden="true"></i> DASHBOARD</div>
             </li>
@@ -18,46 +18,46 @@
 
         <!-- CONTENT DROPDOWN -->
         <ul class="content-m mini-sidebar-list hidden">
-            <a href="categories.php">
+            <a href="./categories.php">
                 <li class="mini-sidebar-list-item">CATEGORIES</li>
             </a>
-            <a href="exercises.php">
+            <a href="./exercises.php">
                 <li class="mini-sidebar-list-item">EXERCISES</li>
             </a>
-            <a href="equipments.php">
+            <a href="./equipments.php">
                 <li class="mini-sidebar-list-item">EQUIPMENTS</li>
             </a>
-            <a href="muscles.php">
+            <a href="./muscles.php">
                 <li class="mini-sidebar-list-item">MUSCLES</li>
             </a>
-            <a href="workouts.php">
+            <a href="./workouts.php">
                 <li class="mini-sidebar-list-item">WORKOUTS</li>
             </a>
         </ul>
 
         <!-- INSTRUCTORS -->
-        <a href="instructors.php">
+        <a href="./instructors.php">
             <li class="sidebar-list-item">
                 <div class="sidebar-list-title"><i class="fa fa-users" aria-hidden="true"></i> INSTRUCTORS</div>
             </li>
         </a>
 
         <!-- USERS -->
-        <a href="users.php">
+        <a href="./users.php">
             <li class="sidebar-list-item">
                 <div class="sidebar-list-title"><i class="fa fa-user" aria-hidden="true"></i> USERS</div>
             </li>
         </a>
 
         <!-- RATINGS -->
-        <a href="ratings.php">
+        <a href="./ratings.php">
             <li class="sidebar-list-item">
                 <div class="sidebar-list-title"><i class="fa fa-star" aria-hidden="true"></i> RATINGS & REVIEWS</div>
             </li>
         </a>
 
         <!-- REPORTS -->
-        <a href="reports.php">
+        <a href="./reports.php">
             <li class="sidebar-list-item">
                 <div class="sidebar-list-title"><i class="fa fa-area-chart" aria-hidden="true"></i> REPORTS</div>
             </li>

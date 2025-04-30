@@ -92,8 +92,9 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
                 <?php echo empty($stepsList) ? '<p>No steps provided for this exercise</p>' : ''; ?>
                 <?php foreach ($stepsList as $step): ?>
                     <div class="step">
-                        <img src="<?= empty($step) ? '' : $step['step_pic_url']; ?>" />
-                        <p><?= $step['step_instruction'] ?></p>
+                        <?php $stepImage = $step['step_pic_url']; ?>
+                        <?= empty($stepImage) ? '' : "<img src='{$stepImage}'; ?>" ?>
+                        <p><?= htmlspecialchars($step['step_instruction']) ?></p>
                     </div>
                 <?php endforeach; ?>
             </div>

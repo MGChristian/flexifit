@@ -1,5 +1,6 @@
 <?php
 
+// Check whether user has the authority to access this page.
 require_once "./components/main.php";
 
 if (isset($_SESSION['error_login'])) {
@@ -7,6 +8,7 @@ if (isset($_SESSION['error_login'])) {
     unset($_SESSION['error_login']);
 }
 
+//Check if ID is set and its not empty, if it is, go back to exercise page.
 isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("location: ./exercises.php");
 
 ?>
@@ -71,7 +73,7 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
                         </div>
                         <div class="input-full">
                             <label>Description</label>
-                            <input name="exerciseName" type="text" value="<?= htmlspecialchars($exerciseDetails['description']) ?>" />
+                            <input name="exerciseDescription" type="text" value="<?= htmlspecialchars($exerciseDetails['description']) ?>" />
                         </div>
                         <div class="input-full">
                             <label>Status</label>
@@ -87,7 +89,7 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
                                 <?php echo empty($equipmentList) ? "<p id='no-steps'>There are no equipments yet</p>" : ''; ?>
                                 <?php foreach ($equipmentList as $equipment): ?>
                                     <div class="checkbox-item">
-                                        <input type="checkbox" name="equipments[]" value="Dumbbells" class="hidden" <?= in_array($equipment['ID'], $exerciseEquipmentList) ? 'selected' : ''; ?> />
+                                        <input type="checkbox" name="equipments[]" value="<?= $equipment['equipment_name'] ?>" class="hidden" <?= in_array($equipment['ID'], $exerciseEquipmentList) ? 'selected' : ''; ?> />
                                         <label class="unselectable"><?= $equipment['equipment_name'] ?></label>
                                         <i class="fa fa-times-circle-o hidden" aria-hidden="true"></i>
                                     </div>
@@ -97,13 +99,14 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
                         <div class="input-multiple-item-container">
                             <label>Categories</label>
                             <div class="checkbox-container">
-                                <?php for ($i = 0; $i < 8; $i++): ?>
+                                <?php echo empty($categoryList) ? "<p id='no-steps'>There are no categories yet</p>" : ''; ?>
+                                <?php foreach ($categoryList as $category): ?>
                                     <div class="checkbox-item">
-                                        <input type="checkbox" name="equipments[]" value="Dumbbells" class="hidden" />
-                                        <label class="unselectable">Dumbells</label>
+                                        <input type="checkbox" name="categories[]" value="<?= $category['category_name'] ?>" class="hidden" <?= in_array($category['ID'], $exerciseCategoryList) ? 'selected' : ''; ?> />
+                                        <label class="unselectable"><?= $category['category_name'] ?></label>
                                         <i class="fa fa-times-circle-o hidden" aria-hidden="true"></i>
                                     </div>
-                                <?php endfor; ?>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                         <div class="input-multiple-item-container">
@@ -111,7 +114,7 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
                             <div class="checkbox-container">
                                 <?php for ($i = 0; $i < 10; $i++): ?>
                                     <div class="checkbox-item">
-                                        <input type="checkbox" name="equipments[]" value="Dumbbells" class="hidden" />
+                                        <input type="checkbox" name="muscleGroup[]" value="Dumbbells" class="hidden" />
                                         <label class="unselectable">Dumbells</label>
                                         <i class="fa fa-times-circle-o hidden" aria-hidden="true"></i>
                                     </div>
@@ -123,7 +126,15 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
                         <div class="exercise-steps">
                             <?php echo empty($stepsList) ? "<p id='no-steps'>There are no steps yet for this exercise</p>" : ''; ?>
                             <?php foreach ($stepsList as $step): ?>
-
+                                <div class="input-full">
+                                    <label>Step</label>
+                                    <div>
+                                        <!-- THIS ID IS USED FOR REMOVING STEPS -->
+                                        <input class="hidden" value="<?= $step['ID'] ?>">
+                                        <textarea name="updateExerciseStep[<?= $step['ID'] ?>]"><?= $step['step_instruction'] ?></textarea>
+                                        <i class="fa-times-circle-o fa" aria-hidden="true" id="removeStep"></i>
+                                    </div>
+                                </div>
                             <?php endforeach; ?>
                         </div>
                         <div class="exercise-step-add">
@@ -147,7 +158,7 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
                 const checkbox = item.querySelector("input[type='checkbox']");
                 const close = item.querySelector("i");
                 if (checkbox.checked) {
-                    item.classList.add("selected");
+                    item.classList.add("checked");
                     close.classList.remove("hidden");
                 }
                 item.addEventListener("click", () => {
@@ -179,7 +190,7 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
 
                 // exercise input
                 const exerciseStepInput = document.createElement("textarea");
-                exerciseStepInput.setAttribute("name", "exerciseStep[]");
+                exerciseStepInput.setAttribute("name", "addExerciseStep[]");
                 div.append(exerciseStepInput);
 
                 // exercise step remove
@@ -188,8 +199,7 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
                 exerciseRemoveButton.classList.add("fa")
                 exerciseRemoveButton.setAttribute("aria-hidden", "true");
                 exerciseRemoveButton.addEventListener("click", () => {
-                    exerciseStepDiv.classList.add("hidden");
-                    exerciseStepInput.setAttribute("name", "deletedStep[]");
+                    exerciseStepDiv.remove();
                 })
                 div.append(exerciseRemoveButton);
 
@@ -201,7 +211,9 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
             exerciseSteps.forEach((item) => {
                 const removeStep = item.querySelector("#removeStep");
                 removeStep.addEventListener("click", () => {
-                    item.remove();
+                    item.classList.add("hidden");
+                    const stepId = item.querySelector("input").value;
+                    item.querySelector("textarea").setAttribute("name", `removeExerciseStep[${stepId}]`);
                 })
             });
         });

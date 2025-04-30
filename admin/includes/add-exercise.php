@@ -88,7 +88,7 @@ function handle_profile_pic($folder, $profile)
         $fileNameNew = uniqid("", true) . "." . $image_ActualExt;
         $fileDestination = $folder . "/" . $fileNameNew;
         move_uploaded_file($image_tmp, $fileDestination);
-        return $fileDestination;
+        return $fileNameNew;
     } else {
         return "none";
     }
