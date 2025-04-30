@@ -158,5 +158,5 @@ select {
 textarea {
   padding: 0.5rem 1rem;
   resize: vertical;
-  width: 500px;
+  width: 100%;
 }

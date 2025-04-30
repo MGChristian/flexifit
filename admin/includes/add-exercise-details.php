@@ -8,18 +8,15 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $exerciseDescription = $_POST['exerciseDescription'];
     $status = $_POST['status'];
 
-    // echo $exerciseId;
-    // echo "<br>";
-    // echo $exerciseDescription;
-    // echo "<br>";
-    // echo $exerciseName;
-    // echo "<br>";
-    // echo $status;
-    // exit();
-
-    // Clickables
+    // Equipements
     $equipmentList = isset($_POST['equipments']) ? $_POST['equipments'] : [];
+    $removeEquipmentList = isset($_POST['removeEquipment']) ? $_POST['removeEquipment'] : [];
+
+    // Categories
     $categories = isset($_POST['categories']) ? $_POST['categories'] : [];
+    $removeCategories = isset($_POST['removeCategories']) ? $_POST['removeCategories'] : [];
+
+    // muscleGroup
     $muscleGroup = isset($_POST['muscleGroup']) ? $_POST['muscleGroup'] : [];
 
     // EXERCISE STEPS
@@ -28,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $updateExerciseSteps = isset($_POST['updateExerciseStep']) ? $_POST['updateExerciseStep'] : [];
 
     // echo "<pre>";
-    // print_r($_POST);
+    // echo print_r($_POST);
     // echo "</pre>";
     // exit();
 
@@ -44,9 +41,31 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         // foreach ($muscleGroup as $muscle) {
         //     add_muscle_group($conn, $muscle, $exerciseId);
         // }
-        // foreach ($equipmentList as $equipmentName) {
-        //     add_equipments($conn, $equipmentName, $exerciseId);
-        // }
+
+        // Equipments
+        foreach ($equipmentList as $equipmentID) {
+            add_equipments($conn, $equipmentID, $exerciseId);
+        }
+
+        if (!empty($removeEquipmentList)) {
+            foreach ($removeEquipmentList as $removeEquipmentID => $exerciseID) {
+                remove_equipments($conn, $exerciseID,  $removeEquipmentID);
+            }
+        }
+
+        // Categories
+        foreach ($categories as $categoryID) {
+            add_categories($conn, $categoryID, $exerciseId);
+        }
+
+        // Check if existing steps were removed, if so, remove it in the database
+        if (!empty($removeCategories)) {
+            foreach ($removeCategories as $removeCategoryID => $exerciseID) {
+                remove_categories($conn, $exerciseID,  $removeCategoryID);
+            }
+        }
+
+
 
         // , $equipmentList, $categories, $muscleGroup, $exerciseSteps
         if (is_input_empty($exerciseId, $exerciseName, $exerciseDescription)) {
@@ -56,6 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         update_exercise_name($conn, $exerciseName, $exerciseId);
         update_exercise_description($conn, $exerciseDescription, $exerciseId);
         update_exercise_status($conn, $status, $exerciseId);
+
 
         //Check if new steps were added, if so, add it to the database
         if (!empty($addExerciseSteps)) {
@@ -135,23 +155,50 @@ function update_exercise_status($conn, $status, $exerciseId)
     $stmt->close();
 }
 
-function add_muscle_group($conn, $muscleGroup, $exerciseId)
+// MUSCLE GROUPS
+
+function add_muscle_group($conn, $muscleID, $exerciseId)
 {
-    $stmt = $conn->prepare("INSERT INTO `muscleGroup` (`exerciseID`, `muscleGroup`) VALUES (?, ?)");
-    $stmt->bind_param("is", $exerciseId, $muscleGroup);
-    if (!$stmt->execute()) {
-        exit("SQL Error: " . $stmt->error);
-    }
+    $stmt = $conn->prepare("INSERT INTO `exercise_muscle` (`exerciseID`, `muscleID`) VALUES (?, ?)");
+    $stmt->bind_param("ii", $exerciseId, $muscleID);
+    $stmt->execute();
     $stmt->close();
 }
 
-function add_equipments($conn, $equipmentName, $exerciseId)
+// EQUIPMENTS
+
+function add_equipments($conn, $equipmentID, $exerciseId)
 {
-    $stmt = $conn->prepare("INSERT INTO `equipmentList` (`exerciseID`, `equipmentName`) VALUES (?, ?)");
-    $stmt->bind_param("is", $exerciseId, $equipmentName);
-    if (!$stmt->execute()) {
-        exit("SQL Error: " . $stmt->error);
-    }
+    $stmt = $conn->prepare("INSERT INTO `exercise_equipment` (`exerciseID`, `equipmentID`) VALUES (?, ?)");
+    $stmt->bind_param("ii", $exerciseId, $equipmentID);
+    $stmt->execute();
+    $stmt->close();
+}
+
+function remove_equipments($conn, $exerciseID, $removeEquipmentID)
+{
+    $stmt = $conn->prepare("DELETE FROM `exercise_equipment` WHERE `equipmentID` = ? AND `exerciseID` = ?");
+    $stmt->bind_param("ii", $removeEquipmentID, $exerciseID);
+    $stmt->execute();
+    $stmt->close();
+}
+
+
+// CATEGORIES
+
+function add_categories($conn, $categoryID, $exerciseId)
+{
+    $stmt = $conn->prepare("INSERT INTO `exercise_category` (`exerciseID`, `categoryID`) VALUES (?, ?)");
+    $stmt->bind_param("ii", $exerciseId, $categoryID);
+    $stmt->execute();
+    $stmt->close();
+}
+
+function remove_categories($conn, $exerciseID,  $removeCategoryID)
+{
+    $stmt = $conn->prepare("DELETE FROM `exercise_category` WHERE `categoryID` = ? AND `exerciseID` = ?");
+    $stmt->bind_param("ii", $removeCategoryID, $exerciseID);
+    $stmt->execute();
     $stmt->close();
 }
 

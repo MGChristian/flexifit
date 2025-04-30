@@ -2,7 +2,6 @@
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
     header("Content-type: application/json");
     $instructorsList = [];
-    require_once "../../userpage/includes/config_session.inc.php";
     require_once "../../userpage/includes/config.php";
     $stmt = $conn->prepare("SELECT `ID`, `exerciseName`, `description`, `status`, `dateCreated` FROM `exercise`");
     $buttonsView = "<button type='button' class='data-table-button view' data-target='view-instructor'> <i class='fa fa-eye' aria-hidden='true'></i> </button>";

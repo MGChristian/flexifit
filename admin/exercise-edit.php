@@ -44,6 +44,10 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
         $equipmentList = $exercise->get_equipments();
         $exerciseCategoryList = $exercise->get_exercise_categories();
         $categoryList = $exercise->get_categories();
+        // echo "<pre>";
+        // print_r($exerciseCategoryList);
+        // echo "</pre>";
+        // exit();
         $stepsList = $exercise->get_exercise_steps();
         ?>
         <!-- side -->
@@ -88,8 +92,9 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
                             <div class="checkbox-container">
                                 <?php echo empty($equipmentList) ? "<p id='no-steps'>There are no equipments yet</p>" : ''; ?>
                                 <?php foreach ($equipmentList as $equipment): ?>
-                                    <div class="checkbox-item">
-                                        <input type="checkbox" name="equipments[]" value="<?= $equipment['equipment_name'] ?>" class="hidden" <?= in_array($equipment['ID'], $exerciseEquipmentList) ? 'selected' : ''; ?> />
+                                    <?php $equipmentID = $equipment['ID'] ?>
+                                    <div class="checkbox-item <?= in_array($equipment['ID'], array_column($exerciseEquipmentList, "ID")) ? 'selected' : ''; ?>">
+                                        <input type="checkbox" <?= in_array($equipment['ID'], array_column($exerciseEquipmentList, "ID")) ? "class='hidden itemSelected' name='removeEquipment[$equipmentID]' value='{$exerciseId}' checked disabled" : "class='hidden' value='{$equipmentID}' name='equipments[]'"; ?> />
                                         <label class="unselectable"><?= $equipment['equipment_name'] ?></label>
                                         <i class="fa fa-times-circle-o hidden" aria-hidden="true"></i>
                                     </div>
@@ -101,8 +106,9 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
                             <div class="checkbox-container">
                                 <?php echo empty($categoryList) ? "<p id='no-steps'>There are no categories yet</p>" : ''; ?>
                                 <?php foreach ($categoryList as $category): ?>
-                                    <div class="checkbox-item">
-                                        <input type="checkbox" name="categories[]" value="<?= $category['category_name'] ?>" class="hidden" <?= in_array($category['ID'], $exerciseCategoryList) ? 'selected' : ''; ?> />
+                                    <?php $categoryID = $category['ID'] ?>
+                                    <div class="checkbox-item <?= in_array($category['ID'], array_column($exerciseCategoryList, "ID")) ? 'selected' : ''; ?>">
+                                        <input type="checkbox" <?= in_array($category['ID'], array_column($exerciseCategoryList, "ID")) ? "class='hidden itemSelected' name='removeCategories[$categoryID]' value='{$exerciseId}' checked disabled" : "class='hidden' value='{$categoryID}' name='categories[]'"; ?> />
                                         <label class="unselectable"><?= $category['category_name'] ?></label>
                                         <i class="fa fa-times-circle-o hidden" aria-hidden="true"></i>
                                     </div>
@@ -157,12 +163,20 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
             checkboxItems.forEach((item) => {
                 const checkbox = item.querySelector("input[type='checkbox']");
                 const close = item.querySelector("i");
+
+                // Check if the checkbox is already checked (meaning it is already in the database) if so, mark it as checked and remove the hidden for the close button so that it can be removed
                 if (checkbox.checked) {
                     item.classList.add("checked");
                     close.classList.remove("hidden");
                 }
                 item.addEventListener("click", () => {
                     if (checkbox) {
+                        // Check if the item is already in the database if so, add a disable feature so that its removal is controlled
+                        if (item.querySelector(".itemSelected")) {
+                            const input = item.querySelector(".itemSelected");
+                            input.disabled = !input.disabled;
+                            input.checked = !input.checked;
+                        }
                         checkbox.checked = !checkbox.checked; // Toggle the state
                         item.classList.toggle("selected");
                         close.classList.toggle("hidden");
