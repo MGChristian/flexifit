@@ -52,20 +52,22 @@ if (isset($_SESSION['error_login'])) {
                     </div>
                 </div>
                 <hr>
-                <table id="myTable" class="display" style="width:100%">
-                    <thead>
-                        <tr class="table-header">
-                            <th>#</th>
-                            <th>Exercise Name</th>
-                            <th>Description</th>
-                            <th>Status</th>
-                            <th>Date Created</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+                <div style="background-color:white; padding:1rem; border-radius:5px; box-shadow:var(--light-shadow); margin-top:1rem;">
+                    <table id="myTable" class="display" style="width:100%">
+                        <thead>
+                            <tr class="table-header">
+                                <th>#</th>
+                                <th>Exercise Name</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                                <th>Date Created</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </main>
     </div>
