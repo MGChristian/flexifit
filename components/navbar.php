@@ -25,7 +25,7 @@ $url = basename($_SERVER['PHP_SELF']);
 <nav class="navbar desktop">
     <div class="navigation-left">
         <div class="logo">
-            <img src="assets/flexifitlogo.jpg" alt="FlexiFit Logo" />
+            <img src="./assets/flexifitlogo.jpg" alt="FlexiFit Logo" />
         </div>
         <ul class="nav-links">
             <li <?php echo ($url && $url === 'home.php') ? 'class="active"' : ''; ?>><a href="./">HOME</a></li>
