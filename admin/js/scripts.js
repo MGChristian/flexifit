@@ -30,4 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  // NAVBAR HAMBUGER
+  const hamburger = document.querySelector(".navbar-hamburger");
+  const sidebar = document.querySelector(".sidebar");
+  hamburger.addEventListener("click", () => {
+    sidebar.classList.toggle("clicked");
+  });
 });

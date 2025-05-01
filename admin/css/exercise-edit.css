@@ -18,6 +18,34 @@
   gap: 1rem;
 }
 
+/* CHECKBOXES */
+
+.checkbox-container {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.checkbox-item {
+  background-color: var(--light-grey);
+  border-radius: 5px;
+  padding: 0.2rem 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.checkbox-item:hover {
+  filter: brightness(0.9);
+}
+
+.checkbox-item.selected {
+  background-color: var(--dark-grey);
+}
+
+/* END OF CHECKBOXES */
+
 .edit-form-buttons button {
   padding: 0.5rem 1rem;
   cursor: pointer;
@@ -48,6 +76,27 @@
   background-color: var(--yellow);
 }
 
+/* INPUT DESIGN */
+
+.half {
+  display: flex;
+  gap: 1rem;
+}
+
+.input-half {
+  width: 50%;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+
+.input-full {
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+
 .input-full div {
   display: flex;
   align-items: center;
@@ -58,4 +107,22 @@
   font-size: 1.5em;
   color: var(--red);
   cursor: pointer;
+}
+
+form input,
+select {
+  padding: 0.5rem 1rem;
+}
+
+.input-multiple-item-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+textarea {
+  padding: 0.5rem 1rem;
+  resize: vertical;
+  width: 100%;
 }

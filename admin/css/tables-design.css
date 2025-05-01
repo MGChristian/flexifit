@@ -11,8 +11,13 @@
   margin-bottom: 0.5rem;
 }
 
-table {
-  overflow: scroll;
+.table-container {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: var(--light-shadow);
+  margin-top: 1rem;
+  overflow-x: auto;
 }
 
 th {

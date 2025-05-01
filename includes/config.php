@@ -2,7 +2,7 @@
 
 // $dbhostname = "localhost:3306";
 // $dbusername = "mgchristian_admin";
-// $dbpassword = "snq12*85H";
+
 // $database = "mgchristian_flexifit";
 
 $dbhostname = "localhost";

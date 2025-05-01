@@ -11,6 +11,14 @@
                     modalTarget.classList.toggle("hidden");
                 });
             });
+
+            // MOBILE NAV LINKS
+            const hamburger = document.querySelector(".navbar-hamburger");
+            const navLinksMobile = document.querySelector(".nav-links-mobile");
+            hamburger.addEventListener("click", () => {
+                navLinksMobile.classList.toggle("clicked");
+                console.log("hello")
+            });
         });
     </script>
 <?php endif; ?>

@@ -26,10 +26,10 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
 
 <body>
     <?php include "./modals/exercises-modal.php" ?>
+    <!-- header -->
+    <?php include "./components/navbar.php" ?>
+    <!-- header -->
     <div class="grid-container">
-        <!-- header -->
-        <?php include "./components/navbar.php" ?>
-        <!-- header -->
         <!-- classes -->
         <?php
         require_once("./includes/exercise-edit.php");
@@ -44,10 +44,6 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
         $equipmentList = $exercise->get_equipments();
         $exerciseCategoryList = $exercise->get_exercise_categories();
         $categoryList = $exercise->get_categories();
-        // echo "<pre>";
-        // print_r($exerciseCategoryList);
-        // echo "</pre>";
-        // exit();
         $stepsList = $exercise->get_exercise_steps();
         ?>
         <!-- side -->

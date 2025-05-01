@@ -18,7 +18,9 @@ if (!isset($userData) && $isLoggedIn) {
 ?>
 
 <header class="header">
-    <div class="logo" style="display:flex; gap:5px;">
+
+    <div class="logo">
+        <i class="fa fa-bars navbar-hamburger" aria-hidden="true"></i>
         <div class="logo">
             <img src="assets/flexifitlogo.png" alt="FlexiFit Logo" />
         </div>

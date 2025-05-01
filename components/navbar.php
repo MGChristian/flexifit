@@ -38,12 +38,7 @@ $url = basename($_SERVER['PHP_SELF']);
     </div>
     <?php if ($isLoggedIn): ?>
         <div class="user-profile">
-            <box-icon
-                type="solid"
-                class="filterOpen"
-                name="user-circle"
-                size="md"
-                data-target="user-dropdown"></box-icon>
+            <i class="fa fa-user-circle filterOpen fa-lg" aria-hidden="true" data-target="user-dropdown"></i>
             <div class="filters shadow hidden" id="user-dropdown">
                 <p style="  word-wrap: break-word; overflow-wrap: break-word; max-width: 100%; "><?= htmlspecialchars($userData['firstName']) . " " . htmlspecialchars($userData['lastName']) ?></p>
                 <hr />
@@ -98,22 +93,27 @@ $url = basename($_SERVER['PHP_SELF']);
 
 <nav class="navbar mobile">
     <div class="navigation-left">
-        <box-icon name="menu"></box-icon>
+        <i class="fa fa-bars navbar-hamburger" aria-hidden="true"></i>
         <div class="logo">
             <img src="assets/flexifitlogo.jpg" alt="FlexiFit Logo" />
         </div>
     </div>
     <?php if ($isLoggedIn): ?>
         <div class="user-profile">
-            <box-icon
-                type="solid"
-                class="filterOpen"
-                name="user-circle"
-                size="md"
-                data-target="user-dropdown"></box-icon>
-            <div class="filters shadow hidden" id="user-dropdown">
+            <i class="fa fa-user-circle filterOpen fa-lg" aria-hidden="true" data-target="user-dropdown-mobile"></i>
+            <div class="filters shadow hidden" id="user-dropdown-mobile">
                 <p style="  word-wrap: break-word; overflow-wrap: break-word; max-width: 100%; "><?= htmlspecialchars($userData['firstName']) . " " . htmlspecialchars($userData['lastName']) ?></p>
                 <hr />
+                <!-- Dashboard page -->
+                <a href=<?= check_dashboard(); ?>>
+                    <div class="dropdown-item">
+                        <div class="option">
+                            <box-icon name="dashboard" type="solid"></box-icon>
+                            <p>Dashboard</p>
+                        </div>
+                        <box-icon name="chevron-right"></box-icon>
+                    </div>
+                </a>
                 <!-- Profile page -->
                 <a href="myProfile.php">
                     <div class="dropdown-item">
@@ -146,12 +146,33 @@ $url = basename($_SERVER['PHP_SELF']);
                 </div>
             </div>
         </div>
-    <?php else: ?>
-        <button class="join-now">
-            <a href="login-page.php">Join Now</a>
-        </button>
     <?php endif; ?>
 </nav>
+<ul class="nav-links-mobile">
+    <a href="./">
+        <li <?php echo ($url && $url === 'index.php') ? 'class="active"' : ''; ?>>HOME</li>
+    </a>
+    <a href="explore-classes.php">
+        <li <?php echo ($url && $url === 'explore-classes.php') ? 'class="active"' : ''; ?>>EXPLORE WORKOUTS</li>
+    </a>
+    <a href="explore-exercises.php">
+        <li <?php echo ($url && $url === 'explore-exercises.php' || $url === 'all-exercises.php' || $url === 'exercise.php') ? 'class="active"' : ''; ?>>EXERCISES</li>
+    </a>
+    <a href="Instructors.php">
+        <li <?php echo ($url && $url === 'instructors.php') ? 'class="active"' : ''; ?>>INSTRUCTORS</li>
+    </a>
+    <a href="how-it-works.php">
+        <li <?php echo ($url && $url === 'how-it-works.php') ? 'class="active"' : ''; ?>>HOW IT WORKS</li>
+    </a>
+    <a href="about-us.php">
+        <li <?php echo ($url && $url === 'about-us.php') ? 'class="active"' : ''; ?>>ABOUT US</li>
+    </a>
+    <?php if (!$isLoggedIn): ?>
+        <a href="./login-page.php">
+            <li class="join-us">JOIN US</li>
+        </a>
+    <?php endif; ?>
+</ul>
 
 
 <?php
