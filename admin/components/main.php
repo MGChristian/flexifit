@@ -1,9 +1,9 @@
 <?php
 
-require_once "../userpage/includes/config_session.inc.php";
+require_once "../includes/config_session.inc.php";
 
 check_if_correct_role();
-require_once("../userpage/includes/config.php");
+require_once("../includes/config.php");
 
 function check_if_correct_role()
 {
@@ -11,7 +11,7 @@ function check_if_correct_role()
         $user_role = $_SESSION['role'];
         switch ($user_role) {
             case "user":
-                header("location: ../userpage/");
+                header("location: ../");
                 exit();
                 break;
             case "instructor":
@@ -22,7 +22,7 @@ function check_if_correct_role()
                 break;
         }
     } else {
-        header("location: ../userpage/");
+        header("location: ../");
         exit();
     }
 }

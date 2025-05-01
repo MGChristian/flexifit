@@ -30,8 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     // exit();
 
     try {
-        require_once "../../userpage/includes/config.php";
-        require_once "../../userpage/includes/config_session.inc.php";
+        require_once "../../includes/config.php";
+        require_once "../../includes/config_session.inc.php";
 
         // Error handlers
         $errors = [];
