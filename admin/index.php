@@ -12,8 +12,8 @@ require_once "./includes/get-index-data.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="css/admin-mc.css">
     <?php include "./components/css.php" ?>
+    <link rel="stylesheet" href="css/admin-index.css">
 </head>
 
 <body>
@@ -35,7 +35,6 @@ require_once "./includes/get-index-data.php";
             <div class="bookings-statistics">
                 <p class="section-title">STATISTICS</p>
                 <hr>
-
                 <!-- cards -->
                 <div class="cards">
                     <div class="upcoming statistics-item shadow">

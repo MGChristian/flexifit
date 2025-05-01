@@ -24,6 +24,7 @@ box-icon {
 .page-title {
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  max-width: 100%;
 }
 
 /* QUICK LINKS */
@@ -39,4 +40,13 @@ box-icon {
 
 .view-profile {
   width: 100%;
+}
+
+@media only screen and (max-width: 1200px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header header header header"
+      "main main main main";
+  }
 }
