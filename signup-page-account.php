@@ -35,7 +35,7 @@ check_sessions();
     <div class="nav">
       <a href="./">HOME</a>
       <span>|</span>
-      <a href="login-page.html">LOG IN</a>
+      <a href="login-page.php">LOG IN</a>
     </div>
     <div class="form-container">
       <div class="progress-bar">
@@ -47,7 +47,9 @@ check_sessions();
       </div>
       <h2>SIGN UP</h2>
       <form action="./includes/signup_second.inc.php" method="POST">
-        <?php check_signup_errors(); ?>
+        <div class="error-wrapper">
+            <?php check_signup_errors() ?>
+        </div>
         <input name="username" type="text" placeholder="Username" required />
         <input name="password" type="password" placeholder="Password" required />
         <input name="confirm" type="password" placeholder="Confirm Password" required />

@@ -34,7 +34,7 @@ check_sessions();
     <div class="nav">
       <a href="./">HOME</a>
       <span>|</span>
-      <a href="login-page.html">LOG IN</a>
+      <a href="login-page.php">LOG IN</a>
     </div>
     <div class="content">
       <div class="progress-bar">

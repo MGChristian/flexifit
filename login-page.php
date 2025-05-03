@@ -12,7 +12,7 @@ check_if_logged_in();
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FlexiFit</title>
-  <link rel="stylesheet" href="css/login-page.css" />
+  <link rel="stylesheet" href="./css/login-page.css" />
   <link rel="icon" href="./assets/logo.png" />
 </head>
 
@@ -40,7 +40,9 @@ check_if_logged_in();
     <div class="form-container">
       <h2>LOG IN</h2>
       <form action="./includes/login.inc.php" method="POST">
-        <?php check_login_errors() ?>
+        <div class="error-wrapper">
+          <?php check_login_errors() ?>
+        </div>
         <input
           name="username"
           type="text"

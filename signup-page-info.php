@@ -34,7 +34,7 @@ check_if_logged_in();
     <div class="nav">
       <a href="./">HOME</a>
       <span>|</span>
-      <a href="login-page.html">LOG IN</a>
+      <a href="login-page.php">LOG IN</a>
     </div>
     <div class="form-container">
       <div class="progress-bar">
@@ -45,9 +45,9 @@ check_if_logged_in();
         <div class="step"></div>
       </div>
       <h2>SIGN UP</h2>
-      <?php
-      check_signup_errors();
-      ?>
+      <div class="error-wrapper">
+          <?php check_signup_errors() ?>
+      </div>
       <form action="./includes/signup_first.inc.php" method="POST">
         <input
           name="firstName"
@@ -65,7 +65,10 @@ check_if_logged_in();
           required />
         <input
           name="birthdate"
-          type="date"
+          type="text"
+          placeholder="DOB"
+          onfocus="(this.type='date')"
+          onblur="(this.type='text')"
           autocomplete="off"
           id="birthdate"
           required />
