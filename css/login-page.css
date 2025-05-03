@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 
 /* General Reset */
 * {
@@ -111,6 +113,7 @@ body {
   color: #fdd835;
   text-decoration: none;
   margin: 0 10px;
+  font-weight: 500;
 }
 
 .nav a:hover {
@@ -131,7 +134,7 @@ body {
 
 .form-container h2 {
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
@@ -166,14 +169,9 @@ body {
   color: #000000;
 }
 
-.form-container input:hover {
-  border: 1px solid #000000;
-}
-
 .form-container input:focus {
   outline: none;
   border: 1.5px solid #ffcc00;
-  background: rgb(50, 50, 50);
 }
 
 .form-container button {
@@ -252,7 +250,7 @@ body {
   width: 50px;
   height: 50px;
   background: url("../assets/login-email.svg") center/contain no-repeat;
-  color: #fdd835;
+  color: #d4ae04;
   margin: 5px;
 }
 
@@ -357,4 +355,17 @@ body {
 .message .title {
   font-weight: 500;
   margin-bottom: 5px;
+}
+
+.form-error {
+  color: rgb(255, 83, 83);
+  font-size: small;
+  font-weight: normal;
+  font-family: "Montserrat", sans-serif;
+}
+
+.error-wrapper {
+  height: 20px;
+  margin-bottom: 5px;
+  overflow: hidden;
 }

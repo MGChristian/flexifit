@@ -37,6 +37,12 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if (is_password_not_matching($password, $confirm)) {
             $errors["password_not_matching"] = "The password is not matching!";
         }
+        $password_strength_errors = is_password_strong($password);
+        if (!empty($password_strength_errors)) {
+            foreach ($password_strength_errors as $key => $msg) {
+                $errors["weak_password_" . $key] = $msg;
+            }
+        }
 
         if ($errors) {
             $_SESSION['error_signup'] = $errors;
@@ -127,6 +133,29 @@ function is_password_not_matching($password, $confirm)
         return false;
     }
 }
+
+function is_password_strong($password) {
+    $errors = [];
+
+    if (strlen($password) < 8) {
+        $errors[] = "Password must be at least 8 characters.";
+    }
+
+    if (!preg_match('/[A-Z]/', $password)) {
+        $errors[] = "Password must contain at least one uppercase letter.";
+    }
+
+    if (!preg_match('/[0-9]/', $password)) {
+        $errors[] = "Password must contain at least one number.";
+    }
+
+    if (!preg_match('/[\W_]/', $password)) {
+        $errors[] = "Password must contain at least one special character.";
+    }
+
+    return $errors;
+}
+
 
 function generateOTP()
 {
