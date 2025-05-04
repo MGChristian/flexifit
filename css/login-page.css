@@ -1,8 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-
-/* General Reset */
 * {
   margin: 0;
   padding: 0;
@@ -32,7 +30,6 @@ body {
   }
 }
 
-/* Left Section */
 .left-section {
   height: 100vh;
   width: 50%;
@@ -79,7 +76,6 @@ body {
   font-weight: 300;
 }
 
-/* Right Section */
 .right-section {
   height: 100%;
   flex: 1;
@@ -198,13 +194,13 @@ body {
   text-decoration: none;
 }
 
-.form-container .reset-link {
-  color: #ffcc00;
-}
-
 .form-container a:hover {
   color: #ffcc00;
   text-decoration: underline;
+}
+
+.form-container .reset-link {
+  color: #ffcc00;
 }
 
 .form-container p {
@@ -214,25 +210,6 @@ body {
 
 .form-container p {
   display: absolute;
-}
-
-.progress-indicator {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 20px;
-  width: 100%;
-}
-
-.progress-indicator span {
-  display: block;
-  width: 20px;
-  height: 20px;
-  background-color: #d3d3d3;
-}
-
-.progress-indicator .active {
-  background-color: #f4ce00;
 }
 
 .email-notification {
@@ -368,4 +345,87 @@ body {
   height: 20px;
   margin-bottom: 5px;
   overflow: hidden;
+}
+
+@media only screen and (max-width: 1200px) {
+  
+  body {
+    flex-direction: column;
+    height: auto;
+    overflow-y: auto;
+    background: none;
+    background-color: #1f1f1f;
+  }
+
+  .left-section {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    padding: 20px 20px;
+    align-items: start;
+    text-align: start;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: url("../assets/login-bg.png") no-repeat center / 100% 100%;
+  }
+
+  .branding {
+    margin-bottom: 80px;
+    justify-content: start;
+  }
+
+  .branding h1 {
+    font-size: normal;
+    font-weight: 300;
+  }
+
+  .motto h2 {
+    font-size: 1.8rem;
+    font-weight: 300;
+  }
+
+  .motto p {
+    font-size: 14px;
+    font-weight: normal;
+  }
+
+  .right-section {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    box-shadow: rgba(255, 255, 255, 0.25) 0px 50px 100px 0px inset;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .nav {
+    position: static;
+    margin-bottom: 10px;
+    justify-content: center;
+  }
+
+  .form-container {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .form-container h2 {
+    font-size: x-large;
+    font-weight: 400;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .form-container a {
+    color:#fdd835;
+    font-weight: 400;
+  }
+
 }

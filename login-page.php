@@ -63,7 +63,6 @@ check_if_logged_in();
     </div>
   </div>
 </body>
-
 </html>
 
 <?php

@@ -26,93 +26,66 @@ $isLoggedIn = isset($_SESSION['id']);
 
   <header class="header">
     <div class="header-content">
-      <h1>HOW IT WORKS</h1>
+      <h1>FREQUENTLY ASKED QUESTIONS</h1>
     </div>
   </header>
-  <div class="steps-container">
-    <div class="step">
-      <div class="step-content">
-        <div class="step-number">STEP 1</div>
-        <h2>Create an Account</h2>
-        <p>
-          In order for you to book a class or session you need to have an
-          account first. To create an account you just need to click the the
-          yellow button at the top-right of the website that says “JOIN NOW”
-        </p>
-      </div>
-      <img src="assets/step1.jpg" alt="Step 1 Screenshot" />
-    </div>
 
-    <div class="step">
-      <div class="step-content">
-        <div class="step-number">STEP 2</div>
-        <h2>Fill in the Signup Form</h2>
-        <p>
-          After clicking the “JOIN NOW” button our website will direct you to
-          our SIGN UP page, fill up all the information needed before you
-          proceeds to the next step. Click all the empty boxes and put your
-          information by typing. Just finish all the steps in creating an
-          account and make sure to verify your account logging it to our
-          website
-        </p>
-      </div>
-      <img src="assets/step2.jpg" alt="Step 2 Screenshot" />
-    </div>
+  <div class="accordion">
+    <?php
+    $faqs = [
+      "What is flexifit?" => "Welcome to FlexiFit! We are here to help you with your workout needs, here in FlexiFit we provide a variety of exercises and workouts that you can follow or share. We aim to help people manage their workouts easily and quickly get in shape.",
+      "Want to know how to perform a certain exercise?" => "1. Go to exercise page <br />
+                                                            2. View all featured exercises or look for a certain muscle group <br />
+                                                            3. Click the exercise that you want <br />
+                                                            4. Follow the steps or videos",
+      "Want to follow a certain workout routine?" => "1. Go to workouts page <br />
+                                                      2. View all featured workouts or look for a certain category <br />
+                                                      3. Click on the workout that you want <br />
+                                                      4. Follow the steps or workout along with the video",
+      "Want to follow a workout routine of an instructor?" => "1. Go to the instructors page <br />
+                                                              2. View all the instructors <br />
+                                                              3. Look for instructors with the specialties you like <br />
+                                                              4. View their profile <br />
+                                                              5. Look at the workout routines they have made",
+      "Want to view your progress?" => "1. If you haven't already, log in to your account or create one <br />
+                                        2. Go to your dashboard <br />
+                                        3. Here you can view your workouts completed, workout collection",
+      "Want to share your workout collections?" => "1. Create a collection <br />
+                                                    2. Add the workouts you created <br />
+                                                    3. Share the workout to others"
+    ];
 
-    <div class="step">
-      <div class="step-content">
-        <div class="step-number">STEP 3</div>
-        <h2>Log In to Your Account</h2>
-        <p>After creating an account log in your account.</p>
+    foreach ($faqs as $question => $answer): ?>
+      <div class="accordion-item">
+        <button class="accordion-header">
+          <span class="icon">+</span> <?= $question ?>
+        </button>
+        <div class="accordion-body"><?= $answer ?></div>
       </div>
-      <img src="assets/step3.jpg" alt="Step 3 Screenshot" />
-    </div>
-
-    <div class="step">
-      <div class="step-content">
-        <div class="step-number">STEP 4</div>
-        <h2>View and Select a Schedule</h2>
-        <p>
-          You can now view the schedule available, to do that all you need to
-          do is to stroll down until you see the provided picture shown in
-          this step. once you see it choose the last one and click the “Learn
-          more”.
-        </p>
-      </div>
-      <img src="assets/step4.jpg" alt="Step 4 Screenshot" />
-    </div>
-
-    <div class="step">
-      <div class="step-content">
-        <div class="step-number">STEP 5</div>
-        <h2>View and Select a Schedule</h2>
-        <p>
-          You can see the full details about the class such as the instructor,
-          time and date, place , Duration , intensity and the class
-          description if you click the “View details”. if you are now sure
-          about the schedule you can book that schedule by clicking the “BOOK
-          NOW ”..
-        </p>
-      </div>
-      <img src="assets/step5.jpg" alt="Step 5 Screenshot" />
-    </div>
-
-    <div class="step">
-      <div class="step-content">
-        <div class="step-number">STEP 6</div>
-        <h2>CONFIRM BOOKING</h2>
-        <p>
-          To finish your booking, choose the method of payment and fill up all
-          the needed information, after fill up all the information and the
-          method of payment you can now click the “Pay now” button
-        </p>
-      </div>
-      <img src="assets/step6.jpg" alt="Step 6 Screenshot" />
-    </div>
+    <?php endforeach; ?>
   </div>
 
   <?php require_once "./components/footer.php" ?>
   <?php require_once "./components/navbar_scripts.php" ?>
-</body>
 
+  <script>
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const body = header.nextElementSibling;
+        const icon = header.querySelector('.icon');
+        const isOpen = body.style.maxHeight;
+
+        if (isOpen) {
+          body.style.maxHeight = null;
+          body.classList.remove('open');
+          icon.textContent = '+';
+        } else {
+          body.style.maxHeight = body.scrollHeight + "px";
+          body.classList.add('open');
+          icon.textContent = '−';
+        }
+      });
+    });
+  </script>
+</body>
 </html>
