@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             exit();
         } else {
             $conn->commit();
-            header("Location: ../exercise-edit.php?id={$exerciseId}&status=success");
+            header("Location: ../edit-exercise.php?id={$exerciseId}&status=success");
             exit();
         }
     } catch (\Throwable $th) {

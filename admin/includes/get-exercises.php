@@ -37,12 +37,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
 function view_button($id)
 {
-    return "<a href='./exercise-edit.php?id={$id}'><button type='button' class='data-table-button view' data-target='view-instructor'> <i class='fa fa-eye' aria-hidden='true'></i> </button></a>";
+    return "<a href='./edit-exercise.php?id={$id}'><button type='button' class='data-table-button view' data-target='view-instructor'> <i class='fa fa-eye' aria-hidden='true'></i> </button></a>";
 }
 
 function edit_button($id)
 {
-    return "<a href='./exercise-edit.php?id={$id}'><button type='button' class='data-table-button edit' data-target='edit-instructor'> <i class='fa fa-pencil-square-o' aria-hidden='true'></i> </button></a>";
+    return "<a href='./edit-exercise.php?id={$id}'><button type='button' class='data-table-button edit' data-target='edit-instructor'> <i class='fa fa-pencil-square-o' aria-hidden='true'></i> </button></a>";
 }
 
 function archive_button($id)

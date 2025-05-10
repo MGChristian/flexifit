@@ -30,7 +30,7 @@ class Exercise
 
     public function get_exercise()
     {
-        $stmt = $this->conn->prepare("SELECT * FROM `exercise` WHERE ID = ?");
+        $stmt = $this->conn->prepare("SELECT * FROM `exercise` WHERE ID = ? ");
         $stmt->bind_param("i", $this->exerciseId);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -44,7 +44,7 @@ class Exercise
 
     public function get_equipments()
     {
-        $stmt = $this->conn->prepare("SELECT * FROM `equipment`");
+        $stmt = $this->conn->prepare("SELECT * FROM `equipment` ORDER BY `equipment_name`");
         $stmt->execute();
         $result = $stmt->get_result();
         $stmt->close();
@@ -90,7 +90,7 @@ class Exercise
 
     public function get_categories()
     {
-        $stmt = $this->conn->prepare("SELECT * FROM `category`");
+        $stmt = $this->conn->prepare("SELECT * FROM `category` ORDER BY `category_name`");
         $stmt->execute();
         $result = $stmt->get_result();
         $stmt->close();

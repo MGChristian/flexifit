@@ -22,7 +22,7 @@ if (isset($_SESSION['error_login'])) {
 </head>
 
 <body>
-    <?php include "./modals/categories-modal.php" ?>
+    <?php include "./modals/workouts-modal.php" ?>
     <!-- header -->
     <?php include "./components/navbar.php" ?>
     <!-- header -->
@@ -45,7 +45,7 @@ if (isset($_SESSION['error_login'])) {
                 <div class="main-title-button">
                     <h3>CURRENT WORKOUTS LIST</h3>
                     <div class="main-title-button-container">
-                        <button type="button" class="filterOpen add-button" data-target="add-category">+ADD WORKOUTS</button>
+                        <button type="button" class="filterOpen add-button" data-target="add-workout">+ADD WORKOUTS</button>
                     </div>
                 </div>
                 <hr>
@@ -54,8 +54,10 @@ if (isset($_SESSION['error_login'])) {
                         <thead>
                             <tr class="table-header">
                                 <th>#</th>
-                                <th>Category Name</th>
-                                <th>Category Description</th>
+                                <th>Workout Name</th>
+                                <th>Description</th>
+                                <th>Difficulty</th>
+                                <th>Status</th>
                                 <th>Date Created</th>
                                 <th>Action</th>
                             </tr>
@@ -70,15 +72,21 @@ if (isset($_SESSION['error_login'])) {
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             new DataTable("#myTable", {
-                ajax: './includes/get-category.php',
+                ajax: './includes/get-workouts.php',
                 columns: [{
                         data: "id"
                     },
                     {
-                        data: "categoryName"
+                        data: "workoutName"
                     },
                     {
-                        data: "categoryDescription"
+                        data: "description"
+                    },
+                    {
+                        data: "difficulty"
+                    },
+                    {
+                        data: "status"
                     },
                     {
                         data: "dateCreated"

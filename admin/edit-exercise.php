@@ -25,14 +25,13 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
 </head>
 
 <body>
-    <?php include "./modals/exercises-modal.php" ?>
     <!-- header -->
     <?php include "./components/navbar.php" ?>
     <!-- header -->
     <div class="grid-container">
         <!-- classes -->
         <?php
-        require_once("./includes/exercise-edit.php");
+        require_once("./includes/edit-exercise.php");
         $exercise = new Exercise($conn, $exerciseId);
         if (!$exercise->is_id_valid()) {
             header("location: ./exercises.php");
