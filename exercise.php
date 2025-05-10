@@ -1,11 +1,7 @@
 <?php
-
-require_once "./includes/config_session.inc.php";
-
-$isLoggedIn = isset($_SESSION['id']);
-
+require_once("./includes/auth.php");
+// Check if id is set, if it is not go back to explore exercise page
 isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("location: ./explore-exercises.php");
-
 ?>
 
 <!DOCTYPE html>

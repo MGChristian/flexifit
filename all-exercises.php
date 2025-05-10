@@ -1,12 +1,7 @@
 <?php
-
-
-require_once "./includes/config_session.inc.php";
-
-$isLoggedIn = isset($_SESSION['id']);
-
+require_once("./includes/auth.php");
+// Placeholder for when checking available exercise
 $exerciseLetters = range("A", "Z");
-
 ?>
 
 <!DOCTYPE html>

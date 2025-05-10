@@ -1,10 +1,6 @@
 <?php
-
-require_once "./includes/config_session.inc.php";
-require_once "./includes/explore-exercises.php";
-
-$isLoggedIn = isset($_SESSION['id']);
-
+require_once("./includes/auth.php");
+require_once("./includes/explore-exercises.php");
 ?>
 
 <!DOCTYPE html>

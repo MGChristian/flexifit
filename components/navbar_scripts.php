@@ -1,4 +1,7 @@
-<?php if ($isLoggedIn): ?>
+<?php
+// Check if user is logged in, to add the profile dropdown script
+if ($isLoggedIn):
+?>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             // OPEN USER PROFILE DROPDOWN

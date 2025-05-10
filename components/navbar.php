@@ -1,23 +1,5 @@
 <?php
 
-require_once("./includes/config.php");
-
-if (!isset($isLoggedIn)) {
-    $isLoggedIn = isset($_SESSION['id']);
-}
-
-if (!isset($userData) && $isLoggedIn) {
-    require_once "./includes/config_session.inc.php";
-    $user_id = $_SESSION['id'];
-    $stmt = $conn->prepare("SELECT * FROM `user` WHERE `ID` = ?");
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($result && $result->num_rows > 0) {
-        $userData = $result->fetch_assoc();
-    }
-}
-
 $url = basename($_SERVER['PHP_SELF']);
 
 ?>
@@ -158,7 +140,7 @@ $url = basename($_SERVER['PHP_SELF']);
     <a href="explore-exercises.php">
         <li <?php echo ($url && $url === 'explore-exercises.php' || $url === 'all-exercises.php' || $url === 'exercise.php') ? 'class="active"' : ''; ?>>EXERCISES</li>
     </a>
-    <a href="Instructors.php">
+    <a href="instructors.php">
         <li <?php echo ($url && $url === 'instructors.php') ? 'class="active"' : ''; ?>>INSTRUCTORS</li>
     </a>
     <a href="how-it-works.php">

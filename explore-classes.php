@@ -1,11 +1,7 @@
 <?php
-
-
-require_once "./includes/config_session.inc.php";
-
-$isLoggedIn = isset($_SESSION['id']);
-
+require_once("./includes/auth.php");
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
