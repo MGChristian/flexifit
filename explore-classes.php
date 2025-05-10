@@ -10,13 +10,12 @@ require_once("./includes/auth.php");
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Explore Classes</title>
   <?php require_once "./components/global_css.php" ?>
-  <link rel="stylesheet" href="css/ExploreClasses.css">
+  <link rel="stylesheet" href="./css/explore-classes.css">
 </head>
 
 <body>
   <!-- Navigation Header -->
   <?php require_once "./components/navbar.php" ?>
-
 
   <header class="header">
     <div class="header-content">
@@ -27,7 +26,7 @@ require_once("./includes/auth.php");
 
   <div class="search-container">
     <input type="text" class="search-bar" placeholder="Search...">
-    <button class="search-btn"><i class="fas fa-search"></i></button>
+    <button class="search-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
   </div>
 
   <!-- SETS THE MAXIMUM WIDTH TO 1200px -->

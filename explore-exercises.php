@@ -11,7 +11,7 @@ require_once("./includes/explore-exercises.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explore Classes</title>
     <?php require_once "./components/global_css.php" ?>
-    <link rel="stylesheet" href="css/ExploreClasses.css">
+    <link rel="stylesheet" href="css/explore-classes.css">
 </head>
 
 <body>

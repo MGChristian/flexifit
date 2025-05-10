@@ -12,7 +12,7 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explore Classes</title>
     <?php require_once "./components/global_css.php" ?>
-    <link rel="stylesheet" href="css/ExercisesPage.css">
+    <link rel="stylesheet" href="./css/exercise-page.css">
 </head>
 
 <body>
