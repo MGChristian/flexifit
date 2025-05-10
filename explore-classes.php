@@ -2,7 +2,6 @@
 require_once("./includes/auth.php");
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 

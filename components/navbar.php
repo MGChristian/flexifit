@@ -28,7 +28,7 @@ $url = basename($_SERVER['PHP_SELF']);
                 <a href=<?= check_dashboard(); ?>>
                     <div class="dropdown-item">
                         <div class="option">
-                            <box-icon name="dashboard" type="solid"></box-icon>
+                            <i class="fa fa-tachometer" aria-hidden="true"></i>
                             <p>Dashboard</p>
                         </div>
                         <box-icon name="chevron-right"></box-icon>
@@ -38,7 +38,7 @@ $url = basename($_SERVER['PHP_SELF']);
                 <a href="myProfile.php">
                     <div class="dropdown-item">
                         <div class="option">
-                            <box-icon name="user-circle" type="solid"></box-icon>
+                            <i class="fa fa-user" aria-hidden="true"></i>
                             <p>My Profile</p>
                         </div>
                         <box-icon name="chevron-right"></box-icon>
@@ -47,7 +47,7 @@ $url = basename($_SERVER['PHP_SELF']);
                 <!-- Records page -->
                 <div class="dropdown-item">
                     <div class="option">
-                        <box-icon name="folder-open" type="solid"></box-icon>
+                        <i class="fa fa-folder-open" aria-hidden="true"></i>
                         <a href="myRecords.html">
                             <p>My Records</p>
                         </a>
@@ -57,7 +57,7 @@ $url = basename($_SERVER['PHP_SELF']);
                 <!-- User logout -->
                 <div class="dropdown-item">
                     <div class="option">
-                        <box-icon name="log-out" type="solid"></box-icon>
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
                         <a href="./logout.php">
                             <p>Log Out</p>
                         </a>
@@ -100,7 +100,7 @@ $url = basename($_SERVER['PHP_SELF']);
                 <a href="myProfile.php">
                     <div class="dropdown-item">
                         <div class="option">
-                            <box-icon name="user-circle" type="solid"></box-icon>
+                            <i class="fa fa-tachometer" aria-hidden="true"></i>
                             <p>My Profile</p>
                         </div>
                         <box-icon name="chevron-right"></box-icon>
@@ -109,7 +109,7 @@ $url = basename($_SERVER['PHP_SELF']);
                 <!-- Records page -->
                 <div class="dropdown-item">
                     <div class="option">
-                        <box-icon name="folder-open" type="solid"></box-icon>
+                        <i class="fa fa-folder-open" aria-hidden="true"></i>
                         <a href="myRecords.html">
                             <p>My Records</p>
                         </a>
@@ -119,7 +119,7 @@ $url = basename($_SERVER['PHP_SELF']);
                 <!-- User logout -->
                 <div class="dropdown-item">
                     <div class="option">
-                        <box-icon name="log-out" type="solid"></box-icon>
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
                         <a href="./logout.php">
                             <p>Log Out</p>
                         </a>

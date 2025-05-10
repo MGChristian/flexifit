@@ -17,16 +17,16 @@
             <h3 class="footer-social-title">FOLLOW US</h3>
             <div class="footer-social-links">
                 <a href="#" class="footer-social-icon">
-                    <i class="fab fa-facebook"></i>
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
                 </a>
                 <a href="#" class="footer-social-icon">
-                    <i class="fab fa-tiktok"></i>
+                    <i class="fa fa-youtube-play" aria-hidden="true"></i>
                 </a>
                 <a href="#" class="footer-social-icon">
-                    <i class="fab fa-twitter"></i>
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
                 </a>
                 <a href="#" class="footer-social-icon">
-                    <i class="fab fa-instagram"></i>
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
