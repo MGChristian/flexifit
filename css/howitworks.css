@@ -1,91 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 body {
   background-color: #fcc707;
-}
-
-
-/* Navigation Bar */
-.navbar {
-  display: flex;
-  justify-content: space-between; /* Keeps "Join Now" button on the right */
-  align-items: center;
-  padding: 10px 20px !important;
-  background-color: #ffffff;
-  color: white;
-}
-
-.navigation-left {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-}
-
-.logo img {
-  height: 40px; /* Adjust size as needed */
-  margin-right: 5px; /* Reduced margin for tighter spacing */
-}
-
-.nav-container {
-  display: flex;
-  align-items: flex-start; /* Align logo and links vertically */
-  gap: 20px; /* Minimal space between logo and links */
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: 17px; /* Reduced gap between links */
-  margin: 0; /* Remove default margin */
-  padding: 0; /* Remove default padding */
-  position: relative; /* Allows fine-tuning of position */
-  top: -2px; /* Slight upward adjustment */
-}
-
-.nav-links li {
-  margin: 0; /* Align links evenly without extra spacing */
-}
-
-.nav-links a {
-  color: black;
-  text-decoration: none;
-  font-size: 0.875rem; /* Smaller font size */
-  transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: #ffd700; /* Highlight color on hover */
-}
-
-.join-now {
-  font-family: "Oxanium";
-  background-color: #ffd700; /* Yellow background */
-  color: #fff; /* Dark text */
-  padding: 10px 20px;
-  border: none;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.join-now a {
-  color: #fff;
-}
-
-.join-now:hover {
-  background-color: #e6c200; /* Darker yellow on hover */
-}
-
-.user-icon {
-  display: flex;
-  align-items: center;
 }
 
 /* Header Section */
@@ -104,7 +20,7 @@ body {
 
 .header-content h1 {
   font-size: 2.5rem; /* Adjust font size as needed */
-  font-weight:600;
+  font-weight: 600;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
   margin-top: 80px;
 }
@@ -157,4 +73,3 @@ body {
   padding: 0 40px;
   margin-bottom: 10px;
 }
-

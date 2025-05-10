@@ -18,7 +18,6 @@ $exerciseLetters = range("A", "Z");
     <title>Explore Classes</title>
     <?php require_once "./components/global_css.php" ?>
     <link rel="stylesheet" href="css/all-exercises.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
