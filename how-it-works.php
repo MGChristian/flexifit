@@ -10,7 +10,7 @@ require_once("./includes/auth.php");
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>How It Works</title>
   <?php require_once "./components/global_css.php" ?>
-  <link rel="stylesheet" href="./css/howitworks.css" />
+  <link rel="stylesheet" href="./css/how-it-works.css" />
 </head>
 
 <body>
