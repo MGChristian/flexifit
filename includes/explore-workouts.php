@@ -10,6 +10,7 @@ function get_workouts($conn)
     if ($result->num_rows > 0) {
         $exerciseRows = [];
         while ($rows = $result->fetch_assoc()) {
+            isset($rows['duration']) ? $rows['duration'] : $rows['duration'] = '00:00:00';
             $exerciseRows[] = $rows;
         }
         return $exerciseRows;
