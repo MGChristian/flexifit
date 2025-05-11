@@ -130,7 +130,7 @@ textarea {
 /* SETS */
 .sets {
   border: 1px solid;
-  background-color: var(--light-grey);
+  background-color: var(--dark-grey);
 }
 
 .set-number {
@@ -142,9 +142,24 @@ textarea {
   flex-direction: column;
 }
 
-.set-content {
+.set-content-container {
   padding: 1rem;
-  background-color: var(--dark-grey);
+  background-color: var(--light-grey);
+  display: flex;
+  justify-content: space-between;
+}
+
+.set-content {
+  width: 100%;
+}
+
+.removeExercise {
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+.removeExercise:hover {
+  color: var(--red);
 }
 
 /* EXERCISE */
@@ -168,6 +183,10 @@ textarea {
   flex-direction: column;
 }
 
+.set-exercise-input > .duration {
+  display: flex;
+}
+
 .set-exercise-input input {
   height: 100%;
   width: 100px;
@@ -180,7 +199,7 @@ textarea {
   gap: 0.5rem;
   border-top: 1px solid;
   padding: 1rem;
-  background-color: var(--dark-grey);
+  background-color: var(--light-grey);
 }
 
 .set-buttons p {

@@ -58,7 +58,7 @@ class Workout
 
     public function get_exercise_list($workoutSet)
     {
-        $stmt = $this->conn->prepare("SELECT * FROM `workout_exercises` WHERE workoutID = ? AND `workoutSet` = ?");
+        $stmt = $this->conn->prepare("SELECT `workout_exercises`.*, `exercise`.`exerciseName` FROM `workout_exercises` INNER JOIN `exercise` ON `workout_exercises`.`exerciseID` = `exercise`.`ID` WHERE workoutID = ? AND `workoutSet` = ?");
         $stmt->bind_param("ii", $this->workoutId, $workoutSet);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -68,5 +68,19 @@ class Workout
             $exerciseList[] = $row;
         }
         return $exerciseList;
+    }
+
+    public function get_exercise_options($selected)
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM `exercise` WHERE NOT `ID` = ? ORDER BY `exerciseName`");
+        $stmt->bind_param("i", $selected);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+        $exerciseOptionList = [];
+        while ($row = $result->fetch_assoc()) {
+            $exerciseOptionList[] = $row;
+        }
+        return $exerciseOptionList;
     }
 }

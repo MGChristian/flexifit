@@ -97,63 +97,52 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutId = $_GET['id'] : header("l
                                     <div class="set-exercise-list">
                                         <?php
                                         $exerciseList = $workout->get_exercise_list($set['workoutSet']);
-                                        foreach ($exerciseList as $exercise):
+                                        foreach ($exerciseList as $index => $exercise):
+                                            $duration = explode(":", $exercise['duration']);
+                                            $hours = $duration[0];
+                                            $minutes = $duration[1];
+                                            $seconds = $duration[2];
                                         ?>
-                                            <div class="set-content">
-                                                <input type="number" name="set[<?= $set['workoutSet'] ?>][exericse][1][set]" disabled value="1" class="hidden" />
-                                                <div class="set-exercise">
-                                                    <select disabled name="set[<?= $set['workoutSet'] ?>][exericse][1][exerciseID]">
-                                                        <option value="<?= $exercise['exerciseID'] ?>" selected><?= $exercise['exerciseID'] ?></option>
-                                                    </select>
-                                                    <div class="set-exercise-inputs-container">
-                                                        <div class="set-exercise-input">
-                                                            <label>Duration</label>
-                                                            <input disabled type="time" value="<?= $exercise['duration'] ?>" name="set[<?= $set['workoutSet'] ?>][exericse][1][time]">
-                                                        </div>
-                                                        <div class="set-exercise-input">
-                                                            <label>Reps</label>
-                                                            <input disabled type="number" value="<?= $exercise['reps'] ?>" name="set[<?= $set['workoutSet'] ?>][exericse][1][reps]">
+                                            <div class="set-content-container">
+                                                <div class="set-content">
+                                                    <input type="number" class="hidden" disabled name="removeID[]" value="<?= $exercise['ID'] ?>" />
+                                                    <input type="number" class="hidden" name="updatedSet[<?= $set['workoutSet'] ?>][exericse][<?= $index ?>][updateID]" value="<?= $exercise['ID'] ?>" />
+                                                    <div class="set-exercise">
+                                                        <select name="updatedSet[<?= $set['workoutSet'] ?>][exericse][<?= $index ?>][exerciseID]">
+                                                            <option value="<?= $exercise['exerciseID'] ?>" selected><?= $exercise['exerciseName'] ?></option>
+                                                            <?php
+                                                            $exerciseOptions = $workout->get_exercise_options($exercise['exerciseID']);
+                                                            foreach ($exerciseOptions as $option):
+                                                            ?>
+                                                                <option value="<?= $option['ID'] ?>"><?= $option['exerciseName'] ?></option>
+                                                            <?php endforeach; ?>
+                                                        </select>
+                                                        <div class="set-exercise-inputs-container">
+                                                            <div class="set-exercise-input">
+                                                                <label>Duration (HH:MM:SS)</label>
+                                                                <div class="duration">
+                                                                    <input type="number" min="0" max="23" value="<?= $hours ?>" name="updatedSet[<?= $set['workoutSet'] ?>][exericse][<?= $index ?>][hours]">
+                                                                    <input type="number" min="0" max="59" value="<?= $minutes ?>" name="updatedSet[<?= $set['workoutSet'] ?>][exericse][<?= $index ?>][minutes]">
+                                                                    <input type="number" min="0" max="59" value="<?= $seconds ?>" name="updatedSet[<?= $set['workoutSet'] ?>][exericse][<?= $index ?>][seconds]">
+                                                                </div>
+                                                            </div>
+                                                            <div class="set-exercise-input">
+                                                                <label>Reps</label>
+                                                                <input type="number" value="<?= $exercise['reps'] ?>" name="updatedSet[<?= $set['workoutSet'] ?>][exericse][<?= $index ?>][reps]">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <i class="fa-times-circle-o fa removeExercise" aria-hidden="true"></i>
                                             </div>
                                         <?php endforeach; ?>
                                     </div>
-                                </div>
-                            <?php endforeach; ?>
-                            <!-- <div class="sets">
-                                <input type="text" value="1" class="hidden set-number" />
-                                <div class="set-number">
-                                    <h3>Set 1</h3>
-                                </div>
-                                <div class="set-exercise-list">
-                                    <div class="set-content">
-                                        <input type="number" name="set[1][exericse][1][workoutSet]" value="1" class="hidden" />
-                                        <div class="set-exercise">
-                                            <select name="set[1][exericse][1][exerciseID]">
-                                                <option value="1" selected>Push Ups - Christian Gutierrez</option>
-                                            </select>
-                                            <div class="set-exercise-inputs-container">
-                                                <div class="set-exercise-input">
-                                                    <label>Duration</label>
-                                                    <input type="time" name="set[1][exericse][1][time]">
-                                                </div>
-                                                <div class="set-exercise-input">
-                                                    <label>Reps</label>
-                                                    <input type="number" name="set[1][exericse][1][reps]">
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="set-buttons">
+                                        <p class="add-exercise">ADD EXERCISE</p>
+                                        <p class="add-rest">ADD REST</p>
                                     </div>
                                 </div>
-
-                                <div class="set-buttons">
-                                    <p class="add-exercise">ADD EXERCISE</p>
-                                    <p>ADD REST</p>
-                                    <p>CLEAR SET</p>
-                                    <p>REMOVE SET</p>
-                                </div>
-                            </div> -->
+                            <?php endforeach; ?>
                         </div>
                         <div class="workout-step-add">
                             <p>ADD SET</p>
@@ -169,30 +158,13 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutId = $_GET['id'] : header("l
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const setContainer = document.querySelector(".workout-steps");
+            // BUTTON FOR ADDING A NEW SET
             const addSetButton = document.querySelector(".workout-step-add");
             addSetButton.addEventListener("click", addSet);
 
-            // THIS IS USED TO GET THE LIST OF EXERCISES AVAILABLE
-            async function getExercises() {
-                const url = "./includes/get-exercises-list.php";
-                try {
-                    const response = await fetch(url);
-                    if (!response.ok) {
-                        throw new Error(`Response status: ${response.status}`);
-                    }
-
-                    const json = await response.json();
-                    return json.map((exercise) => {
-                        return (`<option value='${exercise.ID}'>${exercise.exerciseName}</option>`);
-                    })
-                } catch (error) {
-                    console.error(error.message);
-                }
-            }
-
-
+            // FUNCTION FOR ADDING A NEW SET
             function addSet() {
+                const setContainer = document.querySelector(".workout-steps");
                 const setCount = document.querySelectorAll(".sets").length;
                 const setDiv = document.createElement("div");
                 setDiv.classList.add("sets");
@@ -216,21 +188,24 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutId = $_GET['id'] : header("l
 
             }
 
+            // BUTTON FOR ADDING A NEW EXERCISE
             const addExerciseButtons = document.querySelectorAll(".add-exercise");
             addExerciseButtons.forEach((addExerciseButton) => {
                 addExerciseButton.addEventListener("click", () => addExercise(addExerciseButton));
             })
 
+            // FUNCTION FOR HANDLING THE ADDING OF NEW EXERCISE
             async function addExercise(addExerciseButton) {
                 const parent = addExerciseButton.closest(".sets");
                 const setCount = parent.querySelector(".set-number").value;
                 const exerciseContainer = parent.querySelector(".set-exercise-list");
-                const exerciseCount = exerciseContainer.querySelectorAll(".set-content").length;
+                const exerciseCount = exerciseContainer.children.length;
                 const newExercise = document.createElement("div");
                 const exerciseOptions = await getExercises();
-                newExercise.classList.add("set-content");
+                newExercise.classList.add("set-content-container");
                 newExercise.innerHTML = `
-                    <input type="number" name="set[${setCount}][exericse][${exerciseCount + 1}][workoutSet]" value="1" class="hidden" />
+                <div class="set-content">
+                    <input type="number" name="set[${setCount}][exericse][${exerciseCount + 1}][workoutSet]" value="${setCount}" class="hidden" />
                     <div class="set-exercise">
                         <select name="set[${setCount}][exericse][${exerciseCount + 1}][exerciseID]">
                             <option selected disabled> Select an exercise </option>
@@ -239,7 +214,11 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutId = $_GET['id'] : header("l
                         <div class="set-exercise-inputs-container">
                             <div class="set-exercise-input">
                                 <label>Duration</label>
-                                <input type="time" name="set[${setCount}][exericse][${exerciseCount + 1}][time]">
+                                <div class="duration">
+                                    <input type="number" placeholder="HH" min="0" max="23" name="set[${setCount}][exericse][${exerciseCount + 1}][hours]">
+                                    <input type="number" placeholder="MM" min="0" max="59" name="set[${setCount}][exericse][${exerciseCount + 1}][minutes]">
+                                    <input type="number" placeholder="SS" min="0" max="59" name="set[${setCount}][exericse][${exerciseCount + 1}][seconds]">
+                                </div>
                             </div>
                             <div class="set-exercise-input">
                                 <label>Reps</label>
@@ -247,8 +226,59 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutId = $_GET['id'] : header("l
                             </div>
                         </div>
                     </div>
+                </div>
                 `;
+                const removeButton = document.createElement("i");
+                removeButton.classList.add("fa-times-circle-o");
+                removeButton.classList.add("fa");
+                removeButton.classList.add("removeExercise");
+                removeButton.setAttribute("aria-hidden", "true");
+                removeButton.addEventListener("click", () => removeNewExercise(newExercise));
+                newExercise.append(removeButton);
                 exerciseContainer.append(newExercise);
+            }
+
+            // THIS IS USED TO GET THE LIST OF EXERCISES AVAILABLE
+            async function getExercises() {
+                const url = "./includes/get-exercises-list.php";
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        throw new Error(`Response status: ${response.status}`);
+                    }
+
+                    const json = await response.json();
+                    return json.map((exercise) => {
+                        return (`<option value='${exercise.ID}'>${exercise.exerciseName}</option>`);
+                    })
+                } catch (error) {
+                    console.error(error.message);
+                    return [];
+                }
+            }
+
+            // BUTTON FOR REMOVING AN EXISTING EXERCISE
+            const removeExerciseButton = document.querySelectorAll(".removeExercise");
+            removeExerciseButton.forEach((remove) => {
+                const inputContainer = remove.closest(".set-content-container");
+                remove.addEventListener("click", () => removeExercise(inputContainer));
+            })
+
+            function removeExercise(inputContainer) {
+                inputContainer.classList.add("hidden");
+                const inputs = inputContainer.querySelectorAll("input");
+                const selects = inputContainer.querySelectorAll("select");
+                inputs.forEach((input) => {
+                    input.disabled = !input.disabled;
+                })
+                selects.forEach((select) => {
+                    select.disabled = !select.disabled;
+                })
+            }
+
+            // BUTTON FOR REMOVING AN EXERCISES THAT HAS NOT BEEN ADDED TO THE DATABASE YET
+            function removeNewExercise(inputContainer) {
+                inputContainer.remove();
             }
         });
     </script>
