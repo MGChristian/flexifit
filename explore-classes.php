@@ -1,5 +1,6 @@
 <?php
 require_once("./includes/auth.php");
+require_once("./includes/explore-workouts.php");
 ?>
 
 <!DOCTYPE html>
@@ -33,17 +34,17 @@ require_once("./includes/auth.php");
   <div class="main-container">
     <h1>FEATURED WORKOUTS</h1>
     <section class="classes-grid">
-      <?php for ($i = 1; $i <= 10; $i++) : ?>
-        <a href="#">
+      <?php foreach (get_workouts($conn) as $rows): ?>
+        <a href="./workout.php?id=<?= htmlspecialchars($rows['ID']) ?>">
           <div class="class-item">
-            <img src="https://picsum.photos/200/200">
+            <img src="./admin/images/workouts/<?= htmlspecialchars($rows['workoutPicUrl']) ?>">
             <div>
-              <p><b>Workout Name</b></p>
-              <p>30 Minutes, Beginner</p>
+              <p><b><?= htmlspecialchars($rows['workoutName']) ?></b></p>
+              <p>Duration: <?= htmlspecialchars($rows['duration']) ?>, <?= htmlspecialchars($rows['difficulty']) ?></p>
             </div>
           </div>
         </a>
-      <?php endfor; ?>
+      <?php endforeach; ?>
     </section>
     <div class="explore-button"><a href="all-workouts.php"><button type="button">VIEW ALL WORKOUTS</button></a></div>
     <br>
