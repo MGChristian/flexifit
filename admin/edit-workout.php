@@ -108,15 +108,18 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutId = $_GET['id'] : header("l
                                                     <input type="number" class="hidden" disabled name="removeID[]" value="<?= $exercise['ID'] ?>" />
                                                     <input type="number" class="hidden" name="updatedSet[<?= $set['workoutSet'] ?>][exericse][<?= $index ?>][updateID]" value="<?= $exercise['ID'] ?>" />
                                                     <div class="set-exercise">
-                                                        <select name="updatedSet[<?= $set['workoutSet'] ?>][exericse][<?= $index ?>][exerciseID]">
-                                                            <option value="<?= $exercise['exerciseID'] ?>" selected><?= $exercise['exerciseName'] ?></option>
-                                                            <?php
-                                                            $exerciseOptions = $workout->get_exercise_options($exercise['exerciseID']);
-                                                            foreach ($exerciseOptions as $option):
-                                                            ?>
-                                                                <option value="<?= $option['ID'] ?>"><?= $option['exerciseName'] ?></option>
-                                                            <?php endforeach; ?>
-                                                        </select>
+                                                        <div>
+                                                            <label>Exercise</label>
+                                                            <select name="updatedSet[<?= $set['workoutSet'] ?>][exericse][<?= $index ?>][exerciseID]">
+                                                                <option value="<?= $exercise['exerciseID'] ?>" selected><?= $exercise['exerciseName'] ?></option>
+                                                                <?php
+                                                                $exerciseOptions = $workout->get_exercise_options($exercise['exerciseID']);
+                                                                foreach ($exerciseOptions as $option):
+                                                                ?>
+                                                                    <option value="<?= $option['ID'] ?>"><?= $option['exerciseName'] ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select>
+                                                        </div>
                                                         <div class="set-exercise-inputs-container">
                                                             <div class="set-exercise-input">
                                                                 <label>Duration (HH:MM:SS)</label>
@@ -207,13 +210,16 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutId = $_GET['id'] : header("l
                 <div class="set-content">
                     <input type="number" name="set[${setCount}][exericse][${exerciseCount + 1}][workoutSet]" value="${setCount}" class="hidden" />
                     <div class="set-exercise">
-                        <select name="set[${setCount}][exericse][${exerciseCount + 1}][exerciseID]">
-                            <option selected disabled> Select an exercise </option>
-                            ${exerciseOptions.join('')}
-                        </select>
+                        <div>
+                            <label>Exercise</label>
+                            <select name="set[${setCount}][exericse][${exerciseCount + 1}][exerciseID]">
+                                <option selected disabled> Select an exercise </option>
+                                ${exerciseOptions.join('')}
+                            </select>
+                        </div>
                         <div class="set-exercise-inputs-container">
                             <div class="set-exercise-input">
-                                <label>Duration</label>
+                                <label>Duration (HH:MM:SS)</label>
                                 <div class="duration">
                                     <input type="number" placeholder="HH" min="0" max="23" name="set[${setCount}][exericse][${exerciseCount + 1}][hours]">
                                     <input type="number" placeholder="MM" min="0" max="59" name="set[${setCount}][exericse][${exerciseCount + 1}][minutes]">
