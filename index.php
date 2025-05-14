@@ -18,6 +18,7 @@ require_once("./includes/auth.php");
   <?php require_once "./components/navbar.php" ?>
 
   <header class="header">
+    <img src="./assets/bg.jpg" alt="Hero Section" />
     <div class="header-content">
       <h1>DARE TO BE GREAT</h1>
       <p>Our goal is to help you achieve the body of your dreams.</p>

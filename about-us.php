@@ -18,6 +18,7 @@ require_once("./includes/auth.php");
   <?php require_once "./components/navbar.php" ?>
 
   <header class="header">
+    <img src="./assets/explore.jpg" />
     <div class="header-content">
       <h1>ABOUT US</h1>
       <p>Your Fitness Journey Starts Here</p>

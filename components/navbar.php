@@ -11,7 +11,7 @@ $url = basename($_SERVER['PHP_SELF']);
         </div>
         <ul class="nav-links">
             <li <?php echo ($url && $url === 'index.php') ? 'class="active"' : ''; ?>><a href="./">HOME</a></li>
-            <li <?php echo ($url && $url === 'explore-classes.php' || $url === 'all-workouts.php') ? 'class="active"' : ''; ?>><a href="explore-classes.php">EXPLORE WORKOUTS</a></li>
+            <li <?php echo ($url && $url === 'explore-workouts.php' || $url === 'all-workouts.php') ? 'class="active"' : ''; ?>><a href="explore-workouts.php">EXPLORE WORKOUTS</a></li>
             <li <?php echo ($url && $url === 'explore-exercises.php' || $url === 'all-exercises.php' || $url === 'exercise.php') ? 'class="active"' : ''; ?>><a href="explore-exercises.php">EXERCISES</a></li>
             <li <?php echo ($url && $url === 'instructors.php' || $url === 'instructor-profile.php') ? 'class="active"' : ''; ?>><a href="instructors.php">INSTRUCTORS</a></li>
             <li <?php echo ($url && $url === 'how-it-works.php') ? 'class="active"' : ''; ?>><a href="how-it-works.php">HOW IT WORKS</a></li>
@@ -134,8 +134,8 @@ $url = basename($_SERVER['PHP_SELF']);
     <a href="./">
         <li <?php echo ($url && $url === 'index.php') ? 'class="active"' : ''; ?>>HOME</li>
     </a>
-    <a href="explore-classes.php">
-        <li <?php echo ($url && $url === 'explore-classes.php') ? 'class="active"' : ''; ?>>EXPLORE WORKOUTS</li>
+    <a href="explore-workouts.php">
+        <li <?php echo ($url && $url === 'explore-workouts.php') ? 'class="active"' : ''; ?>>EXPLORE WORKOUTS</li>
     </a>
     <a href="explore-exercises.php">
         <li <?php echo ($url && $url === 'explore-exercises.php' || $url === 'all-exercises.php' || $url === 'exercise.php') ? 'class="active"' : ''; ?>>EXERCISES</li>

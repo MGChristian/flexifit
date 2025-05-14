@@ -18,6 +18,7 @@ require_once("./includes/auth.php");
   <?php require_once "./components/navbar.php" ?>
 
   <header class="header">
+    <img src="./assets/insbg.jpg" />
     <div class="header-content">
       <h1>INSTRUCTORS</h1>
     </div>

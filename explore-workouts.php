@@ -9,9 +9,9 @@ require_once("./includes/explore-workouts.php");
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Explore Classes</title>
+  <title>Explore Workouts</title>
   <?php require_once "./components/global_css.php" ?>
-  <link rel="stylesheet" href="./css/explore-classes.css">
+  <link rel="stylesheet" href="./css/explore-workouts.css">
 </head>
 
 <body>
@@ -19,8 +19,9 @@ require_once("./includes/explore-workouts.php");
   <?php require_once "./components/navbar.php" ?>
 
   <header class="header">
+    <img src="./assets/explore.jpg" />
     <div class="header-content">
-      <h1>EXPLORE CLASSES</h1>
+      <h1>EXPLORE WORKOUTS</h1>
       <p>Find the Perfect Fitness class for your Fitness Goal</p>
     </div>
   </header>
