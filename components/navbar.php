@@ -35,7 +35,7 @@ $url = basename($_SERVER['PHP_SELF']);
                     </div>
                 </a>
                 <!-- Profile page -->
-                <a href="myProfile.php">
+                <a href="profile.php">
                     <div class="dropdown-item">
                         <div class="option">
                             <i class="fa fa-user" aria-hidden="true"></i>
@@ -97,7 +97,7 @@ $url = basename($_SERVER['PHP_SELF']);
                     </div>
                 </a>
                 <!-- Profile page -->
-                <a href="myProfile.php">
+                <a href="profile.php">
                     <div class="dropdown-item">
                         <div class="option">
                             <i class="fa fa-tachometer" aria-hidden="true"></i>
