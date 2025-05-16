@@ -46,7 +46,7 @@ check_if_logged_in();
       </div>
       <h2>SIGN UP</h2>
       <div class="error-wrapper">
-          <?php check_signup_errors() ?>
+        <?php check_signup_errors() ?>
       </div>
       <form action="./includes/signup_first.inc.php" method="POST">
         <input
@@ -138,7 +138,7 @@ function check_if_logged_in()
         exit();
         break;
       case "instructor":
-        header("location:  ./instructors/");
+        header("location:  ./instructor/");
         exit();
         break;
       case "admin":

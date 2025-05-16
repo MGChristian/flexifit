@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap");
+
+:root {
+  --black: #292929;
+  --yellow: #fcc707;
+  --dark-yellow: #ad861d;
+  --darker-yellow: #9a7511;
+  --red: #dc343d;
+  --green: #0f910f;
+  --light-grey: #f3f3f3;
+  --dark-grey: #aeb0af;
+  --light: 200;
+  --normal: 400;
+  --bold: 700;
+  --light-shadow: 3px 3px 6px 1px rgba(0, 0, 0, 0.05);
+  --shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.15);
+  --primary: #007bff; /* Default view for table */
+  --success: #28a745; /* Default edit for table */
+  --danger: #dc3545; /* Default delete for table */
+}
+
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Oxanium", sans-serif !important;
+  font-optical-sizing: auto;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--black);
+  text-decoration: none;
+}
+
+/* CLASSEES FOR DIFFERENT CONDITIONS */
+
+.hidden {
+  display: none !important;
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* END OF CLASSES FOR DIFFERENT CONDITIONS */
+
+/* CLEARS ALL BUTTON BORDERS */
+button {
+  border: none !important;
+}
+
+/* CLASS FOR DYNAMICALLY ADDING SHADOWS */
+
+.shadow {
+  box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.15);
+}

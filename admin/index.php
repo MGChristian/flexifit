@@ -130,10 +130,8 @@ require_once "./includes/get-index-data.php";
                 </div>
             </div>
         </main>
-        <!-- side -->
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="js/index.js"> </script>
     <script src="js/scripts.js"> </script>
 </body>

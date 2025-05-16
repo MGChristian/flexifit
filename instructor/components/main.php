@@ -15,10 +15,10 @@ function check_if_correct_role()
                 exit();
                 break;
             case "instructor":
-                header("location:  ../instructor/");
-                exit();
                 break;
             case "admin":
+                header("location:  ../admin/");
+                exit();
                 break;
         }
     } else {

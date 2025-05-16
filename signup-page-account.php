@@ -48,7 +48,7 @@ check_sessions();
       <h2>SIGN UP</h2>
       <form action="./includes/signup_second.inc.php" method="POST">
         <div class="error-wrapper">
-            <?php check_signup_errors() ?>
+          <?php check_signup_errors() ?>
         </div>
         <input name="username" type="text" placeholder="Username" required />
         <input name="password" type="password" placeholder="Password" required />
@@ -106,7 +106,7 @@ function check_if_logged_in()
         exit();
         break;
       case "instructor":
-        header("location:  ./instructors/");
+        header("location:  ./instructor/");
         exit();
         break;
       case "admin":

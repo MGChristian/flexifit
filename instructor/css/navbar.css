@@ -1,0 +1,90 @@
+.header {
+  position: sticky;
+  top: 0;
+  padding: 10px 20px !important;
+  height: 60px;
+  /* grid-area: header; */
+  background-color: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 99;
+}
+
+.navbar-hamburger {
+  cursor: pointer;
+  padding: 1rem;
+  display: none !important;
+}
+
+.navbar-hamburger:hover {
+  color: white;
+}
+
+.logo {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.logo img {
+  height: 40px; /* Adjust size as needed */
+  margin-right: 5px; /* Reduced margin for tighter spacing */
+}
+
+/* LOGGED IN NAV BAR STYLES */
+
+.user-profile {
+  position: relative;
+}
+
+.user-profile box-icon {
+  display: block;
+}
+
+.filterOpen {
+  cursor: pointer;
+}
+
+.filters {
+  z-index: 99;
+  color: black;
+  position: absolute;
+  background-color: white;
+  padding: 1rem;
+  right: 0;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dropdown-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dropdown-item:hover {
+  cursor: pointer;
+  background-color: rgb(243, 243, 243);
+}
+
+.option {
+  display: flex;
+}
+
+.nav-links li.active {
+  background-color: var(--yellow);
+  border-radius: 5px;
+}
+
+.nav-links li.active:hover {
+  background-color: var(--dark-yellow);
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .navbar-hamburger {
+    display: block !important;
+  }
+}

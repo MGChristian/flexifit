@@ -134,7 +134,7 @@ function check_if_logged_in()
         exit();
         break;
       case "instructor":
-        header("location:  ./instructors/");
+        header("location:  ./instructor/");
         exit();
         break;
       case "admin":
