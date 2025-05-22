@@ -81,3 +81,61 @@
   width: 400px;
   max-width: 100%;
 }
+
+@media only screen and (max-width: 1200px) {
+
+  .header {
+    flex-direction: column-reverse;
+    align-items: center;
+    height: auto;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .header-content {
+    width: 100%;
+    align-items: start;
+    text-align: start;
+    gap: 10px;
+  }
+
+  .header-background {
+    width: 200px;
+    height: 200px;
+    min-width: 200px;
+    min-height: 200px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .header-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .header-content p {
+    font-size: 0.95rem;
+  }
+
+  .exercise-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  .step {
+    align-items: center;
+  }
+
+  .step img {
+    width: 90%;
+    height: auto;
+    max-width: 300px;
+  }
+
+  .step p {
+    width: 90%;
+    font-size: 1rem;
+  }
+}
+
