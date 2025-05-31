@@ -17,7 +17,13 @@ $exerciseLetters = range("A", "Z");
 
 <body>
     <!-- Navigation Header -->
-    <?php require_once "./components/navbar.php" ?>
+    <?php require_once "./components/navbar.php"; ?>
+
+    <!-- Get all exercise details -->
+    <?php
+    require_once "./includes/all-exercises.php";
+    $exercises = new AllExercise($conn);
+    ?>
 
 
     <header id="header" class="header">
@@ -52,21 +58,28 @@ $exerciseLetters = range("A", "Z");
             ?>
         </div>
         <?php
-
-        foreach ($exerciseLetters as $letter): ?>
-            <h1 id="<?= $letter ?>"><?= $letter ?></h1>
-            <section class="classes-grid">
-                <?php for ($i = 1; $i <= 10; $i++) : ?>
-                    <a href="#">
-                        <div class="class-item">
-                            <img src="https://picsum.photos/200/200">
-                            <div>
-                                <p><b>Workout Name</b></p>
+        foreach ($exerciseLetters as $letter):
+            $exerciseList = $exercises->get_exercises($letter);
+            //Check if exercise List is not empty
+            if (!empty($exerciseList)):
+        ?>
+                <h1 id="<?= $letter ?>"><?= $letter ?></h1>
+                <section class="classes-grid">
+                    <?php foreach ($exerciseList as $exercise): ?>
+                        <a href="./exercise.php?id=<?= $exercise['ID'] ?>">
+                            <div class="class-item">
+                                <img src="./admin/images/exercises/<?= $exercise['exercisePicUrl'] ?>">
+                                <div>
+                                    <p><b><?= $exercise['exerciseName'] ?></b></p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                <?php endfor; ?>
-            </section>
+                        </a>
+                    <?php endforeach; ?>
+                </section>
+                <?php //else: 
+                ?>
+                <!-- <h1 id="<?= $letter ?>"><?= $letter ?></h1> -->
+            <?php endif; ?>
         <?php endforeach; ?>
     </div>
     <?php require_once "./components/footer.php" ?>

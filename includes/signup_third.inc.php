@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             header("Location: ../signup-page-otp.php");
             exit();
         } else {
-            $profile_pic_url = "../assets/grit.png";
+            $profile_pic_url = "default.jpg";
             $password = hashedPwd($password);
             if (create_user($conn, $username, $email, $password, $first_name, $last_name, $birthdate, $phone, $gender, $profile_pic_url)) {
                 session_unset();

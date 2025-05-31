@@ -143,7 +143,6 @@
 }
 
 .class-item {
-  max-width: fit-content;
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -156,8 +155,9 @@
 }
 
 .class-item img {
-  min-width: 200px;
-  min-height: 200px;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
   background-color: gray;
 }
 

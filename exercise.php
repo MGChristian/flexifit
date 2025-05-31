@@ -75,7 +75,7 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
         </div>
         <div class="header-background">
             <!-- fix exercises picture location -->
-            <img src="./admin/images<?= htmlspecialchars($exerciseDetails['exercisePicUrl']) ?>">
+            <img src="./admin/images/exercises/<?= htmlspecialchars($exerciseDetails['exercisePicUrl']) ?>">
         </div>
     </header>
 
@@ -85,11 +85,11 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
             <div class="exercise-left">
                 <p><b>Step by Step</b></p>
                 <?php echo empty($stepsList) ? '<p>No steps provided for this exercise</p>' : ''; ?>
-                <?php foreach ($stepsList as $step): ?>
+                <?php foreach ($stepsList as $count => $step): ?>
                     <div class="step">
                         <?php $stepImage = $step['step_pic_url']; ?>
-                        <?= empty($stepImage) ? '' : "<img src='{$stepImage}'; ?>" ?>
-                        <p><?= htmlspecialchars($step['step_instruction']) ?></p>
+                        <?= empty($stepImage) ? "<img src='./assets/default.jpg' />" : "<img src='{$stepImage}' />; ?>" ?>
+                        <p><strong>Step <?= $count + 1 ?>: </strong><?= htmlspecialchars($step['step_instruction']) ?></p>
                     </div>
                 <?php endforeach; ?>
             </div>
