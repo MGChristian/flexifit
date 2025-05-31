@@ -10,7 +10,13 @@ function get_workouts($conn)
     if ($result->num_rows > 0) {
         $exerciseRows = [];
         while ($rows = $result->fetch_assoc()) {
-            isset($rows['duration']) ? $rows['duration'] : $rows['duration'] = '00:00:00';
+            if (isset($rows['duration'])) {
+                $parts = explode(':', $rows['duration']);
+                $durationFormatted = $parts[0] . 'h ' . $parts[1] . 'm ' . $parts[2] . 's';
+                $rows['duration'] = $durationFormatted;
+            } else {
+                $rows['duration'] = 'No duration';
+            }
             $exerciseRows[] = $rows;
         }
         return $exerciseRows;

@@ -1,6 +1,6 @@
 <?php
 
-//Get the workouts from the database
+//Get the exercises from the database
 
 class Workout
 {
@@ -28,6 +28,20 @@ class Workout
         }
     }
 
+    public function get_workout_sets()
+    {
+        $stmt = $this->conn->prepare("SELECT DISTINCT `workoutSet` FROM `workout_exercises` WHERE workoutId = ? ORDER BY `workoutSet`");
+        $stmt->bind_param("i", $this->workoutId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $workoutSets = [];
+        while ($row = $result->fetch_assoc()) {
+            $workoutSets[] = $row;
+        }
+        $stmt->close();
+        return $workoutSets;
+    }
+
     public function get_workout()
     {
         $stmt = $this->conn->prepare("SELECT * FROM `workout` WHERE ID = ?");
@@ -42,10 +56,25 @@ class Workout
         }
     }
 
+
+    public function get_exercise($workoutSetNumber)
+    {
+        $stmt = $this->conn->prepare("SELECT `workout_exercises`.*, `exercise`.`exerciseName` FROM `workout_exercises` INNER JOIN `exercise` ON `workout_exercises`.`exerciseID` = `exercise`.`ID` WHERE `workout_exercises`.`workoutID` = ? AND `workout_exercises`.`workoutSet` = ?");
+        $stmt->bind_param("ii", $this->workoutId, $workoutSetNumber);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+        if ($result->num_rows > 0) {
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } else {
+            return [];
+        }
+    }
+
     public function get_equipments()
     {
-        $stmt = $this->conn->prepare("SELECT `equipment`.`equipment_name`, `equipment`.`ID` FROM `equipment` INNER JOIN `workout_equipment`  ON `equipment`.`ID` = `workout_equipment`.`equipmentID`  WHERE workoutId = ?");
-        $stmt->bind_param("i", $this->workoutId);
+        $stmt = $this->conn->prepare("SELECT `equipment`.`equipment_name`, `equipment`.`ID` FROM `equipment` INNER JOIN `exercise_equipment`  ON `equipment`.`ID` = `exercise_equipment`.`equipmentID`  WHERE exerciseID = ?");
+        $stmt->bind_param("i", $this->exerciseId);
         $stmt->execute();
         $result = $stmt->get_result();
         $equipments = [];
@@ -58,8 +87,8 @@ class Workout
 
     public function get_muscles()
     {
-        $stmt = $this->conn->prepare("SELECT `muscle`.`muscle_name`, `muscle`.`ID` FROM `muscle` INNER JOIN `workout_muscle`  ON `muscle`.`ID` = `workout_muscle`.`muscleID`  WHERE workoutId = ?");
-        $stmt->bind_param("i", $this->workoutId);
+        $stmt = $this->conn->prepare("SELECT `muscle`.`muscle_name`, `muscle`.`ID` FROM `muscle` INNER JOIN `exercise_muscle`  ON `muscle`.`ID` = `exercise_muscle`.`muscleID`  WHERE exerciseID = ?");
+        $stmt->bind_param("i", $this->exerciseId);
         $stmt->execute();
         $result = $stmt->get_result();
         $muscles = [];
@@ -73,8 +102,8 @@ class Workout
 
     public function get_categories()
     {
-        $stmt = $this->conn->prepare("SELECT `category`.`category_name`, `category`.`ID` FROM `category` INNER JOIN `workout_category`  ON `category`.`ID` = `workout_category`.`categoryID`  WHERE workoutId = ?");
-        $stmt->bind_param("i", $this->workoutId);
+        $stmt = $this->conn->prepare("SELECT `category`.`category_name`, `category`.`ID` FROM `category` INNER JOIN `exercise_category`  ON `category`.`ID` = `exercise_category`.`categoryID`  WHERE exerciseID = ?");
+        $stmt->bind_param("i", $this->exerciseId);
         $stmt->execute();
         $result = $stmt->get_result();
         $stmt->close();
@@ -89,10 +118,10 @@ class Workout
         }
     }
 
-    public function get_workout_steps()
+    public function get_exercise_steps()
     {
-        $stmt = $this->conn->prepare("SELECT * FROM `workout_steps` WHERE workoutId = ?");
-        $stmt->bind_param("i", $this->workoutId);
+        $stmt = $this->conn->prepare("SELECT * FROM `exercise_steps` WHERE exerciseID = ?");
+        $stmt->bind_param("i", $this->exerciseId);
         $stmt->execute();
         $result = $stmt->get_result();
         $stmt->close();

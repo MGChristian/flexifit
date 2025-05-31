@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                     $setExerciseContent['seconds'] = strlen($setExerciseContent['seconds']) == 2 ? $setExerciseContent['seconds'] : "0" . $setExerciseContent['seconds'];
                     $setExerciseContent['minutes'] = strlen($setExerciseContent['minutes']) == 2 ? $setExerciseContent['minutes'] : "0" . $setExerciseContent['minutes'];
                     $setExerciseContent['hours'] = strlen($setExerciseContent['hours']) == 2 ? $setExerciseContent['hours'] : "0" . $setExerciseContent['hours'];
-                    $duration = $setExerciseContent['hours'] . ':' . $setExerciseContent['seconds'] . ":" . $setExerciseContent['minutes'];
+                    $duration = $setExerciseContent['hours'] . ':' . $setExerciseContent['minutes'] . ":" . $setExerciseContent['seconds'];
                     $workoutSet = $setExerciseContent['workoutSet'];
                     add_exercise($conn, $workoutID, $exerciseID, $reps, $duration, $workoutSet);
                 }
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                         $setExerciseContent['seconds'] = strlen($setExerciseContent['seconds']) == 2 ? $setExerciseContent['seconds'] : "0" . $setExerciseContent['seconds'];
                         $setExerciseContent['minutes'] = strlen($setExerciseContent['minutes']) == 2 ? $setExerciseContent['minutes'] : "0" . $setExerciseContent['minutes'];
                         $setExerciseContent['hours'] = strlen($setExerciseContent['hours']) == 2 ? $setExerciseContent['hours'] : "0" . $setExerciseContent['hours'];
-                        $duration = $setExerciseContent['hours'] . ':' . $setExerciseContent['seconds'] . ":" . $setExerciseContent['minutes'];
+                        $duration = $setExerciseContent['hours'] . ':' . $setExerciseContent['minutes'] . ":" . $setExerciseContent['seconds'];
                         $reps = $setExerciseContent['reps'];
                         update_exercise($conn, $updatedID, $exerciseID, $reps, $duration);
                     }
