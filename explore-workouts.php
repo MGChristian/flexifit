@@ -41,7 +41,8 @@ require_once("./includes/explore-workouts.php");
             <img src="./admin/images/workouts/<?= htmlspecialchars($rows['workoutPicUrl']) ?>">
             <div>
               <p><b><?= htmlspecialchars($rows['workoutName']) ?></b></p>
-              <p>Duration: <?= htmlspecialchars($rows['duration']) ?>, <?= htmlspecialchars($rows['difficulty']) ?></p>
+              <p>Duration: <?= htmlspecialchars($rows['duration']) ?></p>
+              <p>Difficulty: <?= htmlspecialchars($rows['difficulty']) ?></p>
             </div>
           </div>
         </a>

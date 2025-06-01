@@ -73,8 +73,18 @@ class Workout
 
     public function get_equipments()
     {
-        $stmt = $this->conn->prepare("SELECT `equipment`.`equipment_name`, `equipment`.`ID` FROM `equipment` INNER JOIN `exercise_equipment`  ON `equipment`.`ID` = `exercise_equipment`.`equipmentID`  WHERE exerciseID = ?");
-        $stmt->bind_param("i", $this->exerciseId);
+        $query = "
+        SELECT DISTINCT `equipment`.`ID`,`equipment`.`equipment_name` 
+        FROM `workout`
+        JOIN `workout_exercises` ON `workout`.`ID` = `workout_exercises`.`workoutID`
+        JOIN `exercise` ON `workout_exercises`.`exerciseID` = `exercise`.`ID`
+        JOIN `exercise_equipment` ON `exercise`.`ID` = `exercise_equipment`.`exerciseID`
+        JOIN `equipment` ON `exercise_equipment`.`equipmentID` = `equipment`.`ID`
+        WHERE `workout`.`ID` = ?
+        ORDER BY `equipment`.`equipment_name`;
+        ";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("i", $this->workoutId);
         $stmt->execute();
         $result = $stmt->get_result();
         $equipments = [];
