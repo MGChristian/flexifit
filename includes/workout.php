@@ -56,7 +56,6 @@ class Workout
         }
     }
 
-
     public function get_exercise($workoutSetNumber)
     {
         $stmt = $this->conn->prepare("SELECT `workout_exercises`.*, `exercise`.`exerciseName` FROM `workout_exercises` INNER JOIN `exercise` ON `workout_exercises`.`exerciseID` = `exercise`.`ID` WHERE `workout_exercises`.`workoutID` = ? AND `workout_exercises`.`workoutSet` = ?");
@@ -140,5 +139,21 @@ class Workout
             $steps[] = $row;
         }
         return $steps;
+    }
+
+    // WORKOUT PLAY METHODS
+
+    public function get_exercise_count()
+    {
+        $stmt = $this->conn->prepare("SELECT COUNT(`ID`) as `exerciseCount` FROM `workout_exercises` WHERE `workoutID` = ?");
+        $stmt->bind_param("i", $this->workoutId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+        if ($result->num_rows > 0) {
+            return $result->fetch_assoc();
+        } else {
+            return '';
+        }
     }
 }

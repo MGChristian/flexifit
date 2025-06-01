@@ -21,6 +21,14 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutID = $_GET['id'] : header("l
 
     <!-- Get all exercise details -->
     <?php
+    require_once "./includes/workout.php";
+    $workout = new Workout($conn, $workoutID);
+    if ($workout->check_id() === true) {
+        $exerciseCount = $workout->get_exercise_count();
+    } else {
+        header("location: ./explore-exercises.php");
+        exit();
+    };
     ?>
     <!-- SETS THE MAXIMUM WIDTH TO 1200px -->
     <div class="main-container">
@@ -35,8 +43,8 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutID = $_GET['id'] : header("l
             </div>
             <div class="play-number">
                 <input class="hidden" id='play-number-container' type="number" value="0">
-                <input class="hidden" id='play-number-max-container' type="number" value="<?= 3 ?>">
-                <h1><span id="play-number-current">1</span>/<?= 3 ?></h1>
+                <input class="hidden" id='play-number-max-container' type="number" value="<?= $exerciseCount['exerciseCount'] ?>">
+                <h1><span id="play-number-current">1</span>/<?= $exerciseCount['exerciseCount'] ?></h1>
             </div>
             <div class="play-navigator">
                 <div class="play-prev navigation">PREV</div>
@@ -93,19 +101,7 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutID = $_GET['id'] : header("l
                 }
             }
 
-            function timeToSeconds(timeStr) {
-                const [hours, minutes, seconds] = timeStr.split(':').map(Number);
-                return hours * 3600 + minutes * 60 + seconds;
-            }
-
-            function secondsToTime(seconds) {
-                const hrs = Math.floor(seconds / 3600).toString().padStart(2, '0');
-                const mins = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
-                const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
-                return `${hrs}:${mins}:${secs}`;
-            }
-
-
+            //INITIALIZE COUNTDOWN
             let countdownInterval;
 
             function startCountdown(duration) {
@@ -131,6 +127,20 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutID = $_GET['id'] : header("l
                         // Optional: Trigger next exercise or completion logic
                     }
                 }, 1000);
+            }
+
+            //Convert HH:MM:SS format to seconds
+            function timeToSeconds(timeStr) {
+                const [hours, minutes, seconds] = timeStr.split(':').map(Number);
+                return hours * 3600 + minutes * 60 + seconds;
+            }
+
+            //Convert seconds format back to HH:MM:SS
+            function secondsToTime(seconds) {
+                const hrs = Math.floor(seconds / 3600).toString().padStart(2, '0');
+                const mins = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
+                const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
+                return `${hrs}:${mins}:${secs}`;
             }
         })
     </script>
