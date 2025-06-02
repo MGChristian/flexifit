@@ -68,23 +68,38 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutID = $_GET['id'] : header("l
             const playNext = document.querySelector(".play-next");
             const playStatus = document.querySelector(".play-status");
 
+            function playNextFunction() {
+                let navNumber = Number(navigationNumber.value) + 1;
+                navigationNumber.value = navNumber;
+                fetchExerciseDetails(workoutID.value, navigationNumber.value);
+                navigationNumberCurrent.innerHTML = navNumber + 1;
+            }
+
+            function playPrevFunction() {
+                let navNumber = Number(navigationNumber.value) - 1;
+                navigationNumber.value = navNumber;
+                fetchExerciseDetails(workoutID.value, navigationNumber.value);
+                navigationNumberCurrent.innerHTML = navNumber + 1;
+            }
+
             playNext.addEventListener("click", () => {
                 if (navigationNumber.value < count - 1) {
-                    let navNumber = Number(navigationNumber.value) + 1;
-                    navigationNumber.value = navNumber;
-                    fetchExerciseDetails(workoutID.value, navigationNumber.value);
-                    navigationNumberCurrent.innerHTML = navNumber + 1;
+                    let status = confirm("Are you sure you want to move on to the next exercise?");
+                    if (status == 1) {
+                        playNextFunction();
+                    }
                 }
+
+
             })
 
             playPrev.addEventListener("click", () => {
                 if (navigationNumber.value > 0) {
-                    let navNumber = Number(navigationNumber.value) - 1;
-                    navigationNumber.value = navNumber;
-                    fetchExerciseDetails(workoutID.value, navigationNumber.value);
-                    navigationNumberCurrent.innerHTML = navNumber + 1;
+                    let status = confirm("Are you sure you want to go back from the last exercise?");
+                    if (status == 1) {
+                        playPrevFunction();
+                    }
                 }
-
             })
 
             async function fetchExerciseDetails(workoutID, navigationNumber) {
@@ -103,6 +118,7 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutID = $_GET['id'] : header("l
 
             //INITIALIZE COUNTDOWN
             let countdownInterval;
+            let isPaused = false;
 
             function startCountdown(duration) {
                 // Clear any existing timer
@@ -116,7 +132,9 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutID = $_GET['id'] : header("l
 
                 // Start countdown
                 countdownInterval = setInterval(() => {
-                    remainingSeconds--;
+                    if (!isPaused) {
+                        remainingSeconds--;
+                    }
 
                     // Update display
                     timerContainer.innerHTML = secondsToTime(remainingSeconds);
@@ -124,9 +142,26 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutID = $_GET['id'] : header("l
                     // Stop when reaching 0
                     if (remainingSeconds <= 0) {
                         clearInterval(countdownInterval);
-                        // Optional: Trigger next exercise or completion logic
+                        if (navigationNumber.value < count - 1) {
+                            playNextFunction();
+                        }
                     }
                 }, 1000);
+
+                playStatus.addEventListener("click", togglePause)
+            }
+
+            function togglePause() {
+                isPaused = !isPaused;
+
+                // Update button text & style
+                if (isPaused) {
+                    playStatus.textContent = "RESUME";
+                    playStatus.style.backgroundColor = "#ff9800"; // Orange when paused
+                } else {
+                    playStatus.textContent = "PAUSE";
+                    playStatus.style.backgroundColor = "#4CAF50"; // Green when playing
+                }
             }
 
             //Convert HH:MM:SS format to seconds
