@@ -1,6 +1,8 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    // Folder Details
+    $folder = "../images/exercises/videos/";
 
     // Exercise details
     $exerciseId = $_POST['exerciseID'];
@@ -24,8 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $removeExerciseSteps = isset($_POST['removeExerciseStep']) ? $_POST['removeExerciseStep'] : [];
     $updateExerciseSteps = isset($_POST['updateExerciseStep']) ? $_POST['updateExerciseStep'] : [];
 
+    $video = isset($_FILES['exerciseVideoUrl']) ? $_FILES['exerciseVideoUrl'] : [];
+
     // echo "<pre>";
     // echo print_r($_POST);
+    // echo print_r($_FILES);
     // echo "</pre>";
     // exit();
 
@@ -41,6 +46,15 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         // foreach ($muscleGroup as $muscle) {
         //     add_muscle_group($conn, $muscle, $exerciseId);
         // }
+
+        // Video
+        $videoUrl = '';
+        if (!empty($video)) {
+            $videoUrl = handle_video_file($folder, $video);
+        }
+        if ($videoUrl === "none") {
+            $errors["video_problem"] = "There was a problem with the video upload";
+        }
 
         // Equipments
         foreach ($equipmentList as $equipmentID) {
@@ -72,6 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $errors["empty_input"] = "Inputs cannot be empty!";
         }
 
+        update_exercise_video($conn, $videoUrl, $exerciseId);
         update_exercise_name($conn, $exerciseName, $exerciseId);
         update_exercise_description($conn, $exerciseDescription, $exerciseId);
         update_exercise_status($conn, $status, $exerciseId);
@@ -155,6 +170,14 @@ function update_exercise_status($conn, $status, $exerciseId)
     $stmt->close();
 }
 
+function update_exercise_video($conn, $videoUrl, $exerciseId)
+{
+    $stmt = $conn->prepare("UPDATE `exercise` SET `exerciseVidUrl` = ? WHERE ID = ?");
+    $stmt->bind_param("si", $videoUrl, $exerciseId);
+    $stmt->execute();
+    $stmt->close();
+}
+
 // MUSCLE GROUPS
 
 function add_muscle_group($conn, $muscleID, $exerciseId)
@@ -226,4 +249,46 @@ function remove_exercise_steps($conn, $stepId)
     $stmt->bind_param("i", $stepId);
     $stmt->execute();
     $stmt->close();
+}
+
+function handle_video_file($folder, $video)
+{
+    //check for errors
+    $videoErrors = [];
+
+    //image handler for inputs
+    $video = $video;
+    $video_name = $video['name'];
+    $video_type = $video['type'];
+    $video_tmp = $video['tmp_name'];
+    $video_error = $video['error'];
+    $video_size = $video['size'];
+
+    // Explode file name and get the extension at the end
+    $video_Ext = explode(".", $video_name);
+    $video_ActualExt = strtolower(end($video_Ext));
+
+    $allowedTypes = array("mp4");
+
+    if (!in_array($video_ActualExt, $allowedTypes)) {
+        $videoErrors[] = "Uploaded File is not Supported";
+    }
+
+    if ($video_error !== 0) {
+        $videoErrors[] = "There was an error uploading your file";
+    }
+
+    // Check if video is greater than 2MB
+    if ($video_size > 2000000) {
+        $videoErrors[] = "Your file is too big!";
+    }
+
+    if (count($videoErrors) == 0) {
+        $fileNameNew = uniqid("", true) . "." . $video_ActualExt;
+        $fileDestination = $folder . $fileNameNew;
+        move_uploaded_file($video_tmp, $fileDestination);
+        return $fileNameNew;
+    } else {
+        return "none";
+    }
 }

@@ -52,7 +52,9 @@ if ($workout->check_id() === true) {
                 <div class="play-progress-bar"></div>
             </div>
             <div class="play-gif-container">
-                <img src="https://picsum.photos/1200/600" />
+                <video>
+                    <source id='video-tutorial' src="./admin/images/exercises/videos/" />
+                </video>
             </div>
             <div class="play-number">
                 <input class="hidden" id='play-number-container' type="number" value="0">
@@ -122,6 +124,7 @@ if ($workout->check_id() === true) {
                     if (!response.ok) throw new Error('Request failed!');
                     const data = await response.json();
                     startCountdown(data.duration);
+                    addVideoTutorial(data.exerciseVidUrl);
                     console.log(data);
                     return data;
                 } catch (error) {
@@ -210,6 +213,11 @@ if ($workout->check_id() === true) {
                 const mins = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
                 const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
                 return `${hrs}:${mins}:${secs}`;
+            }
+
+            function addVideoTutorial(src) {
+                const videoTutorialContainer = document.querySelector("#video-tutorial");
+                videoTutorialContainer.setAttribute("src", `./admin/images/exercises/videos/${src}`);
             }
         })
     </script>

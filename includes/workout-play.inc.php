@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         $exerciseDetails = get_offset_exercise($conn, $workoutID, $navigation);
         $exercise['duration'] = isset($exerciseDetails['duration']) ? $exerciseDetails['duration'] : '';
         $exercise['reps'] = isset($exerciseDetails['reps']) ? $exerciseDetails['reps'] : '';
+        $exercise['exerciseVidUrl'] = isset($exerciseDetails['exerciseVidUrl']) ? $exerciseDetails['exerciseVidUrl'] : '';
     }
 
     echo (json_encode($exercise));

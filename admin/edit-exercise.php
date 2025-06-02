@@ -123,6 +123,13 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
                             </div>
                         </div>
                         <hr>
+                        <h4>Video Tutorial</h4>
+                        <div class="exercise-steps">
+                            <div class="input-full">
+                                <input type="file" accept=".mp4" name="exerciseVideoUrl" />
+                            </div>
+                        </div>
+                        <hr>
                         <h4>Steps</h4>
                         <div class="exercise-steps">
                             <?php echo empty($stepsList) ? "<p id='no-steps'>There are no steps yet for this exercise</p>" : ''; ?>

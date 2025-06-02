@@ -87,15 +87,22 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
                 <?php echo empty($stepsList) ? '<p>No steps provided for this exercise</p>' : ''; ?>
                 <?php foreach ($stepsList as $count => $step): ?>
                     <div class="step">
-                        <?php $stepImage = $step['step_pic_url']; ?>
-                        <?= empty($stepImage) ? "<img src='./assets/default.jpg' />" : "<img src='{$stepImage}' />; ?>" ?>
-                        <p><strong>Step <?= $count + 1 ?>: </strong><?= htmlspecialchars($step['step_instruction']) ?></p>
+                        <div>
+                            <strong>Step <?= $count + 1 ?>: </strong>
+                            <p><?= htmlspecialchars($step['step_instruction']) ?></p>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             </div>
             <div class="exercise-right">
                 <p>Watch & Learn</p>
-                <?php echo empty($exerciseDetails['exerciseVidUrl']) ? '<p>No video provided for this exercise</p>' : "<img src='" . $exerciseDetails['exercise_vid_url'] . "'/>"; ?>
+                <?php echo
+                empty($exerciseDetails['exerciseVidUrl'])
+                    ? '<p>No video provided for this exercise</p>'
+                    : "<video class='video-container' width='100%' loop autoplay muted>
+                            <source src='./admin/images/exercises/videos/" . $exerciseDetails["exerciseVidUrl"] . "'></source>
+                        </video>
+                    "; ?>
             </div>
         </div>
     </div>
