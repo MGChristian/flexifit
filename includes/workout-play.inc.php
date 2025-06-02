@@ -41,7 +41,7 @@ function check_exercise_count($conn, $workoutID)
 
 function get_offset_exercise($conn, $workoutID, $navigation)
 {
-    $stmt = $conn->prepare("SELECT * FROM `workout_exercises` WHERE `workoutID` = ? ORDER BY `ID` LIMIT 1  OFFSET ?");
+    $stmt = $conn->prepare("SELECT `workout_exercises`.*, `exercise`.`exerciseVidUrl` FROM `workout_exercises` INNER JOIN `exercise` ON `workout_exercises`.`exerciseID` = `exercise`.`ID` WHERE `workoutID` = ? ORDER BY `ID` LIMIT 1  OFFSET ?");
     $stmt->bind_param("ii", $workoutID, $navigation);
     $stmt->execute();
     $result = $stmt->get_result();

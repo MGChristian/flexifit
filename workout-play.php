@@ -52,8 +52,7 @@ if ($workout->check_id() === true) {
                 <div class="play-progress-bar"></div>
             </div>
             <div class="play-gif-container">
-                <video>
-                    <source id='video-tutorial' src="./admin/images/exercises/videos/" />
+                <video id='video-tutorial' width='100%' loop autoplay muted>
                 </video>
             </div>
             <div class="play-number">
@@ -216,8 +215,27 @@ if ($workout->check_id() === true) {
             }
 
             function addVideoTutorial(src) {
-                const videoTutorialContainer = document.querySelector("#video-tutorial");
-                videoTutorialContainer.setAttribute("src", `./admin/images/exercises/videos/${src}`);
+                const videoElement = document.getElementById("video-tutorial");
+
+                // First, completely reset the video element
+                videoElement.pause();
+                videoElement.innerHTML = ''; // Clear any existing sources
+
+                // Create a new source element (use default if empty)
+                const sourceElement = document.createElement('source');
+                sourceElement.src = `./admin/images/exercises/videos/${src || '1.mp4'}`;
+                sourceElement.type = 'video/mp4'; // Important for some browsers
+
+                videoElement.appendChild(sourceElement);
+
+                // Load and play the new video
+                videoElement.load();
+
+                // Try to autoplay (might be blocked by browser policies)
+                videoElement.play().catch(e => {
+                    console.log("Autoplay prevented:", e);
+                    // You might want to show a play button here
+                });
             }
         })
     </script>
