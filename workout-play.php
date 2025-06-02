@@ -1,7 +1,32 @@
 <?php
 require_once("./includes/auth.php");
 // Check if id is set, if it is not go back to explore exercise page
-isset($_GET['id']) && !empty($_GET['id']) ? $workoutID = $_GET['id'] : header("location: ./explore-exercises.php");
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $workoutID = $_GET['id'];
+} else {
+    goBack();
+}
+
+function goBack()
+{
+    header("location: ./explore-workouts.php");
+    exit();
+}
+?>
+
+
+<!-- Get all exercise details -->
+<?php
+require_once "./includes/workout.php";
+$workout = new Workout($conn, $workoutID);
+if ($workout->check_id() === true) {
+    $exerciseCount = $workout->get_exercise_count();
+    if ($exerciseCount['exerciseCount'] == 0) {
+        goBack();
+    }
+} else {
+    goBack();
+};
 ?>
 
 <!DOCTYPE html>
@@ -18,18 +43,6 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutID = $_GET['id'] : header("l
 <body>
     <!-- Navigation Header -->
     <?php require_once "./components/navbar.php"; ?>
-
-    <!-- Get all exercise details -->
-    <?php
-    require_once "./includes/workout.php";
-    $workout = new Workout($conn, $workoutID);
-    if ($workout->check_id() === true) {
-        $exerciseCount = $workout->get_exercise_count();
-    } else {
-        header("location: ./explore-exercises.php");
-        exit();
-    };
-    ?>
     <!-- SETS THE MAXIMUM WIDTH TO 1200px -->
     <div class="main-container">
         <input id="play-workout-id" class="hidden" type="number" value="<?= $_GET['id'] ?>" />
@@ -48,7 +61,7 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutID = $_GET['id'] : header("l
             </div>
             <div class="play-navigator">
                 <div class="play-prev navigation">PREV</div>
-                <div class="play-status">PLAY</div>
+                <div class="play-status">PAUSE</div>
                 <div class="play-next navigation">NEXT</div>
             </div>
         </div>
@@ -122,9 +135,13 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutID = $_GET['id'] : header("l
 
             function startCountdown(duration) {
                 // Clear any existing timer
-                if (countdownInterval) clearInterval(countdownInterval);
+                if (countdownInterval) {
+                    clearInterval(countdownInterval);
+                }
 
-                let remainingSeconds = timeToSeconds(duration);
+                let progressBar = document.querySelector(".play-progress-bar");
+                let totalSeconds = timeToSeconds(duration);
+                let remainingSeconds = totalSeconds;
                 const timerContainer = document.getElementById("timer");
 
                 // Update immediately
@@ -138,6 +155,23 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutID = $_GET['id'] : header("l
 
                     // Update display
                     timerContainer.innerHTML = secondsToTime(remainingSeconds);
+
+                    // Update progress bar (percentage)
+                    const progressPercent = (remainingSeconds / totalSeconds) * 100;
+
+                    if (progressPercent >= 75) {
+                        progressBar.style.backgroundColor = "green";
+                    } else if (progressPercent >= 50) {
+                        progressBar.style.backgroundColor = "yellow";
+                    } else if (progressPercent >= 25) {
+                        progressBar.style.backgroundColor = "orange";
+                    } else {
+                        progressBar.style.backgroundColor = "red";
+                    }
+
+                    console.log(progressPercent);
+
+                    progressBar.style.width = `${progressPercent}%`;
 
                     // Stop when reaching 0
                     if (remainingSeconds <= 0) {

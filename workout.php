@@ -1,7 +1,25 @@
 <?php
 require_once("./includes/auth.php");
 // Check if id is set, if it is not go back to explore exercise page
-isset($_GET['id']) && !empty($_GET['id']) ? $workoutID = $_GET['id'] : header("location: ./explore-exercises.php");
+isset($_GET['id']) && !empty($_GET['id']) ? $workoutID = $_GET['id'] : header("location: ./explore-workouts.php");
+?>
+
+
+<!-- Get all exercise details -->
+<?php
+require_once "./includes/workout.php";
+$workout = new Workout($conn, $workoutID);
+if ($workout->check_id() === true) {
+    $workoutSetsList = $workout->get_workout_sets();
+    $workoutDetails = $workout->get_workout();
+    $muscleList = $workout->get_muscles();
+    $equipmentList = $workout->get_equipments();
+    $categoryList = $workout->get_categories();
+    $stepsList = $workout->get_exercise_steps();
+} else {
+    header("location: ./explore-workouts.php");
+    exit();
+};
 ?>
 
 <!DOCTYPE html>
@@ -18,23 +36,6 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutID = $_GET['id'] : header("l
 <body>
     <!-- Navigation Header -->
     <?php require_once "./components/navbar.php"; ?>
-
-    <!-- Get all exercise details -->
-    <?php
-    require_once "./includes/workout.php";
-    $workout = new Workout($conn, $workoutID);
-    if ($workout->check_id() === true) {
-        $workoutSetsList = $workout->get_workout_sets();
-        $workoutDetails = $workout->get_workout();
-        $muscleList = $workout->get_muscles();
-        $equipmentList = $workout->get_equipments();
-        $categoryList = $workout->get_categories();
-        $stepsList = $workout->get_exercise_steps();
-    } else {
-        header("location: ./explore-exercises.php");
-        exit();
-    };
-    ?>
 
     <header class="header">
         <div class="header-content">
@@ -90,6 +91,7 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutID = $_GET['id'] : header("l
                 <p><b>Instructions</b></p>
                 <div class="exercise-container">
                     <?php
+                    echo empty($workoutSetsList) ? "There are no exercises yet for this workout" : '';
                     foreach ($workoutSetsList as $workoutSet):
                         $workoutSetNumber = $workoutSet['workoutSet'];
                         $workoutExerciseList = $workout->get_exercise($workoutSetNumber);
