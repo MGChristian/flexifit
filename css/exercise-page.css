@@ -85,7 +85,7 @@
 .video-container {
   max-height: 259px;
   object-fit: contain;
-  background-color: black;
+  background-color: var(--black);
 }
 
 @media only screen and (max-width: 1200px) {

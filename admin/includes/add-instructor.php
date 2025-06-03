@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $phone = $_POST['contactNumber'];
     $gender = $_POST['gender'];
     $profile = $_FILES['profilePic'];
-    $folder = "../../instructor/images/" . $first_name . "-" . $last_name;
+    $folder = "../../instructor/images/" . $first_name . "-" . $last_name . "/";
 
     try {
         require_once "../../includes/config.php";
@@ -159,7 +159,7 @@ function handle_profile_pic($folder, $profile)
 
     if (count($imageErrors) == 0) {
         $fileNameNew = uniqid("", true) . "." . $image_ActualExt;
-        $fileDestination = $folder . "/" . $fileNameNew;
+        $fileDestination = $folder . $fileNameNew;
         move_uploaded_file($image_tmp, $fileDestination);
         return $fileNameNew;
     } else {

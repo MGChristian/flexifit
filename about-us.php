@@ -60,35 +60,6 @@ require_once("./includes/auth.php");
     </div>
   </section>
 
-  <div class="container">
-    <div class="image">
-      <img src="assets/img3.jpg" alt="Image 1" />
-    </div>
-    <!-- Text content -->
-    <div class="text-content">
-      <ul>
-        <li>
-          Convenient Booking: Book classes, gym slots, and personal training
-          sessions in just a few clicks.
-        </li>
-        <li>
-          Tailored to You: Explore a variety of fitness options to match your
-          goals and schedule.
-        </li>
-        <li>
-          Anywhere, Anytime: Flexibility to book from any device, whenever it
-          suits you.
-        </li>
-      </ul>
-      <p>
-        Join Flexifit today and take control of your fitness journey with
-        ease, convenience, and flexibility. Whether you're a seasoned athlete
-        or just beginning, we're here to support your path to a healthier,
-        fitter you!
-      </p>
-    </div>
-  </div>
-
   <?php require_once "./components/footer.php" ?>
   <?php require_once "./components/navbar_scripts.php" ?>
 </body>

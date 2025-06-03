@@ -1,7 +1,8 @@
 <?php
 
 // Check whether user has the authority to access this page.
-require_once "./components/main.php";
+
+require_once "./includes/auth.php";
 
 if (isset($_SESSION['error_adding_exercise_details'])) {
     print_r($_SESSION['error_adding_exercise_details']);

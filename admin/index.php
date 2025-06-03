@@ -1,6 +1,7 @@
 <?php
 
-require_once "./components/main.php";
+// Check whether user has the authority to access this page.
+require_once "./includes/auth.php";
 require_once "./includes/get-index-data.php";
 
 ?>

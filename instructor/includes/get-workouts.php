@@ -9,8 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     } else {
         $instructorId = null;
     }
-
-
     $stmt = $conn->prepare("SELECT `ID`, `workoutName`, `workoutDescription`, `difficulty`, `status`, `dateCreated` FROM `workout` WHERE `userID` = ?");
     $stmt->bind_param("i", $instructorId);
     $stmt->execute();
@@ -37,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         }
     } else {
         $workoutList[] = array(
-            "id" => '',
+            "id" => 'No workouts available',
             "workoutName" => '',
             "description" => '',
             "difficulty" => '',

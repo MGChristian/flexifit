@@ -1,7 +1,7 @@
 <?php
 
 // Check whether user has the authority to access this page.
-require_once "./components/main.php";
+require_once "./includes/auth.php";
 
 if (isset($_SESSION['error_adding_workout_details'])) {
     print_r($_SESSION['error_adding_workout_details']);
@@ -13,6 +13,17 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutId = $_GET['id'] : header("l
 
 ?>
 
+<?php
+require_once("./includes/edit-workout.php");
+$workout = new Workout($conn, $workoutId);
+if (!$workout->is_id_valid()) {
+    header("location: ./workouts.php");
+    exit();
+}
+$workoutDetails = $workout->get_workout();
+$workoutSets = $workout->get_unique_workout_sets();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +32,7 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutId = $_GET['id'] : header("l
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <?php include "./components/css.php" ?>
-    <link href="./css/workout-edit.css" rel="stylesheet">
+    <link href="./css/edit-workout.css" rel="stylesheet">
 </head>
 
 <body>
@@ -29,17 +40,7 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutId = $_GET['id'] : header("l
     <?php include "./components/navbar.php" ?>
     <!-- header -->
     <div class="grid-container">
-        <!-- classes -->
-        <?php
-        require_once("./includes/edit-workout.php");
-        $workout = new Workout($conn, $workoutId);
-        if (!$workout->is_id_valid()) {
-            header("location: ./workouts.php");
-            exit();
-        }
-        $workoutDetails = $workout->get_workout();
-        $workoutSets = $workout->get_unique_workout_sets();
-        ?>
+
         <!-- side -->
         <?php include "./components/sidebar.php" ?>
         <!-- side -->

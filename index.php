@@ -40,10 +40,9 @@ require_once("./includes/auth.php");
       <div class="photo-content">
         <h3>HOW IT WORKS</h3>
         <p>
-          Lorem ipsum dolor sit ameet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Follow personalized workout routines, track your progress, and train with expert instructors—anytime, anywhere.
         </p>
-        <a href="#">Learn More</a>
+        <a href="./how-it-works.php">Learn More</a>
       </div>
     </div>
     <div class="photo-item">
@@ -51,21 +50,19 @@ require_once("./includes/auth.php");
       <div class="photo-content">
         <h3>INSTRUCTORS</h3>
         <p>
-          Instructors are ready to guide you all the time so you can better
-          understand each session that we have prepared for you.
+          Meet expert trainers ready to guide your fitness journey.
         </p>
-        <a href="assets/instructors.html">Learn More</a>
+        <a href="./instructors.php">Learn More</a>
       </div>
     </div>
     <div class="photo-item">
       <img src="assets/schedules.png" alt="Schedules" />
       <div class="photo-content">
-        <h3>SCHEDULES</h3>
+        <h3>EXPLORE WORKOUTS</h3>
         <p>
-          Here are the schedules so you know when you can do each of the
-          exercise we have prepared for you.
+          Browse workouts by type, intensity, or trainer. There’s something for every level and lifestyle.
         </p>
-        <a href="schedules.html">Learn More</a>
+        <a href="./explore-workouts.php">Learn More</a>
       </div>
     </div>
   </div>
@@ -89,7 +86,7 @@ require_once("./includes/auth.php");
 
   <!-- Classes Section -->
   <section class="classes">
-    <h2>VARIETY OF CLASSES TO CHOOSE FROM</h2>
+    <h2>VARIETY OF EXERCISES TO CHOOSE FROM</h2>
     <div class="classes-grid">
       <!-- First Row: Two large images -->
       <div class="class-card">
@@ -112,7 +109,7 @@ require_once("./includes/auth.php");
       <div class="class-card">
         <img src="assets/back.jpg" alt="Back" />
         <!-- Button inside the image -->
-        <a href="ExploreClasses.html" class="btn">DISCOVER ALL CLASSES</a>
+        <a href="./explore-exercises.php" class="btn">DISCOVER ALL CLASSES</a>
       </div>
     </div>
   </section>

@@ -1,7 +1,7 @@
 <?php
 
 // Check whether user has the authority to access this page.
-require_once "./components/main.php";
+require_once "./includes/auth.php";
 
 if (isset($_SESSION['error_adding_exercise_details'])) {
     print_r($_SESSION['error_adding_exercise_details']);
@@ -13,6 +13,22 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
 
 ?>
 
+<?php
+require_once("./includes/edit-exercise.php");
+$exercise = new Exercise($conn, $exerciseId);
+if (!$exercise->is_id_valid()) {
+    header("location: ./exercises.php");
+    exit();
+}
+$exerciseDetails = $exercise->get_exercise();
+$muscleList = $exercise->get_exercise_muscles();
+$exerciseEquipmentList = $exercise->get_exercise_equipments();
+$equipmentList = $exercise->get_equipments();
+$exerciseCategoryList = $exercise->get_exercise_categories();
+$categoryList = $exercise->get_categories();
+$stepsList = $exercise->get_exercise_steps();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +37,7 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <?php include "./components/css.php" ?>
-    <link href="./css/exercise-edit.css" rel="stylesheet">
+    <link href="./css/edit-exercise.css" rel="stylesheet">
 </head>
 
 <body>
@@ -29,22 +45,7 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
     <?php include "./components/navbar.php" ?>
     <!-- header -->
     <div class="grid-container">
-        <!-- classes -->
-        <?php
-        require_once("./includes/edit-exercise.php");
-        $exercise = new Exercise($conn, $exerciseId);
-        if (!$exercise->is_id_valid()) {
-            header("location: ./exercises.php");
-            exit();
-        }
-        $exerciseDetails = $exercise->get_exercise();
-        $muscleList = $exercise->get_exercise_muscles();
-        $exerciseEquipmentList = $exercise->get_exercise_equipments();
-        $equipmentList = $exercise->get_equipments();
-        $exerciseCategoryList = $exercise->get_exercise_categories();
-        $categoryList = $exercise->get_categories();
-        $stepsList = $exercise->get_exercise_steps();
-        ?>
+
         <!-- side -->
         <?php include "./components/sidebar.php" ?>
         <!-- side -->

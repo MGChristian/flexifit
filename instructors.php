@@ -1,5 +1,6 @@
 <?php
 require_once("./includes/auth.php");
+require_once("./includes/explore-instructors.php");
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +27,21 @@ require_once("./includes/auth.php");
 
   <div class="main-container">
     <div class="trainer-section">
+      <?php foreach (get_instructors($conn) as $rows): ?>
+        <div class="trainer-card">
+          <div class="trainer-image">
+            <img src="./instructor/images/<?= rawurlencode($rows['firstName']) . "-" . rawurlencode($rows['lastName']) . "/" . rawurlencode($rows['profilePicUrl']) ?>" />
+            <h2><?= htmlspecialchars($rows['lastName']) . ", " . htmlspecialchars($rows['firstName']) ?></h2>
+            <p>Instructor</p>
+          </div>
+          <div class="trainer-text">
+            <p>
+              <?= htmlspecialchars($rows['goal']) ?>
+            </p>
+          </div>
+          <a href="instructor-profile.php?id=<?= htmlspecialchars($rows['ID']) ?>"><button class="view-btn">VIEW</button></a>
+        </div>
+      <?php endforeach; ?>
       <!-- Card 1 -->
       <div class="trainer-card">
         <div class="trainer-image">

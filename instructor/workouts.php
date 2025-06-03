@@ -1,4 +1,6 @@
-<?php require_once "./components/main.php";
+<?php
+
+require_once "./includes/auth.php";
 
 if (isset($_SESSION['error_login'])) {
     print_r($_SESSION['error_login']);
@@ -72,7 +74,7 @@ if (isset($_SESSION['error_login'])) {
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             new DataTable("#myTable", {
-                ajax: './includes/get-exercises.php?id=<?= $_SESSION['id'] ?>',
+                ajax: './includes/get-workouts.php?id=<?= $_SESSION['id'] ?>',
                 columns: [{
                         data: "id"
                     },

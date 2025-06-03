@@ -4,6 +4,22 @@ require_once("./includes/auth.php");
 isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("location: ./explore-exercises.php");
 ?>
 
+<!-- Get all exercise details -->
+<?php
+require_once "./includes/exercise.php";
+$exercise = new Exercise($conn, $exerciseId);
+if ($exercise->check_id() === true) {
+    $exerciseDetails = $exercise->get_exercise();
+    $muscleList = $exercise->get_muscles();
+    $equipmentList = $exercise->get_equipments();
+    $categoryList = $exercise->get_categories();
+    $stepsList = $exercise->get_exercise_steps();
+} else {
+    header("location: ./explore-exercises.php");
+    exit();
+};
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,21 +35,6 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
     <!-- Navigation Header -->
     <?php require_once "./components/navbar.php"; ?>
 
-    <!-- Get all exercise details -->
-    <?php
-    require_once "./includes/exercise.php";
-    $exercise = new Exercise($conn, $exerciseId);
-    if ($exercise->check_id() === true) {
-        $exerciseDetails = $exercise->get_exercise();
-        $muscleList = $exercise->get_muscles();
-        $equipmentList = $exercise->get_equipments();
-        $categoryList = $exercise->get_categories();
-        $stepsList = $exercise->get_exercise_steps();
-    } else {
-        header("location: ./explore-exercises.php");
-        exit();
-    };
-    ?>
 
     <header class="header">
         <div class="header-content">

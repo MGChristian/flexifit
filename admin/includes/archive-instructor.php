@@ -1,7 +1,7 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "GET") {
-    $instructorId = $_GET['ID'];
+    $instructorId = $_GET['id'];
 
     try {
         require_once "../../includes/config.php";

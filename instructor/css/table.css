@@ -1,12 +1,12 @@
 :root {
   --black: #292929;
-  --yellow: #FCC707;
-  --dark-yellow: #AD861D;
-  --darker-yellow: #9A7511;
-  --red: #DC343D;
-  --green: #0F910F;
-  --light-grey: #F3F3F3;
-  --dark-grey: #AEB0AF;
+  --yellow: #fcc707;
+  --dark-yellow: #ad861d;
+  --darker-yellow: #9a7511;
+  --red: #dc343d;
+  --green: #0f910f;
+  --light-grey: #f3f3f3;
+  --dark-grey: #aeb0af;
   --light: 200;
   --normal: 400;
   --bold: 700;
@@ -65,7 +65,8 @@ table {
   width: 100%;
 }
 
-th, td {
+th,
+td {
   text-align: left;
   padding: 8px;
   border-bottom: 1px solid #ddd;
@@ -85,7 +86,7 @@ tr:nth-child(even) {
 }
 
 .view-button {
-  background-color: #FCC707;
+  background-color: #fcc707;
   color: #000;
   padding: 10px 20px;
   border: none;
@@ -108,7 +109,7 @@ h2 {
 .button {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #FCC707;
+  background-color: #fcc707;
   color: #434343;
   text-decoration: none;
   border-radius: 5px;
@@ -152,7 +153,7 @@ h2 {
 }
 
 .booksrecords a {
-  color: black;
+  color: var(--black);
   text-decoration: none;
 }
 
@@ -165,21 +166,20 @@ h2 {
 }
 
 .View h2 {
-  margin-left: 20px; 
+  margin-left: 20px;
 }
-  
+
 table {
   width: 100%;
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #ddd;
   padding: 10px;
   text-align: left;
-  
 }
-
 
 th {
   background-color: #333;
@@ -198,96 +198,78 @@ tr:nth-child(even) {
   border-radius: 3px;
   text-decoration: none;
   cursor: pointer;
-  
 }
 
 td:last-child {
   text-align: center;
-  
 }
 
 .download-button {
-  
-    display: block; 
-    margin: 0 auto;
-    padding: 5px 5px; 
-    background-color: #990000; 
-    color: #fff;
-    text-decoration: none;
-    border-radius: px;
-    text-align: center;
-  }
+  display: block;
+  margin: 0 auto;
+  padding: 5px 5px;
+  background-color: #990000;
+  color: #fff;
+  text-decoration: none;
+  border-radius: px;
+  text-align: center;
+}
 
-  
-  .upclients {
-    font-family: monospace; 
-    font-size: 3rem; 
-    font-weight: bold;
-    color: #333; 
-    letter-spacing: 2px; 
-  }
+.upclients {
+  font-family: monospace;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333;
+  letter-spacing: 2px;
+}
 
-  .upclients span {
-    margin-left: 5px;
-  }
+.upclients span {
+  margin-left: 5px;
+}
 
-  .uppclients a {
-    color: black; 
-    text-decoration: none;
+.uppclients a {
+  color: var(--black);
+  text-decoration: none;
+}
 
-    
-  }
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
 
-  table {
-      width: 100%;
-      border-collapse: collapse;
-    }
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
 
-    th, td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: left;
-    }
+th {
+  background-color: #333;
+  color: white;
+}
 
-    th {
-      background-color: #333;
-      color: white;
-    }
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
+.view-profile-button {
+  background-color: #ffd700;
+  color: #000;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  text-decoration: none;
+  cursor: pointer;
+}
 
-    .view-profile-button {
-      background-color: #ffd700; 
-      color: #000;
-      padding: 5px 10px;
-      border: none;
-      border-radius: 3px;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    
-    .download-pdf{
-    
-  
-        display: block; 
-        margin: 0 auto;
-        padding: 5px 5px; 
-        background-color: #990000; 
-        color: #fff;
-        text-decoration: none;
-        border-radius: px;
-        text-align: center;
-      }
-    
-    
-
-
-
-
-  
-  
-
-  
-  
+.download-pdf {
+  display: block;
+  margin: 0 auto;
+  padding: 5px 5px;
+  background-color: #990000;
+  color: #fff;
+  text-decoration: none;
+  border-radius: px;
+  text-align: center;
+}

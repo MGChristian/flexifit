@@ -1,4 +1,5 @@
-<?php require_once "./components/main.php";
+<?php
+require_once "./includes/auth.php";
 
 if (isset($_SESSION['error_login'])) {
     print_r($_SESSION['error_login']);

@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $workout_description = isset($_POST['workoutDescription']) ? $_POST['workoutDescription'] : '';
     $difficulty = isset($_POST['difficulty']) ? $_POST['difficulty'] : '';
     $profile = $_FILES['workoutPic'] ?? null;
-    $folder = "../images/workouts/";
+    $folder = "../../admin/images/workouts/";
     // echo "<pre>";
     // print_r($_POST);
     // echo "</pre>";

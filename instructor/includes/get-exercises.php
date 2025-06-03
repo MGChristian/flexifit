@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         }
     } else {
         $exerciseList[] = array(
-            "id" => '',
+            "id" => 'No exercises available',
             "exerciseName" => '',
             "description" => '',
             "status" => '',

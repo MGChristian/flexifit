@@ -48,7 +48,7 @@
 
 .filters {
   z-index: 99;
-  color: black;
+  color: var(--black);
   position: absolute;
   background-color: white;
   padding: 1rem;

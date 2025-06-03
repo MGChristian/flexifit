@@ -1,22 +1,3 @@
-<?php
-
-if (!isset($isLoggedIn)) {
-    $isLoggedIn = isset($_SESSION['id']);
-}
-
-if (!isset($userData) && $isLoggedIn) {
-    $user_id = $_SESSION['id'];
-    $stmt = $conn->prepare("SELECT * FROM `user` WHERE `ID` = ?");
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($result && $result->num_rows > 0) {
-        $userData = $result->fetch_assoc();
-    }
-}
-
-?>
-
 <header class="header">
 
     <div class="logo">

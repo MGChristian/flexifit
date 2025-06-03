@@ -1,5 +1,20 @@
 <?php
 require_once("./includes/auth.php");
+// Check if id is set, if it is not go back to explore exercise page
+isset($_GET['id']) && !empty($_GET['id']) ? $instructorId = $_GET['id'] : header("location: ./instructors.php");
+?>
+
+<!-- Get all exercise details -->
+<?php
+require_once "./includes/instructor.php";
+$instructor = new Instructor($conn, $instructorId);
+if ($instructor->check_id() === true) {
+    $instructorDetails = $instructor->get_instructor_details();
+    $workouts = $instructor->get_workouts();
+} else {
+    header("location: ./instructors.php");
+    exit();
+};
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +25,7 @@ require_once("./includes/auth.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FlexiFit</title>
     <?php require_once "./components/global_css.php" ?>
-    <link rel="stylesheet" href="css/my-profile.css" />
+    <link rel="stylesheet" href="./css/instructor-profile.css" />
 </head>
 
 <body>
@@ -20,12 +35,14 @@ require_once("./includes/auth.php");
     <header class="header">
         <div class="header-content">
             <div class="profile-header">
-                <div class="image-container"></div>
+                <div class="image-container">
+                    <img src="./instructor/images/<?= rawurlencode($instructorDetails['firstName']) . "-" . rawurlencode($instructorDetails['lastName']) . "/" . rawurlencode($instructorDetails['profilePicUrl']) ?>" />
+                </div>
                 <div class="profile-details">
                     <p>INSTRUCTOR</p>
-                    <h4>Surname, Firstname, M.I</h4>
+                    <h4><?= htmlspecialchars($instructorDetails['lastName']) . ", " . htmlspecialchars($instructorDetails['firstName']) ?></h4>
                     <p><b>Strength Training, Athletic Performance, Core Conditioning</b></p>
-                    <p class="profile-description">I want to motivate, encourage, and educate everyone to help them achieve their optimum level of quality of life.</p>
+                    <p class="profile-description"><?= htmlspecialchars($instructorDetails['goal']) ?></p>
                 </div>
             </div>
         </div>
@@ -37,68 +54,34 @@ require_once("./includes/auth.php");
                 <h4>Personal Information</h4>
                 <hr />
                 <div class="user-details">
-                    <div class="half">
-                        <div class="input-half">
-                            <label>Address</label>
-                            <input type="text" />
-                        </div>
-
-                        <div class="input-half">
-                            <label>Birthdate</label>
-                            <input type="text" value="2002-12-11" />
-                        </div>
-                    </div>
-                    <div class="half">
-                        <div class="input-half">
-                            <label>Gender</label>
-                            <select>
-                                <option>Male</option>
-                                <option>Female</option>
-                                <option selected disabled>Gender</option>
-                            </select>
-                        </div>
-
-                        <div class="input-half">
-                            <label>Contact Number</label>
-                            <input type="number" />
-                        </div>
-                    </div>
+                    <p><?= htmlspecialchars($instructorDetails['personalDescription']) ?></p>
                 </div>
-                <h4>Account Information</h4>
+                <div class="user-details-w-button">
+                    <h4>My Workouts</h4>
+                    <a href="instructor-profile.php?id=<?= htmlspecialchars($instructorDetails['ID']) ?>"><button class="view-btn">View More</button></a>
+                </div>
                 <hr />
+                <div class="workout-container">
+                    <?php foreach ($workouts as $workout): ?>
+                        <a href="./workout.php?id=<?= htmlspecialchars($workout['ID']) ?>">
+                            <div class="workout">
+                                <div class="workout-image">
+                                    <img src="./admin/images/workouts/<?= isset($workout['workoutPicUrl']) && !empty($workout['workoutPicUrl']) ? htmlspecialchars($workout['workoutPicUrl']) : 'play-button.png' ?>">
+                                </div>
+                                <div class="workout-details">
+                                    <p><strong><?= htmlspecialchars($workout['workoutName']) ?></strong></p>
+                                    <p><?= htmlspecialchars($workout['duration']) ?> - <strong><?= htmlspecialchars($workout['difficulty']) ?></strong></p>
+                                </div>
+                            </div>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
                 <div class="user-details">
-                    <div class="half">
-                        <div class="input-half">
-                            <label>Username</label>
-                            <input type="text" />
-                        </div>
-                        <div class="input-half">
-                            <label>Date Created</label>
-                            <input type="date" value="2025-01-10" disabled />
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="user-profile-right">
-                <h4>Change Password</h4>
+                <h4>Connect with Me</h4>
                 <hr />
-                <div class="user-details">
-                    <form action="./includes/change-pass.php" method="POST">
-                        <div class="input-full">
-                            <label>Current Password</label>
-                            <input type="password" />
-                        </div>
-                        <div class="input-full">
-                            <label>New Password</label>
-                            <input type="password" />
-                        </div>
-                        <div class="input-full">
-                            <label>Confirm New Password</label>
-                            <input type="password" />
-                        </div>
-                        <button type="submit">Change Password</button>
-                    </form>
-                </div>
             </div>
 
         </div>
