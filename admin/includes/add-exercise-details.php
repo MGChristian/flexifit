@@ -49,11 +49,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
         // Video
         $videoUrl = '';
-        if (!empty($video)) {
+        if ($video["size"] = 0) {
             $videoUrl = handle_video_file($folder, $video);
-        }
-        if ($videoUrl === "none") {
-            $errors["video_problem"] = "There was a problem with the video upload";
+            if ($videoUrl === "none") {
+                $errors["video_problem"] = "There was a problem with the video upload";
+            }
         }
 
         // Equipments
