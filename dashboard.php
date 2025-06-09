@@ -18,6 +18,39 @@ require_once("./includes/auth.php");
         <!-- side -->
         <?php include "./components/user-dashboard-sidebar.php" ?>
         <!-- side -->
+         <main class="main-container">
+            <div class="page-title">
+                <h1>DASHBOARD</h1>
+            </div>
+            <div class="card-section">
+                <hr>
+                <!-- cards -->
+                <div class="cards">
+                    <div class="yellow card shadow">
+                        <div class="left-card"><i class="fa fa-user" aria-hidden="true"></i></div>
+                        <div class="right-card">
+                            <h2>69</h2>
+                            <p>Total Workouts Completed</p>
+                        </div>
+                    </div>
+                    <div class="red card shadow">
+                        <div class="left-card"><i class="fa fa-users" aria-hidden="true"></i></div>
+                        <div class="right-card">
+                            <h2>69</h2>
+                            <p>Collections</p>
+                        </div>
+                    </div>
+                    <div class="green card shadow">
+                        <div class="left-card"><i class="fa fa-star" aria-hidden="true"></i></div>
+                        <div class="right-card">
+                            <h2>32</h2>
+                            <p>Saved Workouts</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- cards -->
+            </div>
+        </main>
     </div>
 </body>
 </html>

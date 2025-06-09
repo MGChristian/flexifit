@@ -33,7 +33,6 @@ check_if_logged_in();
   <div class="right-section">
     <div class="nav">
       <a href="./">HOME</a>
-      <span>|</span>
       <a href="signup-page-info.php">SIGN UP</a>
     </div>
     <div class="form-container">

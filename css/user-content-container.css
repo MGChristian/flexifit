@@ -1,0 +1,21 @@
+.grid-container {
+  display: flex;
+  height: calc(100vh - 60px);
+  overflow: auto;
+  background-color: var(--light-grey);
+}
+
+/* MAX WIDTH OF 1200px FOR THE MAIN CONTENT CONTAINER */
+
+.main-container {
+  margin: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  /* grid-area: main; */
+  max-width: 80rem;
+  color: var(--black);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}

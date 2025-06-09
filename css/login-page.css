@@ -99,25 +99,23 @@ body {
   flex-direction: row;
   position: absolute;
   top: 20px;
-  right: 40px;
+  right: 10px;
   font-size: 14px;
   font-weight: 600;
-  gap: 5px;
 }
 
 .nav a {
-  color: #fdd835;
+  color: #ffffff;
   text-decoration: none;
   margin: 0 10px;
-  font-weight: 500;
+  padding: 10px 20px;
+  background-color: #ffcc00;
+  border-radius: 20px;
+  transition: .5s;
 }
 
 .nav a:hover {
-  color: #ffcc00;
-}
-
-.nav span {
-  color: #fdd835;
+  background-color: #d4ae04;
 }
 
 .form-container {
@@ -168,6 +166,24 @@ body {
 .form-container input:focus {
   outline: none;
   border: 1.5px solid #ffcc00;
+}
+
+.form-container .user-icon {
+  position: absolute;
+  top: 46%;
+  right: 125px;
+  color: #000000;
+  height: 18px;
+  width: 18px;
+}
+
+.form-container .pass-icon {
+  position: absolute;
+  top: 56%;
+  right: 125px;
+  color: #000000;
+  height: 18px;
+  width: 18px;
 }
 
 .form-container button {

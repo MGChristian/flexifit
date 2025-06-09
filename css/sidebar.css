@@ -3,7 +3,7 @@
   position: sticky;
   top: 0px;
   height: 100%;
-  overflow-y: auto;
+  overflow-y: hidden;
   background-color: var(--black);
   color: var(--black);
   width: 260px;
@@ -39,24 +39,19 @@ ul a {
   gap: 1rem;
 }
 
+.sidebar-list-item:hover .sidebar-list-title {
+  transform: translateX(10px);
+  transition: .3s;
+}
+
 .sidebar-list-item:hover {
   cursor: pointer;
   padding: 20px;
   background-color: var(--dark-yellow);
 }
 
-.mini-sidebar-list-item {
-  background-color: var(--dark-yellow);
-  padding: 10px 10px 10px 20px;
-}
-
-.mini-sidebar-list a {
-  text-decoration: none;
-  color: var(--black);
-}
-
-.mini-sidebar-list-item:hover {
-  background-color: var(--darker-yellow);
+.sidebar-list-item.active .sidebar-list-title {
+  font-weight: bold;
 }
 
 @media only screen and (max-width: 1200px) {

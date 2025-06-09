@@ -52,7 +52,7 @@
 }
 
 .nav-links a:hover {
-  color: #ffd700; /* Highlight color on hover */
+  color: #333; /* Highlight color on hover */
 }
 
 .join-now {
@@ -62,6 +62,8 @@
   border: none;
   font-size: 1rem;
   font-weight: bold;
+  font-family: 'Oxanium';
+  text-transform: uppercase;
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s ease;

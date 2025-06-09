@@ -40,7 +40,6 @@ check_token($conn, $token);
   <div class="right-section">
     <div class="nav">
       <a href="#">ABOUT</a>
-      <span>|</span>
       <a href="signup-page-info.html">SIGN UP</a>
     </div>
     <div class="form-container">

@@ -34,7 +34,6 @@ check_sessions();
   <div class="right-section">
     <div class="nav">
       <a href="./">HOME</a>
-      <span>|</span>
       <a href="login-page.php">LOG IN</a>
     </div>
     <div class="form-container">
@@ -50,9 +49,28 @@ check_sessions();
         <div class="error-wrapper">
           <?php check_signup_errors() ?>
         </div>
-        <input name="username" type="text" placeholder="Username" required />
-        <input name="password" type="password" placeholder="Password" required />
-        <input name="confirm" type="password" placeholder="Confirm Password" required />
+        <input
+          name="username"
+          type="text"
+          placeholder="Username"
+          required />
+          <ion-icon name="person-outline" class="user-icon"></ion-icon>
+        <input
+          name="password"
+          type="password"
+          oninput="changeIcon(this.value)"
+          id="signPass"
+          placeholder="Password"
+          required />
+          <ion-icon name="lock-closed-outline" class="pass-icon" id="signPass-icon" onclick="mySignPassword()"></ion-icon>
+        <input
+          name="confirm"
+          type="password"
+          oninput="changeConfirmPassIcon(this.value)"
+          id="signConfirmPass"
+          placeholder="Confirm Password"
+          required />
+          <ion-icon name="lock-closed-outline" class="confirm-pass-icon" id="signConfirmPass-icon" onclick="mySignConfirmPassword()"></ion-icon>
 
         <div class="divider">EMERGENCY CONTACT</div>
 
@@ -62,6 +80,59 @@ check_sessions();
       </form>
     </div>
   </div>
+
+  <script>
+    const signInputPass = document.getElementById('signPass');
+    const signInputConfirmPass = document.getElementById('signConfirmPass');
+    const signInputPassIcon = document.getElementById('signPass-icon');
+    const signInputConfirmPassIcon = document.getElementById('signConfirmPass-icon');
+
+    function mySignPassword() {
+      if(signInputPass.type === "password") {
+        signInputPass.type = "text";
+
+        signInputPassIcon.name = "eye-off-outline";
+        signInputPassIcon.style.cursor = "pointer";
+      } else {
+        signInputPass.type = "password";
+
+        signInputPassIcon.name = "eye-outline";
+        signInputPassIcon.style.cursor = "pointer";
+      }
+    }
+
+    function mySignConfirmPassword() {
+      if(signInputConfirmPass.type === "password") {
+        signInputConfirmPass.type = "text";
+
+        signInputConfirmPassIcon.name = "eye-off-outline";
+        signInputConfirmPassIcon.style.cursor = "pointer";
+      } else {
+        signInputConfirmPass.type = "password";
+
+        signInputConfirmPassIcon.name = "eye-outline";
+        signInputConfirmPassIcon.style.cursor = "pointer";
+      }
+    }
+
+    function changeIcon(value) {
+      if(value.length > 0) {
+        signInputPassIcon.name = "eye-outline";
+      } else {
+        signInputPassIcon.name = "lock-closed-outline";
+      }
+    }
+
+    function changeConfirmPassIcon(value) {
+      if(value.length > 0) {
+        signInputConfirmPassIcon.name = "eye-outline";
+      } else {
+        signInputConfirmPassIcon.name = "lock-closed-outline";
+      }
+    }
+  </script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

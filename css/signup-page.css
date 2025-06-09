@@ -20,6 +20,7 @@ body {
   align-items: center;
   height: 100vh;
   animation: fadeIn 0.2s ease;
+  overflow: hidden;
 }
 
 @keyframes fadeIn {
@@ -79,7 +80,6 @@ body {
   font-weight: 300;
 }
 
-/* Right Section */
 .right-section {
   height: 100%;
   flex: 1;
@@ -98,25 +98,23 @@ body {
   flex-direction: row;
   position: absolute;
   top: 20px;
-  right: 40px;
+  right: 10px;
   font-size: 14px;
   font-weight: 600;
-  gap: 5px;
 }
 
 .nav a {
-  color: #fdd835;
+  color: #ffffff;
   text-decoration: none;
   margin: 0 10px;
-  font-weight: 500;
+  padding: 10px 20px;
+  background-color: #ffcc00;
+  border-radius: 20px;
+  transition: .5s;
 }
 
 .nav a:hover {
-  color: #ffcc00;
-}
-
-.nav span {
-  color: #fdd835;
+  background-color: #d4ae04;
 }
 
 .form-container {
@@ -125,6 +123,7 @@ body {
   align-items: flex-start;
   width: 450px;
   margin-top: 50px;
+  height: 500px;
 }
 
 .form-container h2 {
@@ -149,6 +148,33 @@ body {
   border-radius: 1px;
   font-size: 14px;
   transition: ease 0.5s;
+}
+
+.form-container .user-icon {
+  position: absolute;
+  top: 35%;
+  right: 160px;
+  color: #a0a0a0;
+  height: 18px;
+  width: 18px;
+}
+
+.form-container .pass-icon {
+  position: absolute;
+  top: 45%;
+  right: 160px;
+  color: #a0a0a0;
+  height: 18px;
+  width: 18px;
+}
+
+.form-container .confirm-pass-icon {
+  position: absolute;
+  top: 55%;
+  right: 160px;
+  color: #a0a0a0;
+  height: 18px;
+  width: 18px;
 }
 
 .date-empty {

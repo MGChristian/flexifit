@@ -34,7 +34,6 @@ check_if_logged_in();
   <div class="right-section">
     <div class="nav">
       <a href="./">HOME</a>
-      <span>|</span>
       <a href="signup-page-info.php">SIGN UP</a>
     </div>
     <div class="form-container">
@@ -48,20 +47,51 @@ check_if_logged_in();
           type="text"
           placeholder="Username"
           required />
+        <ion-icon name="person-outline" class="user-icon"></ion-icon>
         <input
           name="password"
           type="password"
+          oninput="changeIcon(this.value)"
+          id="logPassword"
           placeholder="Password"
           required />
+        <ion-icon name="lock-closed-outline" class="pass-icon" id="logPass-icon" onclick="myLogPassword()"></ion-icon>
         <button
-          type="submit"
-          onclick="window.location.href='loggedin/Home.html'">
+          type="submit">
           LOG IN
         </button>
         <a href="login-page-forgot.php">Forgot Password?</a>
       </form>
     </div>
   </div>
+  <script>
+    const logInputPass = document.getElementById('logPassword');
+    const logInputIcon = document.getElementById('logPass-icon');
+
+    function myLogPassword() {
+      if(logInputPass.type === "password") {
+        logInputPass.type = "text";
+
+        logInputIcon.name = "eye-off-outline";
+        logInputIcon.style.cursor = "pointer";
+      } else {
+        logInputPass.type = "password";
+
+        logInputIcon.name = "eye-outline";
+        logInputIcon.style.cursor = "pointer";
+      }
+    }
+
+    function changeIcon(value) {
+        if(value.length > 0) {
+          logInputIcon.name = "eye-outline";
+        } else {
+          logInputIcon.name = "lock-closed-outline"
+        }
+      }
+  </script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
 
