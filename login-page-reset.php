@@ -6,7 +6,7 @@ require_once "./includes/config_session.inc.php";
 $token = isset($_GET['token']) ? $_GET['token'] : '';
 
 check_if_logged_in();
-check_token($conn, $token);
+//check_token($conn, $token);
 
 ?>
 
@@ -50,19 +50,80 @@ check_token($conn, $token);
         <input
           name="password"
           type="password"
+          oninput="changeIcon(this.value)"
+          id="resetPassword"
           placeholder="New Password"
           required />
+        </input>
+        <ion-icon name="lock-closed-outline" class="reset-pass-icon" id="reset-logPass-icon" onclick="myResetPassword()"></ion-icon>
         <input
           name="confirm-password"
           type="password"
-          placeholder="Confirm Password"
+          oninput="newIcon(this.value)"
+          id="newPassword"
+          placeholder="Confirm New Password"
           required />
+        </input>
+        <ion-icon name="lock-closed-outline" class="new-pass-icon" id="new-logPass-icon" onclick="myNewPassword()"></ion-icon>
         <button type="submit">
           RESET PASSWORD
         </button>
       </form>
     </div>
   </div>
+
+  <script>
+    const resetInputPass = document.getElementById('resetPassword');
+    const resetInputIcon = document.getElementById('reset-logPass-icon');
+    const newInputPass = document.getElementById('newPassword');
+    const newInputIcon = document.getElementById('new-logPass-icon');
+
+    function myResetPassword() {
+      if(resetInputPass.type === "password") {
+        resetInputPass.type = "text";
+
+        resetInputIcon.name = "eye-off-outline";
+        resetInputIcon.style.cursor = "pointer";
+      } else {
+        resetInputPass.type = "password";
+
+        resetInputIcon.name = "eye-outline";
+        resetInputIcon.style.cursor = "pointer";
+      }
+    }
+
+    function changeIcon(value) {
+      if(value.length > 0) {
+        resetInputIcon.name = "eye-outline";
+      } else {
+        resetInputIcon.name = "lock-closed-outline"
+      }
+    }
+
+    function myNewPassword() {
+      if(newInputPass.type === "password") {
+        newInputPass.type = "text";
+
+        newInputIcon.name = "eye-off-outline";
+        newInputIcon.style.cursor = "pointer";
+      } else {
+        newInputPass.type = "password";
+
+        newInputIcon.name = "eye-outline";
+        newInputIcon.style.cursor = "pointer";
+      }
+    }
+    function newIcon(value) {
+      if(value.length > 0) {
+        newInputIcon.name = "eye-outline";
+      } else {
+        newInputIcon.name = "lock-closed-outline"
+      }
+    }
+  </script>
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

@@ -302,6 +302,33 @@ body {
   right: 0;
 }
 
+.form-container .user-icon {
+  position: absolute;
+  top: 35%;
+  right: 160px;
+  color: #a0a0a0;
+  height: 18px;
+  width: 18px;
+}
+
+.form-container .pass-icon {
+  position: absolute;
+  top: 45%;
+  right: 160px;
+  color: #a0a0a0;
+  height: 18px;
+  width: 18px;
+}
+
+.form-container .confirm-pass-icon {
+  position: absolute;
+  top: 55%;
+  right: 160px;
+  color: #a0a0a0;
+  height: 18px;
+  width: 18px;
+}
+
 .progress-indicator {
   display: flex;
   justify-content: center;
@@ -484,6 +511,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 1;
+    display: none;
   }
 
   .branding {
@@ -527,6 +555,33 @@ body {
   .form-container select {
     width: 100%;
   }
+
+  .form-container .user-icon {
+  position: absolute;
+  top: 38%;
+  right: 30px;
+  color: #a0a0a0;
+  height: 18px;
+  width: 18px;
+}
+
+.form-container .pass-icon {
+  position: absolute;
+  top: 48%;
+  right: 30px;
+  color: #a0a0a0;
+  height: 18px;
+  width: 18px;
+}
+
+.form-container .confirm-pass-icon {
+  position: absolute;
+  top: 58%;
+  right: 30px;
+  color: #a0a0a0;
+  height: 18px;
+  width: 18px;
+}
 
   .progress-bar {
     flex-direction: row;
