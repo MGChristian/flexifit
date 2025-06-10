@@ -33,7 +33,7 @@ require_once("./includes/explore-workouts.php");
 
   <!-- SETS THE MAXIMUM WIDTH TO 1200px -->
   <div class="main-container">
-    <h1>FEATURED WORKOUTS</h1>
+    <h1>NEW WORKOUTS</h1>
     <section class="classes-grid">
       <?php foreach (get_workouts($conn) as $rows): ?>
         <a href="./workout.php?id=<?= htmlspecialchars($rows['ID']) ?>">

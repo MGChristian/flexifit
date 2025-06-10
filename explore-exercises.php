@@ -34,7 +34,7 @@ require_once("./includes/explore-exercises.php");
 
     <!-- SETS THE MAXIMUM WIDTH TO 1200px -->
     <div class="main-container">
-        <h1>EXERCISES</h1>
+        <h1>NEW EXERCISES</h1>
         <section class="classes-grid">
             <!-- Display all exercises -->
             <?php foreach (get_exercises($conn) as $rows): ?>

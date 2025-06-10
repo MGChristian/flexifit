@@ -84,9 +84,9 @@ $url = basename($_SERVER['PHP_SELF']);
         <button class="join-now">
             <a href="signup-page-info.php">Join Now</a>
         </button>
-        <div class="log-in">
+        <!-- <div class="log-in">
             <a href="login-page.php">Login</a>
-        </div>
+        </div> -->
     <?php endif; ?>
 </nav>
 
