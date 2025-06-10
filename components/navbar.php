@@ -68,8 +68,11 @@ $url = basename($_SERVER['PHP_SELF']);
         </div>
     <?php else: ?>
         <button class="join-now">
-            <a href="login-page.php">Join Now</a>
+            <a href="signup-page-info.php">Join Now</a>
         </button>
+        <div class="log-in">
+            <a href="login-page.php">Login</a>
+        </div>
     <?php endif; ?>
 </nav>
 
@@ -150,7 +153,7 @@ $url = basename($_SERVER['PHP_SELF']);
         <li <?php echo ($url && $url === 'about-us.php') ? 'class="active"' : ''; ?>>ABOUT US</li>
     </a>
     <?php if (!$isLoggedIn): ?>
-        <a href="./login-page.php">
+        <a href="./signuo-page-info.php">
             <li class="join-us">JOIN US</li>
         </a>
     <?php endif; ?>

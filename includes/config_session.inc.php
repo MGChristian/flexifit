@@ -13,13 +13,16 @@ session_set_cookie_params([
 ]);
 
 date_default_timezone_set("Asia/Manila");
-session_start();
 
-if (!isset($_SESION['last_regenaration'])) {
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (!isset($_SESSION['last_regeneration'])) {
     regenerate_session_id();
 } else {
     $interval = 60 * 30;
-    if (time() - $_SESSION['last_regenartion'] >= $interval) {
+    if (time() - $_SESSION['last_regeneration'] >= $interval) {
         regenerate_session_id();
     }
 }

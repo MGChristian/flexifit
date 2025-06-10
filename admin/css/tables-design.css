@@ -1,7 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 /* ADD INSTRUCTOR BUTTON */
 .add-button {
-  background-color: var(--yellow);
+  background-color:#fff8dc;
   padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 30px;
+  color: #f0c000;
+  font-family: Montserrat, sans-serif;
+}
+
+.add-button:hover {
+  background-color:#fffae9;
 }
 
 .main-title-button {

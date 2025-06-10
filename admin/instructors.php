@@ -47,7 +47,7 @@ if (isset($_SESSION['error_login'])) {
                     <h3>CURRENT INSTRUCTORS LIST</h3>
                     <div class="main-title-button-container">
                         <a href='./archived-instructors.php'><button type="button" class="add-button">ARCHIVED INSTRUCTORS</button></a>
-                        <button type="button" class="filterOpen add-button" data-target="add-intructor">+ADD INSTRUCTOR</button>
+                        <button type="button" class="filterOpen add-button" data-target="add-intructor">+ ADD INSTRUCTOR</button>
                     </div>
                 </div>
                 <hr>

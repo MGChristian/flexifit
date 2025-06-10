@@ -2,7 +2,6 @@
 
 require_once "./includes/config_session.inc.php";
 check_if_logged_in();
-
 ?>
 
 <!DOCTYPE html>
@@ -38,6 +37,13 @@ check_if_logged_in();
     </div>
     <div class="form-container">
       <h2>LOG IN</h2>
+    
+      <?php
+        if (isset($_SESSION['success'])) {
+            echo "<div class='success-message'>Registration successful! You can now log in.</div>";
+            unset($_SESSION['success']);
+        }
+      ?>
       <form action="./includes/login.inc.php" method="POST">
         <div class="error-wrapper">
           <?php check_login_errors() ?>

@@ -2,7 +2,7 @@
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $email = isset($_POST['email']) ? $_POST['email'] : '';
-    $url = "http://localhost/flexifit/userpage/login-page-reset.php";
+    $url = "http://localhost/flexifit/login-page-reset.php";
 
     try {
         require_once "config.php";

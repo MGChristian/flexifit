@@ -33,6 +33,11 @@ ul a {
   justify-content: space-between;
 }
 
+.sidebar-list-item:hover .sidebar-list-title {
+  transform: translateX(10px);
+  transition: .3s;
+}
+
 .sidebar-list-title {
   display: flex;
   gap: 1rem;
@@ -42,6 +47,10 @@ ul a {
   cursor: pointer;
   padding: 20px;
   background-color: var(--dark-yellow);
+}
+
+.sidebar-list-item.active .sidebar-list-title {
+  font-weight: bold;
 }
 
 .mini-sidebar-list-item {

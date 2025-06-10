@@ -5,7 +5,7 @@
     <ul class="sidebar-list">
         <!-- NAVBAR TITLE -->
         <a href="./">
-            <li class="sidebar-list-item">
+            <li class="sidebar-list-item <?= $current_page == 'index.php' ? 'active' : '' ?>">
                 <div class="sidebar-list-title"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</div>
             </li>
         </a>
@@ -17,7 +17,7 @@
         </li>
 
         <!-- CONTENT DROPDOWN -->
-        <ul class="content-m mini-sidebar-list hidden">
+        <ul class="content-m mini-sidebar-list hidden <?= $current_page == 'exercises.php' ? 'active' : '' ?>">
             <a href="./exercises.php">
                 <li class="mini-sidebar-list-item">Exercises</li>
             </a>
@@ -31,14 +31,14 @@
 
         <!-- RATINGS -->
         <a href="./ratings.php">
-            <li class="sidebar-list-item">
+            <li class="sidebar-list-item <?= $current_page == 'ratings.php' ? 'active' : '' ?>">
                 <div class="sidebar-list-title"><i class="fa fa-star" aria-hidden="true"></i> Ratings & Reviews</div>
             </li>
         </a>
 
         <!-- REPORTS -->
         <a href="./reports.php">
-            <li class="sidebar-list-item">
+            <li class="sidebar-list-item <?= $current_page == 'reports.php' ? 'active' : '' ?>">
                 <div class="sidebar-list-title"><i class="fa fa-area-chart" aria-hidden="true"></i> Reports</div>
             </li>
         </a>

@@ -46,7 +46,7 @@ if (isset($_SESSION['error_login'])) {
                 <div class="main-title-button">
                     <h3>CURRENT CATEGORIES LIST</h3>
                     <div class="main-title-button-container">
-                        <button type="button" class="filterOpen add-button" data-target="add-category">+ADD CATEGORY</button>
+                        <button type="button" class="filterOpen add-button" data-target="add-category">+ ADD CATEGORY</button>
                     </div>
                 </div>
                 <hr>

@@ -52,8 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             if (create_user($conn, $username, $email, $password, $first_name, $last_name, $birthdate, $phone, $gender, $profile_pic_url)) {
                 session_unset();
                 session_destroy();
+
+                require_once "config_session.inc.php";
                 $_SESSION['success'] = true;
-                header("Location: ../signup-page-finish.php");
+
+                header("Location: ../login-page.php");
                 exit();
             }
         }

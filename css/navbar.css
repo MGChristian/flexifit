@@ -58,19 +58,30 @@
 .join-now {
   background-color: #ffd700; /* Yellow background */
   color: #333; /* Dark text */
-  padding: 10px 20px;
+  padding: 10px 10px;
   border: none;
-  font-size: 1rem;
+  font-size: .8rem;
   font-weight: bold;
   font-family: 'Oxanium';
   text-transform: uppercase;
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s ease;
+  margin-left: 200px;
 }
 
 .join-now:hover {
   background-color: #e6c200; /* Darker yellow on hover */
+}
+
+.log-in {
+  color: #333;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.log-in a:hover {
+  color: #e6c200; /* Darker yellow on hover */
 }
 
 /* LOGGED IN NAV BAR STYLES */
