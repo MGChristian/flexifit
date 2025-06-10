@@ -45,6 +45,10 @@ if ($workout->check_id() === true) {
     <?php require_once "./components/navbar.php"; ?>
     <!-- SETS THE MAXIMUM WIDTH TO 1200px -->
     <div class="main-container">
+        <form>
+            <input type="number" value="" name="" />
+            <input type="number" value="" name="userID" />
+        </form>
         <input id="play-workout-id" class="hidden" type="number" value="<?= $_GET['id'] ?>" />
         <div class="play-content">
             <h1 id="timer"></h1>

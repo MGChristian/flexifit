@@ -1,6 +1,12 @@
 <?php
 require_once("./includes/auth.php");
 require_once("./includes/explore-exercises.php");
+if (isset($_SESSION['query_error'])) {
+    unset($_SESSION['query_error']);
+}
+if (isset($_GET['exerciseName'])) {
+    $exerciseName = $_GET['exerciseName'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -28,8 +34,10 @@ require_once("./includes/explore-exercises.php");
     </header>
 
     <div class="search-container">
-        <input type="text" class="search-bar" placeholder="Search...">
-        <button class="search-btn"><i class="fas fa-search"></i></button>
+        <form method="GET">
+            <input type="text" name="exerciseName" class="search-bar" placeholder="Search...">
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+        </form>
     </div>
 
     <!-- SETS THE MAXIMUM WIDTH TO 1200px -->
@@ -37,16 +45,31 @@ require_once("./includes/explore-exercises.php");
         <h1>EXERCISES</h1>
         <section class="classes-grid">
             <!-- Display all exercises -->
-            <?php foreach (get_exercises($conn) as $rows): ?>
-                <a href="./exercise.php?id=<?= htmlspecialchars($rows['ID']) ?>">
-                    <div class="class-item">
-                        <img src="./admin/images/exercises/<?= htmlspecialchars($rows['exercisePicUrl']) ?>">
-                        <div>
-                            <p><b><?= htmlspecialchars($rows['exerciseName']) ?></b></p>
+            <?php if (isset($exerciseName)): ?>
+                <?php foreach (get_search_exercise($conn, $exerciseName) as $rows): ?>
+                    <a href="./exercise.php?id=<?= htmlspecialchars($rows['ID']) ?>">
+                        <div class="class-item">
+                            <p>1</p>
+                            <img src="./admin/images/exercises/<?= htmlspecialchars($rows['exercisePicUrl']) ?>">
+                            <div>
+                                <p><b><?= htmlspecialchars($rows['exerciseName']) ?></b></p>
+                            </div>
                         </div>
-                    </div>
-                </a>
-            <?php endforeach; ?>
+                    </a>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <?php foreach (get_exercises($conn) as $rows): ?>
+                    <a href="./exercise.php?id=<?= htmlspecialchars($rows['ID']) ?>">
+                        <div class="class-item">
+                            <p>2</p>
+                            <img src="./admin/images/exercises/<?= htmlspecialchars($rows['exercisePicUrl']) ?>">
+                            <div>
+                                <p><b><?= htmlspecialchars($rows['exerciseName']) ?></b></p>
+                            </div>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </section>
         <div class="explore-button"><a href="all-exercises.php"><button type="button">VIEW ALL EXERCISES</button></a></div>
         <br>

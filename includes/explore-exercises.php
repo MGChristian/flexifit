@@ -18,4 +18,22 @@ function get_exercises($conn)
     }
 }
 
+function get_search_exercise($conn, $exerciseName)
+{
+    $query = "%" . $exerciseName;
+    $stmt = $conn->prepare("SELECT * FROM `exercise` WHERE `status` = '1' AND `exerciseName` = ?");
+    $stmt->bind_param("s", $query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0) {
+        $exercises = [];
+        while ($rows = $result->fetch_assoc()) {
+            $exercises[] = $rows;
+        }
+        return $exercises;
+    } else {
+        return [];
+    }
+}
+
 function get_muscles($conn) {}
