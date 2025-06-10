@@ -43,7 +43,7 @@ require_once("./includes/explore-instructors.php");
         </div>
       <?php endforeach; ?>
       <!-- Card 1 -->
-      <div class="trainer-card">
+      <!-- <div class="trainer-card">
         <div class="trainer-image">
           <img src="assets/back.jpg" alt="Patricia Gatus" />
           <h2>JELLI JANTE</h2>
@@ -55,10 +55,10 @@ require_once("./includes/explore-instructors.php");
           </p>
         </div>
         <a href="instructor-profile.php"><button class="view-btn">VIEW</button></a>
-      </div>
+      </div> -->
 
       <!-- Card 1 -->
-      <div class="trainer-card">
+      <!-- <div class="trainer-card">
         <div class="trainer-image">
           <img src="assets/back.jpg" alt="Patricia Gatus" />
           <h2>JELLI JANTE</h2>
@@ -70,10 +70,10 @@ require_once("./includes/explore-instructors.php");
           </p>
         </div>
         <button class="view-btn">VIEW</button>
-      </div>
+      </div> -->
 
       <!-- Card 2 -->
-      <div class="trainer-card">
+      <!-- <div class="trainer-card">
         <div class="trainer-image">
           <img src="assets/back.jpg" alt="Sam Corrales" />
           <h2>JAI LAWAN</h2>
@@ -85,10 +85,10 @@ require_once("./includes/explore-instructors.php");
           </p>
         </div>
         <button class="view-btn">VIEW</button>
-      </div>
+      </div> -->
 
       <!-- Card 3 -->
-      <div class="trainer-card">
+      <!-- <div class="trainer-card">
         <div class="trainer-image">
           <img src="assets/back.jpg" alt="Sam Corrales" />
           <h2>AG MOLINA</h2>
@@ -100,10 +100,10 @@ require_once("./includes/explore-instructors.php");
           </p>
         </div>
         <button class="view-btn">VIEW</button>
-      </div>
+      </div> -->
 
       <!-- Card 4 -->
-      <div class="trainer-card">
+      <!-- <div class="trainer-card">
         <div class="trainer-image">
           <img src="assets/back.jpg" alt="Sam Corrales" />
           <h2>PAOLO SALVADOR</h2>
@@ -115,10 +115,10 @@ require_once("./includes/explore-instructors.php");
           </p>
         </div>
         <button class="view-btn">VIEW</button>
-      </div>
+      </div> -->
 
       <!-- Card 5 -->
-      <div class="trainer-card">
+      <!-- <div class="trainer-card">
         <div class="trainer-image">
           <img src="assets/back.jpg" alt="Sam Corrales" />
           <h2>PATRICIA GATUS</h2>
@@ -130,10 +130,10 @@ require_once("./includes/explore-instructors.php");
           </p>
         </div>
         <button class="view-btn">VIEW</button>
-      </div>
+      </div> -->
 
       <!-- Card 6 -->
-      <div class="trainer-card">
+      <!-- <div class="trainer-card">
         <div class="trainer-image">
           <img src="assets/back.jpg" alt="Sam Corrales" />
           <h2>SAM CORRALES</h2>
@@ -145,7 +145,7 @@ require_once("./includes/explore-instructors.php");
           </p>
         </div>
         <button class="view-btn">VIEW</button>
-      </div>
+      </div> -->
     </div>
   </div>
   <?php require_once "./components/footer.php" ?>

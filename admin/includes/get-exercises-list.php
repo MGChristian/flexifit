@@ -7,11 +7,19 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     $stmt->execute();
     $result = $stmt->get_result();
     $exercises = [];
-    while ($rows = $result->fetch_assoc()) {
+    if ($result->num_rows > 0) {
+        while ($rows = $result->fetch_assoc()) {
+            $exercises[] = array(
+                "ID" => $rows['ID'],
+                "exerciseName" => $rows['exerciseName']
+            );
+        }
+    } else {
         $exercises[] = array(
-            "ID" => $rows['ID'],
-            "exerciseName" => $rows['exerciseName']
+            "ID" => 'Empty Exercises',
+            "exerciseName" => ''
         );
     }
+
     echo (json_encode($exercises));
 }

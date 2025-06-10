@@ -29,7 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         }
     } else {
         $exerciseList[] = array(
-            "status" => "empty",
+            "id" => 'Empty Exercises',
+            "exerciseName" => '',
+            "description" => '',
+            "status" => '',
+            "dateCreated" => '',
+            "buttons" => "",
         );
     }
     echo json_encode(["data" => $exerciseList]);

@@ -1,5 +1,18 @@
 <?php
 require_once("./includes/auth.php");
+require_once("./includes/profile.inc.php");
+$id = $_SESSION['id'];
+$profile = new Profile($conn, $id);
+if (!$profile->check_user()) {
+  header("location: ./index.php");
+  exit();
+}
+$userDetails = $profile->get_user_details();
+
+if (isset($_SESSION['error_login'])) {
+  print_r($_SESSION['error_login']);
+  unset($_SESSION['error_login']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -22,8 +35,8 @@ require_once("./includes/auth.php");
       <div class="profile-header">
         <div class="image-container"></div>
         <div class="profile-details">
-          <h4>Surname, Firstname, M.I</h4>
-          <p>email@gmail.com</p>
+          <h4><?= $userDetails['lastName'] . ", " . $userDetails['firstName'] ?></h4>
+          <p><?= $userDetails['email'] ?></p>
         </div>
       </div>
     </div>
@@ -43,7 +56,7 @@ require_once("./includes/auth.php");
 
             <div class="input-half">
               <label>Birthdate</label>
-              <input type="text" value="2002-12-11" />
+              <input type="text" value="<?= $userDetails['DOB'] ?>" />
             </div>
           </div>
           <div class="half">
@@ -58,7 +71,7 @@ require_once("./includes/auth.php");
 
             <div class="input-half">
               <label>Contact Number</label>
-              <input type="number" />
+              <input type="number" value="<?= $userDetails['contactNo'] ?>" />
             </div>
           </div>
         </div>
@@ -68,7 +81,7 @@ require_once("./includes/auth.php");
           <div class="half">
             <div class="input-half">
               <label>Username</label>
-              <input type="text" />
+              <input type="text" value="<?= $userDetails['username'] ?>" />
             </div>
             <div class="input-half">
               <label>Date Created</label>
@@ -84,15 +97,15 @@ require_once("./includes/auth.php");
           <form action="./includes/change-pass.php" method="POST">
             <div class="input-full">
               <label>Current Password</label>
-              <input type="password" />
+              <input type="password" name="currentPassword" />
             </div>
             <div class="input-full">
               <label>New Password</label>
-              <input type="password" />
+              <input type="password" name="newPassword" />
             </div>
             <div class="input-full">
               <label>Confirm New Password</label>
-              <input type="password" />
+              <input type="password" name="confirmPassword" />
             </div>
             <button type="submit">Change Password</button>
           </form>

@@ -18,6 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     // Remove exercise
     $removedExercisesID = isset($_POST['removeID']) ? $_POST['removeID'] : [];
 
+    //Profile
+    $photo = isset($_FILES['profilePicUrl']) ? $_FILES['profilePicUrl'] : '';
+    $folder = "../images/workouts/";
+
     try {
         require_once "../../includes/config.php";
         require_once "../../includes/config_session.inc.php";
@@ -26,6 +30,17 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         $errors = [];
 
         $conn->begin_transaction();
+
+        $photoUrl = '';
+        if (!empty($photo)) {
+            $photoUrl = handle_picture_file($folder, $photo);
+            if (!empty($photoUrl)) {
+                update_workout_profile($conn, $photoUrl, $workoutID);
+            }
+        }
+
+
+
 
         // ADD EXERCISES
         foreach ($sets as $setNumber => $setContent) {
@@ -170,4 +185,56 @@ function remove_exercise($conn, $exerciseStepId)
     $stmt->bind_param("i", $exerciseStepId);
     $stmt->execute();
     $stmt->close();
+}
+
+//Updating workout profile
+
+function update_workout_profile($conn, $photoUrl, $workoutID)
+{
+    $stmt = $conn->prepare("UPDATE `workout` SET `workoutPicUrl` = ? WHERE ID = ?");
+    $stmt->bind_param("si", $photoUrl, $workoutID);
+    $stmt->execute();
+    $stmt->close();
+}
+
+function handle_picture_file($folder, $picture)
+{
+    //check for errors
+    $pictureErrors = [];
+
+    //image handler for inputs
+    $picture = $picture;
+    $picture_name = $picture['name'];
+    $picture_type = $picture['type'];
+    $picture_tmp = $picture['tmp_name'];
+    $picture_error = $picture['error'];
+    $picture_size = $picture['size'];
+
+    // Explode file name and get the extension at the end
+    $picture_Ext = explode(".", $picture_name);
+    $picture_ActualExt = strtolower(end($picture_Ext));
+
+    $allowedTypes = array("jpg", "jpeg", "png");
+
+    if (!in_array($picture_ActualExt, $allowedTypes)) {
+        $pictureErrors[] = "Uploaded File is not Supported";
+    }
+
+    if ($picture_error !== 0) {
+        $pictureErrors[] = "There was an error uploading your file";
+    }
+
+    // Check if picture is greater than 2MB
+    if ($picture_size > 2000000) {
+        $pictureErrors[] = "Your file is too big!";
+    }
+
+    if (count($pictureErrors) == 0) {
+        $fileNameNew = uniqid("", true) . "." . $picture_ActualExt;
+        $fileDestination = $folder . $fileNameNew;
+        move_uploaded_file($picture_tmp, $fileDestination);
+        return $fileNameNew;
+    } else {
+        return "";
+    }
 }

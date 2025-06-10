@@ -52,17 +52,17 @@
         </a>
 
         <!-- RATINGS -->
-        <a href="./ratings.php">
+        <!-- <a href="./ratings.php">
             <li class="sidebar-list-item <?= $current_page == 'ratings.php' ? 'active' : '' ?>">
                 <div class="sidebar-list-title"><i class="fa fa-star" aria-hidden="true"></i> Ratings & Reviews</div>
             </li>
-        </a>
+        </a> -->
 
         <!-- REPORTS -->
-        <a href="./reports.php">
+        <!-- <a href="./reports.php">
             <li class="sidebar-list-item <?= $current_page == 'reports.php' ? 'active' : '' ?>">
                 <div class="sidebar-list-title"><i class="fa fa-area-chart" aria-hidden="true"></i> Reports</div>
             </li>
-        </a>
+        </a> -->
     </ul>
 </div>

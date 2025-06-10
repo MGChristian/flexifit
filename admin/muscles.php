@@ -25,7 +25,7 @@ if (isset($_SESSION['error_login'])) {
 </head>
 
 <body>
-    <?php include "./modals/categories-modal.php" ?>
+    <?php include "./modals/muscle_modal.php" ?>
     <!-- header -->
     <?php include "./components/navbar.php" ?>
     <!-- header -->
@@ -46,7 +46,7 @@ if (isset($_SESSION['error_login'])) {
                 <div class="main-title-button">
                     <h3>CURRENT MUSCLES LIST</h3>
                     <div class="main-title-button-container">
-                        <button type="button" class="filterOpen add-button" data-target="add-category">+ ADD MUSCLES</button>
+                        <button type="button" class="filterOpen add-button" data-target="add-muscle">+ ADD MUSCLES</button>
                     </div>
                 </div>
                 <hr>
@@ -55,8 +55,7 @@ if (isset($_SESSION['error_login'])) {
                         <thead>
                             <tr class="table-header">
                                 <th>#</th>
-                                <th>Category Name</th>
-                                <th>Category Description</th>
+                                <th>Muscle Name</th>
                                 <th>Date Created</th>
                                 <th>Action</th>
                             </tr>
@@ -71,15 +70,12 @@ if (isset($_SESSION['error_login'])) {
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             new DataTable("#myTable", {
-                ajax: './includes/get-category.php',
+                ajax: './includes/get-muscle.php',
                 columns: [{
                         data: "id"
                     },
                     {
-                        data: "categoryName"
-                    },
-                    {
-                        data: "categoryDescription"
+                        data: "muscleName"
                     },
                     {
                         data: "dateCreated"

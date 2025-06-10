@@ -14,6 +14,6 @@ function get_instructors($conn)
         }
         return $instructorRows;
     } else {
-        return '';
+        return [];
     }
 }

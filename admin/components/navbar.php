@@ -22,7 +22,7 @@
                 </div>
             </a>
             <!-- Profile page -->
-            <a href="myProfile.php">
+            <a href="../profile.php">
                 <div class="dropdown-item">
                     <div class="option">
                         <box-icon name="user-circle" type="solid"></box-icon>
@@ -45,7 +45,7 @@
             <div class="dropdown-item">
                 <div class="option">
                     <box-icon name="log-out" type="solid"></box-icon>
-                    <a href="./logout.php">
+                    <a href="../logout.php">
                         <p>Log Out</p>
                     </a>
                 </div>

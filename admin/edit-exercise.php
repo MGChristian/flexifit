@@ -21,7 +21,8 @@ if (!$exercise->is_id_valid()) {
     exit();
 }
 $exerciseDetails = $exercise->get_exercise();
-$muscleList = $exercise->get_exercise_muscles();
+$muscleList = $exercise->get_muscles();
+$exerciseMuscleList = $exercise->get_exercise_muscles();
 $exerciseEquipmentList = $exercise->get_exercise_equipments();
 $equipmentList = $exercise->get_equipments();
 $exerciseCategoryList = $exercise->get_exercise_categories();
@@ -114,13 +115,15 @@ $stepsList = $exercise->get_exercise_steps();
                         <div class="input-multiple-item-container">
                             <label>Muscle Targets</label>
                             <div class="checkbox-container">
-                                <?php for ($i = 0; $i < 10; $i++): ?>
-                                    <div class="checkbox-item">
-                                        <input type="checkbox" name="muscleGroup[]" value="Dumbbells" class="hidden" />
-                                        <label class="unselectable">Dumbells</label>
+                                <?php echo empty($muscleList) ? "<p id='no-steps'>There are no muscles yet</p>" : ''; ?>
+                                <?php foreach ($muscleList as $muscle): ?>
+                                    <?php $muscleID = $muscle['ID'] ?>
+                                    <div class="checkbox-item <?= in_array($muscle['ID'], array_column($exerciseMuscleList, "ID")) ? 'selected' : ''; ?>">
+                                        <input type="checkbox" <?= in_array($muscle['ID'], array_column($exerciseMuscleList, "ID")) ? "class='hidden itemSelected' name='removeMuscleGroup[$muscleID]' value='{$exerciseId}' checked disabled" : "class='hidden' value='{$muscleID}' name='muscleGroup[]'"; ?> />
+                                        <label class="unselectable"><?= $muscle['muscle_name'] ?></label>
                                         <i class="fa fa-times-circle-o hidden" aria-hidden="true"></i>
                                     </div>
-                                <?php endfor; ?>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                         <hr>

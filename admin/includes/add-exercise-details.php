@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
     // muscleGroup
     $muscleGroup = isset($_POST['muscleGroup']) ? $_POST['muscleGroup'] : [];
+    $removeMuscleGroup = isset($_POST['removeMuscleGroup']) ? $_POST['removeMuscleGroup'] : [];
 
     // EXERCISE STEPS
     $addExerciseSteps = isset($_POST['addExerciseStep']) ? $_POST['addExerciseStep'] : [];
@@ -72,6 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             add_categories($conn, $categoryID, $exerciseId);
         }
 
+
         // Check if existing steps were removed, if so, remove it in the database
         if (!empty($removeCategories)) {
             foreach ($removeCategories as $removeCategoryID => $exerciseID) {
@@ -81,8 +83,22 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
 
 
+        // Muscles
+        foreach ($muscleGroup as $muscleID) {
+            add_muscle_group($conn, $muscleID, $exerciseId);
+        }
+
+        // Check if existing steps were removed, if so, remove it in the database
+        if (!empty($removeMuscleGroup)) {
+            foreach ($removeMuscleGroup as $removeMuscleGroupID => $exerciseID) {
+                remove_muscle_group($conn, $exerciseID,  $removeMuscleGroupID);
+            }
+        }
+
+
+
         // , $equipmentList, $categories, $muscleGroup, $exerciseSteps
-        if (is_input_empty($exerciseId, $exerciseName, $exerciseDescription)) {
+        if (empty($exerciseId)) {
             $errors["empty_input"] = "Inputs cannot be empty!";
         }
 
@@ -133,18 +149,18 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 }
 
 //Validate and check inputs
-function is_input_empty($exerciseId, $exerciseName, $exerciseDescription)
-{
-    if (
-        empty($exerciseId) ||
-        empty($exerciseName) ||
-        empty($exerciseDescription)
-    ) {
-        return true;
-    } else {
-        return false;
-    }
-}
+// function is_input_empty($exerciseId, $exerciseName, $exerciseDescription)
+// {
+//     if (
+//         empty($exerciseId) ||
+//         empty($exerciseName) ||
+//         empty($exerciseDescription)
+//     ) {
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }
 
 function update_exercise_name($conn, $exerciseName, $exerciseId)
 {
@@ -184,6 +200,14 @@ function add_muscle_group($conn, $muscleID, $exerciseId)
 {
     $stmt = $conn->prepare("INSERT INTO `exercise_muscle` (`exerciseID`, `muscleID`) VALUES (?, ?)");
     $stmt->bind_param("ii", $exerciseId, $muscleID);
+    $stmt->execute();
+    $stmt->close();
+}
+
+function remove_muscle_group($conn, $exerciseID, $removeMuscleGroupID)
+{
+    $stmt = $conn->prepare("DELETE FROM `exercise_muscle` WHERE `muscleID` = ? AND `exerciseID` = ?");
+    $stmt->bind_param("ii", $removeMuscleGroupID, $exerciseID);
     $stmt->execute();
     $stmt->close();
 }

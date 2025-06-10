@@ -14,7 +14,7 @@ function get_exercises($conn)
         }
         return $exerciseRows;
     } else {
-        return '';
+        return [];
     }
 }
 

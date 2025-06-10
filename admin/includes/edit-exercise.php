@@ -59,6 +59,23 @@ class Exercise
         }
     }
 
+    public function get_muscles()
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM `muscle` ORDER BY `muscle_name`");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+        if ($result->num_rows > 0) {
+            $equipments = [];
+            while ($rows = $result->fetch_assoc()) {
+                $equipments[] = $rows;
+            }
+            return $equipments;
+        } else {
+            return [];
+        }
+    }
+
     public function get_exercise_equipments()
     {
         $stmt = $this->conn->prepare("SELECT `equipment`.`ID` FROM `equipment` INNER JOIN `exercise_equipment`  ON `equipment`.`ID` = `exercise_equipment`.`equipmentID`  WHERE exerciseID = ?");
