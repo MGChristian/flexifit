@@ -42,7 +42,7 @@ if (isset($_GET['exerciseName'])) {
 
     <!-- SETS THE MAXIMUM WIDTH TO 1200px -->
     <div class="main-container">
-        <h1>EXERCISES</h1>
+        <h1>NEW EXERCISES</h1>
         <section class="classes-grid">
             <!-- Display all exercises -->
             <?php if (isset($exerciseName)): ?>

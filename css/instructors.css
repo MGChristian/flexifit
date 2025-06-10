@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 /* Header Section */
 .header {
   position: relative;
@@ -114,21 +116,23 @@
 }
 
 .view-btn {
+  font-family: Montserrat, sans-serif;
   float: right;
-  background-color: #ffd700;
-  color: white;
-  border: none;
-  padding: 5px 15px; /* Reduced padding for smaller button */
+  background-color:#fff8dc;
+  color: #f0c000;
+  border: 1px solid #f0c000;
+  border-radius: 30px;
+  padding: 5px 10px; /* Reduced padding for smaller button */
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  width: 150px; /* Adjust width to auto for smaller button size */
+  width: 100px; /* Adjust width to auto for smaller button size */
   font-size: 0.8rem; /* Smaller font size */
   margin-left: auto; /* Align button to the right */
 }
 
 .view-btn:hover {
-  background-color: #e6c200;
+  background-color:#fffae9;
 }
 
 @media (max-width: 1200px) {

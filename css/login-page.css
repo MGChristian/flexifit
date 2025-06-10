@@ -186,6 +186,33 @@ body {
   width: 18px;
 }
 
+.form-container .reset-pass-icon {
+  position: absolute;
+  top: 45%;
+  right: 125px;
+  color: #000000;
+  height: 18px;
+  width: 18px;
+}
+
+.form-container .mail-icon {
+  position: absolute;
+  top: 49%;
+  right: 125px;
+  color: #000000;
+  height: 18px;
+  width: 18px;
+}
+
+.form-container .new-pass-icon {
+  position: absolute;
+  top: 55%;
+  right: 125px;
+  color: #000000;
+  height: 18px;
+  width: 18px;
+}
+
 .form-container button {
   background-color: #ffcc00;
   color: #ffffff;
@@ -396,6 +423,7 @@ body {
     top: 0;
     z-index: 1;
     background: url("../assets/login-bg.png") no-repeat center / 100% 100%;
+    display: none;
   }
 
   .branding {
@@ -424,7 +452,6 @@ body {
     border-left: none;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    box-shadow: rgba(255, 255, 255, 0.25) 0px 50px 100px 0px inset;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -442,6 +469,8 @@ body {
   .form-container {
     width: 100%;
     min-width: 100%;
+    height: 65vh;
+    margin-top: 150px;
   }
 
   .form-container h2 {
@@ -455,5 +484,50 @@ body {
     color:#fdd835;
     font-weight: 400;
   }
+
+  .form-container .user-icon {
+  position: absolute;
+  top: 44%;
+  right: 30px;
+  color: #000000;
+  height: 18px;
+  width: 18px;
+}
+
+.form-container .pass-icon {
+  position: absolute;
+  top: 53%;
+  right: 30px;
+  color: #000000;
+  height: 18px;
+  width: 18px;
+}
+
+.form-container .reset-pass-icon {
+  position: absolute;
+  top: 40%;
+  right: 30px;
+  color: #000000;
+  height: 18px;
+  width: 18px;
+}
+
+.form-container .new-pass-icon {
+  position: absolute;
+  top: 49%;
+  right: 30px;
+  color: #000000;
+  height: 18px;
+  width: 18px;
+}
+
+.form-container .mail-icon {
+  position: absolute;
+  top: 40%;
+  right: 30px;
+  color: #000000;
+  height: 18px;
+  width: 18px;
+}
 
 }

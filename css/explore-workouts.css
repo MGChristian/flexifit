@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 /* Header Section */
 .header {
   position: relative;
@@ -127,12 +129,17 @@
 }
 
 .explore-button button {
-  padding: 0.5rem 1rem;
-  background-color: var(--yellow);
-  color: var(--black);
-  font-weight: var(--bold);
-  border: none;
+  background-color:#fff8dc;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border: 1px solid #f0c000;
+  border-radius: 30px;
+  color: #f0c000;
+  font-family: Montserrat, sans-serif;
   cursor: pointer;
+}
+
+.explore-button button:hover {
+  background-color:#fffae9;
 }
 
 /* EXERCISES */

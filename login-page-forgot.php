@@ -40,6 +40,7 @@ check_if_logged_in();
       <form action="./includes/login-reset.inc.php" method="POST">
         <?php check_login_errors(); ?>
         <input name="email" type="email" placeholder="Email" required />
+        <ion-icon name="mail-outline" class="mail-icon"></ion-icon>
         <button type="submit">
           RESET PASSWORD
         </button>
@@ -49,6 +50,8 @@ check_if_logged_in();
       </form>
     </div>
   </div>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
