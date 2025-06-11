@@ -1,12 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // SIDEBAR DROPDOWN
-  const dropdown = document.querySelector(".content-a");
-  const openDropdown = document.querySelector(".content-m");
-
-  dropdown.addEventListener("click", function () {
-    openDropdown.classList.toggle("hidden");
-  });
-
   // DROPDOWN FOR THE NUMBER OF CLIENTS BOOKED (MIGHT BE REMOVED)
   const dropdowns = document.querySelector(".client-dropdown");
   const cards = document.querySelector(".client-cards");

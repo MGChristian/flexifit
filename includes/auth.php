@@ -21,3 +21,27 @@ if (!isset($userData) && $isLoggedIn) {
         $userData = $result->fetch_assoc();
     }
 }
+
+
+function check_if_correct_role()
+{
+    if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
+
+        $user_role = $_SESSION['role'];
+        switch ($user_role) {
+            case "user":
+                break;
+            case "instructor":
+                header("location:  ./instructor/");
+                exit();
+                break;
+            case "admin":
+                header("location:  ./admin/");
+                exit();
+                break;
+        }
+    } else {
+        header("location: ./");
+        exit();
+    }
+}

@@ -34,16 +34,14 @@ if (isset($_GET['exerciseName'])) {
     </header>
 
     <div class="search-container">
-        <div class="search-container">
-            <form method="GET">
-                <input type="text" name="exerciseName" id="exerciseInput" class="search-bar" placeholder="Search...">
-                <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
-                <button type="button" id="micButton" class="search-btn" title="Voice Search" style="margin-left: 8px;">
-                    <i class="fa fa-microphone"></i>
-                </button>
-            </form>
-        </div>
-
+        <form method="GET">
+            <input type="text" name="exerciseName" id="searchInput" class="search-bar" placeholder="Search...">
+            <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+            <button type="button" id="micButton" class="search-btn" title="Voice Search"
+                style="margin-left: 8px;">
+                <i class="fa fa-microphone"></i>
+            </button>
+        </form>
     </div>
 
     <!-- SETS THE MAXIMUM WIDTH TO 1200px -->
@@ -88,6 +86,7 @@ if (isset($_GET['exerciseName'])) {
         </section>
     </div>
     <script src="./js/textToSpeech.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/speech-recognition-polyfill@1.0.0/dist/speech-recognition-polyfill.min.js"></script>
     <?php require_once "./components/footer.php" ?>
     <?php require_once "./components/navbar_scripts.php" ?>
 </body>
