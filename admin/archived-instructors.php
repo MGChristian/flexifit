@@ -102,13 +102,6 @@ if (isset($_SESSION['error_login'])) {
                     }
                 ],
             });
-
-            const PDF = document.querySelector(".buttons-pdf");
-            const generatePDF = document.querySelector("#generate-pdf");
-
-            generatePDF.addEventListener("click", () => {
-                PDF.click();
-            });
         });
     </script>
     <script src="js/scripts.js"> </script>

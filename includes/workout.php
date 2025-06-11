@@ -96,49 +96,82 @@ class Workout
 
     public function get_muscles()
     {
-        $stmt = $this->conn->prepare("SELECT `muscle`.`muscle_name`, `muscle`.`ID` FROM `muscle` INNER JOIN `exercise_muscle`  ON `muscle`.`ID` = `exercise_muscle`.`muscleID`  WHERE exerciseID = ?");
-        $stmt->bind_param("i", $this->exerciseId);
+        $query = "
+    SELECT DISTINCT `muscle`.`ID`, `muscle`.`muscle_name` 
+    FROM `workout`
+    JOIN `workout_exercises` ON `workout`.`ID` = `workout_exercises`.`workoutID`
+    JOIN `exercise` ON `workout_exercises`.`exerciseID` = `exercise`.`ID`
+    JOIN `exercise_muscle` ON `exercise`.`ID` = `exercise_muscle`.`exerciseID`
+    JOIN `muscle` ON `exercise_muscle`.`muscleID` = `muscle`.`ID`
+    WHERE `workout`.`ID` = ?
+    ORDER BY `muscle`.`muscle_name`;
+    ";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("i", $this->workoutId);
         $stmt->execute();
         $result = $stmt->get_result();
         $muscles = [];
         while ($row = $result->fetch_assoc()) {
             $muscles[] = $row;
         }
-
         $stmt->close();
         return $muscles;
     }
 
     public function get_categories()
     {
-        $stmt = $this->conn->prepare("SELECT `category`.`category_name`, `category`.`ID` FROM `category` INNER JOIN `exercise_category`  ON `category`.`ID` = `exercise_category`.`categoryID`  WHERE exerciseID = ?");
-        $stmt->bind_param("i", $this->exerciseId);
+        $query = "
+    SELECT DISTINCT `category`.`ID`, `category`.`category_name` 
+    FROM `workout`
+    JOIN `workout_exercises` ON `workout`.`ID` = `workout_exercises`.`workoutID`
+    JOIN `exercise` ON `workout_exercises`.`exerciseID` = `exercise`.`ID`
+    JOIN `exercise_category` ON `exercise`.`ID` = `exercise_category`.`exerciseID`
+    JOIN `category` ON `exercise_category`.`categoryID` = `category`.`ID`
+    WHERE `workout`.`ID` = ?
+    ORDER BY `category`.`category_name`;
+    ";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("i", $this->workoutId);
         $stmt->execute();
         $result = $stmt->get_result();
-        $stmt->close();
-        if ($result->num_rows > 0) {
-            $categories = [];
-            while ($rows = $result->fetch_assoc()) {
-                $categories[] = $rows;
-            }
-            return $categories;
-        } else {
-            return [];
+        $categories = [];
+        while ($row = $result->fetch_assoc()) {
+            $categories[] = $row;
         }
+        $stmt->close();
+        return $categories;
     }
 
-    public function get_exercise_steps()
+    public function get_workout_creator_info()
     {
-        $stmt = $this->conn->prepare("SELECT * FROM `exercise_steps` WHERE exerciseID = ?");
-        $stmt->bind_param("i", $this->exerciseId);
+        $query = "
+    SELECT 
+        CONCAT(`user`.`firstName`, ' ', `user`.`lastName`) AS creator_name,
+        `user`.`role` AS creator_role
+    FROM `user`
+    INNER JOIN `workout` ON `user`.`ID` = `workout`.`userID`
+    WHERE `workout`.`ID` = ?
+    LIMIT 1;
+    ";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("i", $this->workoutId);
         $stmt->execute();
         $result = $stmt->get_result();
-        $stmt->close();
-        $steps = [];
-        while ($row = $result->fetch_assoc()) {
-            $steps[] = $row;
+
+        if ($result->num_rows > 0) {
+            $creatorInfo = $result->fetch_assoc();
+            $stmt->close();
+            return $creatorInfo;
         }
-        return $steps;
+
+        $stmt->close();
+        return [
+            'creator_name' => 'Unknown Creator',
+            'creator_role' => null
+        ];
     }
 
     // WORKOUT PLAY METHODS

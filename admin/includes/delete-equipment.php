@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
             header("Location: ../equipment.php");
             exit();
         } else {
-            archive_instructor($conn, $equipmentID);
+            delete_equipment($conn, $equipmentID);
             header("Location: ../equipment.php?status=success");
             exit();
         }
@@ -57,7 +57,7 @@ function check_if_not_admin()
     }
 }
 
-function delete_category($conn, $equipmentID)
+function delete_equipment($conn, $equipmentID)
 {
     $stmt = $conn->prepare("DELETE FROM `equipment` WHERE ID = ?");
     $stmt->bind_param("i", $equipmentID);

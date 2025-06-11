@@ -20,20 +20,22 @@ function get_exercises($conn)
 
 function get_search_exercise($conn, $exerciseName)
 {
-    $query = "%" . $exerciseName;
-    $stmt = $conn->prepare("SELECT * FROM `exercise` WHERE `status` = '1' AND `exerciseName` = ?");
-    $stmt->bind_param("s", $query);
+    $searchTerm = "%" . strtolower($exerciseName) . "%";
+    $stmt = $conn->prepare("SELECT `ID`, `exerciseName`, `exercisePicUrl`, `description` 
+                           FROM `exercise` 
+                           WHERE `status` = '1' 
+                           AND `exerciseName` LIKE ?");
+    $stmt->bind_param("s", $searchTerm);
     $stmt->execute();
     $result = $stmt->get_result();
-    if ($result->num_rows > 0) {
-        $exercises = [];
-        while ($rows = $result->fetch_assoc()) {
-            $exercises[] = $rows;
-        }
-        return $exercises;
-    } else {
-        return [];
+
+    $exercises = [];
+    while ($row = $result->fetch_assoc()) {
+        $exercises[] = $row;
     }
+    $stmt->close();
+    return $exercises;
 }
+
 
 function get_muscles($conn) {}

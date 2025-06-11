@@ -12,10 +12,10 @@ $workout = new Workout($conn, $workoutID);
 if ($workout->check_id() === true) {
     $workoutSetsList = $workout->get_workout_sets();
     $workoutDetails = $workout->get_workout();
+    $creatorDetails = $workout->get_workout_creator_info();
     $muscleList = $workout->get_muscles();
     $equipmentList = $workout->get_equipments();
     $categoryList = $workout->get_categories();
-    $stepsList = $workout->get_exercise_steps();
 } else {
     header("location: ./explore-workouts.php");
     exit();
@@ -40,7 +40,7 @@ if ($workout->check_id() === true) {
     <header class="header">
         <div class="header-content">
             <div class="header-list">
-                <h3>Added By: </h3>
+                <h3>Added By: <?= $creatorDetails['creator_name'] ?></h3>
             </div>
             <h1><?= htmlspecialchars($workoutDetails['workoutName']) ?></h1>
             <div class="header-list">
@@ -72,7 +72,7 @@ if ($workout->check_id() === true) {
             </div>
             <div class="header-list">
                 <p>Description: </p>
-                <?php echo (empty($workoutDetails['description']) ? "No Description" : htmlspecialchars($workoutDetails['description'])) ?>
+                <?php echo (empty($workoutDetails['workoutDescription']) ? "No Description" : htmlspecialchars($workoutDetails['workoutDescription'])) ?>
             </div>
         </div>
         <div class="header-background">
@@ -115,27 +115,14 @@ if ($workout->check_id() === true) {
             </div>
         </div>
     </div>
-    <!-- <div class="main-container">
-        <div class="exercise-content">
-            <div class="exercise-left">
-                <p><b>Instructions</b></p>
-                <?php echo empty($stepsList) ? '<p>No steps provided for this exercise</p>' : ''; ?>
-                <?php foreach ($stepsList as $count => $step): ?>
-                    <div class="step">
-                        <?php $stepImage = $step['step_pic_url']; ?>
-                        <?= empty($stepImage) ? "<img src='./assets/default.jpg' />" : "<img src='{$stepImage}' />; ?>" ?>
-                        <p><strong>Step <?= $count + 1 ?>: </strong><?= htmlspecialchars($step['step_instruction']) ?></p>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-            <div class="exercise-right">
-                <p>Watch & Learn</p>
-                <?php echo empty($exerciseDetails['exerciseVidUrl']) ? '<p>No video provided for this exercise</p>' : "<img src='" . $exerciseDetails['exercise_vid_url'] . "'/>"; ?>
-            </div>
-        </div>
-    </div> -->
     <?php require_once "./components/footer.php" ?>
     <?php require_once "./components/navbar_scripts.php" ?>
+    <?php
+    if (isset($_SESSION['login_first'])) {
+        echo "<script> alert('Please log in first.') </script>";
+        unset($_SESSION['login_first']);
+    }
+    ?>
 </body>
 
 </html>

@@ -23,11 +23,24 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                 "gender" => $rows['gender'],
                 "email" => $rows['email'],
                 "contact" => $rows['contactNo'],
-                "buttons" => "<div class='action-button-container'>" . $buttonsView . $buttonsEdit . "<a href='./includes/unarchive-instructor.php?ID={$id}'><button type='button' class='data-table-button archive' data-target='archive-instructor'> <i class='fa fa-archive' aria-hidden='true'></i> </button></a>" . "</div>",
+                "buttons" => "<div class='action-button-container'>" . view_button($id) . archive_button($id) . "</div>",
             );
         }
     }
     echo json_encode(["data" => $instructorsList]);
 }
 
-function check_authorization() {}
+function view_button($id)
+{
+    return "<a href='./edit-instructor.php?id={$id}'><button type='button' class='data-table-button view' data-target='view-user'> <i class='fa fa-eye' aria-hidden='true'></i> </button></a>";
+}
+
+// function edit_button($id)
+// {
+//     return "<a href='./edit-user.php?id={$id}'><button type='button' class='data-table-button edit' data-target='edit-user'> <i class='fa fa-pencil-square-o' aria-hidden='true'></i> </button></a>";
+// }
+
+function archive_button($id)
+{
+    return "<a href='./includes/unarchive-instructor.php?id={$id}'><button type='button' class='data-table-button unarchive' data-target='archive-user'> <i class='fa fa-archive' aria-hidden='true'></i> </button></a>";
+}

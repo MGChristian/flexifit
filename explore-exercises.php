@@ -34,10 +34,16 @@ if (isset($_GET['exerciseName'])) {
     </header>
 
     <div class="search-container">
-        <form method="GET">
-            <input type="text" name="exerciseName" class="search-bar" placeholder="Search...">
-            <button class="search-btn"><i class="fas fa-search"></i></button>
-        </form>
+        <div class="search-container">
+            <form method="GET">
+                <input type="text" name="exerciseName" id="exerciseInput" class="search-bar" placeholder="Search...">
+                <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+                <button type="button" id="micButton" class="search-btn" title="Voice Search" style="margin-left: 8px;">
+                    <i class="fa fa-microphone"></i>
+                </button>
+            </form>
+        </div>
+
     </div>
 
     <!-- SETS THE MAXIMUM WIDTH TO 1200px -->
@@ -45,11 +51,10 @@ if (isset($_GET['exerciseName'])) {
         <h1>NEW EXERCISES</h1>
         <section class="classes-grid">
             <!-- Display all exercises -->
-            <?php if (isset($exerciseName)): ?>
+            <?php if (isset($exerciseName) && !empty($exerciseName)): ?>
                 <?php foreach (get_search_exercise($conn, $exerciseName) as $rows): ?>
                     <a href="./exercise.php?id=<?= htmlspecialchars($rows['ID']) ?>">
                         <div class="class-item">
-                            <p>1</p>
                             <img src="./admin/images/exercises/<?= htmlspecialchars($rows['exercisePicUrl']) ?>">
                             <div>
                                 <p><b><?= htmlspecialchars($rows['exerciseName']) ?></b></p>
@@ -61,7 +66,6 @@ if (isset($_GET['exerciseName'])) {
                 <?php foreach (get_exercises($conn) as $rows): ?>
                     <a href="./exercise.php?id=<?= htmlspecialchars($rows['ID']) ?>">
                         <div class="class-item">
-                            <p>2</p>
                             <img src="./admin/images/exercises/<?= htmlspecialchars($rows['exercisePicUrl']) ?>">
                             <div>
                                 <p><b><?= htmlspecialchars($rows['exerciseName']) ?></b></p>
@@ -83,6 +87,7 @@ if (isset($_GET['exerciseName'])) {
             <?php endfor; ?>
         </section>
     </div>
+    <script src="./js/textToSpeech.js"></script>
     <?php require_once "./components/footer.php" ?>
     <?php require_once "./components/navbar_scripts.php" ?>
 </body>

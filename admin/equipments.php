@@ -39,14 +39,14 @@ if (isset($_SESSION['error_login'])) {
             <div class="page-title">
                 <h1>EQUIPMENT</h1>
                 <div class="quick-link">
-                    <p><a href="index.php"> HOME </a> > equipmentS</p>
+                    <p><a href="index.php"> HOME </a> > EQUIPMENTS</p>
                 </div>
             </div>
             <div class="main-content">
                 <div class="main-title-button">
-                    <h3>CURRENT equipmentS LIST</h3>
+                    <h3>CURRENT EQUIPMENTS LIST</h3>
                     <div class="main-title-button-container">
-                        <button type="button" class="filterOpen add-button" data-target="add-equipment">+ ADD equipmentS</button>
+                        <button type="button" class="filterOpen add-button" data-target="add-equipment">+ ADD EQUIPMENTS</button>
                     </div>
                 </div>
                 <hr>
@@ -56,6 +56,7 @@ if (isset($_SESSION['error_login'])) {
                             <tr class="table-header">
                                 <th>#</th>
                                 <th>Equipment Name</th>
+                                <th>Equipment Description</th>
                                 <th>Date Created</th>
                                 <th>Action</th>
                             </tr>
@@ -69,7 +70,7 @@ if (isset($_SESSION['error_login'])) {
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            new DataTable("#myTable", {
+            const table = new DataTable("#myTable", {
                 ajax: './includes/get-equipment.php',
                 columns: [{
                         data: "id"
@@ -78,25 +79,40 @@ if (isset($_SESSION['error_login'])) {
                         data: "equipmentName"
                     },
                     {
+                        data: "equipmentDescription"
+                    },
+                    {
                         data: "dateCreated"
                     },
                     {
                         data: "buttons",
-                        "orderable": false
+                        orderable: false
                     }
                 ],
                 columnDefs: [{
-                    width: "150px",
+                    width: "100px",
                     targets: (-1),
                 }],
             });
 
-            const PDF = document.querySelector(".buttons-pdf");
-            const generatePDF = document.querySelector("#generate-pdf");
-
-            generatePDF.addEventListener("click", () => {
-                PDF.click();
+            // Make sure to use the same table variable here
+            $("#myTable").on("click", ".view-btn", function() {
+                const data = table.row($(this).closest("tr")).data();
+                if (data) {
+                    openViewModal(data);
+                }
             });
+
+            // View modal function
+            window.openViewModal = function(data) {
+                console.log(data);
+                document.getElementById("view-equipment-image").src =
+                    `./images/equipments/${data.imageUrl || "default-equipment.jpg"}`;
+                document.getElementById("view-equipment-name").textContent = data.equipmentName;
+                document.getElementById("view-equipment-description").textContent = data.equipmentDescription;
+                document.getElementById("view-equipment-date").textContent = data.dateCreated;
+                document.getElementById("view-equipment").classList.remove("hidden");
+            };
         });
     </script>
     <script src="js/scripts.js"> </script>

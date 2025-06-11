@@ -87,7 +87,7 @@ function handle_profile_pic($folder, $profile)
         $imageErrors[] = "There was an error uploading your file";
     }
 
-    if ($image_size > 2000000) {
+    if ($image_size > 10000000) {
         $imageErrors[] = "Your file is too big!";
     }
 

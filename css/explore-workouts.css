@@ -111,6 +111,8 @@
 
 .class-item div {
   padding: 0.5rem;
+  max-width: 200px;
+  text-overflow: ellipsis;
 }
 
 .class-item img {
@@ -129,7 +131,7 @@
 }
 
 .explore-button button {
-  background-color:#fff8dc;
+  background-color: #fff8dc;
   padding: 0.5rem 1rem 0.5rem 1rem;
   border: 1px solid #f0c000;
   border-radius: 30px;
@@ -139,7 +141,7 @@
 }
 
 .explore-button button:hover {
-  background-color:#fffae9;
+  background-color: #fffae9;
 }
 
 /* EXERCISES */

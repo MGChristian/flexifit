@@ -49,8 +49,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         // }
 
         // Video
+        // Video
         $videoUrl = '';
-        if ($video["size"] = 0) {
+        if (isset($video) && $video["size"] > 0) {  // Only handle if a file was actually uploaded
             $videoUrl = handle_video_file($folder, $video);
             if ($videoUrl === "none") {
                 $errors["video_problem"] = "There was a problem with the video upload";
@@ -303,7 +304,7 @@ function handle_video_file($folder, $video)
     }
 
     // Check if video is greater than 2MB
-    if ($video_size > 2000000) {
+    if ($video_size > 50000000) {
         $videoErrors[] = "Your file is too big!";
     }
 

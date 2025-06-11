@@ -37,4 +37,22 @@ document.addEventListener("DOMContentLoaded", () => {
   hamburger.addEventListener("click", () => {
     sidebar.classList.toggle("clicked");
   });
+
+  function openViewModal(data) {
+    // Populate the modal with data
+    document.getElementById(
+      "view-equipment-image"
+    ).src = `./admin/images/equipments/${
+      data.imageUrl || "default-equipment.jpg"
+    }`;
+    document.getElementById("view-equipment-name").textContent =
+      data.equipmentName;
+    document.getElementById("view-equipment-description").textContent =
+      data.equipmentDescription;
+    document.getElementById("view-equipment-date").textContent =
+      data.dateCreated;
+
+    // Open the modal
+    document.getElementById("view-equipment").classList.remove("hidden");
+  }
 });

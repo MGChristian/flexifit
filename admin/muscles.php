@@ -69,13 +69,16 @@ if (isset($_SESSION['error_login'])) {
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            new DataTable("#myTable", {
+            const table = new DataTable("#myTable", {
                 ajax: './includes/get-muscle.php',
                 columns: [{
                         data: "id"
                     },
                     {
                         data: "muscleName"
+                    },
+                    {
+                        data: "muscleDescription"
                     },
                     {
                         data: "dateCreated"
@@ -86,17 +89,26 @@ if (isset($_SESSION['error_login'])) {
                     }
                 ],
                 columnDefs: [{
-                    width: "150px",
+                    width: "100px",
                     targets: (-1),
                 }],
             });
 
-            const PDF = document.querySelector(".buttons-pdf");
-            const generatePDF = document.querySelector("#generate-pdf");
-
-            generatePDF.addEventListener("click", () => {
-                PDF.click();
+            $("#myTable").on("click", ".view-btn", function() {
+                const data = table.row($(this).closest("tr")).data();
+                if (data) {
+                    openViewModal(data);
+                }
             });
+
+            window.openViewModal = function(data) {
+                document.getElementById("view-muscle-image").src =
+                    `./images/muscles/${data.imageUrl || "default-muscle.jpg"}`;
+                document.getElementById("view-muscle-name").textContent = data.muscleName;
+                document.getElementById("view-muscle-description").textContent = data.muscleDescription;
+                document.getElementById("view-muscle-date").textContent = data.dateCreated;
+                document.getElementById("view-muscle").classList.remove("hidden");
+            };
         });
     </script>
     <script src="js/scripts.js"> </script>

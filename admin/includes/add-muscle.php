@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $muscle_name = $_POST['muscleName'];
     $muscle_description = $_POST['muscleDescription'];
     $profile = $_FILES['profilePic'];
-    $folder = "../images/categories/";
+    $folder = "../images/muscles/";
 
     try {
         require_once "../../includes/config.php";

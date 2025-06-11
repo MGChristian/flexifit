@@ -47,7 +47,7 @@ if (isset($_SESSION['error_login'])) {
                 <div class="main-title-button">
                     <h3>CURRENT USERS LIST</h3>
                     <div class="main-title-button-container">
-                        <button type="button" class="filterOpen add-button" data-target="add-users">ARCHIVED USERS</button>
+                        <a href='./archived-users.php'><button type="button" class="add-button">ARCHIVED USERS</button></a>
                     </div>
                 </div>
                 <hr>
@@ -98,17 +98,12 @@ if (isset($_SESSION['error_login'])) {
                         data: "contact"
                     },
                     {
-                        data: null,
-                        render: function(data, type, row) {
-                            return `<a href="./includes/archive-user.php?id=${row.id}"<button type='button' class='data-table-button archive'
-                                        data-target='archive-instructor'> 
-                                        <i class='fa fa-archive' aria-hidden='true'></i> 
-                                    </button></a>`;
-                        }
+                        data: "buttons",
+                        "orderable": false
                     }
                 ],
                 columnDefs: [{
-                    width: "150px",
+                    width: "100px",
                     targets: (-1),
                 }],
             });

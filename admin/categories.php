@@ -70,7 +70,7 @@ if (isset($_SESSION['error_login'])) {
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            new DataTable("#myTable", {
+            const table = new DataTable("#myTable", {
                 ajax: './includes/get-category.php',
                 columns: [{
                         data: "id"
@@ -86,21 +86,30 @@ if (isset($_SESSION['error_login'])) {
                     },
                     {
                         data: "buttons",
-                        "orderable": false
+                        orderable: false
                     }
                 ],
                 columnDefs: [{
-                    width: "150px",
-                    targets: (-1),
-                }],
+                    width: "100px",
+                    targets: -1
+                }]
             });
 
-            const PDF = document.querySelector(".buttons-pdf");
-            const generatePDF = document.querySelector("#generate-pdf");
-
-            generatePDF.addEventListener("click", () => {
-                PDF.click();
+            $("#myTable").on("click", ".view-btn", function() {
+                const data = table.row($(this).closest("tr")).data();
+                if (data) {
+                    openViewModal(data);
+                }
             });
+
+            window.openViewModal = function(data) {
+                document.getElementById("view-category-image").src =
+                    `./images/categories/${data.imageUrl || "default-category.jpg"}`;
+                document.getElementById("view-category-name").textContent = data.categoryName;
+                document.getElementById("view-category-description").textContent = data.categoryDescription;
+                document.getElementById("view-category-date").textContent = data.dateCreated;
+                document.getElementById("view-category").classList.remove("hidden");
+            };
         });
     </script>
     <script src="js/scripts.js"> </script>

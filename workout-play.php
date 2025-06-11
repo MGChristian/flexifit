@@ -7,6 +7,11 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     goBack();
 }
 
+if (!isset($_SESSION['id'])) {
+    $_SESSION['login_first'] = "SORRY";
+    header("location: workout.php?id={$workoutID}");
+}
+
 function goBack()
 {
     header("location: ./explore-workouts.php");
@@ -24,6 +29,7 @@ if ($workout->check_id() === true) {
     if ($exerciseCount['exerciseCount'] == 0) {
         goBack();
     }
+    $workoutDetails = $workout->get_workout();
 } else {
     goBack();
 };
@@ -45,12 +51,10 @@ if ($workout->check_id() === true) {
     <?php require_once "./components/navbar.php"; ?>
     <!-- SETS THE MAXIMUM WIDTH TO 1200px -->
     <div class="main-container">
-        <form>
-            <input type="number" value="" name="" />
-            <input type="number" value="" name="userID" />
-        </form>
         <input id="play-workout-id" class="hidden" type="number" value="<?= $_GET['id'] ?>" />
+        <input id="user-id" value="<?= $_SESSION['id'] ?>" />
         <div class="play-content">
+            <h1 id="exercise-name"></h1>
             <h1 id="timer"></h1>
             <div class="play-progress-bar-container">
                 <div class="play-progress-bar"></div>
@@ -128,6 +132,7 @@ if ($workout->check_id() === true) {
                     const data = await response.json();
                     startCountdown(data.duration);
                     addVideoTutorial(data.exerciseVidUrl);
+                    addExerciseDetails(data);
                     console.log(data);
                     return data;
                 } catch (error) {
@@ -184,6 +189,8 @@ if ($workout->check_id() === true) {
                         clearInterval(countdownInterval);
                         if (navigationNumber.value < count - 1) {
                             playNextFunction();
+                        } else {
+                            completeWorkout();
                         }
                     }
                 }, 1000);
@@ -204,6 +211,42 @@ if ($workout->check_id() === true) {
                 }
             }
 
+            // Add this new function to handle workout completion
+            async function completeWorkout() {
+                try {
+                    const workoutID = document.getElementById("play-workout-id").value;
+                    const userID = document.getElementById("user-id").value;
+
+                    const response = await fetch('./includes/workout-play-finish.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            workoutID: workoutID,
+                            userID: userID
+                        })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        alert('Workout completed successfully!');
+                        // Optionally redirect or show a completion screen
+                        window.location.href = './workout.php?id=' + workoutID;
+                    } else {
+                        alert('Error completing workout: ' + (result.message || 'Unknown error'));
+                    }
+                } catch (error) {
+                    console.error('Error completing workout:', error);
+                    alert('There was an error saving your workout completion.');
+                }
+            }
+
             //Convert HH:MM:SS format to seconds
             function timeToSeconds(timeStr) {
                 const [hours, minutes, seconds] = timeStr.split(':').map(Number);
@@ -218,7 +261,14 @@ if ($workout->check_id() === true) {
                 return `${hrs}:${mins}:${secs}`;
             }
 
+            function addExerciseDetails(details) {
+                const nameContainer = document.querySelector("#exercise-name");
+                nameContainer.innerHTML = `${details.exerciseName} - ${details.reps} REPS`;
+            }
+
             function addVideoTutorial(src) {
+
+
                 const videoElement = document.getElementById("video-tutorial");
 
                 // First, completely reset the video element

@@ -56,7 +56,7 @@ if (isset($_SESSION['error_login'])) {
                         <thead>
                             <tr class="table-header">
                                 <th>#</th>
-                                <th>Instructor Name</th>
+                                <th>User Name</th>
                                 <th>Date Joined</th>
                                 <th>Birthday</th>
                                 <th>Gender</th>
@@ -103,7 +103,7 @@ if (isset($_SESSION['error_login'])) {
                     }
                 ],
                 columnDefs: [{
-                    width: "150px",
+                    width: "100px",
                     targets: (-1),
                 }],
             });

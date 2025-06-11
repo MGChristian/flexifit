@@ -2,7 +2,7 @@
 
 /* ADD INSTRUCTOR BUTTON */
 .add-button {
-  background-color:#fff8dc;
+  background-color: #fff8dc;
   padding: 0.5rem 1rem 0.5rem 1rem;
   border-radius: 30px;
   color: #f0c000;
@@ -10,7 +10,7 @@
 }
 
 .add-button:hover {
-  background-color:#fffae9;
+  background-color: #fffae9;
 }
 
 .main-title-button {
@@ -63,4 +63,8 @@ td {
 }
 .archive {
   background-color: var(--danger);
+}
+
+.unarchive {
+  background-color: green;
 }
