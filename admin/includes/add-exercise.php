@@ -1,17 +1,18 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    require_once "../../includes/config.php";
+    require_once "../../includes/config_session.inc.php";
+
+    // Id of the user creating the exercise
+    $exercise_creator = isset($_SESSION['id']) ? $_SESSION['id'] : '';
     $exercise_name = isset($_POST['exerciseName']) ? $_POST['exerciseName'] : '';
     $exercise_description = isset($_POST['exerciseDescription']) ? $_POST['exerciseDescription'] : '';
     $profile = $_FILES['exercisePic'] ?? null;
     $folder = "../images/exercises/";
 
     try {
-        require_once "../../includes/config.php";
-        require_once "../../includes/config_session.inc.php";
 
-        // Id of the user creating the exercise
-        $exercise_creator = isset($_SESSION['id']) ? $_SESSION['id'] : '';
 
         // Error handlers
         $errors = [];

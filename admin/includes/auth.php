@@ -20,9 +20,9 @@ if (!isset($userData) && $isLoggedIn) {
     if ($result && $result->num_rows > 0) {
         $userData = $result->fetch_assoc();
     }
-    check_if_correct_role();
 }
 
+check_if_correct_role();
 
 function check_if_correct_role()
 {

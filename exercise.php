@@ -46,7 +46,7 @@ if ($exercise->check_id() === true) {
                 <p>Muscle Groups: </p>
                 <?php echo (empty($muscleList) ? "<a>Empty muscle list</a>" : '') ?>
                 <?php foreach ($muscleList as $muscle): ?>
-                    <a href="<?= htmlspecialchars($muscle['ID']) ?>">
+                    <a href="./explore-exercises.php?muscle-id=<?= htmlspecialchars($muscle['ID']) ?>">
                         <u><?= htmlspecialchars($muscle['muscle_name']) ?></u>
                     </a>
                 <?php endforeach; ?>
@@ -55,7 +55,7 @@ if ($exercise->check_id() === true) {
                 <p>Required Equipments: </p>
                 <?php echo (empty($equipmentList) ? "<a>No Equipments</a>" : '') ?>
                 <?php foreach ($equipmentList as $equipment): ?>
-                    <a href="<?= htmlspecialchars($equipment['ID']) ?>">
+                    <a href="./explore-exercises.php?equipment-id=<?= htmlspecialchars($equipment['ID']) ?>">
                         <u><?= htmlspecialchars($equipment['equipment_name']) ?></u>,
                     </a>
                 <?php endforeach; ?>
@@ -64,7 +64,7 @@ if ($exercise->check_id() === true) {
                 <p>Categories: </p>
                 <?php echo (empty($categoryList) ? "<a>No Categories</a>" : '') ?>
                 <?php foreach ($categoryList as $category): ?>
-                    <a href="<?= htmlspecialchars($category['ID']) ?>">
+                    <a href="./explore-exercises.php?category-id=<?= htmlspecialchars($category['ID']) ?>">
                         <u><?= htmlspecialchars($category['category_name']) ?></u>,
                     </a>
                 <?php endforeach; ?>

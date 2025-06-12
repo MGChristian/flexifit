@@ -26,11 +26,6 @@ $workouts = new AllWorkout($conn);
     </div>
   </header>
 
-  <div class="search-container">
-    <input type="text" class="search-bar" placeholder="Search...">
-    <button class="search-btn"><i class="fa fa-search"></i></button>
-  </div>
-
   <div class="scroll-to-top">
     <a href="#header">
       <span>^</span>

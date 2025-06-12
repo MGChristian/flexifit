@@ -1,15 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // DROPDOWN FOR THE NUMBER OF CLIENTS BOOKED (MIGHT BE REMOVED)
-  const dropdowns = document.querySelector(".client-dropdown");
-  const cards = document.querySelector(".client-cards");
-
-  if (dropdowns && cards) {
-    dropdowns.addEventListener("click", function () {
-      console.log("clicked");
-      cards.classList.toggle("show");
-    });
-  }
-
   // MODAL OPENER
   const filters = document.querySelectorAll(".filterOpen");
   console.log(filters);

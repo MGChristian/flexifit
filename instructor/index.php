@@ -60,56 +60,6 @@ require_once "./includes/auth.php";
 				</div>
 				<!-- cards -->
 			</div>
-
-
-			<div class="analytics">
-				<p class="section-title">ANALYTICS</p>
-				<hr>
-
-				<!-- FILTERS -->
-				<div class="filter-dates">
-					<button type="button" class="filter-button">All Time</button>
-					<button type="button" class="filter-button">This Year</button>
-					<button type="button" class="filter-button">This Month</button>
-					<button type="button" class="filter-button">This Week</button>
-					<span id="customDate">
-						<button type="button" class="filter-button filterOpen" data-target="filter-date">Custom</button>
-						<div class="filters shadow hidden" id="filter-date">
-							<form>
-								<div class="filter">
-									<label for="instructor-filter">Date Start</label>
-									<input type="date">
-								</div>
-								<div class="filter">
-									<label for="instructor-filter">Date End</label>
-									<input type="date">
-								</div>
-								<button type="submit">APPLY</button>
-							</form>
-						</div>
-					</span>
-				</div>
-				<!-- END OF FILTERS -->
-
-				<!-- <div class="analytics-content">
-CHARTS
-<div class="analytics-left shadow">
-<p class="analytics-title">POPULAR INSTRUCTORS</p>
-<div class="chart-container">
-<canvas id="myChart"></canvas>
-</div>
-</div>
-
-<div class="analytics-right shadow">
-<p class="analytics-title">USER ANALYTICS</p>
-<div class="chart-container">
-<canvas id="revenueChart"></canvas>
-</div>
-</div>
-END OF CHARTS
-</div> -->
-
-			</div>
 			<div class="card-section">
 				<p class="section-title">USERS AND REVIEWS</p>
 				<hr>

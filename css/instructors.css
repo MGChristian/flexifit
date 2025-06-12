@@ -1,43 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
-/* Header Section */
-.header {
-  position: relative;
-  width: 100%;
-  height: 400px; /* Increased height */
-  min-height: fit-content;
-  color: white;
-  overflow: hidden;
-  text-align: justify;
-}
-
-.header > img {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  z-index: -1;
-}
-
-.header-content {
-  position: relative;
-  padding: 1rem;
-  height: 100%;
-  width: 100%;
-}
-
-.header-content h1 {
-  font-size: 2.5rem; /* Adjust font size as needed */
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-}
-
 /* Trainer Section */
 .trainer-section {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Two columns */
-  gap: 30px;
-  padding: 50px;
-  margin: 0 auto;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 /* Trainer Card */
@@ -49,16 +16,17 @@
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative; /* Needed for absolute positioning of the button */
-  overflow: hidden; /* Ensures content stays within the card */
   max-height: fit-content;
+  height: 350px;
   background-color: #fff;
   color: #000;
   border: 1px solid #ccc;
   transition: transform 0.3s ease;
+  width: 370px;
 }
 
 .trainer-card:nth-child(odd) {
-  background-color: #000;
+  background-color: var(--black);
   color: #fff;
 }
 
@@ -66,13 +34,21 @@
   transform: translateY(-5px);
 }
 
-/* Trainer Text */
-.trainer-text p {
+.trainer-text {
   font-size: 0.9rem;
   line-height: 1.5;
-  height: 100px;
-  min-height: fit-content;
-  text-align: left; /* Align text in the center */
+  height: 100px; /* Keep your fixed height */
+  overflow: hidden; /* Essential for text-overflow */
+  text-align: justify;
+  text-overflow: ellipsis;
+}
+
+.trainer-text p {
+  margin: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4; /* Set how many lines you want to show */
+  overflow: hidden;
 }
 
 /* Trainer Bottom Section */
@@ -118,7 +94,7 @@
 .view-btn {
   font-family: Montserrat, sans-serif;
   float: right;
-  background-color:#fff8dc;
+  background-color: #fff8dc;
   color: #f0c000;
   border: 1px solid #f0c000;
   border-radius: 30px;
@@ -132,13 +108,13 @@
 }
 
 .view-btn:hover {
-  background-color:#fffae9;
+  background-color: #fffae9;
 }
 
 @media (max-width: 1200px) {
   /* Adjust for tablet sizes */
   .trainer-section {
-    grid-template-columns: 1fr 1fr;
+    justify-content: center;
   }
 }
 

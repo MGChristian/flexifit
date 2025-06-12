@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $photoUrl = handle_picture_file($folder, $photo);
         }
 
-        update_instructor($conn, $instructorID, $instructorFirstName, $instructorLastName, $email, $contactNumber, $gender, $birthdate);
+        update_instructor($conn, $instructorID, $instructorFirstName, $instructorLastName, $email, $contactNumber, $gender, $birthdate, $status);
 
         if (!empty($photoUrl)) {
             update_instructor_profile($conn, $photoUrl, $instructorID);
@@ -107,10 +107,10 @@ function create_user_details($conn, $instructorID)
     $stmt->close();
 }
 
-function update_instructor($conn, $instructorID, $instructorFirstName, $instructorLastName, $email, $contactNumber, $gender, $birthdate)
+function update_instructor($conn, $instructorID, $instructorFirstName, $instructorLastName, $email, $contactNumber, $gender, $birthdate, $status)
 {
-    $stmt = $conn->prepare("UPDATE `user` SET `firstName` = ?, `lastName` = ?, `email` = ?, `contactNo` = ?, `gender` = ?, `DOB` = ? WHERE ID = ?");
-    $stmt->bind_param("sssissi", $instructorFirstName, $instructorLastName, $email, $contactNumber, $gender, $birthdate, $instructorID);
+    $stmt = $conn->prepare("UPDATE `user` SET `firstName` = ?, `lastName` = ?, `email` = ?, `contactNo` = ?, `gender` = ?, `DOB` = ?, `status` = ? WHERE ID = ?");
+    $stmt->bind_param("sssisssi", $instructorFirstName, $instructorLastName, $email, $contactNumber, $gender, $birthdate, $status, $instructorID);
     $stmt->execute();
     $stmt->close();
 }
@@ -118,7 +118,7 @@ function update_instructor($conn, $instructorID, $instructorFirstName, $instruct
 function update_personal_details($conn, $personalDescriptions, $personalGoals, $instructorID)
 {
     $stmt = $conn->prepare("UPDATE `instructor_details` SET `goal` = ?, `personalDescription` = ? WHERE userID = ?");
-    $stmt->bind_param("ssi", $personalDescriptions, $personalGoals, $instructorID);
+    $stmt->bind_param("ssi", $personalGoals, $personalDescriptions, $instructorID);
     $stmt->execute();
     $stmt->close();
 }

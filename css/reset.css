@@ -6,13 +6,17 @@
   --dark-yellow: #ad861d;
   --darker-yellow: #9a7511;
   --red: #dc343d;
-  --dark-red: #910f29;
   --green: #0f910f;
   --light-grey: #f3f3f3;
   --dark-grey: #aeb0af;
   --light: 200;
   --normal: 400;
   --bold: 700;
+  --light-shadow: 3px 3px 6px 1px rgba(0, 0, 0, 0.05);
+  --shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.15);
+  --primary: #5c9eff; /* Softer but lively blue */
+  --success: #6fcf97; /* Soft and natural green */
+  --danger: #f28b82; /* Soft reddish tone without being too aggressive */
 }
 
 /* General Reset */
@@ -33,17 +37,17 @@ h6 {
   margin: 0;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
 body {
   font-family: "Oxanium", sans-serif !important;
   font-optical-sizing: auto;
   line-height: 1.6;
   min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .main-container {
@@ -60,14 +64,37 @@ body {
 }
 
 a {
-  text-decoration: none;
   color: var(--black);
+  text-decoration: none;
 }
 
-.shadow {
-  box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.15);
-}
+/* CLASSEES FOR DIFFERENT CONDITIONS */
 
 .hidden {
   display: none !important;
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* END OF CLASSES FOR DIFFERENT CONDITIONS */
+
+/* CLASS FOR DYNAMICALLY ADDING SHADOWS */
+
+/* CLEARS ALL BUTTON BORDERS */
+
+button {
+  border: none !important;
+}
+
+/* CLASS FOR DYNAMICALLY ADDING SHADOWS */
+
+.shadow {
+  box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.15);
 }

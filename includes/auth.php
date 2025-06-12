@@ -22,6 +22,10 @@ if (!isset($userData) && $isLoggedIn) {
     }
 }
 
+if ($isLoggedIn) {
+    check_if_correct_role();
+}
+
 function check_if_correct_role()
 {
     if (isset($_SESSION['id']) && isset($_SESSION['role'])) {

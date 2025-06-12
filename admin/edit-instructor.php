@@ -84,7 +84,7 @@ $instructorOtherDetails = $instructor->get_instructor_other_details();
                             </div>
                             <div class="input-half">
                                 <label>Contact Number</label>
-                                <input name="contactNumber" type="text" value="<?= $instructorDetails['contactNo'] ?>" />
+                                <input name="contactNumber" type="number" value="<?= $instructorDetails['contactNo'] ?>" />
                             </div>
                         </div>
                         <div class="half">
@@ -97,7 +97,7 @@ $instructorOtherDetails = $instructor->get_instructor_other_details();
                             </div>
                             <div class="input-half">
                                 <label>Birthdate</label>
-                                <input name="birthdate" type="date" />
+                                <input name="birthdate" type="date" value="<?= $instructorDetails['DOB'] ?>" />
                             </div>
                         </div>
                         <div class="input-full">

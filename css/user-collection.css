@@ -1,0 +1,46 @@
+.dashboard-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dashboard-title button {
+  padding: 0.5rem 1rem;
+  background-color: var(--yellow);
+  border: none;
+}
+
+.workout-list {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2rem; /* Horizontal gap between columns */
+  row-gap: 2rem; /* Vertical gap between rows */
+  padding: 20px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.workout {
+  max-width: fit-content;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.workout div {
+  padding: 0.5rem;
+  max-width: 200px;
+  text-overflow: ellipsis;
+}
+
+.workout img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  background-color: gray;
+}
+
+.workout:hover {
+  transform: translateY(-5px);
+}

@@ -13,7 +13,7 @@ $url = basename($_SERVER['PHP_SELF']);
             <li <?php echo ($url && $url === 'index.php') ? 'class="active"' : ''; ?>><a href="./">HOME</a></li>
             <li <?php echo ($url && $url === 'explore-workouts.php' || $url === 'all-workouts.php') ? 'class="active"' : ''; ?>><a href="explore-workouts.php">EXPLORE WORKOUTS</a></li>
             <li <?php echo ($url && $url === 'explore-exercises.php' || $url === 'all-exercises.php' || $url === 'exercise.php') ? 'class="active"' : ''; ?>><a href="explore-exercises.php">EXERCISES</a></li>
-            <li <?php echo ($url && $url === 'instructors.php' || $url === 'instructor-profile.php') ? 'class="active"' : ''; ?>><a href="instructors.php">INSTRUCTORS</a></li>
+            <li <?php echo ($url && $url === 'explore-instructors.php' || $url === 'instructor-profile.php') ? 'class="active"' : ''; ?>><a href="explore-instructors.php">INSTRUCTORS</a></li>
             <li <?php echo ($url && $url === 'how-it-works.php') ? 'class="active"' : ''; ?>><a href="how-it-works.php">HOW IT WORKS</a></li>
             <li <?php echo ($url && $url === 'about-us.php') ? 'class="active"' : ''; ?>><a href="about-us.php">ABOUT US</a></li>
         </ul>
@@ -58,16 +58,6 @@ $url = basename($_SERVER['PHP_SELF']);
                         <box-icon name="chevron-right"></box-icon>
                     </div>
                 </a>
-                <!-- Records page -->
-                <div class="dropdown-item">
-                    <div class="option">
-                        <i class="fa fa-folder-open" aria-hidden="true"></i>
-                        <a href="myRecords.html">
-                            <p>My Records</p>
-                        </a>
-                    </div>
-                    <box-icon name="chevron-right"></box-icon>
-                </div>
                 <!-- User logout -->
                 <div class="dropdown-item">
                     <div class="option">
@@ -157,8 +147,8 @@ $url = basename($_SERVER['PHP_SELF']);
     <a href="explore-exercises.php">
         <li <?php echo ($url && $url === 'explore-exercises.php' || $url === 'all-exercises.php' || $url === 'exercise.php') ? 'class="active"' : ''; ?>>EXERCISES</li>
     </a>
-    <a href="instructors.php">
-        <li <?php echo ($url && $url === 'instructors.php') ? 'class="active"' : ''; ?>>INSTRUCTORS</li>
+    <a href="explore-instructors.php">
+        <li <?php echo ($url && $url === 'explore-instructors.php') ? 'class="active"' : ''; ?>>INSTRUCTORS</li>
     </a>
     <a href="how-it-works.php">
         <li <?php echo ($url && $url === 'how-it-works.php') ? 'class="active"' : ''; ?>>HOW IT WORKS</li>
@@ -182,7 +172,7 @@ function check_dashboard()
     } elseif ($_SESSION['role'] && $_SESSION['role'] == 'instructor') {
         return './instructor/';
     } else {
-        return './dashboard.php';
+        return './user-dashboard.php';
     }
 }
 ?>
