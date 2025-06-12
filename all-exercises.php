@@ -21,7 +21,7 @@ $exerciseLetters = range("A", "Z");
 
     <!-- Get all exercise details -->
     <?php
-    require_once "./includes/all-exercises.php";
+    require_once "./includes/class-all-exercises.php";
     $exercises = new AllExercise($conn);
     ?>
 

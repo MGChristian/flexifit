@@ -27,7 +27,7 @@
   <div class="right-section">
     <div class="nav">
       <a href="./">HOME</a>
-      <a href="signup-page-info.php">SIGN UP</a>
+      <a href="signup-page-first.php">SIGN UP</a>
     </div>
     <div class="form-container">
       <h2 class="login-email-title">RESET PASSWORD</h2>

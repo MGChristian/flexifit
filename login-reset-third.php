@@ -40,7 +40,7 @@ check_if_logged_in();
   <div class="right-section">
     <div class="nav">
       <a href="#">ABOUT</a>
-      <a href="signup-page-info.html">SIGN UP</a>
+      <a href="signup-page-first.html">SIGN UP</a>
     </div>
     <div class="form-container">
       <h2>RESET PASSWORD</h2>
@@ -79,7 +79,7 @@ check_if_logged_in();
     const newInputIcon = document.getElementById('new-logPass-icon');
 
     function myResetPassword() {
-      if(resetInputPass.type === "password") {
+      if (resetInputPass.type === "password") {
         resetInputPass.type = "text";
 
         resetInputIcon.name = "eye-off-outline";
@@ -93,7 +93,7 @@ check_if_logged_in();
     }
 
     function changeIcon(value) {
-      if(value.length > 0) {
+      if (value.length > 0) {
         resetInputIcon.name = "eye-outline";
       } else {
         resetInputIcon.name = "lock-closed-outline"
@@ -101,7 +101,7 @@ check_if_logged_in();
     }
 
     function myNewPassword() {
-      if(newInputPass.type === "password") {
+      if (newInputPass.type === "password") {
         newInputPass.type = "text";
 
         newInputIcon.name = "eye-off-outline";
@@ -113,8 +113,9 @@ check_if_logged_in();
         newInputIcon.style.cursor = "pointer";
       }
     }
+
     function newIcon(value) {
-      if(value.length > 0) {
+      if (value.length > 0) {
         newInputIcon.name = "eye-outline";
       } else {
         newInputIcon.name = "lock-closed-outline"
@@ -153,13 +154,13 @@ function check_token($conn, $token)
       $error = "Invalid or expired token. Please request a new reset link.";
       $errors["invalid_token"] = $error;
       $_SESSION['error_login'] = $errors;
-      header("Location: ./login-page-forgot.php");
+      header("Location: ./login-reset-first.php");
     }
   } else {
     $error = "No token provided.";
     $errors["no_token"] = $error;
     $_SESSION['error_login'] = $error;
-    header("Location: ./login-page-forgot.php");
+    header("Location: ./login-reset-first.php");
   }
 }
 

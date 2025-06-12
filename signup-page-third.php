@@ -84,6 +84,7 @@ $email = $_SESSION['email'];
       })
     });
   </script>
+  <script src="./js/signup.js"></script>
 </body>
 
 </html>
@@ -119,7 +120,7 @@ function check_sessions()
     $errors = [];
     $errors['empty_fields'] = "Please fill in all fields";
     $_SESSION['error_signup'] = $errors;
-    header("Location: signup-page-info.php");
+    header("Location: signup-page-first.php");
   }
 }
 

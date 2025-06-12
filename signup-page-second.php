@@ -12,6 +12,7 @@ check_sessions();
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Flexifit</title>
+  <link rel="stylesheet" href="css/reset.css" />
   <link rel="stylesheet" href="css/signup-page.css" />
   <link rel="icon" href="./assets/logo.png" />
 </head>
@@ -52,30 +53,27 @@ check_sessions();
         <input
           name="username"
           type="text"
-          placeholder="Username"
-          required />
-          <ion-icon name="person-outline" class="user-icon"></ion-icon>
+          placeholder="Username" />
+        <ion-icon name="person-outline" class="user-icon"></ion-icon>
         <input
           name="password"
           type="password"
           oninput="changeIcon(this.value)"
           id="signPass"
-          placeholder="Password"
-          required />
-          <ion-icon name="lock-closed-outline" class="pass-icon" id="signPass-icon" onclick="mySignPassword()"></ion-icon>
+          placeholder="Password" />
+        <ion-icon name="lock-closed-outline" class="pass-icon" id="signPass-icon" onclick="mySignPassword()"></ion-icon>
         <input
           name="confirm"
           type="password"
           oninput="changeConfirmPassIcon(this.value)"
           id="signConfirmPass"
-          placeholder="Confirm Password"
-          required />
-          <ion-icon name="lock-closed-outline" class="confirm-pass-icon" id="signConfirmPass-icon" onclick="mySignConfirmPassword()"></ion-icon>
+          placeholder="Confirm Password" />
+        <ion-icon name="lock-closed-outline" class="confirm-pass-icon" id="signConfirmPass-icon" onclick="mySignConfirmPassword()"></ion-icon>
 
         <div class="divider">EMERGENCY CONTACT</div>
 
-        <input name="emergencyname" type="text" placeholder="Contact Name" required />
-        <input name="emergencycontact" type="text" placeholder="Contact Number" required />
+        <input name="emergencyname" type="text" placeholder="Contact Name" />
+        <input name="emergencycontact" type="text" placeholder="Contact Number" />
         <button type="submit"> CONTINUE </button>
       </form>
     </div>
@@ -88,7 +86,7 @@ check_sessions();
     const signInputConfirmPassIcon = document.getElementById('signConfirmPass-icon');
 
     function mySignPassword() {
-      if(signInputPass.type === "password") {
+      if (signInputPass.type === "password") {
         signInputPass.type = "text";
 
         signInputPassIcon.name = "eye-off-outline";
@@ -102,7 +100,7 @@ check_sessions();
     }
 
     function mySignConfirmPassword() {
-      if(signInputConfirmPass.type === "password") {
+      if (signInputConfirmPass.type === "password") {
         signInputConfirmPass.type = "text";
 
         signInputConfirmPassIcon.name = "eye-off-outline";
@@ -116,7 +114,7 @@ check_sessions();
     }
 
     function changeIcon(value) {
-      if(value.length > 0) {
+      if (value.length > 0) {
         signInputPassIcon.name = "eye-outline";
       } else {
         signInputPassIcon.name = "lock-closed-outline";
@@ -124,13 +122,14 @@ check_sessions();
     }
 
     function changeConfirmPassIcon(value) {
-      if(value.length > 0) {
+      if (value.length > 0) {
         signInputConfirmPassIcon.name = "eye-outline";
       } else {
         signInputConfirmPassIcon.name = "lock-closed-outline";
       }
     }
   </script>
+  <script src="./js/signup.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
@@ -163,7 +162,7 @@ function check_sessions()
     $errors = [];
     $errors['empty_fields'] = "Please fill in all fields";
     $_SESSION['error_signup'] = $errors;
-    header("Location: signup-page-info.php");
+    header("Location: signup-page-first.php");
   }
 }
 

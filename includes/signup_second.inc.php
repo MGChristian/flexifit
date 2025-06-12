@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if (check_sessions($first_name, $last_name, $birthdate, $email, $phone, $gender)) {
             $errors["empty_input"] = "Please fill in all the fields!";
             $_SESSION['error_signup'] = $errors;
-            header("Location: ../signup-page-info.php");
+            header("Location: ../signup-page-first.php");
             exit();
         }
 
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
         if ($errors) {
             $_SESSION['error_signup'] = $errors;
-            header("Location: ../signup-page-account.php");
+            header("Location: ../signup-page-second.php");
             exit();
         } else {
             $_SESSION['username'] = $username;
@@ -59,14 +59,14 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $OTP_CODE = generateOTP();
             if (send_otp_mail($email, $first_name, $OTP_CODE)) {
                 $_SESSION['OTP'] = $OTP_CODE;
-                header("Location: ../signup-page-otp.php");
+                header("Location: ../signup-page-third.php");
                 exit();
             } else {
                 $errors = array(
                     "OTP failed" => "OTP NOT SENT PROPERLY"
                 );
                 $_SESSION['error_signup'] = $errors;
-                header("Location: ../signup-page-account.php");
+                header("Location: ../signup-page-second.php");
                 exit();
             }
         }
@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         exit("Query failed: " . $th->getMessage());
     }
 } else {
-    header("Location: ../signup-page-info.php");
+    header("Location: ../signup-page-second.php");
     exit();
 }
 
@@ -134,7 +134,8 @@ function is_password_not_matching($password, $confirm)
     }
 }
 
-function is_password_strong($password) {
+function is_password_strong($password)
+{
     $errors = [];
 
     if (strlen($password) < 8) {

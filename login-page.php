@@ -33,16 +33,16 @@ check_if_logged_in();
   <div class="right-section">
     <div class="nav">
       <a href="./">HOME</a>
-      <a href="signup-page-info.php">SIGN UP</a>
+      <a href="signup-page-first.php">SIGN UP</a>
     </div>
     <div class="form-container">
       <h2>LOG IN</h2>
-    
+
       <?php
-        if (isset($_SESSION['success'])) {
-            echo "<div class='success-message'>Registration successful! You can now log in.</div>";
-            unset($_SESSION['success']);
-        }
+      if (isset($_SESSION['success'])) {
+        echo "<div class='success-message'>Registration successful! You can now log in.</div>";
+        unset($_SESSION['success']);
+      }
       ?>
       <form action="./includes/login.inc.php" method="POST">
         <div class="error-wrapper">
@@ -66,7 +66,7 @@ check_if_logged_in();
           type="submit">
           LOG IN
         </button>
-        <a href="login-page-forgot.php">Forgot Password?</a>
+        <a href="login-reset-first.php">Forgot Password?</a>
       </form>
     </div>
   </div>
@@ -75,7 +75,7 @@ check_if_logged_in();
     const logInputIcon = document.getElementById('logPass-icon');
 
     function myLogPassword() {
-      if(logInputPass.type === "password") {
+      if (logInputPass.type === "password") {
         logInputPass.type = "text";
 
         logInputIcon.name = "eye-off-outline";
@@ -89,16 +89,17 @@ check_if_logged_in();
     }
 
     function changeIcon(value) {
-        if(value.length > 0) {
-          logInputIcon.name = "eye-outline";
-        } else {
-          logInputIcon.name = "lock-closed-outline"
-        }
+      if (value.length > 0) {
+        logInputIcon.name = "eye-outline";
+      } else {
+        logInputIcon.name = "lock-closed-outline"
       }
+    }
   </script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>
 
 <?php

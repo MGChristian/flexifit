@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $token = isset($_POST['token']) ? $_POST['token'] : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
     $confirmPassword = isset($_POST['confirm-password']) ? $_POST['confirm-password'] : '';
-    $url = "http://localhost/flexifit/userpage/login-page-reset.php";
+    $url = "http://localhost/flexifit/userpage/login-reset-third.php";
 
     try {
         require_once "config.php";
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
         if ($errors) {
             $_SESSION['error_login'] = $errors;
-            header("Location: ../login-page-reset.php?token=" . htmlspecialchars($token));
+            header("Location: ../login-reset-third.php?token=" . htmlspecialchars($token));
             exit();
         } else {
 

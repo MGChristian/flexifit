@@ -1,6 +1,6 @@
 <?php
 require_once("./includes/auth.php");
-require_once("./includes/all-workouts.php");
+require_once("./includes/class-all-workouts.php");
 $workoutLetters = range("A", "Z");
 $workouts = new AllWorkout($conn);
 ?>

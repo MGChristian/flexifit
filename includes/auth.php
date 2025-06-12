@@ -22,7 +22,6 @@ if (!isset($userData) && $isLoggedIn) {
     }
 }
 
-
 function check_if_correct_role()
 {
     if (isset($_SESSION['id']) && isset($_SESSION['role'])) {

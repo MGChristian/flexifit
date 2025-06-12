@@ -27,7 +27,7 @@
   <div class="right-section">
     <div class="nav">
       <a href="#">ABOUT</a>
-      <a href="signup-page-info.php">SIGN UP</a>
+      <a href="signup-page-first.php">SIGN UP</a>
     </div>
     <div class="form-container">
       <div class="check">

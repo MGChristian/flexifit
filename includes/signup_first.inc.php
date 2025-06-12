@@ -1,6 +1,8 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    require_once "config.php";
+    require_once "config_session.inc.php";
     $first_name = $_POST['firstName'];
     $last_name = $_POST['lastName'];
     $birthdate = $_POST['birthdate'];
@@ -9,8 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $gender = $_POST['gender'];
 
     try {
-        require_once "config.php";
-
         // Error handlers
         $errors = [];
 
@@ -24,11 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $errors["taken_email"] = "The email provided is already taken!";
         }
 
-        require_once "config_session.inc.php";
-
         if ($errors) {
             $_SESSION['error_signup'] = $errors;
-            header("Location: ../signup-page-info.php");
+            header("Location: ../signup-page-first.php");
             exit();
         } else {
             $_SESSION['firstName'] = $first_name;
@@ -37,14 +35,14 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $_SESSION['email'] = $email;
             $_SESSION['phone'] = $phone;
             $_SESSION['gender'] = $gender;
-            header("Location: ../signup-page-account.php");
+            header("Location: ../signup-page-second.php");
             exit();
         }
     } catch (\Throwable $th) {
         exit("Query failed: " . $th->getMessage());
     }
 } else {
-    header("Location: ../signup-page-info.php");
+    header("Location: ../signup-page-first.php");
     exit();
 }
 

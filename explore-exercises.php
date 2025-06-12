@@ -1,12 +1,17 @@
 <?php
 require_once("./includes/auth.php");
-require_once("./includes/explore-exercises.php");
+require_once("./includes/class-all-exercises.php");
+$exercises = new AllExercise($conn);
+$recentExercises = $exercises->get_recent_exercises();
+$muscles = $exercises->get_muscles();
 if (isset($_SESSION['query_error'])) {
     unset($_SESSION['query_error']);
 }
 if (isset($_GET['exerciseName'])) {
     $exerciseName = $_GET['exerciseName'];
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +55,7 @@ if (isset($_GET['exerciseName'])) {
         <section class="classes-grid">
             <!-- Display all exercises -->
             <?php if (isset($exerciseName) && !empty($exerciseName)): ?>
-                <?php foreach (get_search_exercise($conn, $exerciseName) as $rows): ?>
+                <?php foreach ($exercises->get_search_exercise($exerciseName) as $rows): ?>
                     <a href="./exercise.php?id=<?= htmlspecialchars($rows['ID']) ?>">
                         <div class="class-item">
                             <img src="./admin/images/exercises/<?= htmlspecialchars($rows['exercisePicUrl']) ?>">
@@ -61,7 +66,7 @@ if (isset($_GET['exerciseName'])) {
                     </a>
                 <?php endforeach; ?>
             <?php else: ?>
-                <?php foreach (get_exercises($conn) as $rows): ?>
+                <?php foreach ($recentExercises as $rows): ?>
                     <a href="./exercise.php?id=<?= htmlspecialchars($rows['ID']) ?>">
                         <div class="class-item">
                             <img src="./admin/images/exercises/<?= htmlspecialchars($rows['exercisePicUrl']) ?>">
@@ -83,6 +88,19 @@ if (isset($_GET['exerciseName'])) {
                     <p><b>Muscle Name</b></p>
                 </div>
             <?php endfor; ?>
+        </section>
+        <br>
+        <h1>WORKOUTS BY MUSCLE AREA</h1>
+        <section class="classes-grid">
+            <!-- Display all exercises -->
+            <?php foreach ($muscles as $rows): ?>
+                <a href="./exercise.php?id=<?= htmlspecialchars($rows['ID']) ?>">
+                    <div class="exercise-item muscle">
+                        <img src="./admin/images/muscles/<?= htmlspecialchars($rows['muscle_pic_url']) ?>">
+                        <p><b><?= htmlspecialchars($rows['muscle_name']) ?></b></p>
+                    </div>
+                </a>
+            <?php endforeach; ?>
         </section>
     </div>
     <script src="./js/textToSpeech.js"></script>

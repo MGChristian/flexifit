@@ -103,8 +103,8 @@ $instructorOtherDetails = $instructor->get_instructor_other_details();
                         <div class="input-full">
                             <label>Status</label>
                             <select name="status">
-                                <option value="inactive" <?= htmlspecialchars($instructorDetails['status']) == 'inactive' ? 'selected' : ''; ?>>Inactive</option>
-                                <option value="active" <?= htmlspecialchars($instructorDetails['status']) == 'active' ? 'selected' : ''; ?>>Active</option>
+                                <option value="inactive" <?= strtolower(htmlspecialchars($instructorDetails['status'])) == 'inactive' ? 'selected' : ''; ?>>Inactive</option>
+                                <option value="active" <?= strtolower(htmlspecialchars($instructorDetails['status'])) == 'active' ? 'selected' : ''; ?>>Active</option>
                             </select>
                         </div>
                         <hr>

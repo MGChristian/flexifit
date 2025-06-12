@@ -44,11 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
         $conn->begin_transaction();
 
-        // foreach ($muscleGroup as $muscle) {
-        //     add_muscle_group($conn, $muscle, $exerciseId);
-        // }
-
-        // Video
         // Video
         $videoUrl = '';
         if (isset($video) && $video["size"] > 0) {  // Only handle if a file was actually uploaded
@@ -148,20 +143,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     header("Location: ../");
     exit();
 }
-
-//Validate and check inputs
-// function is_input_empty($exerciseId, $exerciseName, $exerciseDescription)
-// {
-//     if (
-//         empty($exerciseId) ||
-//         empty($exerciseName) ||
-//         empty($exerciseDescription)
-//     ) {
-//         return true;
-//     } else {
-//         return false;
-//     }
-// }
 
 function update_exercise_name($conn, $exerciseName, $exerciseId)
 {

@@ -2,7 +2,7 @@
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $email = isset($_POST['email']) ? $_POST['email'] : '';
-    $url = "http://localhost/flexifit/login-page-reset.php";
+    $url = "http://localhost/flexifit/login-reset-third.php";
 
     try {
         require_once "config.php";
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if (!$user) {
             $errors["invalid_account"] = "Account does not exists!";
             $_SESSION['error_login'] = $errors;
-            header("Location: ../login-page-forgot.php");
+            header("Location: ../login-reset-first.php");
             exit();
         } else {
             $userID = $user['ID'];
@@ -41,10 +41,10 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
         if ($errors) {
             $_SESSION['error_login'] = $errors;
-            header("Location: ../login-page-forgot.php");
+            header("Location: ../login-reset-first.php");
             exit();
         } else {
-            header("location: ../login-page-email.php");
+            header("location: ../login-reset-second.php");
             exit();
         }
     } catch (\Throwable $th) {

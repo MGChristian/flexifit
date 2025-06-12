@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if (check_sessions($first_name, $last_name, $birthdate, $email, $phone, $gender, $username, $password, $emergency_name, $emergency_contact, $prev_otp)) {
             $errors["empty_input"] = "Please fill in all the fields!";
             $_SESSION['error_signup'] = $errors;
-            header("Location: ../signup-page-info.php");
+            header("Location: ../signup-page-first.php");
             exit();
         }
 
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
         if ($errors) {
             $_SESSION['error_signup'] = $errors;
-            header("Location: ../signup-page-otp.php");
+            header("Location: ../signup-page-third.php");
             exit();
         } else {
             $profile_pic_url = "default.jpg";
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         exit("Query failed: " . $th->getMessage());
     }
 } else {
-    header("Location: ../signup-page-otp.php");
+    header("Location: ../signup-page-third.php");
     exit();
 }
 

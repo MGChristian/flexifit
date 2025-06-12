@@ -1,13 +1,12 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    require_once "config.php";
+    require_once "config_session.inc.php";
     $username = isset($_POST['username']) ? $_POST['username'] : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
 
     try {
-        require_once "config.php";
-        require_once "config_session.inc.php";
-
         // Error handlers
         $errors = [];
 

@@ -25,20 +25,20 @@ $url = basename($_SERVER['PHP_SELF']);
                 <p style="  word-wrap: break-word; overflow-wrap: break-word; max-width: 100%; "><?= htmlspecialchars($userData['firstName']) . " " . htmlspecialchars($userData['lastName']) ?></p>
                 <hr />
                 <!-- Dashboard page -->
-                 <?php
-                    if($url === "dashboard.php"):
-                 ?>
+                <?php
+                if ($url === "dashboard.php"):
+                ?>
                     <a href="./index.php">
-                    <div class="dropdown-item">
-                        <div class="option">
-                            <i class="fa fa-tachometer" aria-hidden="true"></i>
-                            <p>Homepage</p>
+                        <div class="dropdown-item">
+                            <div class="option">
+                                <i class="fa fa-tachometer" aria-hidden="true"></i>
+                                <p>Homepage</p>
+                            </div>
+                            <box-icon name="chevron-right"></box-icon>
                         </div>
-                        <box-icon name="chevron-right"></box-icon>
-                    </div>
-                </a>
-                 <?php endif;
-                 ?>
+                    </a>
+                <?php endif;
+                ?>
                 <a href=<?= check_dashboard(); ?>>
                     <div class="dropdown-item">
                         <div class="option">
@@ -82,7 +82,7 @@ $url = basename($_SERVER['PHP_SELF']);
         </div>
     <?php else: ?>
         <button class="join-now">
-            <a href="signup-page-info.php">Join Now</a>
+            <a href="signup-page-first.php">Join Now</a>
         </button>
         <!-- <div class="log-in">
             <a href="login-page.php">Login</a>
@@ -167,7 +167,7 @@ $url = basename($_SERVER['PHP_SELF']);
         <li <?php echo ($url && $url === 'about-us.php') ? 'class="active"' : ''; ?>>ABOUT US</li>
     </a>
     <?php if (!$isLoggedIn): ?>
-        <a href="./signup-page-info.php">
+        <a href="./signup-page-first.php">
             <li class="join-us">JOIN US</li>
         </a>
     <?php endif; ?>

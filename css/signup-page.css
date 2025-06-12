@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 /* General Reset */
 * {
@@ -110,7 +110,7 @@ body {
   padding: 10px 20px;
   background-color: #ffcc00;
   border-radius: 20px;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .nav a:hover {
@@ -494,7 +494,6 @@ body {
 }
 
 @media only screen and (max-width: 1200px) {
-  
   body {
     flex-direction: column;
     height: auto;
@@ -557,31 +556,31 @@ body {
   }
 
   .form-container .user-icon {
-  position: absolute;
-  top: 38%;
-  right: 30px;
-  color: #a0a0a0;
-  height: 18px;
-  width: 18px;
-}
+    position: absolute;
+    top: 38%;
+    right: 30px;
+    color: #a0a0a0;
+    height: 18px;
+    width: 18px;
+  }
 
-.form-container .pass-icon {
-  position: absolute;
-  top: 48%;
-  right: 30px;
-  color: #a0a0a0;
-  height: 18px;
-  width: 18px;
-}
+  .form-container .pass-icon {
+    position: absolute;
+    top: 48%;
+    right: 30px;
+    color: #a0a0a0;
+    height: 18px;
+    width: 18px;
+  }
 
-.form-container .confirm-pass-icon {
-  position: absolute;
-  top: 58%;
-  right: 30px;
-  color: #a0a0a0;
-  height: 18px;
-  width: 18px;
-}
+  .form-container .confirm-pass-icon {
+    position: absolute;
+    top: 58%;
+    right: 30px;
+    color: #a0a0a0;
+    height: 18px;
+    width: 18px;
+  }
 
   .progress-bar {
     flex-direction: row;
