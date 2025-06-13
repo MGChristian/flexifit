@@ -63,12 +63,14 @@ check_sessions();
           placeholder="Password" />
         <ion-icon name="lock-closed-outline" class="pass-icon" id="signPass-icon" onclick="mySignPassword()"></ion-icon>
         <input
+          class="confirm-input"
           name="confirm"
           type="password"
           oninput="changeConfirmPassIcon(this.value)"
           id="signConfirmPass"
           placeholder="Confirm Password" />
         <ion-icon name="lock-closed-outline" class="confirm-pass-icon" id="signConfirmPass-icon" onclick="mySignConfirmPassword()"></ion-icon>
+        <div id="matchMessage" class="message"></div>
 
         <div class="divider">EMERGENCY CONTACT</div>
 
@@ -79,56 +81,6 @@ check_sessions();
     </div>
   </div>
 
-  <script>
-    const signInputPass = document.getElementById('signPass');
-    const signInputConfirmPass = document.getElementById('signConfirmPass');
-    const signInputPassIcon = document.getElementById('signPass-icon');
-    const signInputConfirmPassIcon = document.getElementById('signConfirmPass-icon');
-
-    function mySignPassword() {
-      if (signInputPass.type === "password") {
-        signInputPass.type = "text";
-
-        signInputPassIcon.name = "eye-off-outline";
-        signInputPassIcon.style.cursor = "pointer";
-      } else {
-        signInputPass.type = "password";
-
-        signInputPassIcon.name = "eye-outline";
-        signInputPassIcon.style.cursor = "pointer";
-      }
-    }
-
-    function mySignConfirmPassword() {
-      if (signInputConfirmPass.type === "password") {
-        signInputConfirmPass.type = "text";
-
-        signInputConfirmPassIcon.name = "eye-off-outline";
-        signInputConfirmPassIcon.style.cursor = "pointer";
-      } else {
-        signInputConfirmPass.type = "password";
-
-        signInputConfirmPassIcon.name = "eye-outline";
-        signInputConfirmPassIcon.style.cursor = "pointer";
-      }
-    }
-
-    function changeIcon(value) {
-      if (value.length > 0) {
-        signInputPassIcon.name = "eye-outline";
-      } else {
-        signInputPassIcon.name = "lock-closed-outline";
-      }
-    }
-
-    function changeConfirmPassIcon(value) {
-      if (value.length > 0) {
-        signInputConfirmPassIcon.name = "eye-outline";
-      } else {
-        signInputConfirmPassIcon.name = "lock-closed-outline";
-      }
-    }
-  </script>
   <script src="./js/signup.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
@@ -143,7 +95,7 @@ function check_signup_errors()
   if (isset($_SESSION['error_signup'])) {
     $errors = $_SESSION['error_signup'];
     foreach ($errors as $error) {
-      echo "<p class='form-error'>" . $error . "</p>";
+      echo "<p class='form-error'>" . htmlspecialchars($error) . "</p>";
     }
     unset($_SESSION['error_signup']);
   }

@@ -128,7 +128,8 @@ body {
 
 .form-container h2 {
   font-size: 2rem;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
+  margin-top: -10px;
   text-align: center;
 }
 
@@ -148,6 +149,10 @@ body {
   border-radius: 1px;
   font-size: 14px;
   transition: ease 0.5s;
+}
+
+.form-container .confirm-input {
+  margin-bottom: 0;
 }
 
 .form-container .user-icon {
@@ -175,6 +180,19 @@ body {
   color: #a0a0a0;
   height: 18px;
   width: 18px;
+}
+
+.message {
+  font-size: 0.8rem;
+  font-family: Montserrat, 'sans-serif';
+}
+
+.message.error {
+  color: var(--red);
+}
+
+.message.success {
+  color: var(--green);
 }
 
 .date-empty {

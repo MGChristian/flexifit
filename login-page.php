@@ -1,5 +1,4 @@
 <?php
-
 require_once "./includes/config_session.inc.php";
 check_if_logged_in();
 ?>
@@ -37,13 +36,6 @@ check_if_logged_in();
     </div>
     <div class="form-container">
       <h2>LOG IN</h2>
-
-      <?php
-      if (isset($_SESSION['success'])) {
-        echo "<div class='success-message'>Registration successful! You can now log in.</div>";
-        unset($_SESSION['success']);
-      }
-      ?>
       <form action="./includes/login.inc.php" method="POST">
         <div class="error-wrapper">
           <?php check_login_errors() ?>
@@ -52,7 +44,7 @@ check_if_logged_in();
           name="username"
           type="text"
           placeholder="Username"
-          required />
+        />
         <ion-icon name="person-outline" class="user-icon"></ion-icon>
         <input
           name="password"
@@ -60,7 +52,7 @@ check_if_logged_in();
           oninput="changeIcon(this.value)"
           id="logPassword"
           placeholder="Password"
-          required />
+        />
         <ion-icon name="lock-closed-outline" class="pass-icon" id="logPass-icon" onclick="myLogPassword()"></ion-icon>
         <button
           type="submit">
@@ -70,40 +62,13 @@ check_if_logged_in();
       </form>
     </div>
   </div>
-  <script>
-    const logInputPass = document.getElementById('logPassword');
-    const logInputIcon = document.getElementById('logPass-icon');
-
-    function myLogPassword() {
-      if (logInputPass.type === "password") {
-        logInputPass.type = "text";
-
-        logInputIcon.name = "eye-off-outline";
-        logInputIcon.style.cursor = "pointer";
-      } else {
-        logInputPass.type = "password";
-
-        logInputIcon.name = "eye-outline";
-        logInputIcon.style.cursor = "pointer";
-      }
-    }
-
-    function changeIcon(value) {
-      if (value.length > 0) {
-        logInputIcon.name = "eye-outline";
-      } else {
-        logInputIcon.name = "lock-closed-outline"
-      }
-    }
-  </script>
+  <script src="./js/login.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
-
 </html>
 
 <?php
-
 function check_login_errors()
 {
   if (isset($_SESSION['error_login'])) {
@@ -135,5 +100,4 @@ function check_if_logged_in()
     }
   }
 }
-
 ?>

@@ -72,7 +72,7 @@ check_if_logged_in();
           <input name="email" type="email" placeholder="Email" autocomplete="on" id="email" />
           <div class="phone">
             <span>+63</span>
-            <input type="tel" name="contactNumber" pattern="[0-9]{10}" maxlength="10" />
+            <input type="tel" name="contactNumber" placeholder="Phone" pattern="[0-9]{10}" maxlength="10" />
           </div>
           <select name="gender" id="gender">
             <option value="" disabled selected style="color: #ccc">
