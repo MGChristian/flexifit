@@ -168,6 +168,18 @@ body {
   border: 1.5px solid #ffcc00;
 }
 
+.input-error {
+  border-color: var(--red) !important;
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-group input {
+  width: 100%;
+}
+
 .form-container .user-icon {
   position: absolute;
   top: 46%;
@@ -197,8 +209,8 @@ body {
 
 .form-container .mail-icon {
   position: absolute;
-  top: 49%;
-  right: 125px;
+  top: 30%;
+  right: 10px;
   color: #000000;
   height: 18px;
   width: 18px;
