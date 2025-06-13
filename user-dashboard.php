@@ -2,6 +2,7 @@
 
 // Check whether user has the authority to access this page.
 require_once("./includes/auth.php");
+check_if_correct_role();
 require_once("./includes/class-user-dashboard.php");
 $userID = $_SESSION['id'];
 $dashboard = new UserDashboard($conn, $userID);

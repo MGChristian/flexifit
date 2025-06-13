@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $exercise_name = isset($_POST['exerciseName']) ? $_POST['exerciseName'] : '';
     $exercise_description = isset($_POST['exerciseDescription']) ? $_POST['exerciseDescription'] : '';
     $profile = $_FILES['exercisePic'] ?? null;
-    $folder = "../images/exercises/";
+    $folder = "../../admin/images/exercises/";
 
     try {
         require_once "../../includes/config.php";

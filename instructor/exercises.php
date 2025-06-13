@@ -71,7 +71,7 @@ if (isset($_SESSION['error_login'])) {
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             new DataTable("#myTable", {
-                ajax: './includes/get-exercises.php?id=<?= $_SESSION['id'] ?>',
+                ajax: './includes/get-exercises.php',
                 columns: [{
                         data: "id"
                     },
@@ -93,7 +93,7 @@ if (isset($_SESSION['error_login'])) {
                     }
                 ],
                 columnDefs: [{
-                    width: "150px",
+                    width: "100px",
                     targets: (-1),
                 }],
             });

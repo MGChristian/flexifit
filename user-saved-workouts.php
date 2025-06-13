@@ -1,5 +1,6 @@
 <?php
 require_once("./includes/auth.php");
+check_if_correct_role();
 require_once("./includes/class-saved-workouts.php");
 $userID = $_SESSION['id'];
 $savedWorkouts = new Saved($conn, $userID);

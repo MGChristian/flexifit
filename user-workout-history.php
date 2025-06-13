@@ -1,5 +1,6 @@
 <?php
 require_once("./includes/auth.php");
+check_if_correct_role();
 require_once("./includes/class-workout-history.php");
 $userID = $_SESSION['id'];
 $workoutHistories = new History($conn, $userID);

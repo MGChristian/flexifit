@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
 function view_button($id)
 {
-    return "<a href='./edit-instructor.php?id={$id}'><button type='button' class='data-table-button view' data-target='view-instructor'> <i class='fa fa-eye' aria-hidden='true'></i> </button></a>";
+    return "<a href='./edit-instructor.php?id={$id}'><button type='button' class='data-table-button edit' data-target='view-instructor'> <i class='fa fa-pencil-square-o' aria-hidden='true'></i> </button></a>";
 }
 
 // function edit_button($id)

@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                 "equipmentDescription" => $rows['equipment_description'],
                 "dateCreated" => $rows['dateCreated'],
                 "imageUrl" => $rows['equipment_pic_url'],
-                "buttons" => "<div class='action-button-container'>" . view_button($id) . archive_button($id) . "</div>",
+                "buttons" => "<div class='action-button-container'>" . view_button($id) . "</div>",
             );
         }
     } else {

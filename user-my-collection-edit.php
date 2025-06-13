@@ -1,5 +1,6 @@
 <?php
 require_once("./includes/auth.php");
+check_if_correct_role();
 require_once("./includes/class-collection.php");
 $userID = $_SESSION['id'];
 isset($_GET['id']) && !empty($_GET['id']) ? $collectionId = $_GET['id'] : header("location: ./user-my-collection.php");

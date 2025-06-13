@@ -1,5 +1,6 @@
 <?php
 require_once("./includes/auth.php");
+check_if_correct_role();
 require_once("./includes/class-collection.php");
 $userID = $_SESSION['id'];
 $collections = new Collection($conn, $userID);

@@ -4,9 +4,6 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     $instructorsList = [];
     require_once "../../includes/config.php";
     $stmt = $conn->prepare("SELECT `ID`, `exerciseName`, `description`, `status`, `dateCreated` FROM `exercise`");
-    $buttonsView = "<button type='button' class='data-table-button view' data-target='view-instructor'> <i class='fa fa-eye' aria-hidden='true'></i> </button>";
-    $buttonsEdit = "<button type='button' class='data-table-button edit' data-target='edit-instructor'> <i class='fa fa-pencil-square-o' aria-hidden='true'></i> </button>";
-    $buttonsArchive = "<button type='button' class='data-table-button archive' data-target='archive-instructor'> <i class='fa fa-archive' aria-hidden='true'></i> </button>";
     if ($stmt->execute()) {
         $result = $stmt->get_result();
         $stmt->close();
@@ -24,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                 "description" => $description,
                 "status" => $status,
                 "dateCreated" => $dateCreated,
-                "buttons" => "<div class='action-button-container'>" . view_button($id) . edit_button($id) . archive_button($id) . "</div>",
+                "buttons" => "<div class='action-button-container'>" . edit_button($id) . "</div>",
             );
         }
     } else {

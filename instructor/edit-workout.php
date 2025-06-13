@@ -1,7 +1,6 @@
 <?php
 
 // Check whether user has the authority to access this page.
-
 require_once "./includes/auth.php";
 
 if (isset($_SESSION['error_adding_workout_details'])) {
@@ -16,7 +15,7 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutId = $_GET['id'] : header("l
 
 <?php
 require_once("./includes/edit-workout.php");
-$workout = new Workout($conn, $workoutId, $user_id);
+$workout = new Workout($conn, $workoutId);
 if (!$workout->is_id_valid()) {
     header("location: ./workouts.php");
     exit();
@@ -59,6 +58,11 @@ $workoutSets = $workout->get_unique_workout_sets();
                         <h2>EDIT WORKOUT</h2>
                     </div>
                     <form class="edit-content-form" action="./includes/add-workout-details.php" method="POST" enctype="multipart/form-data">
+                        <h4>Profile Picture</h4>
+                        <div class="input-full">
+                            <input type="file" accept="image/*" name="profilePicUrl" />
+                        </div>
+                        <hr>
                         <div class="input-full hidden">
                             <label>Workout ID</label>
                             <input name="workoutID" type="text" value="<?= $workoutId ?>" />

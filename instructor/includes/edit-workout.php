@@ -8,17 +8,16 @@ class Workout
     private $workoutId;
     private $conn;
 
-    public function __construct($conn, $workoutId, $userID)
+    public function __construct($conn, $workoutId)
     {
         $this->conn = $conn;
         $this->workoutId = $workoutId;
-        $this->id = $userID;
     }
 
     public function is_id_valid()
     {
-        $stmt = $this->conn->prepare("SELECT * FROM `workout` WHERE ID = ? AND `userID` = ?");
-        $stmt->bind_param("ii", $this->workoutId, $this->id);
+        $stmt = $this->conn->prepare("SELECT * FROM `workout` WHERE ID = ?");
+        $stmt->bind_param("i", $this->workoutId);
         $stmt->execute();
         $result = $stmt->get_result();
         $stmt->close();

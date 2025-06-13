@@ -3,7 +3,7 @@
     <div class="logo">
         <i class="fa fa-bars navbar-hamburger" aria-hidden="true"></i>
         <div class="logo">
-            <img src="assets/flexifitlogo.png" alt="FlexiFit Logo" />
+            <img src="<?= $_SESSION['role'] == 'instructor' ? '../' : './' ?>assets/flexifitlogo.png" alt="FlexiFit Logo" />
         </div>
     </div>
     <div class="user-profile">
@@ -31,16 +31,6 @@
                     <box-icon name="chevron-right"></box-icon>
                 </div>
             </a>
-            <!-- Records page -->
-            <div class="dropdown-item">
-                <div class="option">
-                    <box-icon name="folder-open" type="solid"></box-icon>
-                    <a href="myRecords.html">
-                        <p>My Records</p>
-                    </a>
-                </div>
-                <box-icon name="chevron-right"></box-icon>
-            </div>
             <!-- User logout -->
             <div class="dropdown-item">
                 <div class="option">

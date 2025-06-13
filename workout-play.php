@@ -52,7 +52,7 @@ if ($workout->check_id() === true) {
     <!-- SETS THE MAXIMUM WIDTH TO 1200px -->
     <div class="main-container">
         <input id="play-workout-id" class="hidden" type="number" value="<?= $_GET['id'] ?>" />
-        <input id="user-id" value="<?= $_SESSION['id'] ?>" />
+        <input id="user-id" class="hidden" value="<?= $_SESSION['id'] ?>" />
         <div class="play-content">
             <h1 id="exercise-name"></h1>
             <h1 id="timer"></h1>

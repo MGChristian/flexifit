@@ -100,7 +100,7 @@ if (isset($_SESSION['error_login'])) {
                     }
                 ],
                 columnDefs: [{
-                    width: "150px",
+                    width: "50px",
                     targets: (-1),
                 }],
             });
