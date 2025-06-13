@@ -174,6 +174,32 @@ class Workout
         ];
     }
 
+    public function get_saved_status($userId)
+    {
+        $stmt = $this->conn->prepare("SELECT `ID` FROM `saved_workouts` WHERE `workoutID` = ? AND `userID` = ?");
+        $stmt->bind_param("ii", $this->workoutId, $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function get_collections_list($userId)
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM `collection` WHERE `userID` = ?");
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } else {
+            return [];
+        }
+    }
+
     // WORKOUT PLAY METHODS
 
     public function get_exercise_count()

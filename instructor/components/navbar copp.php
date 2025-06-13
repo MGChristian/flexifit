@@ -22,7 +22,7 @@
                 </div>
             </a>
             <!-- Profile page -->
-            <a href="../profile.php">
+            <a href="myProfile.php">
                 <div class="dropdown-item">
                     <div class="option">
                         <box-icon name="user-circle" type="solid"></box-icon>
@@ -31,11 +31,21 @@
                     <box-icon name="chevron-right"></box-icon>
                 </div>
             </a>
+            <!-- Records page -->
+            <div class="dropdown-item">
+                <div class="option">
+                    <box-icon name="folder-open" type="solid"></box-icon>
+                    <a href="myRecords.html">
+                        <p>My Records</p>
+                    </a>
+                </div>
+                <box-icon name="chevron-right"></box-icon>
+            </div>
             <!-- User logout -->
             <div class="dropdown-item">
                 <div class="option">
                     <box-icon name="log-out" type="solid"></box-icon>
-                    <a href="../logout.php">
+                    <a href="./logout.php">
                         <p>Log Out</p>
                     </a>
                 </div>

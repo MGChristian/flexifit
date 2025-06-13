@@ -2,13 +2,41 @@
 require_once("./includes/auth.php");
 require_once("./includes/class-all-exercises.php");
 $exercises = new AllExercise($conn);
+
+//List of the recent 10
 $recentExercises = $exercises->get_recent_exercises();
+
+//filters
 $muscles = $exercises->get_muscles();
-if (isset($_SESSION['query_error'])) {
-    unset($_SESSION['query_error']);
+$equipments = $exercises->get_equipments();
+$categories = $exercises->get_categories();
+
+if (isset($_GET['exercise-name'])) {
+    $exerciseName = $_GET['exercise-name'];
 }
-if (isset($_GET['exerciseName'])) {
-    $exerciseName = $_GET['exerciseName'];
+
+if (isset($_GET['muscle-id'])) {
+    $muscleID = $_GET['muscle-id'];
+    $muscleInfo = $exercises->get_muscle($muscleID);
+    $muscleFilter = $exercises->get_exercises_by_muscle($muscleID);
+}
+
+if (isset($_GET['equipment-id'])) {
+    $equipmentID = $_GET['equipment-id'];
+    $equipmentInfo = $exercises->get_equipment($equipmentID);
+    $equipmentFilter = $exercises->get_exercises_by_equipment($equipmentID);
+}
+
+if (isset($_GET['category-id'])) {
+    $categoryID = $_GET['category-id'];
+    $categoryInfo = $exercises->get_category($categoryID);
+    $categoryFilter = $exercises->get_exercises_by_category($categoryID);
+}
+
+if (isset($_GET['instructor-id'])) {
+    $instructorID = $_GET['instructor-id'];
+    $instructorFilter = $exercises->get_exercises_by_instructor($instructorID);
+    $instructorInfo = $exercises->get_instructor($instructorID);
 }
 
 
@@ -22,7 +50,8 @@ if (isset($_GET['exerciseName'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explore Exercises</title>
     <?php require_once "./components/global_css.php" ?>
-    <link rel="stylesheet" href="css/explore-workouts.css">
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/explore-page.css">
 </head>
 
 <body>
@@ -31,19 +60,63 @@ if (isset($_GET['exerciseName'])) {
 
 
     <header class="header">
-        <img src="./assets/explore.jpg" />
-        <div class="header-content">
-            <h1>EXPLORE EXERCISES</h1>
-            <p>Find the Perfect Fitness class for your Fitness Goal</p>
+        <div class="header-details">
+            <div class="header-content">
+                <div class="header-list">
+                    <h3>Explore Exercise</h3>
+                </div>
+                <h1>
+                    <?php
+                    if (isset($muscleFilter) && isset($muscleInfo)) {
+                        echo "EXERCISES FOR - " . strtoupper(htmlspecialchars($muscleInfo['muscle_name']));
+                    } elseif (isset($equipmentFilter) && isset($equipmentInfo)) {
+                        echo "EXERCISES WITH - " . strtoupper(htmlspecialchars($equipmentInfo['equipment_name']));
+                    } elseif (isset($categoryFilter) && isset($categoryInfo)) {
+                        echo "EXERCISES IN - " . strtoupper(htmlspecialchars($categoryInfo['category_name']));
+                    } else {
+                        echo "SHOW ALL";
+                    }
+                    ?>
+                </h1>
+                <div class="header-list">
+                    <p>Description: </p>
+                    <p>
+                        <?php
+                        if (isset($muscleFilter) && isset($muscleInfo)) {
+                            echo htmlspecialchars($muscleInfo['muscle_description']);
+                        } elseif (isset($equipmentFilter) && isset($equipmentInfo)) {
+                            echo htmlspecialchars($equipmentInfo['equipment_description']);
+                        } elseif (isset($categoryFilter) && isset($categoryInfo)) {
+                            echo htmlspecialchars($categoryInfo['category_description']);
+                        } else {
+                            echo "Browse and discover a wide range of exercises designed to target specific muscle groups, use different equipment, and fit your fitness goals. Whether you're a beginner or experienced, use the search bar or filter by category, muscle area, or equipment to find the perfect exercise for your workout plan.";
+                        }
+                        ?>
+                    </p>
+                </div>
+            </div>
+            <div class="header-background">
+                <?php
+                if (isset($muscleInfo)) {
+                    $imgSrc = './admin/images/muscles/' . htmlspecialchars($muscleInfo['muscle_pic_url']);
+                } elseif (isset($equipmentInfo)) {
+                    $imgSrc = './admin/images/equipments/' . htmlspecialchars($equipmentInfo['equipment_pic_url']);
+                } elseif (isset($categoryInfo)) {
+                    $imgSrc = './admin/images/categories/' . htmlspecialchars($categoryInfo['category_pic_url']);
+                } else {
+                    $imgSrc = './assets/bg.jpg';
+                }
+                ?>
+                <img src="<?= $imgSrc ?>" alt="Exercise Visual">
+            </div>
         </div>
     </header>
 
     <div class="search-container">
         <form method="GET">
-            <input type="text" name="exerciseName" id="searchInput" class="search-bar" placeholder="Search...">
+            <input type="text" name="exercise-name" id="searchInput" class="search-bar" placeholder="Search...">
             <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
-            <button type="button" id="micButton" class="search-btn" title="Voice Search"
-                style="margin-left: 8px;">
+            <button type="button" id="micButton" class="search-btn" title="Voice Search" style="margin-left: 8px;">
                 <i class="fa fa-microphone"></i>
             </button>
         </form>
@@ -51,14 +124,42 @@ if (isset($_GET['exerciseName'])) {
 
     <!-- SETS THE MAXIMUM WIDTH TO 1200px -->
     <div class="main-container">
-        <h1>NEW EXERCISES</h1>
+        <?php
+        $filteredExercises = [];
+
+        // If muscle filter is active
+        if (isset($muscleFilter)) {
+            $filteredExercises = $muscleFilter;
+        } elseif (isset($equipmentFilter)) {
+            $filteredExercises = $equipmentFilter;
+        } elseif (isset($categoryFilter)) {
+            $filteredExercises = $categoryFilter;
+        } elseif (isset($instructorFilter)) {
+            $filteredExercises = $instructorFilter;
+        } elseif (isset($exerciseName) && !empty($exerciseName)) {
+            $filteredExercises = $exercises->get_search_exercise($exerciseName);
+        } else {
+            $filteredExercises = $recentExercises;
+        }
+
+        ?>
+        <h2>
+            <?php
+            if (isset($muscleFilter)) echo "Exercises for: " . htmlspecialchars($muscleInfo['muscle_name']);
+            elseif (isset($equipmentFilter)) echo "Exercises with: " . htmlspecialchars($equipmentInfo['equipment_name']);
+            elseif (isset($categoryFilter)) echo "Exercises in: " . htmlspecialchars($categoryInfo['category_name']);
+            elseif (isset($exerciseName)) echo "Search Results for: " . htmlspecialchars($exerciseName);
+            elseif (isset($instructorFilter)) {
+                echo "Exercises by: " . htmlspecialchars($instructorInfo['firstName'] . " " . $instructorInfo['lastName']);
+            } else echo "Latest Exercises";
+            ?>
+        </h2>
         <section class="classes-grid">
-            <!-- Display all exercises -->
-            <?php if (isset($exerciseName) && !empty($exerciseName)): ?>
-                <?php foreach ($exercises->get_search_exercise($exerciseName) as $rows): ?>
-                    <a href="./exercise.php?id=<?= htmlspecialchars($rows['ID']) ?>">
+            <?php if (!empty($filteredExercises)): ?>
+                <?php foreach ($filteredExercises as $rows): ?>
+                    <a href="./exercise.php?id=<?= htmlspecialchars($rows['exerciseID'] ?? $rows['ID']) ?>">
                         <div class="class-item">
-                            <img src="./admin/images/exercises/<?= htmlspecialchars($rows['exercisePicUrl']) ?>">
+                            <img src="./admin/images/exercises/<?= htmlspecialchars($rows['exercisePicUrl']) ?>" alt="">
                             <div>
                                 <p><b><?= htmlspecialchars($rows['exerciseName']) ?></b></p>
                             </div>
@@ -66,38 +167,45 @@ if (isset($_GET['exerciseName'])) {
                     </a>
                 <?php endforeach; ?>
             <?php else: ?>
-                <?php foreach ($recentExercises as $rows): ?>
-                    <a href="./exercise.php?id=<?= htmlspecialchars($rows['ID']) ?>">
-                        <div class="class-item">
-                            <img src="./admin/images/exercises/<?= htmlspecialchars($rows['exercisePicUrl']) ?>">
-                            <div>
-                                <p><b><?= htmlspecialchars($rows['exerciseName']) ?></b></p>
-                            </div>
-                        </div>
-                    </a>
-                <?php endforeach; ?>
+                <p>No exercises found.</p>
             <?php endif; ?>
         </section>
         <div class="explore-button"><a href="all-exercises.php"><button type="button">VIEW ALL EXERCISES</button></a></div>
         <br>
-        <h1>WORKOUTS BY MUSCLE AREA</h1>
-        <section class="classes-grid">
-            <?php for ($i = 1; $i <= 15; $i++) : ?>
-                <div class="exercise-item">
-                    <img src="https://picsum.photos/200/200">
-                    <p><b>Muscle Name</b></p>
-                </div>
-            <?php endfor; ?>
-        </section>
-        <br>
-        <h1>WORKOUTS BY MUSCLE AREA</h1>
+        <h1>EXERCISES BY MUSCLE AREA</h1>
         <section class="classes-grid">
             <!-- Display all exercises -->
             <?php foreach ($muscles as $rows): ?>
-                <a href="./exercise.php?id=<?= htmlspecialchars($rows['ID']) ?>">
+                <a href="./explore-exercises.php?muscle-id=<?= htmlspecialchars($rows['ID']) ?>">
                     <div class="exercise-item muscle">
                         <img src="./admin/images/muscles/<?= htmlspecialchars($rows['muscle_pic_url']) ?>">
                         <p><b><?= htmlspecialchars($rows['muscle_name']) ?></b></p>
+                    </div>
+                </a>
+            <?php endforeach; ?>
+        </section>
+        <br>
+        <h1>EXERCISES BY EQUIPMENTS</h1>
+        <section class="classes-grid">
+            <!-- Display all exercises -->
+            <?php foreach ($equipments as $rows): ?>
+                <a href="./explore-exercises.php?equipment-id=<?= htmlspecialchars($rows['ID']) ?>">
+                    <div class="exercise-item muscle">
+                        <img src="./admin/images/equipments/<?= htmlspecialchars($rows['equipment_pic_url']) ?>">
+                        <p><b><?= htmlspecialchars($rows['equipment_name']) ?></b></p>
+                    </div>
+                </a>
+            <?php endforeach; ?>
+        </section>
+        <br>
+        <h1>EXERCISES BY CATEGORIES</h1>
+        <section class="classes-grid">
+            <!-- Display all exercises -->
+            <?php foreach ($categories as $rows): ?>
+                <a href="./explore-exercises.php?category-id=<?= htmlspecialchars($rows['ID']) ?>">
+                    <div class="exercise-item muscle">
+                        <img src="./admin/images/categories/<?= htmlspecialchars($rows['category_pic_url']) ?>">
+                        <p><b><?= htmlspecialchars($rows['category_name']) ?></b></p>
                     </div>
                 </a>
             <?php endforeach; ?>

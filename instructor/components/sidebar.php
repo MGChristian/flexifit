@@ -28,19 +28,5 @@
                 <li class="mini-sidebar-list-item">Workouts</li>
             </a>
         </ul>
-
-        <!-- RATINGS -->
-        <a href="./ratings.php">
-            <li class="sidebar-list-item <?= $current_page == 'ratings.php' ? 'active' : '' ?>">
-                <div class="sidebar-list-title"><i class="fa fa-star" aria-hidden="true"></i> Ratings & Reviews</div>
-            </li>
-        </a>
-
-        <!-- REPORTS -->
-        <a href="./reports.php">
-            <li class="sidebar-list-item <?= $current_page == 'reports.php' ? 'active' : '' ?>">
-                <div class="sidebar-list-title"><i class="fa fa-area-chart" aria-hidden="true"></i> Reports</div>
-            </li>
-        </a>
     </ul>
 </div>

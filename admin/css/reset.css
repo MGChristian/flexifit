@@ -14,9 +14,9 @@
   --bold: 700;
   --light-shadow: 3px 3px 6px 1px rgba(0, 0, 0, 0.05);
   --shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.15);
-  --primary: #007bff; /* Default view for table */
-  --success: #28a745; /* Default edit for table */
-  --danger: #dc3545; /* Default delete for table */
+  --primary: #5c9eff; /* Softer but lively blue */
+  --success: #6fcf97; /* Soft and natural green */
+  --danger: #f28b82; /* Soft reddish tone without being too aggressive */
 }
 
 /* General Reset */

@@ -1,18 +1,19 @@
 <?php
 require_once("./includes/auth.php");
 // Check if id is set, if it is not go back to explore exercise page
-isset($_GET['id']) && !empty($_GET['id']) ? $instructorId = $_GET['id'] : header("location: ./instructors.php");
+isset($_GET['id']) && !empty($_GET['id']) ? $instructorId = $_GET['id'] : header("location: ./explore-instructors.php");
 ?>
 
 <!-- Get all exercise details -->
 <?php
-require_once "./includes/instructor.php";
-$instructor = new Instructor($conn, $instructorId);
+require_once "./includes/class-instructor.php";
+$instructor = new Instructor($conn);
+$instructor->initialize_id($instructorId);
 if ($instructor->check_id() === true) {
     $instructorDetails = $instructor->get_instructor_details();
     $workouts = $instructor->get_workouts();
 } else {
-    header("location: ./instructors.php");
+    header("location: ./explore-instructors.php");
     exit();
 };
 ?>
@@ -58,7 +59,7 @@ if ($instructor->check_id() === true) {
                 </div>
                 <div class="user-details-w-button">
                     <h4>My Workouts</h4>
-                    <a href="instructor-profile.php?id=<?= htmlspecialchars($instructorDetails['ID']) ?>"><button class="view-btn">View More</button></a>
+                    <a href="explore-workouts.php?instructor-id=<?= htmlspecialchars($instructorDetails['ID']) ?>"><button class="view-btn">View More</button></a>
                 </div>
                 <hr />
                 <div class="workout-container">

@@ -52,7 +52,7 @@ require_once("./includes/auth.php");
         <p>
           Meet expert trainers ready to guide your fitness journey.
         </p>
-        <a href="./instructors.php">Learn More</a>
+        <a href="./explore-instructors.php">Learn More</a>
       </div>
     </div>
     <div class="photo-item">

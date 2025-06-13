@@ -1,0 +1,25 @@
+.dashboard-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dashboard-title button {
+  padding: 0.5rem 1rem;
+  background-color: var(--yellow);
+  border: none;
+}
+
+.collection-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.collection {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: var(--black);
+  border-radius: 5px;
+  color: white;
+}

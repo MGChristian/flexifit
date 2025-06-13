@@ -8,10 +8,32 @@ class Instructor
     private $instructorId;
     private $conn;
 
-    public function __construct($conn, $instructorId)
+    public function __construct($conn)
     {
         $this->conn = $conn;
+    }
+
+    public function initialize_id($instructorId)
+    {
         $this->instructorId = $instructorId;
+    }
+
+    //GET ALL INSTRUCTORS
+    public function get_instructors()
+    {
+        $stmt = $this->conn->prepare("SELECT `user`.`ID`, `user`.`firstName`, `user`.`lastName`, `user`.`profilePicUrl`, `instructor_details`.`goal`, `instructor_details`.`personalDescription` FROM `user` LEFT JOIN `instructor_details` ON `user`.`ID` = `instructor_details`.`userID` WHERE `user`.`status` = 'active' AND `user`.`role` = 'instructor'");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+        if ($result->num_rows > 0) {
+            $instructorRows = [];
+            while ($rows = $result->fetch_assoc()) {
+                $instructorRows[] = $rows;
+            }
+            return $instructorRows;
+        } else {
+            return [];
+        }
     }
 
     public function check_id()
@@ -30,7 +52,7 @@ class Instructor
 
     public function get_instructor_details()
     {
-        $stmt = $this->conn->prepare("SELECT `user`.`ID`, `user`.`firstName`, `user`.`lastName`, `user`.`profilePicUrl`, `instructor_details`.`goal`, `instructor_details`.`personalDescription` FROM `user` INNER JOIN `instructor_details` ON `user`.`ID` = `instructor_details`.`userID` WHERE `user`.`ID` = ? AND `user`.`status` = 'active' AND `user`.`role` = 'instructor'");
+        $stmt = $this->conn->prepare("SELECT `user`.`ID`, `user`.`firstName`, `user`.`lastName`, `user`.`profilePicUrl`, `instructor_details`.`goal`, `instructor_details`.`personalDescription` FROM `user` LEFT JOIN `instructor_details` ON `user`.`ID` = `instructor_details`.`userID` WHERE `user`.`ID` = ? AND `user`.`status` = 'active' AND `user`.`role` = 'instructor'");
         $stmt->bind_param("i", $this->instructorId);
         $stmt->execute();
         $result = $stmt->get_result();
