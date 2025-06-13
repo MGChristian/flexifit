@@ -52,7 +52,7 @@ $userDetails = $user->get_user_details();
                     <div class="edit-content-title">
                         <h2>EDIT USERS</h2>
                     </div>
-                    <form class="edit-content-form" action="./includes/add-instructor-details.php" method="POST" enctype="multipart/form-data">
+                    <form class="edit-content-form" action="./includes/add-user-details.php" method="POST" enctype="multipart/form-data">
                         <div class="input-full hidden">
                             <label>User ID</label>
                             <input name="userID" type="text" value="<?= $userID ?>" />

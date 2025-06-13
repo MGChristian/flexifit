@@ -38,5 +38,5 @@ function edit_button($id)
 
 function archive_button($id)
 {
-    return "<a href='./includes/unarchive-users.php?id={$id}'><button type='button' class='data-table-button archive' data-target='archive-user'> <i class='fa fa-archive' aria-hidden='true'></i> </button></a>";
+    return "<a href='./includes/archive-users.php?id={$id}'><button type='button' class='data-table-button archive' data-target='archive-user'> <i class='fa fa-archive' aria-hidden='true'></i> </button></a>";
 }

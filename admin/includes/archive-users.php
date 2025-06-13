@@ -1,12 +1,11 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "GET") {
+    require_once "../../includes/config.php";
+    require_once "../../includes/config_session.inc.php";
     $userId = $_GET['id'];
 
     try {
-        require_once "../../includes/config.php";
-        require_once "../../includes/config_session.inc.php";
-
         // Error handlers
         $errors = [];
 

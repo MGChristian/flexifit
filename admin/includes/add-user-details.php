@@ -29,10 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $errors['invalid_id'] = "This user does not exists";
         }
 
-        if (!does_user_details_exists($conn, $userID)) {
-            create_user_details($conn, $userID);
-        }
-
         $photoUrl = '';
         if (!empty($photo['name'])) {
             $photoUrl = handle_picture_file($folder, $photo);
@@ -51,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             exit();
         } else {
             $conn->commit();
-            header("Location: ../edit-users.php?id={$userID}&status=success");
+            header("Location: ../edit-user.php?id={$userID}&status=success");
             exit();
         }
     } catch (\Throwable $th) {
