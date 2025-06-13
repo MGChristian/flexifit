@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                 "gender" => $rows['gender'],
                 "email" => $rows['email'],
                 "contact" => $rows['contactNo'],
-                "buttons" => "<div class='action-button-container'>" . view_button($id) . archive_button($id) . "</div>",
+                "buttons" => "<div class='action-button-container'>" . edit_button($id) . archive_button($id) . "</div>",
             );
         }
     }
@@ -31,10 +31,10 @@ function view_button($id)
     return "<a href='./edit-user.php?id={$id}'><button type='button' class='data-table-button view' data-target='view-user'> <i class='fa fa-eye' aria-hidden='true'></i> </button></a>";
 }
 
-// function edit_button($id)
-// {
-//     return "<a href='./edit-user.php?id={$id}'><button type='button' class='data-table-button edit' data-target='edit-user'> <i class='fa fa-pencil-square-o' aria-hidden='true'></i> </button></a>";
-// }
+function edit_button($id)
+{
+    return "<a href='./edit-user.php?id={$id}'><button type='button' class='data-table-button edit' data-target='edit-user'> <i class='fa fa-pencil-square-o' aria-hidden='true'></i> </button></a>";
+}
 
 function archive_button($id)
 {

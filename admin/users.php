@@ -59,6 +59,7 @@ if (isset($_SESSION['error_login'])) {
                                 <th>Gender</th>
                                 <th>Email</th>
                                 <th>Contact</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -92,6 +93,10 @@ if (isset($_SESSION['error_login'])) {
                     },
                     {
                         data: "contact"
+                    },
+                    {
+                        data: "buttons",
+                        "orderable": false
                     }
                 ],
             });
