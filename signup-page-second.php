@@ -50,30 +50,35 @@ check_sessions();
         <div class="error-wrapper">
           <?php check_signup_errors() ?>
         </div>
-        <input
-          name="username"
-          type="text"
-          placeholder="Username" />
-        <ion-icon name="person-outline" class="user-icon"></ion-icon>
-        <input
-          name="password"
-          type="password"
-          oninput="changeIcon(this.value)"
-          id="signPass"
-          placeholder="Password" />
-        <ion-icon name="lock-closed-outline" class="pass-icon" id="signPass-icon" onclick="mySignPassword()"></ion-icon>
-        <input
-          class="confirm-input"
-          name="confirm"
-          type="password"
-          oninput="changeConfirmPassIcon(this.value)"
-          id="signConfirmPass"
-          placeholder="Confirm Password" />
-        <ion-icon name="lock-closed-outline" class="confirm-pass-icon" id="signConfirmPass-icon" onclick="mySignConfirmPassword()"></ion-icon>
+        <div class="input-group">
+          <input
+            name="username"
+            type="text"
+            placeholder="Username" />
+          <ion-icon name="person-outline" class="user-icon"></ion-icon>
+        </div>
+        <div class="input-group">
+          <input
+            name="password"
+            type="password"
+            oninput="changeIcon(this.value)"
+            id="signPass"
+            placeholder="Password" />
+          <ion-icon name="lock-closed-outline" class="pass-icon" id="signPass-icon" onclick="mySignPassword()"></ion-icon>
+        </div>
+        <div class="input-group">
+          <input
+            class="confirm-input"
+            name="confirm"
+            type="password"
+            oninput="changeConfirmPassIcon(this.value)"
+            id="signConfirmPass"
+            placeholder="Confirm Password" />
+          <ion-icon name="lock-closed-outline" class="confirm-pass-icon" id="signConfirmPass-icon" onclick="mySignConfirmPassword()"></ion-icon>
+        </div>
         <div id="matchMessage" class="message"></div>
 
         <div class="divider">EMERGENCY CONTACT</div>
-
         <input name="emergencyname" type="text" placeholder="Contact Name" />
         <input name="emergencycontact" type="text" placeholder="Contact Number" />
         <button type="submit"> CONTINUE </button>
@@ -85,9 +90,7 @@ check_sessions();
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
-
 </html>
-
 
 <?php
 function check_signup_errors()

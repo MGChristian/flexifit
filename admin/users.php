@@ -46,6 +46,9 @@ if (isset($_SESSION['error_login'])) {
             <div class="main-content">
                 <div class="main-title-button">
                     <h3>CURRENT USERS LIST</h3>
+                    <div class="main-title-button-container">
+                        <a href='./archived-users.php'><button type="button" class="add-button">ARCHIVED USERS</button></a>
+                    </div>
                 </div>
                 <hr>
                 <div class="table-container">
@@ -59,6 +62,7 @@ if (isset($_SESSION['error_login'])) {
                                 <th>Gender</th>
                                 <th>Email</th>
                                 <th>Contact</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -92,15 +96,12 @@ if (isset($_SESSION['error_login'])) {
                     },
                     {
                         data: "contact"
+                    },
+                    {
+                        data: "buttons",
+                        "orderable": false
                     }
                 ],
-            });
-
-            const PDF = document.querySelector(".buttons-pdf");
-            const generatePDF = document.querySelector("#generate-pdf");
-
-            generatePDF.addEventListener("click", () => {
-                PDF.click();
             });
         });
     </script>

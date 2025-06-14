@@ -151,32 +151,45 @@ body {
   transition: ease 0.5s;
 }
 
+.input-group {
+  position:  relative;
+}
+
+.input-group input {
+  width: 100%;
+}
+
+.input-group ion-icon {
+  position: absolute;
+  right: 10px;
+}
+
 .form-container .confirm-input {
   margin-bottom: 0;
 }
 
-.form-container .user-icon {
+.form-container .input-group .user-icon {
   position: absolute;
   top: 35%;
-  right: 160px;
+  right: 10px;
   color: #a0a0a0;
   height: 18px;
   width: 18px;
 }
 
-.form-container .pass-icon {
+.form-container .input-group .pass-icon {
+  position: absolute;
+  top: 35%;
+  right: 10px;
+  color: #a0a0a0;
+  height: 18px;
+  width: 18px;
+}
+
+.form-container .input-group .confirm-pass-icon {
   position: absolute;
   top: 45%;
-  right: 160px;
-  color: #a0a0a0;
-  height: 18px;
-  width: 18px;
-}
-
-.form-container .confirm-pass-icon {
-  position: absolute;
-  top: 55%;
-  right: 160px;
+  right: 10px;
   color: #a0a0a0;
   height: 18px;
   width: 18px;
