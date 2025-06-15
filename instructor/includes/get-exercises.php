@@ -1,8 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
     header("Content-type: application/json");
-    require_once "../../includes/config.php";
-    require_once "../../includes/config_session.inc.php";
+    require_once "./auth.php";
 
     if (isset($_GET['id']) && !empty($_GET['id'])) {
         $instructorId = $_GET['id'];
@@ -28,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                 "description" => $description,
                 "status" => $status,
                 "dateCreated" => $dateCreated,
-                "buttons" => "<div class='action-button-container'>" . view_button($id) . edit_button($id) . archive_button($id) . "</div>",
+                "buttons" => "<div class='action-button-container'>" . edit_button($id) . "</div>",
             );
         }
     } else {

@@ -44,7 +44,7 @@ $savedWorkoutsList = $savedWorkouts->get_all_saved_workouts();
                 <div class="table-container">
                     <div class="collection-list">
                         <?php foreach ($savedWorkoutsList as $savedWorkout): ?>
-                            <a href="./workout.php?id=<?= htmlspecialchars($savedWorkout['workoutID']) ?>">
+                            <a href="./view-workout.php?id=<?= htmlspecialchars($savedWorkout['workoutID']) ?>">
                                 <div class="collection">
                                     <h3><?= htmlspecialchars($savedWorkout['workoutName']) ?></h3>
                                     <p>Description: <?= htmlspecialchars($savedWorkout['workoutDescription']) ?></p>

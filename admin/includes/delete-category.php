@@ -1,12 +1,11 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "GET") {
+    require_once "./auth.php";
+
     $categoryID = $_GET['id'];
 
     try {
-        require_once "../../includes/config.php";
-        require_once "../../includes/config_session.inc.php";
-
         // Error handlers
         $errors = [];
 
@@ -17,17 +16,17 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
 
         if (check_if_not_admin()) {
             $errors["not_admin"] = "Unauthorized Access";
-            header("Location: categories.php");
+            header("Location: table-categories.php");
             exit();
         }
 
         if ($errors) {
             $_SESSION['archive_error'] = $errors;
-            header("Location: ../categories.php");
+            header("Location: ../table-categories.php");
             exit();
         } else {
             archive_instructor($conn, $instructorId);
-            header("Location: ../categories.php?status=success");
+            header("Location: ../table-categories.php?status=success");
             exit();
         }
     } catch (\Throwable $th) {

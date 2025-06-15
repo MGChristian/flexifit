@@ -1,3 +1,8 @@
+<?php
+require_once("./includes/auth.php");
+check_if_logged_in();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,3 +54,28 @@
 </body>
 
 </html>
+
+<?php
+
+function check_if_logged_in()
+{
+  if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
+    $user_role = $_SESSION['role'];
+    switch ($user_role) {
+      case "user":
+        header("location: ./");
+        exit();
+        break;
+      case "instructor":
+        header("location:  ./instructor/");
+        exit();
+        break;
+      case "admin":
+        header("location: ./admin/");
+        exit();
+        break;
+    }
+  }
+}
+
+?>

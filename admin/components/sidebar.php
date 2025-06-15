@@ -20,33 +20,33 @@
 
         <!-- CONTENT DROPDOWN -->
         <ul class="content-m mini-sidebar-list hidden">
-            <a href="./categories.php">
+            <a href="./table-categories.php">
                 <li class="mini-sidebar-list-item">Categories</li>
             </a>
-            <a href="./exercises.php">
+            <a href="./table-exercises.php">
                 <li class="mini-sidebar-list-item">Exercises</li>
             </a>
-            <a href="./equipments.php">
+            <a href="./table-equipments.php">
                 <li class="mini-sidebar-list-item">Equipments</li>
             </a>
-            <a href="./muscles.php">
+            <a href="./table-muscles.php">
                 <li class="mini-sidebar-list-item">Muscles</li>
             </a>
-            <a href="./workouts.php">
+            <a href="./table-workouts.php">
                 <li class="mini-sidebar-list-item">Workouts</li>
             </a>
         </ul>
 
         <!-- INSTRUCTORS -->
-        <a href="./instructors.php">
-            <li class="sidebar-list-item <?= $current_page == 'instructors.php' ? 'active' : '' ?>">
+        <a href="./table-instructors.php">
+            <li class="sidebar-list-item <?= $current_page == 'table-instructors.php' ? 'active' : '' ?>">
                 <div class="sidebar-list-title"><i class="fa fa-users" aria-hidden="true"></i> Instructors</div>
             </li>
         </a>
 
         <!-- USERS -->
-        <a href="./users.php">
-            <li class="sidebar-list-item <?= $current_page == 'users.php' ? 'active' : '' ?>">
+        <a href="./table-users.php">
+            <li class="sidebar-list-item <?= $current_page == 'table-users.php' ? 'active' : '' ?>">
                 <div class="sidebar-list-title"><i class="fa fa-user" aria-hidden="true"></i> Users</div>
             </li>
         </a>

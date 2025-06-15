@@ -1,6 +1,8 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    require_once "./auth.php";
+
     // header("content-type:application/json");
     // echo (json_encode($_POST));
     // exit();
@@ -23,9 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $folder = "../../admin/images/workouts/";
 
     try {
-        require_once "../../includes/config.php";
-        require_once "../../includes/config_session.inc.php";
-
         // Error handlers
         $errors = [];
 
@@ -97,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if ($errors) {
             $conn->rollback();
             $_SESSION['error_adding_workout_details'] = $errors;
-            header("Location: ../workouts.php");
+            header("Location: ../table-workouts.php");
             exit();
         } else {
             $conn->commit();

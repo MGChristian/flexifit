@@ -1,8 +1,7 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    require_once "../../includes/config.php";
-    require_once "../../includes/config_session.inc.php";
+    require_once "./auth.php";
 
     // header("content-type:application/json");
     // echo (json_encode([$_POST, $_FILES]));
@@ -43,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if ($errors) {
             $conn->rollback();
             $_SESSION['error_adding_user_details'] = $errors;
-            header("Location: ../users.php");
+            header("Location: ../table-users.php");
             exit();
         } else {
             $conn->commit();

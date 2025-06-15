@@ -1,8 +1,8 @@
 <?php
 
 //Start session and initialize database
-require_once("../includes/config_session.inc.php");
-require_once("../includes/config.php");
+require_once(__DIR__ . "/../../includes/config-session.inc.php");
+require_once(__DIR__ . "/../../includes/config.php");
 
 //Check if user is logged in
 if (!isset($isLoggedIn)) {
@@ -22,6 +22,7 @@ if (!isset($userData) && $isLoggedIn) {
     }
 }
 
+//Makes sure that the user is not able to access the admin panel
 function check_if_correct_role()
 {
     if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
@@ -31,11 +32,11 @@ function check_if_correct_role()
                 header("location: ../");
                 exit();
                 break;
-            case "instructor":
-                break;
             case "admin":
                 header("location:  ../admin/");
                 exit();
+                break;
+            case "instructor":
                 break;
         }
     } else {

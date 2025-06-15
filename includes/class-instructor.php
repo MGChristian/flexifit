@@ -1,6 +1,6 @@
 <?php
 
-//Get the exercises from the database
+//Get the instructors from the database
 
 class Instructor
 {

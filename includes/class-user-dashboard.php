@@ -1,5 +1,7 @@
 <?php
 
+//Get all the user dashboard details from the database
+
 class UserDashboard
 {
     private $conn;

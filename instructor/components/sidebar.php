@@ -17,14 +17,11 @@
         </li>
 
         <!-- CONTENT DROPDOWN -->
-        <ul class="content-m mini-sidebar-list hidden <?= $current_page == 'exercises.php' ? 'active' : '' ?>">
-            <a href="./exercises.php">
+        <ul class="content-m mini-sidebar-list hidden <?= $current_page == 'table-exercises.php' ? 'active' : '' ?>">
+            <a href="./table-exercises.php">
                 <li class="mini-sidebar-list-item">Exercises</li>
             </a>
-            <a href="./equipments.php">
-                <li class="mini-sidebar-list-item">Equipments</li>
-            </a>
-            <a href="./workouts.php">
+            <a href="./table-workouts.php">
                 <li class="mini-sidebar-list-item">Workouts</li>
             </a>
         </ul>

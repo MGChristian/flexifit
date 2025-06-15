@@ -1,14 +1,13 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    require_once "./auth.php";
     $exercise_name = isset($_POST['exerciseName']) ? $_POST['exerciseName'] : '';
     $exercise_description = isset($_POST['exerciseDescription']) ? $_POST['exerciseDescription'] : '';
     $profile = $_FILES['exercisePic'] ?? null;
     $folder = "../../admin/images/exercises/";
 
     try {
-        require_once "../../includes/config.php";
-        require_once "../../includes/config_session.inc.php";
 
         // Id of the user creating the exercise
         $exercise_creator = isset($_SESSION['id']) ? $_SESSION['id'] : '';
@@ -30,11 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         }
         if ($errors) {
             $_SESSION['error_login'] = $errors;
-            header("Location: ../exercises.php");
+            header("Location: ../table-exercises.php");
             exit();
         } else {
             create_exercise($conn, $exercise_creator, $exercise_name, $exercise_description, $profile_url);
-            header("Location: ../exercises.php?status=success");
+            header("Location: ../table-exercises.php?status=success");
             exit();
         }
     } catch (\Throwable $th) {

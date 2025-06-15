@@ -1,15 +1,14 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    require_once "./auth.php";
+
     $category_name = $_POST['categoryName'];
     $category_description = $_POST['categoryDescription'];
     $profile = $_FILES['profilePic'];
     $folder = "../images/categories/";
 
     try {
-        require_once "../../includes/config.php";
-        require_once "../../includes/config_session.inc.php";
-
         // Error handlers
         $errors = [];
 
@@ -23,11 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         }
         if ($errors) {
             $_SESSION['error_login'] = $errors;
-            header("Location: ../categories.php");
+            header("Location: ../table-categories.php");
             exit();
         } else {
             create_instructor($conn, $category_name, $category_description, $profile_url);
-            header("Location: ../categories.php?status=success");
+            header("Location: ../table-categories.php?status=success");
             exit();
         }
     } catch (\Throwable $th) {

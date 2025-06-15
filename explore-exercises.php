@@ -157,7 +157,7 @@ if (isset($_GET['instructor-id'])) {
         <section class="classes-grid">
             <?php if (!empty($filteredExercises)): ?>
                 <?php foreach ($filteredExercises as $rows): ?>
-                    <a href="./exercise.php?id=<?= htmlspecialchars($rows['exerciseID'] ?? $rows['ID']) ?>">
+                    <a href="./view-exercise.php?id=<?= htmlspecialchars($rows['exerciseID'] ?? $rows['ID']) ?>">
                         <div class="class-item">
                             <img src="./admin/images/exercises/<?= htmlspecialchars($rows['exercisePicUrl']) ?>" alt="">
                             <div>

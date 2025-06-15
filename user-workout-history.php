@@ -45,7 +45,7 @@ $workoutHistoriesList = $workoutHistories->get_all_workout_history();
                     <div class="collection-list">
                         <?= empty($workoutHistoriesList) ? '<p>No completed workouts yet. <a href="./explore-workouts.php"><u>Try out now</u>  </a></p>' : '' ?>
                         <?php foreach ($workoutHistoriesList as $workoutHistory): ?>
-                            <a href="./workout.php?id=<?= htmlspecialchars($workoutHistory['workoutID']) ?>">
+                            <a href="./view-workout.php?id=<?= htmlspecialchars($workoutHistory['workoutID']) ?>">
                                 <div class="collection">
                                     <h3><?= htmlspecialchars($workoutHistory['workoutName']) ?></h3>
                                     <p>Date Finished: <?= htmlspecialchars($workoutHistory['finishedAt']) ?></p>

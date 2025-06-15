@@ -1,15 +1,14 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    require_once "./auth.php";
+
     $muscle_name = $_POST['muscleName'];
     $muscle_description = $_POST['muscleDescription'];
     $profile = $_FILES['profilePic'];
     $folder = "../images/muscles/";
 
     try {
-        require_once "../../includes/config.php";
-        require_once "../../includes/config_session.inc.php";
-
         // Error handlers
         $errors = [];
 
@@ -23,11 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         }
         if ($errors) {
             $_SESSION['error_login'] = $errors;
-            header("Location: ../muscles.php");
+            header("Location: ../table-muscles.php");
             exit();
         } else {
             create_muscle($conn, $muscle_name, $muscle_description, $profile_url);
-            header("Location: ../muscles.php?status=success");
+            header("Location: ../table-muscles.php?status=success");
             exit();
         }
     } catch (\Throwable $th) {

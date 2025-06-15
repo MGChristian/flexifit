@@ -2,8 +2,9 @@
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
     header("Content-type: application/json");
     $instructorsList = [];
-    require_once "../../includes/config_session.inc.php";
-    require_once "../../includes/config.php";
+
+    require_once "./auth.php";
+
     $stmt = $conn->prepare("SELECT `ID`, `firstName`, `lastName`, `dateCreated`, `DOB`, `gender`, `email`, `contactNo` FROM `user` WHERE `role` = 'instructor' && `status` = 'archived'");
     $buttonsView = "<button type='button' class='data-table-button view' data-target='view-instructor'> <i class='fa fa-eye' aria-hidden='true'></i> </button>";
     $buttonsEdit = "<button type='button' class='data-table-button edit' data-target='edit-instructor'> <i class='fa fa-pencil-square-o' aria-hidden='true'></i> </button>";

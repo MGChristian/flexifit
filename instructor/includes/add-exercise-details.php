@@ -1,6 +1,7 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    require_once "./auth.php";
     // Folder Details
     $folder = "../../admin/images/exercises/videos/";
 
@@ -36,9 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     // exit();
 
     try {
-        require_once "../../includes/config.php";
-        require_once "../../includes/config_session.inc.php";
-
         // Error handlers
         $errors = [];
 
@@ -128,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if ($errors) {
             $conn->rollback();
             $_SESSION['error_adding_exercise_details'] = $errors;
-            header("Location: ../exercises.php");
+            header("Location: ../table-exercises.php");
             exit();
         } else {
             $conn->commit();

@@ -1,12 +1,11 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "GET") {
+    require_once "./auth.php";
+
     $muscleID = $_GET['id'];
 
     try {
-        require_once "../../includes/config.php";
-        require_once "../../includes/config_session.inc.php";
-
         // Error handlers
         $errors = [];
 
@@ -17,17 +16,17 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
 
         if (check_if_not_admin()) {
             $errors["not_admin"] = "Unauthorized Access";
-            header("Location: muscles.php");
+            header("Location: table-muscles.php");
             exit();
         }
 
         if ($errors) {
             $_SESSION['archive_error'] = $errors;
-            header("Location: ../muscles.php");
+            header("Location: ../table-muscles.php");
             exit();
         } else {
             archive_instructor($conn, $instructorId);
-            header("Location: ../muscles.php?status=success");
+            header("Location: ../table-muscles.php?status=success");
             exit();
         }
     } catch (\Throwable $th) {

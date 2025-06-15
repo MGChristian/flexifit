@@ -1,4 +1,7 @@
 <?php
+
+//Get all the workout history from the database
+
 class History
 {
     private $conn;

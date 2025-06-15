@@ -9,7 +9,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
 if (!isset($_SESSION['id'])) {
     $_SESSION['login_first'] = "SORRY";
-    header("location: workout.php?id={$workoutID}");
+    header("location: view-workout.php?id={$workoutID}");
 }
 
 function goBack()
@@ -22,7 +22,7 @@ function goBack()
 
 <!-- Get all exercise details -->
 <?php
-require_once "./includes/workout.php";
+require_once "./includes/class-workout.php";
 $workout = new Workout($conn, $workoutID);
 if ($workout->check_id() === true) {
     $exerciseCount = $workout->get_exercise_count();
@@ -237,7 +237,7 @@ if ($workout->check_id() === true) {
                     if (result.success) {
                         alert('Workout completed successfully!');
                         // Optionally redirect or show a completion screen
-                        window.location.href = './workout.php?id=' + workoutID;
+                        window.location.href = './view-workout.php?id=' + workoutID;
                     } else {
                         alert('Error completing workout: ' + (result.message || 'Unknown error'));
                     }

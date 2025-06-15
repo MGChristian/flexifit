@@ -2,18 +2,18 @@
 
 // Check whether user has the authority to access this page.
 require_once "./includes/auth.php";
-
+check_if_correct_role();
 
 //Check if ID is set and its not empty, if it is, go back to exercise page.
-isset($_GET['id']) && !empty($_GET['id']) ? $userID = $_GET['id'] : header("location: ./users.php");
+isset($_GET['id']) && !empty($_GET['id']) ? $userID = $_GET['id'] : header("location: ./table-users.php");
 
 ?>
 
 <?php
-require_once("./includes/edit-user.php");
+require_once("./includes/class-user.php");
 $user = new User($conn, $userID);
 if (!$user->is_id_valid()) {
-    header("location: ./users.php");
+    header("location: ./table-users.php");
     exit();
 }
 $userDetails = $user->get_user_details();
@@ -44,7 +44,7 @@ $userDetails = $user->get_user_details();
         <main class="main-container">
             <div class="page-title">
                 <div class="quick-link">
-                    <p><a href="index.php"> HOME </a> > <a href="users.php">USERS</a> > <?= strtoupper(htmlspecialchars($userDetails['username'])) ?></p>
+                    <p><a href="index.php"> HOME </a> > <a href="table-users.php">USERS</a> > <?= strtoupper(htmlspecialchars($userDetails['username'])) ?></p>
                 </div>
             </div>
             <div class="main-content">
@@ -104,7 +104,7 @@ $userDetails = $user->get_user_details();
                         </div>
                         <div class="edit-form-buttons">
                             <button type="submit" class="save">SAVE</button>
-                            <a href="./instructors.php"><button type="button" class="back">GO BACK</button></a>
+                            <a href="./table-instructors.php"><button type="button" class="back">GO BACK</button></a>
                         </div>
                     </form>
                 </div>

@@ -1,8 +1,8 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    require_once "config.php";
-    require_once "config_session.inc.php";
+    require_once "./auth.php";
+
     $first_name = $_POST['firstName'];
     $last_name = $_POST['lastName'];
     $birthdate = $_POST['birthdate'];

@@ -1,15 +1,14 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    require_once "./auth.php";
+
     $token = isset($_POST['token']) ? $_POST['token'] : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
     $confirmPassword = isset($_POST['confirm-password']) ? $_POST['confirm-password'] : '';
     $url = "http://localhost/flexifit/userpage/login-reset-third.php";
 
     try {
-        require_once "config.php";
-        require_once "config_session.inc.php";
-
         // Error handlers
         $errors = [];
 

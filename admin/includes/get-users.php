@@ -2,7 +2,9 @@
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
     header("Content-type: application/json");
     $usersList = [];
-    require_once "../../includes/config.php";
+
+    require_once "./auth.php";
+
     $stmt = $conn->prepare("SELECT `ID`, `firstName`, `lastName`, `dateCreated`, `DOB`, `gender`, `email`, `contactNo` FROM `user` WHERE `role` = 'user' && `status` = 'active'");
     if ($stmt->execute()) {
         $result = $stmt->get_result();

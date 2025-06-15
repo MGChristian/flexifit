@@ -2,6 +2,7 @@
 
 // Check whether user has the authority to access this page.
 require_once "./includes/auth.php";
+check_if_correct_role();
 
 if (isset($_SESSION['error_adding_workout_details'])) {
     print_r($_SESSION['error_adding_workout_details']);
@@ -9,15 +10,15 @@ if (isset($_SESSION['error_adding_workout_details'])) {
 }
 
 //Check if ID is set and its not empty, if it is, go back to workout page.
-isset($_GET['id']) && !empty($_GET['id']) ? $workoutId = $_GET['id'] : header("location: ./workouts.php");
+isset($_GET['id']) && !empty($_GET['id']) ? $workoutId = $_GET['id'] : header("location: ./table-workouts.php");
 
 ?>
 
 <?php
-require_once("./includes/edit-workout.php");
+require_once("./includes/class-workout.php");
 $workout = new Workout($conn, $workoutId);
 if (!$workout->is_id_valid()) {
-    header("location: ./workouts.php");
+    header("location: ./table-workouts.php");
     exit();
 }
 $workoutDetails = $workout->get_workout();
@@ -49,7 +50,7 @@ $workoutSets = $workout->get_unique_workout_sets();
         <main class="main-container">
             <div class="page-title">
                 <div class="quick-link">
-                    <p><a href="index.php"> HOME </a> > <a href="workouts.php">WORKOUTS</a> > <?= strtoupper(htmlspecialchars($workoutDetails['workoutName'])) ?></p>
+                    <p><a href="index.php"> HOME </a> > <a href="table-workouts.php">WORKOUTS</a> > <?= strtoupper(htmlspecialchars($workoutDetails['workoutName'])) ?></p>
                 </div>
             </div>
             <div class="main-content">
@@ -158,7 +159,7 @@ $workoutSets = $workout->get_unique_workout_sets();
                         </div>
                         <div class="edit-form-buttons">
                             <button type="submit" class="save">SAVE</button>
-                            <a href="./workouts.php"><button type="button" class="back">GO BACK</button></a>
+                            <a href="./table-workouts.php"><button type="button" class="back">GO BACK</button></a>
                         </div>
                     </form>
                 </div>

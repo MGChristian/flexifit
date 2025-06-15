@@ -1,8 +1,7 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    require_once "config.php";
-    require_once "config_session.inc.php";
+    require_once "./auth.php";
 
     $id = $_SESSION['id'];
     $currentPassword = $_POST['currentPassword'] ?? '';
@@ -37,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
         if ($errors) {
             $_SESSION['error_login'] = $errors;
-            header("Location: ../profile.php");
+            header("Location: ../user-profile.php");
             exit();
         }
 
@@ -45,19 +44,19 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if (update_password($conn, $hashedPassword, $id)) {
             // Clear any existing password-related errors on success
             unset($_SESSION['error_login']);
-            header("location: ../profile.php?status=success");
+            header("location: ../user-profile.php?status=success");
             exit();
         } else {
             $errors["update_failed"] = "Failed to update password";
             $_SESSION['error_login'] = $errors;
-            header("Location: ../profile.php");
+            header("Location: ../user-profile.php");
             exit();
         }
     } catch (\Throwable $th) {
         error_log("Password change error: " . $th->getMessage());
         $errors["system_error"] = "A system error occurred. Please try again.";
         $_SESSION['error_login'] = $errors;
-        header("Location: ../profile.php");
+        header("Location: ../user-profile.php");
         exit();
     }
 } else {

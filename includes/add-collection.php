@@ -1,8 +1,7 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    require_once "../includes/config.php";
-    require_once "../includes/config_session.inc.php";
+    require_once "./auth.php";
 
     // Id of the user creating the exercise
     $collection_creator = isset($_SESSION['id']) ? $_SESSION['id'] : '';

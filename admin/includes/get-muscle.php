@@ -2,7 +2,9 @@
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
     header("Content-type: application/json");
     $muscleList = [];
-    require_once "../../includes/config.php";
+
+    require_once "./auth.php";
+
     $stmt = $conn->prepare("SELECT `ID`, `muscle_name`, `muscle_description`, `muscle_pic_url`, `date_created` FROM `muscle`");
     if ($stmt->execute()) {
         $result = $stmt->get_result();

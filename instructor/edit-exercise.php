@@ -9,15 +9,15 @@ if (isset($_SESSION['error_adding_exercise_details'])) {
 }
 
 //Check if ID is set and its not empty, if it is, go back to exercise page.
-isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("location: ./exercises.php");
+isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("location: ./table-exercises.php");
 
 ?>
 
 <?php
-require_once("./includes/edit-exercise.php");
+require_once("./includes/class-exercise.php");
 $exercise = new Exercise($conn, $exerciseId);
 if (!$exercise->is_id_valid()) {
-    header("location: ./exercises.php");
+    header("location: ./table-exercises.php");
     exit();
 }
 $exerciseDetails = $exercise->get_exercise();
@@ -55,7 +55,7 @@ $stepsList = $exercise->get_exercise_steps();
         <main class="main-container">
             <div class="page-title">
                 <div class="quick-link">
-                    <p><a href="index.php"> HOME </a> > <a href="exercises.php">EXERCISES</a> > <?= strtoupper(htmlspecialchars($exerciseDetails['exerciseName'])) ?></p>
+                    <p><a href="index.php"> HOME </a> > <a href="table-exercises.php">EXERCISES</a> > <?= strtoupper(htmlspecialchars($exerciseDetails['exerciseName'])) ?></p>
                 </div>
             </div>
             <div class="main-content">
@@ -154,7 +154,7 @@ $stepsList = $exercise->get_exercise_steps();
                         </div>
                         <div class="edit-form-buttons">
                             <button type="submit" class="save">SAVE</button>
-                            <a href="./exercises.php"><button type="button" class="back">GO BACK</button></a>
+                            <a href="./table-exercises.php"><button type="button" class="back">GO BACK</button></a>
                         </div>
                     </form>
                 </div>

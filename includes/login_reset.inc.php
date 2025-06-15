@@ -1,12 +1,12 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    require_once "./auth.php";
+
     $email = isset($_POST['email']) ? $_POST['email'] : '';
     $url = "http://localhost/flexifit/login-reset-third.php";
 
     try {
-        require_once "config.php";
-        require_once "config_session.inc.php";
         require_once "sendmail.php";
 
         // Error handlers
@@ -34,8 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $errors["email_error"] = "Something went wrong. Please try again later.";
         }
 
-        //send email
-        if (!forgot_password($email, $url, $token, $expiry)) {
+        //send email which returns a boolean if it iss successful in sending the email
+        if (!send_forgot_password_link($email, $url, $token, $expiry)) {
             $errors["email_error"] = "Something went wrong sending the email. Please try again later.";
         }
 

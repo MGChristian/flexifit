@@ -56,7 +56,7 @@ if ($collections->check_id()) {
                     <div class="workout-list">
                         <?php foreach ($collectionWorkoutList as $workout): ?>
                             <div class="workout">
-                                <a href="./workout.php?id=<?= $workout['workoutID'] ?>">
+                                <a href="./view-workout.php?id=<?= $workout['workoutID'] ?>">
                                     <div class="class-item">
                                         <img src="./admin/images/workouts/<?= $workout['workoutPicUrl'] ?>" alt="">
                                         <div>

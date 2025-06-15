@@ -66,7 +66,7 @@ $exerciseLetters = range("A", "Z");
                 <h1 id="<?= $letter ?>"><?= $letter ?></h1>
                 <section class="classes-grid">
                     <?php foreach ($exerciseList as $exercise): ?>
-                        <a href="./exercise.php?id=<?= $exercise['ID'] ?>">
+                        <a href="./view-exercise.php?id=<?= $exercise['ID'] ?>">
                             <div class="class-item">
                                 <img src="./admin/images/exercises/<?= $exercise['exercisePicUrl'] ?>">
                                 <div>

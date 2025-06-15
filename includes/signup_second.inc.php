@@ -1,5 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    require_once "./auth.php";
+
     $username = $_POST['username'];
     $password = $_POST['password'];
     $confirm = $_POST['confirm'];
@@ -7,9 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $emergency_contact = $_POST['emergencycontact'];
 
     try {
-        require_once "config.php";
-        require_once "config_session.inc.php";
-
         // Error handlers
         $errors = [];
 

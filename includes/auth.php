@@ -1,8 +1,8 @@
 <?php
 
 //Start session and initialize database
-require_once("./includes/config_session.inc.php");
-require_once("./includes/config.php");
+require_once(__DIR__ . "/config-session.inc.php");
+require_once(__DIR__ . "/config.php");
 
 //Check if user is logged in
 if (!isset($isLoggedIn)) {

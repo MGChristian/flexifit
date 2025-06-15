@@ -2,6 +2,7 @@
 
 // Check whether user has the authority to access this page.
 require_once "./includes/auth.php";
+check_if_correct_role();
 
 if (isset($_SESSION['error_adding_exercise_details'])) {
     print_r($_SESSION['error_adding_exercise_details']);
@@ -9,15 +10,15 @@ if (isset($_SESSION['error_adding_exercise_details'])) {
 }
 
 //Check if ID is set and its not empty, if it is, go back to exercise page.
-isset($_GET['id']) && !empty($_GET['id']) ? $instructorId = $_GET['id'] : header("location: ./instructors.php");
+isset($_GET['id']) && !empty($_GET['id']) ? $instructorId = $_GET['id'] : header("location: ./table-instructors.php");
 
 ?>
 
 <?php
-require_once("./includes/edit-instructor.php");
+require_once("./includes/class-instructor.php");
 $instructor = new Instructor($conn, $instructorId);
 if (!$instructor->is_id_valid()) {
-    header("location: ./instructors.php");
+    header("location: ./table-instructors.php");
     exit();
 }
 $instructorDetails = $instructor->get_instructor_user_details();
@@ -49,7 +50,7 @@ $instructorOtherDetails = $instructor->get_instructor_other_details();
         <main class="main-container">
             <div class="page-title">
                 <div class="quick-link">
-                    <p><a href="index.php"> HOME </a> > <a href="instructors.php">INSTRUCTORS</a> > <?= strtoupper(htmlspecialchars($instructorDetails['username'])) ?></p>
+                    <p><a href="index.php"> HOME </a> > <a href="table-instructors.php">INSTRUCTORS</a> > <?= strtoupper(htmlspecialchars($instructorDetails['username'])) ?></p>
                 </div>
             </div>
             <div class="main-content">
@@ -119,7 +120,7 @@ $instructorOtherDetails = $instructor->get_instructor_other_details();
                         </div>
                         <div class="edit-form-buttons">
                             <button type="submit" class="save">SAVE</button>
-                            <a href="./instructors.php"><button type="button" class="back">GO BACK</button></a>
+                            <a href="./table-instructors.php"><button type="button" class="back">GO BACK</button></a>
                         </div>
                     </form>
                 </div>

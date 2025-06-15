@@ -1,5 +1,5 @@
 <?php
-require_once "./includes/config_session.inc.php";
+require_once("./includes/auth.php");
 check_if_logged_in();
 ?>
 

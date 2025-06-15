@@ -159,7 +159,7 @@ if (isset($_GET['instructor-id'])) {
     <section class="classes-grid">
       <?php if (!empty($filteredWorkouts)): ?>
         <?php foreach ($filteredWorkouts as $workout): ?>
-          <a href="./workout.php?id=<?= htmlspecialchars($workout['ID']) ?>">
+          <a href="./view-workout.php?id=<?= htmlspecialchars($workout['ID']) ?>">
             <div class="class-item">
               <img src="./admin/images/workouts/<?= htmlspecialchars($workout['workoutPicUrl']) ?>" alt="">
               <div>

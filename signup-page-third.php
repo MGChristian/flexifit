@@ -1,5 +1,5 @@
 <?php
-require_once "./includes/config_session.inc.php";
+require_once("./includes/auth.php");
 check_if_logged_in();
 check_sessions();
 $email = $_SESSION['email'];
@@ -61,9 +61,6 @@ $email = $_SESSION['email'];
           <input type="text" id="otp3" name="otp3" maxlength="1" />
           <input type="text" id="otp4" name="otp4" maxlength="1" />
         </div>
-        <p class="resend-text">
-          Didn't get the code? <a href="#">Click to resend</a>
-        </p>
         <button type="submit"> CONTINUE </button>
       </form>
     </div>

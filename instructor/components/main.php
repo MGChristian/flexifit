@@ -1,6 +1,6 @@
 <?php
 
-require_once "../includes/config_session.inc.php";
+require_once "../includes/config-session.inc.php";
 
 check_if_correct_role();
 require_once("../includes/config.php");

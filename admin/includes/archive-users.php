@@ -1,8 +1,8 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "GET") {
-    require_once "../../includes/config.php";
-    require_once "../../includes/config_session.inc.php";
+    require_once "./auth.php";
+
     $userId = $_GET['id'];
 
     try {
@@ -22,11 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
 
         if ($errors) {
             $_SESSION['archive_error'] = $errors;
-            header("Location: ../users.php");
+            header("Location: ../table-users.php");
             exit();
         } else {
             archive_user($conn, $userId);
-            header("Location: ../users.php?status=success");
+            header("Location: ../table-users.php?status=success");
             exit();
         }
     } catch (\Throwable $th) {

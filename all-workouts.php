@@ -48,7 +48,7 @@ $workouts = new AllWorkout($conn);
         <h1 id="<?= $letter ?>"><?= $letter ?></h1>
         <section class="classes-grid">
           <?php foreach ($workoutList as $workout): ?>
-            <a href="./workout.php?id=<?= $workout['ID'] ?>">
+            <a href="./view-workout.php?id=<?= $workout['ID'] ?>">
               <div class="class-item">
                 <img src="./admin/images/workouts/<?= htmlspecialchars($workout['workoutPicUrl']) ?>">
                 <div>

@@ -39,7 +39,7 @@ function send_otp_mail($user_email, $user_name, $OTP_CODE)
     }
 }
 
-function forgot_password($user_email, $url, $token)
+function send_forgot_password_link($user_email, $url, $token)
 {
     $mail = new PHPMailer(true);
     try {
@@ -60,8 +60,8 @@ function forgot_password($user_email, $url, $token)
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'RESET PASSWORD';
-        $mail->Body    = "YOUR OTP CODE IS: <a href='{$url}?token={$token}'>RESET PASSWORD LINK</a> <br> This link will expire in 1 hour";
-        $mail->AltBody = 'YOUR OTP CODE IS: ';
+        $mail->Body    = "YOUR RESET LINK IS: <a href='{$url}?token={$token}'>RESET PASSWORD LINK</a> <br> This link will expire in 1 hour";
+        $mail->AltBody = 'YOUR RESET LINK IS: ';
 
         $mail->send();
         echo 'Message has been sent';

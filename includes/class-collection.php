@@ -1,4 +1,7 @@
 <?php
+
+//Get all the collections from the database
+
 class Collection
 {
     private $conn;

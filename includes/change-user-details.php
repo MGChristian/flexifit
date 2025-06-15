@@ -1,8 +1,7 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    require_once "config.php";
-    require_once "config_session.inc.php";
+    require_once "./auth.php";
 
     $id = $_SESSION['id'];
 
@@ -32,25 +31,25 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
         if ($errors) {
             $_SESSION['error_user_update'] = $errors;
-            header("Location: ../profile.php");
+            header("Location: ../user-profile.php");
             exit();
         }
 
         if (update_user_details($conn, $id, $firstName, $lastName, $email, $contactNumber, $birthdate, $gender, $username)) {
             unset($_SESSION['error_user_update']);
-            header("Location: ../profile.php?status=user_updated");
+            header("Location: ../user-profile.php?status=user_updated");
             exit();
         } else {
             $errors["update_failed"] = "Failed to update profile details.";
             $_SESSION['error_user_update'] = $errors;
-            header("Location: ../profile.php");
+            header("Location: ../user-profile.php");
             exit();
         }
     } catch (\Throwable $th) {
         error_log("User detail update error: " . $th->getMessage());
         $errors["system_error"] = "A system error occurred. Please try again.";
         $_SESSION['error_user_update'] = $errors;
-        header("Location: ../profile.php");
+        header("Location: ../user-profile.php");
         exit();
     }
 } else {

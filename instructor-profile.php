@@ -64,7 +64,7 @@ if ($instructor->check_id() === true) {
                 <hr />
                 <div class="workout-container">
                     <?php foreach ($workouts as $workout): ?>
-                        <a href="./workout.php?id=<?= htmlspecialchars($workout['ID']) ?>">
+                        <a href="./view-workout.php?id=<?= htmlspecialchars($workout['ID']) ?>">
                             <div class="workout">
                                 <div class="workout-image">
                                     <img src="./admin/images/workouts/<?= isset($workout['workoutPicUrl']) && !empty($workout['workoutPicUrl']) ? htmlspecialchars($workout['workoutPicUrl']) : 'play-button.png' ?>">

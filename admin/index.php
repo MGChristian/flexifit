@@ -2,6 +2,8 @@
 
 // Check whether user has the authority to access this page.
 require_once "./includes/auth.php";
+check_if_correct_role();
+
 require_once "./includes/class-admin-dashboard.php";
 $dashboard = new AdminDashboard($conn);
 $totalUsers = $dashboard->get_total_users();
@@ -78,10 +80,16 @@ $totalWorkouts = $dashboard->get_total_workouts();
                     </div>
                 </div>
             </div>
+            <br>
+            <hr>
+            <br>
+            <div class="card-section">
+                <div class="logs-table">
+
+                </div>
+            </div>
         </main>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/index.js"> </script>
     <script src="js/scripts.js"> </script>
 </body>
 

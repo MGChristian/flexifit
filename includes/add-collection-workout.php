@@ -1,8 +1,7 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    require_once "../includes/config.php";
-    require_once "../includes/config_session.inc.php";
+    require_once "./auth.php";
 
     // Id of the user creating the exercise
     $workout_id = isset($_POST['workoutID']) ? $_POST['workoutID'] : '';
@@ -22,11 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
         if ($errors) {
             $_SESSION['error_login'] = $errors;
-            header("Location: ../workout.php?id=" . htmlspecialchars($workout_id));
+            header("Location: ../view-workout.php?id=" . htmlspecialchars($workout_id));
             exit();
         } else {
             create_collection($conn, $workout_id, $collection_id);
-            header("Location: ../workout.php?id=" . htmlspecialchars($workout_id) . "status=success");
+            header("Location: ../view-workout.php?id=" . htmlspecialchars($workout_id) . "status=success");
             exit();
         }
     } catch (\Throwable $th) {

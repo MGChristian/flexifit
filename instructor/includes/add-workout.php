@@ -1,6 +1,7 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    require_once "./auth.php";
     $workout_name = isset($_POST['workoutName']) ? $_POST['workoutName'] : '';
     $workout_description = isset($_POST['workoutDescription']) ? $_POST['workoutDescription'] : '';
     $difficulty = isset($_POST['difficulty']) ? $_POST['difficulty'] : '';
@@ -11,9 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     // echo "</pre>";
     // exit();
     try {
-        require_once "../../includes/config.php";
-        require_once "../../includes/config_session.inc.php";
-
         // Id of the user creating the workout
         $workout_creator = isset($_SESSION['id']) ? $_SESSION['id'] : '';
 
@@ -34,11 +32,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         }
         if ($errors) {
             $_SESSION['error_login'] = $errors;
-            header("Location: ../workouts.php");
+            header("Location: ../table-workouts.php");
             exit();
         } else {
             create_workout($conn, $workout_creator, $workout_name, $workout_description, $difficulty, $profile_url);
-            header("Location: ../workouts.php?status=success");
+            header("Location: ../table-workouts.php?status=success");
             exit();
         }
     } catch (\Throwable $th) {

@@ -2,7 +2,9 @@
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
     header("Content-type: application/json");
     $instructorsList = [];
-    require_once "../../includes/config.php";
+
+    require_once "./auth.php";
+
     $stmt = $conn->prepare("SELECT `ID`, `exerciseName`, `description`, `status`, `dateCreated` FROM `exercise`");
     if ($stmt->execute()) {
         $result = $stmt->get_result();

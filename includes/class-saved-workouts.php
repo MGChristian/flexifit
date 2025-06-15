@@ -1,4 +1,7 @@
 <?php
+
+//Get all the saved workouts from the database
+
 class Saved
 {
     private $conn;

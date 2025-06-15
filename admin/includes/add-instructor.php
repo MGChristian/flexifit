@@ -1,6 +1,8 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    require_once "./auth.php";
+
     $first_name = $_POST['firstName'];
     $last_name = $_POST['lastName'];
     $birthdate = $_POST['birthdate'];
@@ -11,9 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $folder = "../../instructor/images/" . $first_name . "-" . $last_name . "/";
 
     try {
-        require_once "../../includes/config.php";
-        require_once "../../includes/config_session.inc.php";
-
         // Error handlers
         $errors = [];
 
@@ -41,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         }
         if ($errors) {
             $_SESSION['error_login'] = $errors;
-            header("Location: ../instructors.php");
+            header("Location: ../table-instructors.php");
             exit();
         } else {
             $temp = "2025Flexifit";
@@ -49,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             create_instructor($conn, $username, $email, $temporaryPassword, $first_name, $last_name, $birthdate, $phone, $gender, $profile_url);
             $_SESSION['username'] = $username;
             $_SESSION['temp-pass'] = $temp;
-            header("Location: ../instructors.php?status=success");
+            header("Location: ../table-instructors.php?status=success");
             exit();
         }
     } catch (\Throwable $th) {

@@ -1,12 +1,11 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "GET") {
+    require_once "./auth.php";
+
     $instructorId = $_GET['ID'];
 
     try {
-        require_once "../../includes/config.php";
-        require_once "../../includes/config_session.inc.php";
-
         // Error handlers
         $errors = [];
 
@@ -23,11 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
 
         if ($errors) {
             $_SESSION['archive_error'] = $errors;
-            header("Location: ../archived-instructors.php");
+            header("Location: ../table-archived-instructors.php");
             exit();
         } else {
             archive_instructor($conn, $instructorId);
-            header("Location: ../archived-instructors.php?status=success");
+            header("Location: ../table-archived-instructors.php?status=success");
             exit();
         }
     } catch (\Throwable $th) {

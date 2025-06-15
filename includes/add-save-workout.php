@@ -1,6 +1,6 @@
 <?php
-require_once("./config_session.inc.php");
-require_once("./config.php");
+require_once "./auth.php";
+
 header("Content-Type: application/json");
 
 // Only accept POST

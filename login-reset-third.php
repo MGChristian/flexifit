@@ -1,12 +1,11 @@
 <?php
 
-require_once "./includes/config.php";
-require_once "./includes/config_session.inc.php";
+require_once("./includes/auth.php");
 
 $token = isset($_GET['token']) ? $_GET['token'] : '';
 
 check_if_logged_in();
-//check_token($conn, $token);
+check_token($conn, $token);
 
 ?>
 

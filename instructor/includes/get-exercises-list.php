@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
     header("Content-type: application/json");
-    require_once "../../includes/config.php";
+    require_once "./auth.php";
 
     $stmt = $conn->prepare("SELECT `ID`, `exerciseName` FROM `exercise` ORDER BY `exerciseName`");
     $stmt->execute();

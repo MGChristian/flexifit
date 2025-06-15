@@ -1,4 +1,7 @@
 <?php
+
+//Get all the workouts from the database
+
 class AllWorkout
 {
     private $conn;

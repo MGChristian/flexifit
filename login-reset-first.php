@@ -1,5 +1,5 @@
 <?php
-require_once "./includes/config_session.inc.php";
+require_once("./includes/auth.php");
 check_if_logged_in();
 ?>
 
@@ -59,7 +59,7 @@ check_if_logged_in();
       const emailError = document.getElementById("email-error");
 
       // Validate email on submit
-      form.addEventListener("submit", function (e) {
+      form.addEventListener("submit", function(e) {
         const emailValue = emailInput.value.trim();
         if (emailValue === "") {
           e.preventDefault(); // Prevent form submission
@@ -81,6 +81,7 @@ check_if_logged_in();
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>
 
 <?php

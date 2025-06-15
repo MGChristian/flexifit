@@ -2,7 +2,9 @@
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
     header("Content-type: application/json");
     $categoryList = [];
-    require_once "../../includes/config.php";
+
+    require_once "./auth.php";
+
     $stmt = $conn->prepare("SELECT `ID`, `category_name`, `category_description`, `category_pic_url`, `dateCreated` FROM `category`");
     if ($stmt->execute()) {
         $result = $stmt->get_result();

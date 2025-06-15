@@ -1,8 +1,8 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
-    require_once("./config_session.inc.php");
-    require_once("./config.php");
+    require_once "./auth.php";
+
     header("content-type:application/json");
 
     $workoutID = $_GET['id'];

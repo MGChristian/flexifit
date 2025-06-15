@@ -1,15 +1,14 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    require_once "./auth.php";
+
     $equipment_name = $_POST['equipmentName'];
     $equipment_description = $_POST['equipmentDescription'];
     $profile = $_FILES['profilePic'];
     $folder = "../images/equipments/";
 
     try {
-        require_once "../../includes/config.php";
-        require_once "../../includes/config_session.inc.php";
-
         // Error handlers
         $errors = [];
 
@@ -23,11 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         }
         if ($errors) {
             $_SESSION['error_login'] = $errors;
-            header("Location: ../equipments.php");
+            header("Location: ../table-equipments.php");
             exit();
         } else {
             create_equipment($conn, $equipment_name, $equipment_description, $profile_url);
-            header("Location: ../equipments.php?status=success");
+            header("Location: ../table-equipments.php?status=success");
             exit();
         }
     } catch (\Throwable $th) {

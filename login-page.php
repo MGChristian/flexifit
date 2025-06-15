@@ -1,5 +1,5 @@
 <?php
-require_once "./includes/config_session.inc.php";
+require_once("./includes/auth.php");
 check_if_logged_in();
 ?>
 
@@ -43,16 +43,14 @@ check_if_logged_in();
         <input
           name="username"
           type="text"
-          placeholder="Username"
-        />
+          placeholder="Username" />
         <ion-icon name="person-outline" class="user-icon"></ion-icon>
         <input
           name="password"
           type="password"
           oninput="changeIcon(this.value)"
           id="logPassword"
-          placeholder="Password"
-        />
+          placeholder="Password" />
         <ion-icon name="lock-closed-outline" class="pass-icon" id="logPass-icon" onclick="myLogPassword()"></ion-icon>
         <button
           type="submit">
@@ -66,6 +64,7 @@ check_if_logged_in();
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>
 
 <?php

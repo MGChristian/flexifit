@@ -1,14 +1,13 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    require_once "./auth.php";
+
     $otp_1 = $_POST['otp1'];
     $otp_2 = $_POST['otp2'];
     $otp_3 = $_POST['otp3'];
     $otp_4 = $_POST['otp4'];
 
     try {
-        require_once "config.php";
-        require_once "config_session.inc.php";
-
         // Error handlers
         $errors = [];
 
@@ -53,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 session_unset();
                 session_destroy();
 
-                require_once "config_session.inc.php";
+                require_once "config-session.inc.php";
                 $_SESSION['success'] = true;
 
                 header("Location: ../login-page.php");

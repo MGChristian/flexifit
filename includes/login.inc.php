@@ -1,8 +1,8 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    require_once "config.php";
-    require_once "config_session.inc.php";
+    require_once "./auth.php";
+
     $username = isset($_POST['username']) ? $_POST['username'] : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
 
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             }
         }
 
-        require_once "config_session.inc.php";
+        require_once "config-session.inc.php";
     } catch (\Throwable $th) {
         exit("Query failed: " . $th->getMessage());
     }

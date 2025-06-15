@@ -1,3 +1,4 @@
+<?= '' ?>
 <link rel="stylesheet" href="./css/user-dashboard-nav.css">
 <link rel="stylesheet" href="./css/reset.css">
 <link rel="stylesheet" href="./css/user-sidebar.css">
