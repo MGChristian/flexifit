@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
         if ($errors) {
             $_SESSION['error_login'] = $errors;
-            header("Location: ../user-profile.php");
+            header("Location: ../profile-user.php");
             exit();
         }
 
@@ -44,19 +44,19 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if (update_password($conn, $hashedPassword, $id)) {
             // Clear any existing password-related errors on success
             unset($_SESSION['error_login']);
-            header("location: ../user-profile.php?status=success");
+            header("location: ../profile-user.php?status=success");
             exit();
         } else {
             $errors["update_failed"] = "Failed to update password";
             $_SESSION['error_login'] = $errors;
-            header("Location: ../user-profile.php");
+            header("Location: ../profile-user.php");
             exit();
         }
     } catch (\Throwable $th) {
         error_log("Password change error: " . $th->getMessage());
         $errors["system_error"] = "A system error occurred. Please try again.";
         $_SESSION['error_login'] = $errors;
-        header("Location: ../user-profile.php");
+        header("Location: ../profile-user.php");
         exit();
     }
 } else {

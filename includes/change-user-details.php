@@ -31,25 +31,25 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
         if ($errors) {
             $_SESSION['error_user_update'] = $errors;
-            header("Location: ../user-profile.php");
+            header("Location: ../profile-user.php");
             exit();
         }
 
         if (update_user_details($conn, $id, $firstName, $lastName, $email, $contactNumber, $birthdate, $gender, $username)) {
             unset($_SESSION['error_user_update']);
-            header("Location: ../user-profile.php?status=user_updated");
+            header("Location: ../profile-user.php?status=user_updated");
             exit();
         } else {
             $errors["update_failed"] = "Failed to update profile details.";
             $_SESSION['error_user_update'] = $errors;
-            header("Location: ../user-profile.php");
+            header("Location: ../profile-user.php");
             exit();
         }
     } catch (\Throwable $th) {
         error_log("User detail update error: " . $th->getMessage());
         $errors["system_error"] = "A system error occurred. Please try again.";
         $_SESSION['error_user_update'] = $errors;
-        header("Location: ../user-profile.php");
+        header("Location: ../profile-user.php");
         exit();
     }
 } else {

@@ -22,7 +22,7 @@
                 </div>
             </a>
             <!-- Profile page -->
-            <a href="../user-profile.php">
+            <a href="../profile-user.php">
                 <div class="dropdown-item">
                     <div class="option">
                         <box-icon name="user-circle" type="solid"></box-icon>

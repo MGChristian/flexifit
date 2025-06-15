@@ -33,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             header("Location: ../login-reset-third.php?token=" . htmlspecialchars($token));
             exit();
         } else {
-
             $hashedPassword = hashedPwd($password);
             update_password($conn, $token, $hashedPassword);
             header("location: ../login-page-changed.php");

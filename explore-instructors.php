@@ -58,7 +58,7 @@ $instructorList = $instructors->get_instructors();
               <?= htmlspecialchars($rows['goal']) ?>
             </p>
           </div>
-          <a href="instructor-profile.php?id=<?= htmlspecialchars($rows['ID']) ?>"><button class="view-btn">VIEW</button></a>
+          <a href="profile-instructor.php?id=<?= htmlspecialchars($rows['ID']) ?>"><button class="view-btn">VIEW</button></a>
         </div>
       <?php endforeach; ?>
       <!-- Card 1 -->
@@ -73,7 +73,7 @@ $instructorList = $instructors->get_instructors();
             I want to motivate, encourage, and educate everyone to help them achieve their optimum level of quality of life.
           </p>
         </div>
-        <a href="instructor-profile.php"><button class="view-btn">VIEW</button></a>
+        <a href="profile-instructor.php"><button class="view-btn">VIEW</button></a>
       </div> -->
 
       <!-- Card 1 -->
