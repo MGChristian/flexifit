@@ -117,8 +117,18 @@ function create_user($conn, $username, $email, $password, $first_name, $last_nam
 {
     $conn->begin_transaction();
     try {
-        $stmt = $conn->prepare("INSERT INTO `user` (`username`, `email`, `password`, `firstName`, `lastName`, `DOB`, `contactNo`, `gender`, `profilePicUrl`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssssiss", $username, $email, $password, $first_name, $last_name, $birthdate, $phone, $gender, $profile_pic_url);
+        $keys = "518c59d460786114b3243f3df3007e2766fe4fc8bc28be0cce5ef26ecb6cb23f"; // 256-bit key
+        $key = hash('sha256', $keys, true);
+        $iv = random_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+        $iv_base64 = base64_encode($iv);
+ 
+        // Encryption
+      
+       
+        $encryptedFirst_name = openssl_encrypt($first_name, 'aes-256-cbc', $key, 0, $iv);
+        $encryptedLast_name = openssl_encrypt($last_name, 'aes-256-cbc', $key, 0, $iv);
+        $stmt = $conn->prepare("INSERT INTO `user` (`username`, `email`, `password`, `firstName`, `lastName`, `DOB`, `contactNo`, `gender`, `profilePicUrl`, `iv`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssssisss", $username, $email, $password, $encryptedFirst_name, $encryptedLast_name, $birthdate, $phone, $gender, $profile_pic_url,$iv_base64);
         if ($stmt->execute()) {
             $conn->commit();
             return true;
