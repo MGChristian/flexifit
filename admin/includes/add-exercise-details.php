@@ -3,9 +3,6 @@
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     require_once "./auth.php";
 
-    // Folder Details
-    $folder = "../images/exercises/videos/";
-
     // Exercise details
     $exerciseId = $_POST['exerciseID'];
     $exerciseName = $_POST['exerciseName'];
@@ -29,7 +26,13 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $removeExerciseSteps = isset($_POST['removeExerciseStep']) ? $_POST['removeExerciseStep'] : [];
     $updateExerciseSteps = isset($_POST['updateExerciseStep']) ? $_POST['updateExerciseStep'] : [];
 
+    //Video
     $video = isset($_FILES['exerciseVideoUrl']) ? $_FILES['exerciseVideoUrl'] : [];
+    $folder = "../admin/images/exercises/videos/";
+
+    //Profile
+    $photo = isset($_FILES['profilePicUrl']) ? $_FILES['profilePicUrl'] : '';
+    $pictureFolder = "../admin/images/exercises/";
 
     // echo "<pre>";
     // echo print_r($_POST);
@@ -43,12 +46,22 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
         $conn->begin_transaction();
 
+        $photoUrl = '';
+        if (!empty($photo['name'])) {
+            $photoUrl = handle_picture_file($pictureFolder, $photo);
+            if (!empty($photoUrl)) {
+                update_exercise_profile($conn, $photoUrl, $exerciseId);
+            }
+        }
+
         // Video
         $videoUrl = '';
         if (isset($video) && $video["size"] > 0) {  // Only handle if a file was actually uploaded
             $videoUrl = handle_video_file($folder, $video);
             if ($videoUrl === "none") {
                 $errors["video_problem"] = "There was a problem with the video upload";
+            } else {
+                update_exercise_video($conn, $videoUrl, $exerciseId);
             }
         }
 
@@ -97,7 +110,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $errors["empty_input"] = "Inputs cannot be empty!";
         }
 
-        update_exercise_video($conn, $videoUrl, $exerciseId);
         update_exercise_name($conn, $exerciseName, $exerciseId);
         update_exercise_description($conn, $exerciseDescription, $exerciseId);
         update_exercise_status($conn, $status, $exerciseId);
@@ -295,5 +307,58 @@ function handle_video_file($folder, $video)
         return $fileNameNew;
     } else {
         return "none";
+    }
+}
+
+
+//Updating exercise profile
+
+function update_exercise_profile($conn, $photoUrl, $exerciseId)
+{
+    $stmt = $conn->prepare("UPDATE `exercise` SET `exercisePicUrl` = ? WHERE ID = ?");
+    $stmt->bind_param("si", $photoUrl, $exerciseId);
+    $stmt->execute();
+    $stmt->close();
+}
+
+function handle_picture_file($pictureFolder, $picture)
+{
+    //check for errors
+    $pictureErrors = [];
+
+    //image handler for inputs
+    $picture = $picture;
+    $picture_name = $picture['name'];
+    $picture_type = $picture['type'];
+    $picture_tmp = $picture['tmp_name'];
+    $picture_error = $picture['error'];
+    $picture_size = $picture['size'];
+
+    // Explode file name and get the extension at the end
+    $picture_Ext = explode(".", $picture_name);
+    $picture_ActualExt = strtolower(end($picture_Ext));
+
+    $allowedTypes = array("jpg", "jpeg", "png");
+
+    if (!in_array($picture_ActualExt, $allowedTypes)) {
+        $pictureErrors[] = "Uploaded File is not Supported";
+    }
+
+    if ($picture_error !== 0) {
+        $pictureErrors[] = "There was an error uploading your file";
+    }
+
+    // Check if picture is greater than 2MB
+    if ($picture_size > 2000000) {
+        $pictureErrors[] = "Your file is too big!";
+    }
+
+    if (count($pictureErrors) == 0) {
+        $fileNameNew = uniqid("", true) . "." . $picture_ActualExt;
+        $fileDestination = $pictureFolder . $fileNameNew;
+        move_uploaded_file($picture_tmp, $fileDestination);
+        return $fileNameNew;
+    } else {
+        return "";
     }
 }

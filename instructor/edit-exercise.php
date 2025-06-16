@@ -64,6 +64,11 @@ $stepsList = $exercise->get_exercise_steps();
                         <h2>EDIT EXERCISE</h2>
                     </div>
                     <form class="edit-content-form" action="./includes/add-exercise-details.php" method="POST" enctype="multipart/form-data">
+                        <h4>Profile Picture</h4>
+                        <div class="input-full">
+                            <input type="file" accept="image/*" name="profilePicUrl" />
+                        </div>
+                        <hr>
                         <div class="input-full hidden">
                             <label>Exercise ID</label>
                             <input name="exerciseID" type="text" value="<?= $exerciseId ?>" />

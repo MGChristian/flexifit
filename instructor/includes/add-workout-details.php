@@ -31,15 +31,12 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         $conn->begin_transaction();
 
         $photoUrl = '';
-        if (!empty($photo)) {
+        if (!empty($photo['name'])) {
             $photoUrl = handle_picture_file($folder, $photo);
             if (!empty($photoUrl)) {
                 update_workout_profile($conn, $photoUrl, $workoutID);
             }
         }
-
-
-
 
         // ADD EXERCISES
         foreach ($sets as $setNumber => $setContent) {
