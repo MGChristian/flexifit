@@ -12,9 +12,19 @@ if (!$profile->check_user()) {
 
 $userDetails = $profile->get_user_details();
 
+
+$userDetails = $profile->get_user_details();
+$keys = "518c59d460786114b3243f3df3007e2766fe4fc8bc28be0cce5ef26ecb6cb23f"; // 256-bit key
+$key = hash('sha256', $keys, true);
+$iv = base64_decode($userDetails['iv']);
+
+$fname = base64_decode($userDetails['firstName']);
+$lname = base64_decode($userDetails['lastName']);
+                    
 //User Details
-$firstName = htmlspecialchars($userDetails['firstName']);
-$lastName = htmlspecialchars($userDetails['lastName']);
+$firstName = openssl_decrypt($fname, 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv);
+$lastName = openssl_decrypt($lname, 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv);
+
 $email = htmlspecialchars($userDetails['email']);
 $contactNumber = htmlspecialchars($userDetails['contactNo']);
 $birthdate = htmlspecialchars($userDetails['DOB']);
@@ -24,8 +34,7 @@ $username = htmlspecialchars($userDetails['username']);
 
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FlexiFit</title>
@@ -57,6 +66,7 @@ $username = htmlspecialchars($userDetails['username']);
         <form action="./includes/change-user-details.php" method="POST" id="user-details-form">
           <h4>Personal Information</h4>
           <hr />
+          <input type="hidden" name="iv" value="<?= $iv?>">
           <div class="user-details">
             <div class="half">
               <div class="input-half">
@@ -159,6 +169,6 @@ $username = htmlspecialchars($userDetails['username']);
       });
     });
   </script>
-</body>
+</body> 
 
 </html>

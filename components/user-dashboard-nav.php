@@ -9,7 +9,16 @@
     <div class="user-profile">
         <i class="fa fa-user-circle filterOpen fa-lg" aria-hidden="true" data-target="user-dropdown"></i>
         <div class="filters shadow hidden" id="user-dropdown">
-            <p style="word-wrap: break-word; overflow-wrap: break-word; max-width: 100%; "><?= htmlspecialchars($userData['firstName']) . " " . htmlspecialchars($userData['lastName']) ?></p>
+            <p style="word-wrap: break-word; overflow-wrap: break-word; max-width: 100%; "><?php
+             $keys = "518c59d460786114b3243f3df3007e2766fe4fc8bc28be0cce5ef26ecb6cb23f"; // 256-bit key
+                    $key = hash('sha256', $keys, true);
+                    $firstname = base64_decode($userData['firstName']);
+                    $lastname = base64_decode($userData['lastName']);
+                    $iv = base64_decode($userData['iv']);
+                    $fname = openssl_decrypt($firstname, 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv);
+                    $lname = openssl_decrypt($lastname, 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv);
+                    echo $fname. " " , $lname;
+            ?></p>
             <hr />
             <!-- Dashboard page -->
             <a href="./">
