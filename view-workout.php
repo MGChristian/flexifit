@@ -8,22 +8,24 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutID = $_GET['id'] : header("l
 <!-- Get all exercise details -->
 <?php
 require_once "./includes/class-workout.php";
-$workout = new Workout($conn, $workoutID);
-if ($workout->check_id() === true) {
-    $workoutSetsList = $workout->get_workout_sets();
-    $workoutDetails = $workout->get_workout();
-    $creatorDetails = $workout->get_workout_creator_info();
-    $muscleList = $workout->get_muscles();
-    $equipmentList = $workout->get_equipments();
-    $categoryList = $workout->get_categories();
-    if ($isLoggedIn) {
-        $savedStatus = $workout->get_saved_status($user_id);
-        $collectionList = $workout->get_collections_list($user_id);
-    }
-} else {
+$workout = new Workout($conn, $workoutID, $secretKey);
+if (!$workout->check_id()) {
     header("location: ./explore-workouts.php");
     exit();
-};
+}
+if (!$workout->is_mac_valid()) {
+    die("This workout record may have been tampered with.");
+}
+$workoutSetsList = $workout->get_workout_sets();
+$workoutDetails = $workout->get_workout();
+$creatorDetails = $workout->get_workout_creator_info();
+$muscleList = $workout->get_muscles();
+$equipmentList = $workout->get_equipments();
+$categoryList = $workout->get_categories();
+if ($isLoggedIn) {
+    $savedStatus = $workout->get_saved_status($user_id);
+    $collectionList = $workout->get_collections_list($user_id);
+}
 ?>
 
 <!DOCTYPE html>

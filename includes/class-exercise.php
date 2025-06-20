@@ -7,11 +7,13 @@ class Exercise
     private $id;
     private $exerciseId;
     private $conn;
+    private $secretKey;
 
-    public function __construct($conn, $exerciseId)
+    public function __construct($conn, $exerciseId, $secretKey)
     {
         $this->conn = $conn;
         $this->exerciseId = $exerciseId;
+        $this->secretKey = $secretKey;
     }
 
     public function check_id()
@@ -101,5 +103,26 @@ class Exercise
             $steps[] = $row;
         }
         return $steps;
+    }
+
+    public function is_mac_valid()
+    {
+        $stmt = $this->conn->prepare("SELECT `userID`, `exerciseName`, `description`, `exercisePicUrl`, `mac` FROM `exercise` WHERE ID = ?");
+        $stmt->bind_param("i", $this->exerciseId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+
+        if ($result->num_rows === 0) {
+            return false; // Exercise doesn't exist
+        }
+
+        $row = $result->fetch_assoc();
+
+        // Reconstruct the same data used during MAC generation
+        $mac_data = $row['userID'] . $row['exerciseName'] . $row['description'] . $row['exercisePicUrl'];
+        $expected_mac = hash_hmac('sha256', $mac_data, $this->secretKey);
+
+        return hash_equals($expected_mac, $row['mac']);
     }
 }

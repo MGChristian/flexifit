@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             header("Location: ../table-exercises.php");
             exit();
         } else {
-            create_exercise($conn, $exercise_creator, $exercise_name, $exercise_description, $profile_url);
+            create_exercise($conn, $exercise_creator, $exercise_name, $exercise_description, $profile_url, $secretKey);
             header("Location: ../table-exercises.php?status=success");
             exit();
         }
@@ -101,15 +101,21 @@ function handle_profile_pic($folder, $profile)
     }
 }
 
-function create_exercise($conn, $exercise_creator, $exercise_name, $exercise_description, $profile_url)
+function create_exercise($conn, $exercise_creator, $exercise_name, $exercise_description, $profile_url, $secretKey)
 {
     $conn->begin_transaction();
     try {
-        $stmt = $conn->prepare("INSERT INTO `exercise` (`userID`, `exerciseName`, `description`, `exercisePicUrl`) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("isss", $exercise_creator, $exercise_name, $exercise_description, $profile_url);
+        // Prepare the MAC
+        $mac_data = $exercise_creator . $exercise_name . $exercise_description . $profile_url;
+        $mac = hash_hmac('sha256', $mac_data, $secretKey);
+
+        $stmt = $conn->prepare("INSERT INTO `exercise` (`userID`, `exerciseName`, `description`, `exercisePicUrl`, `mac`) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("issss", $exercise_creator, $exercise_name, $exercise_description, $profile_url, $mac);
+
         if (!$stmt->execute()) {
             exit("SQL Error: " . $stmt->error);
         }
+
         $conn->commit();
         $stmt->close();
     } catch (\Throwable $th) {

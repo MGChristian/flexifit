@@ -7,17 +7,20 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
 <!-- Get all exercise details -->
 <?php
 require_once "./includes/class-exercise.php";
-$exercise = new Exercise($conn, $exerciseId);
-if ($exercise->check_id() === true) {
-    $exerciseDetails = $exercise->get_exercise();
-    $muscleList = $exercise->get_muscles();
-    $equipmentList = $exercise->get_equipments();
-    $categoryList = $exercise->get_categories();
-    $stepsList = $exercise->get_exercise_steps();
-} else {
+$exercise = new Exercise($conn, $exerciseId, $secretKey);
+if (!$exercise->check_id() === true) {
     header("location: ./explore-exercises.php");
     exit();
-};
+}
+if (!$exercise->is_mac_valid()) {
+    die("This exercise record may have been tampered with.");
+}
+
+$exerciseDetails = $exercise->get_exercise();
+$muscleList = $exercise->get_muscles();
+$equipmentList = $exercise->get_equipments();
+$categoryList = $exercise->get_categories();
+$stepsList = $exercise->get_exercise_steps();
 ?>
 
 <!DOCTYPE html>

@@ -7,11 +7,13 @@ class Workout
     private $id;
     private $workoutId;
     private $conn;
+    private $secretKey;
 
-    public function __construct($conn, $workoutId)
+    public function __construct($conn, $workoutId, $secretKey)
     {
         $this->conn = $conn;
         $this->workoutId = $workoutId;
+        $this->secretKey = $secretKey;
     }
 
     public function check_id()
@@ -27,6 +29,27 @@ class Workout
             return false;
         }
     }
+
+    public function is_mac_valid()
+    {
+        $stmt = $this->conn->prepare("SELECT `userID`, `workoutName`, `workoutDescription`, `workoutPicUrl`, `difficulty`, `mac` FROM `workout` WHERE ID = ?");
+        $stmt->bind_param("i", $this->workoutId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+
+        if ($result->num_rows === 0) {
+            return false; // No such workout
+        }
+
+        $row = $result->fetch_assoc();
+
+        $mac_data = $row['userID'] . $row['workoutName'] . $row['workoutDescription'] . $row['workoutPicUrl'] . $row['difficulty'];
+        $expected_mac = hash_hmac('sha256', $mac_data, $this->secretKey);
+
+        return hash_equals($expected_mac, $row['mac']);
+    }
+
 
     public function get_workout_sets()
     {

@@ -16,11 +16,16 @@ isset($_GET['id']) && !empty($_GET['id']) ? $exerciseId = $_GET['id'] : header("
 
 <?php
 require_once("./includes/class-exercise.php");
-$exercise = new Exercise($conn, $exerciseId);
+$exercise = new Exercise($conn, $exerciseId, $secretKey);
 if (!$exercise->is_id_valid()) {
     header("location: ./table-exercises.php");
     exit();
 }
+
+if (!$exercise->is_mac_valid($secretKey)) {
+    die("This exercise record may have been tampered with.");
+}
+
 $exerciseDetails = $exercise->get_exercise();
 $muscleList = $exercise->get_muscles();
 $exerciseMuscleList = $exercise->get_exercise_muscles();

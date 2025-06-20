@@ -38,9 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             }
         }
 
-
-
-
         // ADD EXERCISES
         foreach ($sets as $setNumber => $setContent) {
             foreach ($setContent as $setExerciseList => $setExerciseListContent) {
@@ -63,7 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 remove_exercise($conn, $exerciseStepId);
             }
         }
-
 
         // UPDATE EXERCISES
         if (!empty($updatedSets)) {
@@ -92,6 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         update_workout_description($conn, $workoutDescription, $workoutID);
         update_workout_difficulty($conn, $difficulty, $workoutID);
         update_workout_status($conn, $status, $workoutID);
+        update_workout_mac($conn, $workoutID, $secretKey);
 
         if ($errors) {
             $conn->rollback();
@@ -236,4 +233,28 @@ function handle_picture_file($folder, $picture)
     } else {
         return "";
     }
+}
+
+function update_workout_mac($conn, $workoutID, $secretKey)
+{
+    // Get the latest values of the workout
+    $stmt = $conn->prepare("SELECT `userID`, `workoutName`, `workoutDescription`, `workoutPicUrl`, `difficulty` FROM `workout` WHERE ID = ?");
+    $stmt->bind_param("i", $workoutID);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
+
+    if ($result->num_rows === 0) {
+        throw new Exception("Workout not found for MAC regeneration.");
+    }
+
+    $row = $result->fetch_assoc();
+
+    $mac_data = $row['userID'] . $row['workoutName'] . $row['workoutDescription'] . $row['workoutPicUrl'] . $row['difficulty'];
+    $mac = hash_hmac('sha256', $mac_data, $secretKey);
+
+    $stmt = $conn->prepare("UPDATE `workout` SET `mac` = ? WHERE ID = ?");
+    $stmt->bind_param("si", $mac, $workoutID);
+    $stmt->execute();
+    $stmt->close();
 }

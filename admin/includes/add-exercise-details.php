@@ -142,6 +142,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             header("Location: ../table-exercises.php");
             exit();
         } else {
+            update_exercise_mac($conn, $exerciseId, $secretKey);
+
             $conn->commit();
             header("Location: ../edit-exercise.php?id={$exerciseId}&status=success");
             exit();
@@ -361,4 +363,30 @@ function handle_picture_file($pictureFolder, $picture)
     } else {
         return "";
     }
+}
+
+
+// CHANGING THE MAC
+
+function update_exercise_mac($conn, $exerciseId, $secretKey)
+{
+    $stmt = $conn->prepare("SELECT `userID`, `exerciseName`, `description`, `exercisePicUrl` FROM `exercise` WHERE ID = ?");
+    $stmt->bind_param("i", $exerciseId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
+
+    if ($result->num_rows === 0) {
+        throw new Exception("Exercise not found for MAC regeneration.");
+    }
+
+    $row = $result->fetch_assoc();
+
+    $mac_data = $row['userID'] . $row['exerciseName'] . $row['description'] . $row['exercisePicUrl'];
+    $mac = hash_hmac('sha256', $mac_data, $secretKey);
+
+    $stmt = $conn->prepare("UPDATE `exercise` SET `mac` = ? WHERE ID = ?");
+    $stmt->bind_param("si", $mac, $exerciseId);
+    $stmt->execute();
+    $stmt->close();
 }

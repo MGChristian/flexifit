@@ -117,26 +117,33 @@ function create_user($conn, $username, $email, $password, $first_name, $last_nam
 {
     $conn->begin_transaction();
     try {
-        $keys = "518c59d460786114b3243f3df3007e2766fe4fc8bc28be0cce5ef26ecb6cb23f"; // 256-bit key
+        $keys = "518c59d460786114b3243f3df3007e2766fe4fc8bc28be0cce5ef26ecb6cb23f";
         $key = hash('sha256', $keys, true);
         $iv = random_bytes(openssl_cipher_iv_length('aes-256-cbc'));
         $iv_base64 = base64_encode($iv);
- 
-        // Encryption
-      
-       
+
         $encryptedFirst_name = openssl_encrypt($first_name, 'aes-256-cbc', $key, 0, $iv);
         $encryptedLast_name = openssl_encrypt($last_name, 'aes-256-cbc', $key, 0, $iv);
+
         $stmt = $conn->prepare("INSERT INTO `user` (`username`, `email`, `password`, `firstName`, `lastName`, `DOB`, `contactNo`, `gender`, `profilePicUrl`, `iv`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssssisss", $username, $email, $password, $encryptedFirst_name, $encryptedLast_name, $birthdate, $phone, $gender, $profile_pic_url,$iv_base64);
+        $stmt->bind_param("ssssssisss", $username, $email, $password, $encryptedFirst_name, $encryptedLast_name, $birthdate, $phone, $gender, $profile_pic_url, $iv_base64);
+
         if ($stmt->execute()) {
-            $conn->commit();
-            return true;
+            $id = $stmt->insert_id;
+            $stmt->close();
+
+            if (keyPairGenerator($conn, $id)) {
+                $conn->commit();
+                return true;
+            } else {
+                $conn->rollback();
+                return false;
+            }
         } else {
+            $stmt->close();
             $conn->rollback();
             return false;
         }
-        $stmt->close();
     } catch (\Throwable $th) {
         $conn->rollback();
         return false;
@@ -147,4 +154,54 @@ function create_user($conn, $username, $email, $password, $first_name, $last_nam
 function hashedPwd($password)
 {
     return password_hash($password, PASSWORD_BCRYPT);
+}
+
+function keyPairGenerator($conn, $userID)
+{
+    $config = [
+        "config" => "C:/xampp/apache/conf/openssl.cnf", // or use escaped backslashes
+        "private_key_bits" => 2048,
+        "private_key_type" => OPENSSL_KEYTYPE_RSA,
+    ];
+
+    $keyPair = openssl_pkey_new($config);
+
+    if ($keyPair === false) {
+        die('Failed to generate key pair: ' . openssl_error_string());
+    }
+
+    //Private Key
+    openssl_pkey_export($keyPair, $privateKey, null, $config);
+
+    //PublicKey
+    $keyDetails = openssl_pkey_get_details($keyPair);
+    $publicKey = $keyDetails['key'];
+
+    $keyDir = dirname(__DIR__) . "/user_keys";
+
+    if (!is_dir($keyDir)) {
+        mkdir($keyDir, 0700, true);
+    }
+
+    $privatePath = "$keyDir/{$userID}_private.pem";
+    $publicPath = "$keyDir/{$userID}_public.pem";
+
+    if (file_put_contents($privatePath, $privateKey) === false || file_put_contents($publicPath, $publicKey) === false) {
+        return false;
+    }
+    chmod($privatePath, 0600);
+    chmod($publicPath, 0644);
+
+    // Save public key to DB
+    $stmt = $conn->prepare("UPDATE `user` SET `publicKey` = ? WHERE ID = ?");
+    $stmt->bind_param("si", $publicKey, $userID);
+
+    if ($stmt->execute()) {
+        $stmt->close();
+        return true;
+    } else {
+        $stmt->close();
+        error_log("Failed to update user public key.");
+        return false;
+    }
 }

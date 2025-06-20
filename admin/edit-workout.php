@@ -16,11 +16,16 @@ isset($_GET['id']) && !empty($_GET['id']) ? $workoutId = $_GET['id'] : header("l
 
 <?php
 require_once("./includes/class-workout.php");
-$workout = new Workout($conn, $workoutId);
+$workout = new Workout($conn, $workoutId, $secretKey);
 if (!$workout->is_id_valid()) {
     header("location: ./table-workouts.php");
     exit();
 }
+
+if (!$workout->is_mac_valid()) {
+    die("This workout record may have been tampered with.");
+}
+
 $workoutDetails = $workout->get_workout();
 $workoutSets = $workout->get_unique_workout_sets();
 ?>

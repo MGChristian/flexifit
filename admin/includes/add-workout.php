@@ -36,7 +36,10 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             header("Location: ../table-workouts.php");
             exit();
         } else {
-            create_workout($conn, $workout_creator, $workout_name, $workout_description, $difficulty, $profile_url);
+            $mac_data = $workout_creator . $workout_name . $workout_description . $profile_url . $difficulty;
+            $mac = hash_hmac('sha256', $mac_data, $secretKey);
+
+            create_workout($conn, $workout_creator, $workout_name, $workout_description, $difficulty, $profile_url, $mac);
             header("Location: ../table-workouts.php?status=success");
             exit();
         }
@@ -104,12 +107,12 @@ function handle_profile_pic($folder, $profile)
     }
 }
 
-function create_workout($conn, $workout_creator, $workout_name, $workout_description, $difficulty, $profile_url)
+function create_workout($conn, $workout_creator, $workout_name, $workout_description, $difficulty, $profile_url, $mac)
 {
     $conn->begin_transaction();
     try {
-        $stmt = $conn->prepare("INSERT INTO `workout` (`userID`, `workoutName`, `workoutDescription`, `workoutPicUrl`, `difficulty`) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("issss", $workout_creator, $workout_name, $workout_description, $profile_url, $difficulty);
+        $stmt = $conn->prepare("INSERT INTO `workout` (`userID`, `workoutName`, `workoutDescription`, `workoutPicUrl`, `difficulty`, `mac`) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("isssss", $workout_creator, $workout_name, $workout_description, $profile_url, $difficulty, $mac);
         if (!$stmt->execute()) {
             exit("SQL Error: " . $stmt->error);
         }

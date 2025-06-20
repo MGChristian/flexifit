@@ -4,6 +4,9 @@
 require_once(__DIR__ . "/../../includes/config-session.inc.php");
 require_once(__DIR__ . "/../../includes/config.php");
 
+//Secret Key
+$secretKey = $_ENV['SYMMETRIC_KEY'];
+
 //Check if user is logged in
 if (!isset($isLoggedIn)) {
     //isset($_SESSION['id]) returns true if it is set, if not it will return false. indicating the log in status of the user
